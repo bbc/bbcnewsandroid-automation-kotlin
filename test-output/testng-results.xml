@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="12" passed="12">
+  <reporter-output>
+  </reporter-output>
+  <suite name="BBCNewsSuite" duration-ms="196759" started-at="2019-03-13T14:38:34Z" finished-at="2019-03-13T14:41:51Z">
+    <groups>
+    </groups>
+    <test name="BBCNewsRegressionTest" duration-ms="196759" started-at="2019-03-13T14:38:34Z" finished-at="2019-03-13T14:41:51Z">
+      <class name="com.bbcnews.automation.scripts.ExampleDemo">
+        <test-method status="PASS" signature="runTest()[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="runTest" is-config="true" duration-ms="36657" started-at="2019-03-13T14:38:34Z" finished-at="2019-03-13T14:39:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runTest -->
+        <test-method status="PASS" signature="testOpenNewsApp()[pri:1, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testOpenNewsApp" duration-ms="4651" started-at="2019-03-13T14:39:11Z" description="Launching the app" finished-at="2019-03-13T14:39:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOpenNewsApp -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="6" started-at="2019-03-13T14:39:15Z" finished-at="2019-03-13T14:39:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testOpenNewsApp status=SUCCESS method=ExampleDemo.testOpenNewsApp()[pri:1, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testSearchStories()[pri:1, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testSearchStories" duration-ms="13460" started-at="2019-03-13T14:39:15Z" description="Test to check for search results" finished-at="2019-03-13T14:39:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSearchStories -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="16" started-at="2019-03-13T14:39:29Z" finished-at="2019-03-13T14:39:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testSearchStories status=SUCCESS method=ExampleDemo.testSearchStories()[pri:1, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testcheckTermsPrivacyPolicy()[pri:2, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testcheckTermsPrivacyPolicy" duration-ms="17674" started-at="2019-03-13T14:39:29Z" description="Test to check the T&amp;C , PrivacyPolicy from Menu options" finished-at="2019-03-13T14:39:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcheckTermsPrivacyPolicy -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:39:47Z" finished-at="2019-03-13T14:39:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testcheckTermsPrivacyPolicy status=SUCCESS method=ExampleDemo.testcheckTermsPrivacyPolicy()[pri:2, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testTopStoriesvideo()[pri:3, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testTopStoriesvideo" duration-ms="14747" started-at="2019-03-13T14:39:47Z" description="Playing a video from Video page" finished-at="2019-03-13T14:40:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTopStoriesvideo -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:40:01Z" finished-at="2019-03-13T14:40:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testTopStoriesvideo status=SUCCESS method=ExampleDemo.testTopStoriesvideo()[pri:3, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testAppbackground()[pri:4, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testAppbackground" duration-ms="35840" started-at="2019-03-13T14:40:01Z" description="App Backgrounding" finished-at="2019-03-13T14:40:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAppbackground -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:40:37Z" finished-at="2019-03-13T14:40:37Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testAppbackground status=SUCCESS method=ExampleDemo.testAppbackground()[pri:4, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testPopularPage()[pri:5, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testPopularPage" duration-ms="3567" started-at="2019-03-13T14:40:37Z" description="Test to check the Popular page and also to check Most Read Displayed" finished-at="2019-03-13T14:40:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPopularPage -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:40:41Z" finished-at="2019-03-13T14:40:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testPopularPage status=SUCCESS method=ExampleDemo.testPopularPage()[pri:5, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testCheckMostReadPopular()[pri:6, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testCheckMostReadPopular" duration-ms="3545" started-at="2019-03-13T14:40:41Z" description="Test to select one Article from Most Read  Article from Popular Page" finished-at="2019-03-13T14:40:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckMostReadPopular -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:40:44Z" finished-at="2019-03-13T14:40:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testCheckMostReadPopular status=SUCCESS method=ExampleDemo.testCheckMostReadPopular()[pri:6, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testcheckMostWatched()[pri:7, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testcheckMostWatched" duration-ms="8482" started-at="2019-03-13T14:40:44Z" description="Test to check whether the Most Watched heading displayed in Popular Page" finished-at="2019-03-13T14:40:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcheckMostWatched -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:40:53Z" finished-at="2019-03-13T14:40:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testcheckMostWatched status=SUCCESS method=ExampleDemo.testcheckMostWatched()[pri:7, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testcheckMostWatchedArticle()[pri:8, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testcheckMostWatchedArticle" duration-ms="2583" started-at="2019-03-13T14:40:53Z" description="Test to check whether the Most Watched heading displayed in Popular Page" finished-at="2019-03-13T14:40:55Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcheckMostWatchedArticle -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="0" started-at="2019-03-13T14:40:55Z" finished-at="2019-03-13T14:40:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testcheckMostWatchedArticle status=SUCCESS method=ExampleDemo.testcheckMostWatchedArticle()[pri:8, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testcheckofflinescenario()[pri:10, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testcheckofflinescenario" duration-ms="8695" started-at="2019-03-13T14:40:55Z" description="Test to check the offline scenario of the app" finished-at="2019-03-13T14:41:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testcheckofflinescenario -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:41:04Z" finished-at="2019-03-13T14:41:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testcheckofflinescenario status=SUCCESS method=ExampleDemo.testcheckofflinescenario()[pri:10, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testplayingvideooffline()[pri:11, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testplayingvideooffline" duration-ms="32350" started-at="2019-03-13T14:41:04Z" description="Test to play a  video, while device offline" finished-at="2019-03-13T14:41:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testplayingvideooffline -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="0" started-at="2019-03-13T14:41:36Z" finished-at="2019-03-13T14:41:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testplayingvideooffline status=SUCCESS method=ExampleDemo.testplayingvideooffline()[pri:11, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="testPlayingVideoOnLine()[pri:12, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="testPlayingVideoOnLine" duration-ms="9816" started-at="2019-03-13T14:41:36Z" description="Test to play a  video, while device online" finished-at="2019-03-13T14:41:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPlayingVideoOnLine -->
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-13T14:41:46Z" finished-at="2019-03-13T14:41:46Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testPlayingVideoOnLine status=SUCCESS method=ExampleDemo.testPlayingVideoOnLine()[pri:12, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getResult -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.bbcnews.automation.scripts.ExampleDemo@4356e1b6]" name="tearDown" is-config="true" duration-ms="4371" started-at="2019-03-13T14:41:46Z" finished-at="2019-03-13T14:41:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.bbcnews.automation.scripts.ExampleDemo -->
+    </test> <!-- BBCNewsRegressionTest -->
+  </suite> <!-- BBCNewsSuite -->
+</testng-results>

@@ -1,0 +1,16 @@
+%on test method testOpenNewsApp start
+'on test method testSearchStories start
+1on test method testcheckTermsPrivacyPolicy start
+)on test method testTopStoriesvideo start
+'on test method testAppbackground start
+%on test method testPopularPage start
+.on test method testCheckMostReadPopular start
+	*on test method testcheckMostWatched start
+
+1on test method testcheckMostWatchedArticle start
+
+The Element selected is  :- 2
+.on test method testcheckofflinescenario start
+-on test method testplayingvideooffline start
+The Connection state is true
+,on test method testPlayingVideoOnLine start

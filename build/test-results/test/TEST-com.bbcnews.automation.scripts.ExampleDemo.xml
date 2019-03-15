@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bbcnews.automation.scripts.ExampleDemo" tests="12" skipped="0" failures="0" errors="0" timestamp="2019-03-13T14:39:11" hostname="mc-s097627" time="155.673">
+  <properties/>
+  <testcase name="testOpenNewsApp" classname="com.bbcnews.automation.scripts.ExampleDemo" time="4.651"/>
+  <testcase name="testSearchStories" classname="com.bbcnews.automation.scripts.ExampleDemo" time="13.46"/>
+  <testcase name="testcheckTermsPrivacyPolicy" classname="com.bbcnews.automation.scripts.ExampleDemo" time="17.674"/>
+  <testcase name="testTopStoriesvideo" classname="com.bbcnews.automation.scripts.ExampleDemo" time="14.747"/>
+  <testcase name="testAppbackground" classname="com.bbcnews.automation.scripts.ExampleDemo" time="35.84"/>
+  <testcase name="testPopularPage" classname="com.bbcnews.automation.scripts.ExampleDemo" time="3.567"/>
+  <testcase name="testCheckMostReadPopular" classname="com.bbcnews.automation.scripts.ExampleDemo" time="3.545"/>
+  <testcase name="testcheckMostWatched" classname="com.bbcnews.automation.scripts.ExampleDemo" time="8.482"/>
+  <testcase name="testcheckMostWatchedArticle" classname="com.bbcnews.automation.scripts.ExampleDemo" time="2.583"/>
+  <testcase name="testcheckofflinescenario" classname="com.bbcnews.automation.scripts.ExampleDemo" time="8.695"/>
+  <testcase name="testplayingvideooffline" classname="com.bbcnews.automation.scripts.ExampleDemo" time="32.35"/>
+  <testcase name="testPlayingVideoOnLine" classname="com.bbcnews.automation.scripts.ExampleDemo" time="9.816"/>
+  <system-out><![CDATA[on test method testOpenNewsApp start
+on test method testSearchStories start
+on test method testcheckTermsPrivacyPolicy start
+on test method testTopStoriesvideo start
+on test method testAppbackground start
+on test method testPopularPage start
+on test method testCheckMostReadPopular start
+on test method testcheckMostWatched start
+on test method testcheckMostWatchedArticle start
+The Element selected is  :- 2
+on test method testcheckofflinescenario start
+on test method testplayingvideooffline start
+The Connection state is true
+on test method testPlayingVideoOnLine start
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

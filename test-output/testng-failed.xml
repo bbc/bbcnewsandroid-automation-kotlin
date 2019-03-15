@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [BBCNewsSuite]">
+  <listeners>
+    <listener class-name="com.bbcnews.automation.testutils.Listeners.RegressionTestListeners"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="BBCNewsRegressionTest(failed)">
+    <classes>
+      <class name="com.bbcnews.automation.scripts.ExampleDemo">
+        <methods>
+          <include name="runTest"/>
+          <include name="testPopularPage"/>
+          <include name="testcheckMostWatchedArticle"/>
+          <include name="testPlayingVideoOnLine"/>
+          <include name="getResult"/>
+          <include name="testcheckMostWatched"/>
+          <include name="tearDown"/>
+          <include name="testcheckofflinescenario"/>
+          <include name="testTopStoriesvideo"/>
+          <include name="testAppbackground"/>
+          <include name="testSearchStories"/>
+          <include name="testplayingvideooffline"/>
+          <include name="testCheckMostReadPopular"/>
+          <include name="testcheckTermsPrivacyPolicy"/>
+        </methods>
+      </class> <!-- com.bbcnews.automation.scripts.ExampleDemo -->
+    </classes>
+  </test> <!-- BBCNewsRegressionTest(failed) -->
+</suite> <!-- Failed suite [BBCNewsSuite] -->
