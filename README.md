@@ -57,7 +57,7 @@ You can use the uiautomatorviewer to inspect elements on Android devices. or you
 # Appium
 Try to always have Appium and libraries updated.
 
-# Executing Scripts :
+# Executing Scripts : 
 To run scripts , run the BBCNewsSmokeTest.xml file .
 
 First you'll need to start appium. By typing appium -p portnumber (to run on a specify port. By default appium runs on port 4723) 
@@ -69,3 +69,6 @@ Change the device ID, OS version, device Name  to the devices connected in your 
 
 # Report
 After execution a ExtentReport will be created under Result folder with TestName
+
+#Test Dashboard
+A test dashboard report can be found from the below URL : https://www.tesults.com/results 
