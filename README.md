@@ -70,5 +70,5 @@ Change the device ID, OS version, device Name  to the devices connected in your 
 # Report
 After execution a ExtentReport will be created under Result folder with TestName
 
-#Test Dashboard
+# Test Dashboard
 A test dashboard report can be found from the below URL : https://www.tesults.com/results 
