@@ -339,8 +339,8 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
-            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
-            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+//            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
+//            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.englandtopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandtopic, false)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BBCNewsAndroidApp_Appium.BBCNewsAndroidApp.iml" filepath="$PROJECT_DIR$/.idea/modules/BBCNewsAndroidApp_Appium.BBCNewsAndroidApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BBCNewsAndroidApp_Appium.BBCNewsAndroidApp.main.iml" filepath="$PROJECT_DIR$/.idea/modules/BBCNewsAndroidApp_Appium.BBCNewsAndroidApp.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BBCNewsAndroidApp_Appium.BBCNewsAndroidApp.test.iml" filepath="$PROJECT_DIR$/.idea/modules/BBCNewsAndroidApp_Appium.BBCNewsAndroidApp.test.iml" />
+    </modules>
+  </component>
+</project>

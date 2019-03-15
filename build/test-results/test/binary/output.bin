@@ -1,16 +1,53 @@
 %on test method testOpenNewsApp start
-'on test method testSearchStories start
-1on test method testcheckTermsPrivacyPolicy start
-)on test method testTopStoriesvideo start
-'on test method testAppbackground start
-%on test method testPopularPage start
-.on test method testCheckMostReadPopular start
-	*on test method testcheckMostWatched start
+$on test method testTopStories start
+0on test method testToCheckTopicsTopStores start
+Topics is :-Family & Education
+The Topic is Technology
+Topics is :-Technology
+0on test method testMyNewsTopStoriesTopics start
+'on test method testAllowLocation start
+ on test method testMyNews start
+*on test method testAddingTopicsPage start
+	2on test method testAddingTopicstoMyNewsPage start
 
-1on test method testcheckMostWatchedArticle start
-
-The Element selected is  :- 2
-.on test method testcheckofflinescenario start
--on test method testplayingvideooffline start
-The Connection state is true
-,on test method testPlayingVideoOnLine start
+*on test method testCheckAddedTopics start
+4on test method testCheckOrderingofTopicsAdded start
+The Text at get(0) is England
+The Text at get(1) is Africa
+%The Text at get(2) is European Union
+ The Text at get(3) is Mortgages
+The Text at get(4) is YouTube
+-on test method testSelectedAddedTopics start
+6on test method testCheckReOrderingofTopicsAdded start
+The Text at get(3) is England
+The Text at get(0) is Africa
+(on test method testcheckMenuItems start
+#on test method testVideopage start
+&on test method playingLandspace start
+,on test method scrubbingvideoplayback start
+'on test method testSearchStories start
+,on test method testSelectSearchResult start
+%on test method testSearchTopic start
+6on test method testArtictleItemWithoutItemBadge start
+3on test method testArtictleItemWithItemBadge start
+'on test method testSearchArticle start
+.on test method testondemandvideoplyback start
+-on test method testseekingvideoforward start
+.on test method testseekingvideobackward start
+/on test method testRelatedStoriesArticle start
+-on test method testRelatedTopicArticle start
+1on test method testcheckTermsPrivacyPolicy start
+)on test method testTopStoriesvideo start
+'on test method testAppbackground start
+ %on test method testPopularPage start
+!.on test method testCheckMostReadPopular start
+"*on test method testcheckMostWatched start
+#1on test method testcheckMostWatchedArticle start
+#The Element selected is  :- 2
+$6on test method testArrangeTopicsFromBottomToTop start
+%.on test method testcheckofflinescenario start
+&-on test method testplayingvideooffline start
+&The Connection state is true
+',on test method testPlayingVideoOnLine start
+(,on test method testSelectArticleTopic start
+)1on test method testSelectVideoArticleTopic start

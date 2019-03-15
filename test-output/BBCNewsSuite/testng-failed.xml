@@ -6,24 +6,15 @@
   </listeners>
   <test thread-count="5" verbose="0" name="BBCNewsRegressionTest(failed)">
     <classes>
-      <class name="com.bbcnews.automation.scripts.ExampleDemo">
+      <class name="com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin">
         <methods>
-          <include name="runTest"/>
-          <include name="testPopularPage"/>
-          <include name="testcheckMostWatchedArticle"/>
-          <include name="testPlayingVideoOnLine"/>
           <include name="getResult"/>
-          <include name="testcheckMostWatched"/>
+          <include name="testSearchTopic"/>
+          <include name="testArrangeTopicsFromBottomToTop"/>
+          <include name="runTest"/>
           <include name="tearDown"/>
-          <include name="testcheckofflinescenario"/>
-          <include name="testTopStoriesvideo"/>
-          <include name="testAppbackground"/>
-          <include name="testSearchStories"/>
-          <include name="testplayingvideooffline"/>
-          <include name="testCheckMostReadPopular"/>
-          <include name="testcheckTermsPrivacyPolicy"/>
         </methods>
-      </class> <!-- com.bbcnews.automation.scripts.ExampleDemo -->
+      </class> <!-- com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin -->
     </classes>
   </test> <!-- BBCNewsRegressionTest(failed) -->
 </suite> <!-- Failed suite [BBCNewsSuite] -->
