@@ -2,20 +2,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [BBCNewsSuite]">
   <listeners>
-    <listener class-name="com.bbcnews.automation.testutils.Listeners.RegressionTestListeners"/>
+    <listener class-name="com.bbcnews.automation.testutils.Listeners.SmokeTestListeners"/>
   </listeners>
   <test thread-count="5" verbose="0" name="BBCNewsRegressionTest(failed)">
     <classes>
-      <class name="com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin">
+      <class name="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin">
         <methods>
           <include name="getResult"/>
-          <include name="testSearchTopic"/>
-          <include name="testArrangeTopicsFromBottomToTop"/>
-          <include name="testVideopage"/>
-          <include name="runTest"/>
           <include name="tearDown"/>
+          <include name="runTest"/>
+          <include name="testMenuPage"/>
         </methods>
-      </class> <!-- com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin -->
+      </class> <!-- com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin -->
     </classes>
   </test> <!-- BBCNewsRegressionTest(failed) -->
 </suite> <!-- Failed suite [BBCNewsSuite] -->

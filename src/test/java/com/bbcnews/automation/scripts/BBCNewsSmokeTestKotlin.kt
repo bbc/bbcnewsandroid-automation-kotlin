@@ -227,7 +227,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
         try {
-            androidDriver.runAppInBackground(Duration.ofSeconds(20))
+            androidDriver.runAppInBackground(Duration.ofSeconds(10))
             commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke")
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topstories, false)
             Assert.assertTrue(basePageObjectModel.topstories.isSelected)
@@ -442,10 +442,10 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
             val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
             val total = contentImages.size
             System.out.println("The size of cards are$total")
-            for (cardimage in contentImages) {
-                commonFunctionKotlin.tapButton(androidDriver, cardimage, false)
-                commonFunctionKotlin.navigateBack(androidDriver)
-            }
+//            for (cardimage in contentImages) {
+//                commonFunctionKotlin.tapButton(androidDriver, cardimage, false)
+//                commonFunctionKotlin.navigateBack(androidDriver)
+//            }
             for (i in 0 until total) {
 
                 commonFunctionKotlin.elementDisplayed(androidDriver, contentCardTitle[i])
@@ -453,9 +453,12 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
             }
 
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.showmore, false)
+
             commonFunctionKotlin.scrolltoElement(androidDriver, myNewsPageObject.showless)
+            System.out.println("The text of  are:- "+myNewsPageObject.showless.text)
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.showless, false)
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.showmore)
+            System.out.println("The text of  are:- "+myNewsPageObject.showmore.text)
 
 
         } catch (e: Exception) {

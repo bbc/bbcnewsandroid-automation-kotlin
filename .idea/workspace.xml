@@ -2,7 +2,138 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e64751c-338a-419e-9a70-68126479bad2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/019cd9aa-c4c5-468d-a71e-0025caada173-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/0e68b4ab-2c6f-4e4b-8a22-12788e2e7098-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/0f0d57e0-88c6-4ce8-8762-8e321f9a5f9c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/10e47a3d-9d3f-4365-b0d1-aaedea7d3070-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/1471faab-5e50-4b5d-bf00-ee8b5763b21c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/177776f3-eeb6-48d2-8f60-4855b0ead986-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/18001378-ee17-4144-b5c7-00b11d70eb62-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/1c0aff41-a74a-4087-87e5-a8998fedd489-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/1cd6deb9-73aa-4042-8b3f-7ee42e583ba6-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/23e7efb4-f963-4fcc-a878-f524d8413a66-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/288df5af-d2cc-4270-b48f-4d1a775ca67f-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/28a18876-8fef-4512-a592-51b4c6f02b3a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/293f5a70-a78c-4baa-a551-7cd6a63f5fca-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/2b4865c1-7c1e-4110-b982-98e9ba3d3bda-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/2cc603d3-ab08-4866-851d-87244448025b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/2ddcb382-a956-432e-af61-16d1ecbfe3a8-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/30282db1-0f52-4652-b498-35a0f866b353-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/3527710d-6a77-4ae9-8312-966bd2098290-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/35f8eb2b-eca7-4fc1-8f1d-6a130e5bbd94-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/361075c9-4b68-4f80-a5ca-ec5921d774c3-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/365e356d-7c6d-4dd7-8ee8-91e42b9c2c4e-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/3e7d489b-0b0c-4d23-bd97-363257edfcc4-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/416b04bd-2411-489f-8af9-e52e03e14f37-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/42c1abf1-ced6-402c-83e7-911fdb0f2486-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/47817264-9f44-4739-b017-0be97b10af4f-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/4849b70a-2ec7-44de-b74f-52a578f624b4-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/491fd5f9-5c10-4bd6-94f0-475310088787-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/4d0b693e-538b-4dd6-9b6e-d80e4141fe2f-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/4de5b8d1-6b29-485a-8a40-ac4945efc592-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/4fc4b623-4b72-4b25-a06c-98420c01478e-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/59145177-e004-405d-83e1-acdbc7e168ba-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/60380021-ed78-4a83-b89f-41cb78cfd7fe-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/628a21f1-f73f-47a4-8abc-271aa6185a5b-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/62aa5522-65f8-465d-be30-b5b347aa9cad-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/65adcc5b-0912-4c0f-a770-33c43d85cab3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/6756e64b-8a41-461f-9b07-a6b3b66989cf-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/686fe639-ab2e-4ed4-95a4-ea030347d7b7-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/6f04ad0e-8926-4e2b-8eeb-907100eb26a2-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/701d33b7-7a55-4685-b085-bfd2fc089829-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/70b53a0d-7dde-4c12-aa47-bde0221a421c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/76187350-33a6-4e0a-a094-c4bfcf49ddf7-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/7f9ead8f-b02d-440e-af7e-5640dfcfd26b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/823c774f-d728-42b5-bd13-ce576bfbcf82-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/835919cc-2d31-4d54-abbe-798a9c545c5b-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/853d27bc-1e51-447d-8065-8c1ebc42debf-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/855d8054-cfe6-4485-81b7-7afb0a0f7d7b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/87c50309-122a-4a7f-b6ce-9c2e0965c7f3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/8d6989fa-3519-4bbc-bd89-97e55c022898-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/908ad75d-f47d-48f4-8c9b-324e48602afe-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/91b1e57e-1300-4289-a0af-6faafb6be8e3-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/933dacfd-6996-413b-8f31-20a75e27efe3-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/94ffab12-9b82-4068-955e-edfb675304cf-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/9a8d9bf0-c7ee-407e-9a47-e067462f00a1-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/9d391f38-51c8-461d-8f97-3b4920f16291-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/a2398dfe-fec4-4faa-9be0-d5a5750be464-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/a4448419-c332-4ffd-b965-595637a0e1c7-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/a74ba896-2394-4532-9a5f-b4c29b2dc394-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/aecf582c-84e8-436e-8ebf-4f0ff4588d59-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/b1b7a6ff-8eaa-4a0c-97f2-7340ee1511bd-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/b1ca8145-fb1a-40dd-a4cb-3dc2564a424e-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/b39b6f33-ee60-4983-9dca-08aeec2ae437-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/b9336fe8-c0a3-4d83-a8a1-2c3b6988c91b-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/b95ea5e2-a582-47d7-ae95-436dbf51af4f-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/bd43288c-c931-428b-a1d7-f7595f5755dc-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/c08b080f-99e1-4d3d-b270-762f325ecd2c-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/c16fb201-8ab2-4b51-b6b8-647130f65880-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/c19fff96-501f-4a20-9e8e-2b70ed3ac881-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/c2f43199-3f1d-427f-bbfa-3d8a41da796a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/c5fb11be-cb46-4297-8928-f824c631c77a-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/d2ed3854-f764-42dd-9e3f-ac13abbf0bcb-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/d385f43f-be29-47b8-a88f-9a7fa13fc2d8-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/d5de4188-474d-4427-9a17-0fd008cd1738-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/d6435c8f-97b2-4d6b-abbd-fb0c77a248fd-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/d74e2907-5e4c-47a4-bf3f-2dc8a92df330-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/de79adf4-a23d-458b-8b4f-6606dcf4dca4-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/e6710c7c-4808-4648-aafb-29f89adcec6a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/e781be78-f7fd-4db6-bcdb-2528814d657d-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/ea0fdee9-de31-44aa-b6bb-957d4f40a4dc-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/ed3c5593-8cc0-4d41-addc-8bac9c3774a0-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/ee702f29-e7bb-4278-a176-354e68303061-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/f15c0b9a-7f1d-41cc-b826-6ca6d4c04c91-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/f34dee07-e0e0-4931-b734-4fce6f21f9dd-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/fdc73792-d5f7-4f22-a579-edc42531db64-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.bbcnews.automation.scripts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/test/jar_extract_1063100099993713827_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/BBCNewsSuite/testng-failed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/BBCNewsSuite/testng-failed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/emailable-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/emailable-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/junitreports/TEST-com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/classes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods-alphabetical.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods-alphabetical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/testng.xml.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/testng.xml.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/toc.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/toc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/testng-failed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/testng-failed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/testng-results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/testng-results.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -23,8 +154,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="74" column="44" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
+            <state relative-caret-position="210">
+              <caret line="349" lean-forward="true" selection-start-line="349" selection-end-line="349" />
             </state>
           </provider>
         </entry>
@@ -42,8 +173,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3525">
-              <caret line="238" column="31" selection-start-line="238" selection-start-column="31" selection-end-line="238" selection-end-column="31" />
+            <state relative-caret-position="337">
+              <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -97,10 +228,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Manc</find>
       <find>testAddingTopicstoMyNewsPage</find>
       <find>testSearchTopic</find>
       <find>manch</find>
+      <find>testCheckArtcilesofTopics</find>
+      <find>Manc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -225,7 +357,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$ANDROID_HOME$" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553266465976" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553267428051" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -277,7 +409,7 @@
       <window_info anchor="bottom" id="Build" order="9" weight="0.32901135" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Flutter Performance" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.32901135" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32901135" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -292,13 +424,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3525">
-          <caret line="238" column="31" selection-start-line="238" selection-start-column="31" selection-end-line="238" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -340,10 +465,17 @@
     <entry file="file://$PROJECT_DIR$/BBCRegressionTest.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="234" column="22" selection-start-line="234" selection-start-column="22" selection-end-line="234" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="74" column="44" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
+        <state relative-caret-position="210">
+          <caret line="349" lean-forward="true" selection-start-line="349" selection-end-line="349" />
         </state>
       </provider>
     </entry>

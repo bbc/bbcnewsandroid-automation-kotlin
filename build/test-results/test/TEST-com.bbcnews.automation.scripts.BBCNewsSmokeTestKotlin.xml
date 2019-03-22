@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" tests="15" skipped="0" failures="0" errors="0" timestamp="2019-03-22T15:07:14" hostname="mc-s097627" time="220.079">
+  <properties/>
+  <testcase name="testOpenNewsApp" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="4.658"/>
+  <testcase name="testCheckHomePage" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="37.503"/>
+  <testcase name="testAllowLocation" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="12.803"/>
+  <testcase name="testPopularPage" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="10.559"/>
+  <testcase name="testcheckMostWatched" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="6.883"/>
+  <testcase name="testMyNewsPage" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="6.621"/>
+  <testcase name="testAddingTopicstoMyNewsPage" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="18.701"/>
+  <testcase name="testCheckAddedTopicsUnderMyTopics" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="9.442"/>
+  <testcase name="testCheckAddedTopicsUnderMyNews" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="11.409"/>
+  <testcase name="testMyNewsRemoveTopics" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="16.211"/>
+  <testcase name="testCheckArtcilesofTopics" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="16.976"/>
+  <testcase name="testMenuPage" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="22.403"/>
+  <testcase name="testVideoPage" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="12.872"/>
+  <testcase name="testCheckLiveVideoSeeking" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="21.136"/>
+  <testcase name="testSearchStories" classname="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" time="11.581"/>
+  <system-out><![CDATA[on test method testOpenNewsApp start
+I'M a  test method testOpenNewsApp success
+I'M a  test method testCheckHomePage success
+I'M a  test method testAllowLocation success
+I'M a  test method testPopularPage success
+I'M a  test method testcheckMostWatched success
+I'M a  test method testMyNewsPage success
+I'M a  test method testAddingTopicstoMyNewsPage success
+I'M a  test method testCheckAddedTopicsUnderMyTopics success
+I'M a  test method testCheckAddedTopicsUnderMyNews success
+I'M a  test method testMyNewsRemoveTopics success
+The size of cards are4
+The text of  are:- Less
+The text of  are:- More
+I'M a  test method testCheckArtcilesofTopics success
+I'M a  test method testMenuPage success
+I'M a  test method testVideoPage success
+Startx :1
+Endx  :1439
+Yaxis  :826
+Moving seek bar at 431 In X direction.
+I'M a  test method testCheckLiveVideoSeeking success
+I'M a  test method testSearchStories success
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
