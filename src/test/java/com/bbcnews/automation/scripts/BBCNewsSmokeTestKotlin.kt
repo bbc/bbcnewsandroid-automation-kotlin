@@ -67,7 +67,13 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
             if (orientation == ScreenOrientation.LANDSCAPE) {
                 androidDriver.rotate(ScreenOrientation.PORTRAIT)
             }
-
+            /**
+             *  Unlocking device
+             */
+            val locked = androidDriver.isDeviceLocked
+            if (locked) {
+                androidDriver.unlockDevice()
+            }
             initialiseobjects()
         } catch (e: Exception) {
             e.printStackTrace()
