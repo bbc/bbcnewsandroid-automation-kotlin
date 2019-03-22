@@ -14,6 +14,12 @@ public class MyTopicsPageObject {
     @AndroidFindBy(accessibility = "Button: Add England to My News")
     public MobileElement englandtopic;
 
+    @AndroidFindBy(accessibility = "Button: Add World to My News")
+    public MobileElement worldtopic;
+
+    @AndroidFindBy(accessibility = "Button: Add Wales to My News")
+    public MobileElement walestopic;
+
     @AndroidFindBy(accessibility = "Button: Add Africa to My News")
     public MobileElement africatopic;
 
@@ -46,6 +52,9 @@ public class MyTopicsPageObject {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Wales']")
     public MobileElement Walestopic;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='World']")
+    public MobileElement Worldtopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='European Union']")
     public MobileElement Europeantopic;

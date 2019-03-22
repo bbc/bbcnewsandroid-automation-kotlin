@@ -12,11 +12,6 @@ public class BasePageObject {
 
     AppiumDriver<MobileElement> appiumDriver;
 
-//    public BasePageObject(AppiumDriver<MobileElement> appiumDriver)
-//    {
-//        this.appiumDriver=appiumDriver;
-//
-//    }
 
     public BasePageObject() {
 
@@ -25,8 +20,7 @@ public class BasePageObject {
     @AndroidFindBy(accessibility = "Navigate up")
     public MobileElement navigate_back;
 
-    //@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1' and @text='OK']")
-    // @AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
+
     @AndroidFindBy(id="android:id/button1")
     public MobileElement okbutton;
 
@@ -36,8 +30,7 @@ public class BasePageObject {
     @AndroidFindBy(accessibility = "Back")
     public MobileElement backButton;
 
-    // @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button2' and @text='NO, THANKS.']")
-    //@AndroidFindBy(xpath = "//android.widget.Button[@text='NO, THANKS.' and index='0']")
+
     @AndroidFindBy(id="android:id/button2")
     public MobileElement nothanksbutton;
 
