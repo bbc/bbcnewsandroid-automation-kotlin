@@ -1,745 +1,617 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" ignored="0" total="40" passed="38">
+<testng-results skipped="0" failed="0" ignored="0" total="40" passed="40">
   <reporter-output>
   </reporter-output>
-  <suite name="BBCNewsSuite" duration-ms="741705" started-at="2019-03-15T11:21:30Z" finished-at="2019-03-15T11:33:52Z">
+  <suite name="BBCNewsSuite" duration-ms="727316" started-at="2019-03-22T11:26:31Z" finished-at="2019-03-22T11:38:38Z">
     <groups>
     </groups>
-    <test name="BBCNewsRegressionTest" duration-ms="741705" started-at="2019-03-15T11:21:30Z" finished-at="2019-03-15T11:33:52Z">
+    <test name="BBCNewsRegressionTest" duration-ms="727316" started-at="2019-03-22T11:26:31Z" finished-at="2019-03-22T11:38:38Z">
       <class name="com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin">
-        <test-method status="PASS" signature="runTest()[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="runTest" is-config="true" duration-ms="25476" started-at="2019-03-15T11:21:30Z" finished-at="2019-03-15T11:21:56Z">
+        <test-method status="PASS" signature="runTest()[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="runTest" is-config="true" duration-ms="29999" started-at="2019-03-22T11:26:31Z" finished-at="2019-03-22T11:27:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runTest -->
-        <test-method status="PASS" signature="testOpenNewsApp()[pri:1, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testOpenNewsApp" duration-ms="4761" started-at="2019-03-15T11:21:56Z" description="Launching the app" finished-at="2019-03-15T11:22:01Z">
+        <test-method status="PASS" signature="testOpenNewsApp()[pri:1, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testOpenNewsApp" duration-ms="5004" started-at="2019-03-22T11:27:01Z" description="Launching the app" finished-at="2019-03-22T11:27:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testOpenNewsApp -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="3" started-at="2019-03-15T11:22:01Z" finished-at="2019-03-15T11:22:01Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="4" started-at="2019-03-22T11:27:06Z" finished-at="2019-03-22T11:27:06Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testOpenNewsApp status=SUCCESS method=BBCNewsRegressionTestKotlin.testOpenNewsApp()[pri:1, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testOpenNewsApp status=SUCCESS method=BBCNewsRegressionTestKotlin.testOpenNewsApp()[pri:1, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testTopStories()[pri:2, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testTopStories" duration-ms="18911" started-at="2019-03-15T11:22:01Z" description="Test to check whether all links present on Home Page" finished-at="2019-03-15T11:22:20Z">
+        <test-method status="PASS" signature="testTopStories()[pri:2, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testTopStories" duration-ms="20431" started-at="2019-03-22T11:27:06Z" description="Test to check whether all links present on Home Page" finished-at="2019-03-22T11:27:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTopStories -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-15T11:22:20Z" finished-at="2019-03-15T11:22:20Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="3" started-at="2019-03-22T11:27:27Z" finished-at="2019-03-22T11:27:27Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testTopStories status=SUCCESS method=BBCNewsRegressionTestKotlin.testTopStories()[pri:2, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testTopStories status=SUCCESS method=BBCNewsRegressionTestKotlin.testTopStories()[pri:2, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testToCheckTopicsTopStores()[pri:3, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testToCheckTopicsTopStores" duration-ms="82888" started-at="2019-03-15T11:22:20Z" description="Test to scroll to a topic on home page and select a particular topic and add to MyNews" finished-at="2019-03-15T11:23:43Z">
+        <test-method status="PASS" signature="testToCheckTopicsTopStores()[pri:3, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testToCheckTopicsTopStores" duration-ms="82518" started-at="2019-03-22T11:27:27Z" description="Test to scroll to a topic on home page and select a particular topic and add to MyNews" finished-at="2019-03-22T11:28:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testToCheckTopicsTopStores -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-15T11:23:43Z" finished-at="2019-03-15T11:23:43Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:28:49Z" finished-at="2019-03-22T11:28:49Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testToCheckTopicsTopStores status=SUCCESS method=BBCNewsRegressionTestKotlin.testToCheckTopicsTopStores()[pri:3, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testToCheckTopicsTopStores status=SUCCESS method=BBCNewsRegressionTestKotlin.testToCheckTopicsTopStores()[pri:3, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testMyNewsTopStoriesTopics()[pri:4, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testMyNewsTopStoriesTopics" duration-ms="16343" started-at="2019-03-15T11:23:43Z" description="Test To Check the topics added from top stories are displayed under MyNews" finished-at="2019-03-15T11:23:59Z">
+        <test-method status="PASS" signature="testMyNewsTopStoriesTopics()[pri:4, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testMyNewsTopStoriesTopics" duration-ms="18161" started-at="2019-03-22T11:28:49Z" description="Test To Check the topics added from top stories are displayed under MyNews" finished-at="2019-03-22T11:29:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMyNewsTopStoriesTopics -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="3" started-at="2019-03-15T11:23:59Z" finished-at="2019-03-15T11:23:59Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:29:08Z" finished-at="2019-03-22T11:29:08Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testMyNewsTopStoriesTopics status=SUCCESS method=BBCNewsRegressionTestKotlin.testMyNewsTopStoriesTopics()[pri:4, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testMyNewsTopStoriesTopics status=SUCCESS method=BBCNewsRegressionTestKotlin.testMyNewsTopStoriesTopics()[pri:4, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testAllowLocation()[pri:5, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testAllowLocation" duration-ms="11737" started-at="2019-03-15T11:23:59Z" description="Test for Checking whether Location service works" finished-at="2019-03-15T11:24:11Z">
+        <test-method status="PASS" signature="testAllowLocation()[pri:5, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testAllowLocation" duration-ms="11964" started-at="2019-03-22T11:29:08Z" description="Test for Checking whether Location service works" finished-at="2019-03-22T11:29:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAllowLocation -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:24:11Z" finished-at="2019-03-15T11:24:11Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:29:19Z" finished-at="2019-03-22T11:29:19Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAllowLocation status=SUCCESS method=BBCNewsRegressionTestKotlin.testAllowLocation()[pri:5, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testAllowLocation status=SUCCESS method=BBCNewsRegressionTestKotlin.testAllowLocation()[pri:5, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testMyNews()[pri:6, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testMyNews" duration-ms="5916" started-at="2019-03-15T11:24:11Z" description="Test to check MyNews page and asserting whether all links displayed" finished-at="2019-03-15T11:24:17Z">
+        <test-method status="PASS" signature="testMyNews()[pri:6, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testMyNews" duration-ms="6841" started-at="2019-03-22T11:29:19Z" description="Test to check MyNews page and asserting whether all links displayed" finished-at="2019-03-22T11:29:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testMyNews -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="0" started-at="2019-03-15T11:24:17Z" finished-at="2019-03-15T11:24:17Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-22T11:29:26Z" finished-at="2019-03-22T11:29:26Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testMyNews status=SUCCESS method=BBCNewsRegressionTestKotlin.testMyNews()[pri:6, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testMyNews status=SUCCESS method=BBCNewsRegressionTestKotlin.testMyNews()[pri:6, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testAddingTopicsPage()[pri:7, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testAddingTopicsPage" duration-ms="16874" started-at="2019-03-15T11:24:17Z" description="Test to check on My News Add Topic screen and asserting all links are displayed" finished-at="2019-03-15T11:24:34Z">
+        <test-method status="PASS" signature="testAddingTopicsPage()[pri:7, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testAddingTopicsPage" duration-ms="18510" started-at="2019-03-22T11:29:26Z" description="Test to check on My News Add Topic screen and asserting all links are displayed" finished-at="2019-03-22T11:29:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddingTopicsPage -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:24:34Z" finished-at="2019-03-15T11:24:34Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:29:45Z" finished-at="2019-03-22T11:29:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAddingTopicsPage status=SUCCESS method=BBCNewsRegressionTestKotlin.testAddingTopicsPage()[pri:7, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testAddingTopicsPage status=SUCCESS method=BBCNewsRegressionTestKotlin.testAddingTopicsPage()[pri:7, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testAddingTopicstoMyNewsPage()[pri:8, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testAddingTopicstoMyNewsPage" duration-ms="53407" started-at="2019-03-15T11:24:34Z" description="Test to add Topics under MyNews" finished-at="2019-03-15T11:25:27Z">
+        <test-method status="PASS" signature="testAddingTopicstoMyNewsPage()[pri:8, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testAddingTopicstoMyNewsPage" duration-ms="52581" started-at="2019-03-22T11:29:45Z" description="Test to add Topics under MyNews" finished-at="2019-03-22T11:30:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddingTopicstoMyNewsPage -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:25:27Z" finished-at="2019-03-15T11:25:27Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:30:37Z" finished-at="2019-03-22T11:30:37Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAddingTopicstoMyNewsPage status=SUCCESS method=BBCNewsRegressionTestKotlin.testAddingTopicstoMyNewsPage()[pri:8, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testAddingTopicstoMyNewsPage status=SUCCESS method=BBCNewsRegressionTestKotlin.testAddingTopicstoMyNewsPage()[pri:8, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testCheckAddedTopics()[pri:9, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testCheckAddedTopics" duration-ms="15315" started-at="2019-03-15T11:25:27Z" description="Test to check whether selected topics are displayed under Added Topics in MyNews" finished-at="2019-03-15T11:25:42Z">
+        <test-method status="PASS" signature="testCheckAddedTopics()[pri:9, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testCheckAddedTopics" duration-ms="9410" started-at="2019-03-22T11:30:37Z" description="Test to check whether selected topics are displayed under Added Topics in MyNews" finished-at="2019-03-22T11:30:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckAddedTopics -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:25:42Z" finished-at="2019-03-15T11:25:42Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:30:47Z" finished-at="2019-03-22T11:30:47Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testCheckAddedTopics status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckAddedTopics()[pri:9, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testCheckAddedTopics status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckAddedTopics()[pri:9, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testCheckOrderingofTopicsAdded()[pri:10, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testCheckOrderingofTopicsAdded" duration-ms="3678" started-at="2019-03-15T11:25:42Z" description="Test to display the Ordering of the Topics" finished-at="2019-03-15T11:25:46Z">
+        <test-method status="PASS" signature="testCheckOrderingofTopicsAdded()[pri:10, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testCheckOrderingofTopicsAdded" duration-ms="779" started-at="2019-03-22T11:30:47Z" description="Test to display the Ordering of the Topics" finished-at="2019-03-22T11:30:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckOrderingofTopicsAdded -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:25:46Z" finished-at="2019-03-15T11:25:46Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="3" started-at="2019-03-22T11:30:48Z" finished-at="2019-03-22T11:30:48Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testCheckOrderingofTopicsAdded status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckOrderingofTopicsAdded()[pri:10, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testCheckOrderingofTopicsAdded status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckOrderingofTopicsAdded()[pri:10, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testSelectedAddedTopics()[pri:11, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSelectedAddedTopics" duration-ms="34865" started-at="2019-03-15T11:25:46Z" description="Test to select each of the topics displayed under MyNews " finished-at="2019-03-15T11:26:21Z">
+        <test-method status="PASS" signature="testSelectedAddedTopics()[pri:11, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSelectedAddedTopics" duration-ms="15428" started-at="2019-03-22T11:30:48Z" description="Test to select each of the topics displayed under MyNews " finished-at="2019-03-22T11:31:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectedAddedTopics -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:26:21Z" finished-at="2019-03-15T11:26:21Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-22T11:31:03Z" finished-at="2019-03-22T11:31:03Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSelectedAddedTopics status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectedAddedTopics()[pri:11, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSelectedAddedTopics status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectedAddedTopics()[pri:11, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testCheckReOrderingofTopicsAdded()[pri:12, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testCheckReOrderingofTopicsAdded" duration-ms="17996" started-at="2019-03-15T11:26:21Z" description="Test to re-arrange topics from top to bottom" finished-at="2019-03-15T11:26:39Z">
+        <test-method status="PASS" signature="testCheckReOrderingofTopicsAdded()[pri:12, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testCheckReOrderingofTopicsAdded" duration-ms="17629" started-at="2019-03-22T11:31:03Z" description="Test to re-arrange topics from top to bottom" finished-at="2019-03-22T11:31:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckReOrderingofTopicsAdded -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:26:39Z" finished-at="2019-03-15T11:26:39Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:31:21Z" finished-at="2019-03-22T11:31:21Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testCheckReOrderingofTopicsAdded status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckReOrderingofTopicsAdded()[pri:12, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testCheckReOrderingofTopicsAdded status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckReOrderingofTopicsAdded()[pri:12, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testcheckMenuItems()[pri:13, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testcheckMenuItems" duration-ms="24698" started-at="2019-03-15T11:26:39Z" description="Test to check whether the Menu Options are displayed" finished-at="2019-03-15T11:27:04Z">
+        <test-method status="PASS" signature="testcheckMenuItems()[pri:13, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testcheckMenuItems" duration-ms="24253" started-at="2019-03-22T11:31:21Z" description="Test to check whether the Menu Options are displayed" finished-at="2019-03-22T11:31:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcheckMenuItems -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="0" started-at="2019-03-15T11:27:04Z" finished-at="2019-03-15T11:27:04Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:31:45Z" finished-at="2019-03-22T11:31:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testcheckMenuItems status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckMenuItems()[pri:13, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testcheckMenuItems status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckMenuItems()[pri:13, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testVideopage()[pri:14, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testVideopage" duration-ms="30554" started-at="2019-03-15T11:27:04Z" description="Test to play a Live video from Vide page and asserting on whether playback controls are displayed" finished-at="2019-03-15T11:27:34Z">
+        <test-method status="PASS" signature="testVideopage()[pri:14, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testVideopage" duration-ms="29645" started-at="2019-03-22T11:31:45Z" description="Test to play a Live video from Vide page and asserting on whether playback controls are displayed" finished-at="2019-03-22T11:32:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testVideopage -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:27:34Z" finished-at="2019-03-15T11:27:34Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-22T11:32:15Z" finished-at="2019-03-22T11:32:15Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testVideopage status=SUCCESS method=BBCNewsRegressionTestKotlin.testVideopage()[pri:14, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testVideopage status=SUCCESS method=BBCNewsRegressionTestKotlin.testVideopage()[pri:14, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="playingLandspace()[pri:15, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="playingLandspace" duration-ms="12255" started-at="2019-03-15T11:27:34Z" description="Test to check whether video plays in Landspace mode" finished-at="2019-03-15T11:27:46Z">
+        <test-method status="PASS" signature="playingLandspace()[pri:15, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="playingLandspace" duration-ms="12767" started-at="2019-03-22T11:32:15Z" description="Test to check whether video plays in Landspace mode" finished-at="2019-03-22T11:32:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- playingLandspace -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:27:46Z" finished-at="2019-03-15T11:27:46Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-22T11:32:27Z" finished-at="2019-03-22T11:32:27Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=playingLandspace status=SUCCESS method=BBCNewsRegressionTestKotlin.playingLandspace()[pri:15, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=playingLandspace status=SUCCESS method=BBCNewsRegressionTestKotlin.playingLandspace()[pri:15, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="scrubbingvideoplayback()[pri:16, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="scrubbingvideoplayback" duration-ms="5966" started-at="2019-03-15T11:27:46Z" description="Test to scrub thise video playback " finished-at="2019-03-15T11:27:52Z">
+        <test-method status="PASS" signature="scrubbingvideoplayback()[pri:16, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="scrubbingvideoplayback" duration-ms="5749" started-at="2019-03-22T11:32:27Z" description="Test to scrub thise video playback " finished-at="2019-03-22T11:32:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scrubbingvideoplayback -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:27:52Z" finished-at="2019-03-15T11:27:52Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:32:33Z" finished-at="2019-03-22T11:32:33Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=scrubbingvideoplayback status=SUCCESS method=BBCNewsRegressionTestKotlin.scrubbingvideoplayback()[pri:16, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=scrubbingvideoplayback status=SUCCESS method=BBCNewsRegressionTestKotlin.scrubbingvideoplayback()[pri:16, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testSearchStories()[pri:17, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSearchStories" duration-ms="15928" started-at="2019-03-15T11:27:52Z" description="Test to check for search results" finished-at="2019-03-15T11:28:08Z">
+        <test-method status="PASS" signature="testSearchStories()[pri:17, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSearchStories" duration-ms="14592" started-at="2019-03-22T11:32:33Z" description="Test to check for search results" finished-at="2019-03-22T11:32:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchStories -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:28:08Z" finished-at="2019-03-15T11:28:08Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:32:48Z" finished-at="2019-03-22T11:32:48Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSearchStories status=SUCCESS method=BBCNewsRegressionTestKotlin.testSearchStories()[pri:17, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSearchStories status=SUCCESS method=BBCNewsRegressionTestKotlin.testSearchStories()[pri:17, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testSelectSearchResult()[pri:18, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSelectSearchResult" duration-ms="15962" started-at="2019-03-15T11:28:08Z" description="Test to search for a Topic and navigate to topic page" finished-at="2019-03-15T11:28:24Z">
+        <test-method status="PASS" signature="testSelectSearchResult()[pri:18, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSelectSearchResult" duration-ms="16090" started-at="2019-03-22T11:32:48Z" description="Test to search for a Topic and navigate to topic page" finished-at="2019-03-22T11:33:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectSearchResult -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:28:24Z" finished-at="2019-03-15T11:28:24Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:33:04Z" finished-at="2019-03-22T11:33:04Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSelectSearchResult status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectSearchResult()[pri:18, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSelectSearchResult status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectSearchResult()[pri:18, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="FAIL" signature="testSearchTopic()[pri:19, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSearchTopic" duration-ms="8512" started-at="2019-03-15T11:28:24Z" description="Test Checking an Topic and adding to MyNews" finished-at="2019-03-15T11:28:33Z">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected ['Sex blackmail gang' victim's name revealed] but found [The women who fought to ban alcohol]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected ['Sex blackmail gang' victim's name revealed] but found [The women who fought to ban alcohol]
-at org.testng.Assert.fail(Assert.java:96)
-at org.testng.Assert.failNotEquals(Assert.java:776)
-at org.testng.Assert.assertEqualsImpl(Assert.java:137)
-at org.testng.Assert.assertEquals(Assert.java:118)
-at org.testng.Assert.assertEquals(Assert.java:453)
-at org.testng.Assert.assertEquals(Assert.java:463)
-at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchTopic(BBCNewsRegressionTestKotlin.kt:619)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
-at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
-at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-at com.sun.proxy.$Proxy2.stop(Unknown Source)
-at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-at java.lang.Thread.run(Thread.java:748)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method status="PASS" signature="testSearchTopic()[pri:19, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSearchTopic" duration-ms="11444" started-at="2019-03-22T11:33:04Z" description="Test Checking an Topic and adding to MyNews" finished-at="2019-03-22T11:33:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchTopic -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="2339" started-at="2019-03-15T11:28:33Z" finished-at="2019-03-15T11:28:35Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:33:15Z" finished-at="2019-03-22T11:33:15Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSearchTopic status=FAILURE method=BBCNewsRegressionTestKotlin.testSearchTopic()[pri:19, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSearchTopic status=SUCCESS method=BBCNewsRegressionTestKotlin.testSearchTopic()[pri:19, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testArtictleItemWithoutItemBadge()[pri:20, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testArtictleItemWithoutItemBadge" duration-ms="9184" started-at="2019-03-15T11:28:35Z" description="Test Checking an Article page without an Item Image Badge" finished-at="2019-03-15T11:28:44Z">
+        <test-method status="PASS" signature="testArtictleItemWithoutItemBadge()[pri:20, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testArtictleItemWithoutItemBadge" duration-ms="8528" started-at="2019-03-22T11:33:15Z" description="Test Checking an Article page without an Item Image Badge" finished-at="2019-03-22T11:33:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testArtictleItemWithoutItemBadge -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:28:44Z" finished-at="2019-03-15T11:28:44Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-22T11:33:24Z" finished-at="2019-03-22T11:33:24Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testArtictleItemWithoutItemBadge status=SUCCESS method=BBCNewsRegressionTestKotlin.testArtictleItemWithoutItemBadge()[pri:20, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testArtictleItemWithoutItemBadge status=SUCCESS method=BBCNewsRegressionTestKotlin.testArtictleItemWithoutItemBadge()[pri:20, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testArtictleItemWithItemBadge()[pri:21, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testArtictleItemWithItemBadge" duration-ms="19060" started-at="2019-03-15T11:28:44Z" description="Test Checking an Article page with an Item Image Badge" finished-at="2019-03-15T11:29:03Z">
+        <test-method status="PASS" signature="testArtictleItemWithItemBadge()[pri:21, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testArtictleItemWithItemBadge" duration-ms="21292" started-at="2019-03-22T11:33:24Z" description="Test Checking an Article page with an Item Image Badge" finished-at="2019-03-22T11:33:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testArtictleItemWithItemBadge -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:29:03Z" finished-at="2019-03-15T11:29:03Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-22T11:33:45Z" finished-at="2019-03-22T11:33:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testArtictleItemWithItemBadge status=SUCCESS method=BBCNewsRegressionTestKotlin.testArtictleItemWithItemBadge()[pri:21, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testArtictleItemWithItemBadge status=SUCCESS method=BBCNewsRegressionTestKotlin.testArtictleItemWithItemBadge()[pri:21, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testSearchArticle()[pri:22, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSearchArticle" duration-ms="15721" started-at="2019-03-15T11:29:03Z" description="Test to search for an particular article" finished-at="2019-03-15T11:29:19Z">
+        <test-method status="PASS" signature="testSearchArticle()[pri:22, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSearchArticle" duration-ms="14171" started-at="2019-03-22T11:33:45Z" description="Test to search for an particular article" finished-at="2019-03-22T11:33:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSearchArticle -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:29:19Z" finished-at="2019-03-15T11:29:19Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="0" started-at="2019-03-22T11:33:59Z" finished-at="2019-03-22T11:33:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSearchArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testSearchArticle()[pri:22, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSearchArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testSearchArticle()[pri:22, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testondemandvideoplyback()[pri:23, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testondemandvideoplyback" duration-ms="9536" started-at="2019-03-15T11:29:19Z" description="Test to search for an particular video article" finished-at="2019-03-15T11:29:29Z">
+        <test-method status="PASS" signature="testondemandvideoplyback()[pri:23, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testondemandvideoplyback" duration-ms="8664" started-at="2019-03-22T11:33:59Z" description="Test to search for an particular video article" finished-at="2019-03-22T11:34:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testondemandvideoplyback -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="0" started-at="2019-03-15T11:29:29Z" finished-at="2019-03-15T11:29:29Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:34:08Z" finished-at="2019-03-22T11:34:08Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testondemandvideoplyback status=SUCCESS method=BBCNewsRegressionTestKotlin.testondemandvideoplyback()[pri:23, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testondemandvideoplyback status=SUCCESS method=BBCNewsRegressionTestKotlin.testondemandvideoplyback()[pri:23, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testseekingvideoforward()[pri:24, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testseekingvideoforward" duration-ms="4109" started-at="2019-03-15T11:29:29Z" description="Test to seek forward videoplayback" finished-at="2019-03-15T11:29:33Z">
+        <test-method status="PASS" signature="testseekingvideoforward()[pri:24, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testseekingvideoforward" duration-ms="4046" started-at="2019-03-22T11:34:08Z" description="Test to seek forward videoplayback" finished-at="2019-03-22T11:34:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testseekingvideoforward -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:29:33Z" finished-at="2019-03-15T11:29:33Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:34:12Z" finished-at="2019-03-22T11:34:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testseekingvideoforward status=SUCCESS method=BBCNewsRegressionTestKotlin.testseekingvideoforward()[pri:24, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testseekingvideoforward status=SUCCESS method=BBCNewsRegressionTestKotlin.testseekingvideoforward()[pri:24, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testseekingvideobackward()[pri:25, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testseekingvideobackward" duration-ms="2136" started-at="2019-03-15T11:29:33Z" description="Test to seek forward videoplayback" finished-at="2019-03-15T11:29:35Z">
+        <test-method status="PASS" signature="testseekingvideobackward()[pri:25, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testseekingvideobackward" duration-ms="2240" started-at="2019-03-22T11:34:12Z" description="Test to seek forward videoplayback" finished-at="2019-03-22T11:34:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testseekingvideobackward -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:29:35Z" finished-at="2019-03-15T11:29:35Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:34:14Z" finished-at="2019-03-22T11:34:14Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testseekingvideobackward status=SUCCESS method=BBCNewsRegressionTestKotlin.testseekingvideobackward()[pri:25, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testseekingvideobackward status=SUCCESS method=BBCNewsRegressionTestKotlin.testseekingvideobackward()[pri:25, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testRelatedStoriesArticle()[pri:26, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testRelatedStoriesArticle" duration-ms="28832" started-at="2019-03-15T11:29:35Z" description="Test to check Related Stories and Topics of an Article" finished-at="2019-03-15T11:30:04Z">
+        <test-method status="PASS" signature="testRelatedStoriesArticle()[pri:26, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testRelatedStoriesArticle" duration-ms="25748" started-at="2019-03-22T11:34:14Z" description="Test to check Related Stories and Topics of an Article" finished-at="2019-03-22T11:34:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRelatedStoriesArticle -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:30:04Z" finished-at="2019-03-15T11:30:04Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:34:40Z" finished-at="2019-03-22T11:34:40Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testRelatedStoriesArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testRelatedStoriesArticle()[pri:26, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testRelatedStoriesArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testRelatedStoriesArticle()[pri:26, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testRelatedTopicArticle()[pri:27, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testRelatedTopicArticle" duration-ms="19219" started-at="2019-03-15T11:30:04Z" description="Test to check Related Topics of an Article" finished-at="2019-03-15T11:30:23Z">
+        <test-method status="PASS" signature="testRelatedTopicArticle()[pri:27, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testRelatedTopicArticle" duration-ms="17191" started-at="2019-03-22T11:34:40Z" description="Test to check Related Topics of an Article" finished-at="2019-03-22T11:34:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testRelatedTopicArticle -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:30:23Z" finished-at="2019-03-15T11:30:23Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:34:57Z" finished-at="2019-03-22T11:34:57Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testRelatedTopicArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testRelatedTopicArticle()[pri:27, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testRelatedTopicArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testRelatedTopicArticle()[pri:27, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testcheckTermsPrivacyPolicy()[pri:28, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testcheckTermsPrivacyPolicy" duration-ms="19902" started-at="2019-03-15T11:30:23Z" description="Test to check the T&amp;C , PrivacyPolicy from Menu options" finished-at="2019-03-15T11:30:43Z">
+        <test-method status="PASS" signature="testcheckTermsPrivacyPolicy()[pri:28, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testcheckTermsPrivacyPolicy" duration-ms="18511" started-at="2019-03-22T11:34:57Z" description="Test to check the T&amp;C , PrivacyPolicy from Menu options" finished-at="2019-03-22T11:35:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcheckTermsPrivacyPolicy -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:30:43Z" finished-at="2019-03-15T11:30:43Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:35:16Z" finished-at="2019-03-22T11:35:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testcheckTermsPrivacyPolicy status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckTermsPrivacyPolicy()[pri:28, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testcheckTermsPrivacyPolicy status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckTermsPrivacyPolicy()[pri:28, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testTopStoriesvideo()[pri:29, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testTopStoriesvideo" duration-ms="12130" started-at="2019-03-15T11:30:43Z" description="Playing a video from Video page" finished-at="2019-03-15T11:30:55Z">
+        <test-method status="PASS" signature="testTopStoriesvideo()[pri:29, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testTopStoriesvideo" duration-ms="13248" started-at="2019-03-22T11:35:16Z" description="Playing a video from Video page" finished-at="2019-03-22T11:35:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testTopStoriesvideo -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:30:55Z" finished-at="2019-03-15T11:30:55Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:35:29Z" finished-at="2019-03-22T11:35:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testTopStoriesvideo status=SUCCESS method=BBCNewsRegressionTestKotlin.testTopStoriesvideo()[pri:29, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testTopStoriesvideo status=SUCCESS method=BBCNewsRegressionTestKotlin.testTopStoriesvideo()[pri:29, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testAppbackground()[pri:30, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testAppbackground" duration-ms="35527" started-at="2019-03-15T11:30:55Z" description="App Backgrounding" finished-at="2019-03-15T11:31:31Z">
+        <test-method status="PASS" signature="testAppbackground()[pri:30, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testAppbackground" duration-ms="36494" started-at="2019-03-22T11:35:29Z" description="App Backgrounding" finished-at="2019-03-22T11:36:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAppbackground -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:31:31Z" finished-at="2019-03-15T11:31:31Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:36:05Z" finished-at="2019-03-22T11:36:05Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAppbackground status=SUCCESS method=BBCNewsRegressionTestKotlin.testAppbackground()[pri:30, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testAppbackground status=SUCCESS method=BBCNewsRegressionTestKotlin.testAppbackground()[pri:30, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testPopularPage()[pri:31, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testPopularPage" duration-ms="8807" started-at="2019-03-15T11:31:31Z" description="Test to check the Popular page and also to check Most Read Displayed" finished-at="2019-03-15T11:31:39Z">
+        <test-method status="PASS" signature="testPopularPage()[pri:31, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testPopularPage" duration-ms="8764" started-at="2019-03-22T11:36:05Z" description="Test to check the Popular page and also to check Most Read Displayed" finished-at="2019-03-22T11:36:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPopularPage -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:31:39Z" finished-at="2019-03-15T11:31:39Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:36:14Z" finished-at="2019-03-22T11:36:14Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testPopularPage status=SUCCESS method=BBCNewsRegressionTestKotlin.testPopularPage()[pri:31, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testPopularPage status=SUCCESS method=BBCNewsRegressionTestKotlin.testPopularPage()[pri:31, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testCheckMostReadPopular()[pri:32, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testCheckMostReadPopular" duration-ms="7739" started-at="2019-03-15T11:31:39Z" description="Test to select one Article from Most Read  Article from Popular Page" finished-at="2019-03-15T11:31:47Z">
+        <test-method status="PASS" signature="testCheckMostReadPopular()[pri:32, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testCheckMostReadPopular" duration-ms="8437" started-at="2019-03-22T11:36:14Z" description="Test to select one Article from Most Read  Article from Popular Page" finished-at="2019-03-22T11:36:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCheckMostReadPopular -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:31:47Z" finished-at="2019-03-15T11:31:47Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:36:23Z" finished-at="2019-03-22T11:36:23Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testCheckMostReadPopular status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckMostReadPopular()[pri:32, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testCheckMostReadPopular status=SUCCESS method=BBCNewsRegressionTestKotlin.testCheckMostReadPopular()[pri:32, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testcheckMostWatched()[pri:33, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testcheckMostWatched" duration-ms="13056" started-at="2019-03-15T11:31:47Z" description="Test to check whether the Most Watched heading displayed in Popular Page" finished-at="2019-03-15T11:32:00Z">
+        <test-method status="PASS" signature="testcheckMostWatched()[pri:33, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testcheckMostWatched" duration-ms="13465" started-at="2019-03-22T11:36:23Z" description="Test to check whether the Most Watched heading displayed in Popular Page" finished-at="2019-03-22T11:36:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcheckMostWatched -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:32:00Z" finished-at="2019-03-15T11:32:00Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:36:36Z" finished-at="2019-03-22T11:36:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testcheckMostWatched status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckMostWatched()[pri:33, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testcheckMostWatched status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckMostWatched()[pri:33, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testcheckMostWatchedArticle()[pri:34, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testcheckMostWatchedArticle" duration-ms="6096" started-at="2019-03-15T11:32:00Z" description="Test to check whether the Most Watched heading displayed in Popular Page" finished-at="2019-03-15T11:32:06Z">
+        <test-method status="PASS" signature="testcheckMostWatchedArticle()[pri:34, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testcheckMostWatchedArticle" duration-ms="5668" started-at="2019-03-22T11:36:36Z" description="Test to check whether the Most Watched heading displayed in Popular Page" finished-at="2019-03-22T11:36:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcheckMostWatchedArticle -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:32:06Z" finished-at="2019-03-15T11:32:06Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:36:42Z" finished-at="2019-03-22T11:36:42Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testcheckMostWatchedArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckMostWatchedArticle()[pri:34, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testcheckMostWatchedArticle status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckMostWatchedArticle()[pri:34, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="FAIL" signature="testArrangeTopicsFromBottomToTop()[pri:35, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testArrangeTopicsFromBottomToTop" duration-ms="7398" started-at="2019-03-15T11:32:06Z" description="Test re-arrange topics from bottom to top" finished-at="2019-03-15T11:32:14Z">
-          <exception class="java.lang.IndexOutOfBoundsException">
-            <message>
-              <![CDATA[Index: 5, Size: 5]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.IndexOutOfBoundsException: Index: 5, Size: 5
-at java.util.ArrayList.rangeCheck(ArrayList.java:657)
-at java.util.ArrayList.get(ArrayList.java:433)
-at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop(BBCNewsRegressionTestKotlin.kt:918)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
-at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
-at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-at com.sun.proxy.$Proxy2.stop(Unknown Source)
-at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-at java.lang.Thread.run(Thread.java:748)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.IndexOutOfBoundsException -->
+        <test-method status="PASS" signature="testArrangeTopicsFromBottomToTop()[pri:35, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testArrangeTopicsFromBottomToTop" duration-ms="29353" started-at="2019-03-22T11:36:42Z" description="Test re-arrange topics from bottom to top" finished-at="2019-03-22T11:37:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testArrangeTopicsFromBottomToTop -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="589" started-at="2019-03-15T11:32:14Z" finished-at="2019-03-15T11:32:14Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:37:11Z" finished-at="2019-03-22T11:37:11Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testArrangeTopicsFromBottomToTop status=FAILURE method=BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop()[pri:35, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testArrangeTopicsFromBottomToTop status=SUCCESS method=BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop()[pri:35, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testcheckofflinescenario()[pri:36, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testcheckofflinescenario" duration-ms="8736" started-at="2019-03-15T11:32:14Z" description="Test to check the offline scenario of the app" finished-at="2019-03-15T11:32:23Z">
+        <test-method status="PASS" signature="testcheckofflinescenario()[pri:36, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testcheckofflinescenario" duration-ms="9170" started-at="2019-03-22T11:37:11Z" description="Test to check the offline scenario of the app" finished-at="2019-03-22T11:37:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcheckofflinescenario -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="2" started-at="2019-03-15T11:32:23Z" finished-at="2019-03-15T11:32:23Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:37:20Z" finished-at="2019-03-22T11:37:20Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testcheckofflinescenario status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckofflinescenario()[pri:36, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testcheckofflinescenario status=SUCCESS method=BBCNewsRegressionTestKotlin.testcheckofflinescenario()[pri:36, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testplayingvideooffline()[pri:37, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testplayingvideooffline" duration-ms="41234" started-at="2019-03-15T11:32:23Z" description="Test to play a  video, while device offline" finished-at="2019-03-15T11:33:04Z">
+        <test-method status="PASS" signature="testplayingvideooffline()[pri:37, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testplayingvideooffline" duration-ms="31334" started-at="2019-03-22T11:37:20Z" description="Test to play a  video, while device offline" finished-at="2019-03-22T11:37:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testplayingvideooffline -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:33:04Z" finished-at="2019-03-15T11:33:04Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:37:52Z" finished-at="2019-03-22T11:37:52Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testplayingvideooffline status=SUCCESS method=BBCNewsRegressionTestKotlin.testplayingvideooffline()[pri:37, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testplayingvideooffline status=SUCCESS method=BBCNewsRegressionTestKotlin.testplayingvideooffline()[pri:37, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testPlayingVideoOnLine()[pri:38, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testPlayingVideoOnLine" duration-ms="13010" started-at="2019-03-15T11:33:04Z" description="Test to play a  video, while device online" finished-at="2019-03-15T11:33:17Z">
+        <test-method status="PASS" signature="testPlayingVideoOnLine()[pri:38, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testPlayingVideoOnLine" duration-ms="11818" started-at="2019-03-22T11:37:52Z" description="Test to play a  video, while device online" finished-at="2019-03-22T11:38:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPlayingVideoOnLine -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:33:17Z" finished-at="2019-03-15T11:33:17Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:38:03Z" finished-at="2019-03-22T11:38:03Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testPlayingVideoOnLine status=SUCCESS method=BBCNewsRegressionTestKotlin.testPlayingVideoOnLine()[pri:38, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testPlayingVideoOnLine status=SUCCESS method=BBCNewsRegressionTestKotlin.testPlayingVideoOnLine()[pri:38, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testSelectArticleTopic()[pri:39, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSelectArticleTopic" duration-ms="12272" started-at="2019-03-15T11:33:17Z" description="Test to select An Article from the England Topics under MyNews " finished-at="2019-03-15T11:33:29Z">
+        <test-method status="PASS" signature="testSelectArticleTopic()[pri:39, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSelectArticleTopic" duration-ms="12690" started-at="2019-03-22T11:38:03Z" description="Test to select An Article from the England Topics under MyNews " finished-at="2019-03-22T11:38:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectArticleTopic -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:33:29Z" finished-at="2019-03-15T11:33:29Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:38:16Z" finished-at="2019-03-22T11:38:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSelectArticleTopic status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectArticleTopic()[pri:39, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSelectArticleTopic status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectArticleTopic()[pri:39, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="testSelectVideoArticleTopic()[pri:40, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="testSelectVideoArticleTopic" duration-ms="18661" started-at="2019-03-15T11:33:29Z" description="Test to select An Video Article from the England Topics under MyNews " finished-at="2019-03-15T11:33:48Z">
+        <test-method status="PASS" signature="testSelectVideoArticleTopic()[pri:40, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="testSelectVideoArticleTopic" duration-ms="18367" started-at="2019-03-22T11:38:16Z" description="Test to select An Video Article from the England Topics under MyNews " finished-at="2019-03-22T11:38:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testSelectVideoArticleTopic -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-15T11:33:48Z" finished-at="2019-03-15T11:33:48Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="getResult" is-config="true" duration-ms="1" started-at="2019-03-22T11:38:35Z" finished-at="2019-03-22T11:38:35Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testSelectVideoArticleTopic status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectVideoArticleTopic()[pri:40, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427] output={null}]]]>
+                <![CDATA[[TestResult name=testSelectVideoArticleTopic status=SUCCESS method=BBCNewsRegressionTestKotlin.testSelectVideoArticleTopic()[pri:40, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427]" name="tearDown" is-config="true" duration-ms="3982" started-at="2019-03-15T11:33:48Z" finished-at="2019-03-15T11:33:52Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b]" name="tearDown" is-config="true" duration-ms="3851" started-at="2019-03-22T11:38:35Z" finished-at="2019-03-22T11:38:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

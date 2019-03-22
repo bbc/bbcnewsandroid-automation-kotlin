@@ -225,6 +225,19 @@ public class MyNewsPageObject {
     )
     public MobileElement topictitle;
 
+ @AndroidFindAll(
+         {
+                 @AndroidBy(id ="bbc.mobile.news.uk.internal:id/showmore_title"),
+                 @AndroidBy(id ="bbc.mobile.news.uk:id/showmore_title")
+         }
+ )
+ //@AndroidFindBy(id ="bbc.mobile.news.uk.internal:id/showmore_title")
+ public MobileElement showmore;
+
+
+ @AndroidFindBy(xpath = "//android.widget.TextView[@text='Less']")
+ public MobileElement showless;
+
 
 
 }

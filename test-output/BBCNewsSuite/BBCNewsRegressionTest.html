@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>BBCNewsRegressionTest</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>38/2/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>40/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Mar 15 11:21:30 GMT 2019</td>
+<td>Started on:</td><td>Fri Mar 22 11:26:31 GMT 2019</td>
 </tr>
-<tr><td>Total time:</td><td>741 seconds (741705 ms)</td>
+<tr><td>Total time:</td><td>727 seconds (727316 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,152 +67,6 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop()'><b>testArrangeTopicsFromBottomToTop</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test re-arrange topics from bottom to top</td>
-<td><div><pre>java.lang.IndexOutOfBoundsException: Index: 5, Size: 5
-	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
-	at java.util.ArrayList.get(ArrayList.java:433)
-	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop(BBCNewsRegressionTestKotlin.kt:918)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-... Removed 46 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace112433991", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace112433991'><pre>java.lang.IndexOutOfBoundsException: Index: 5, Size: 5
-	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
-	at java.util.ArrayList.get(ArrayList.java:433)
-	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop(BBCNewsRegressionTestKotlin.kt:918)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-</pre></div></td>
-<td>7</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
-<tr>
-<td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchTopic()'><b>testSearchTopic</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test Checking an Topic and adding to MyNews</td>
-<td><div><pre>java.lang.AssertionError: expected [&apos;Sex blackmail gang&apos; victim&apos;s name revealed] but found [The women who fought to ban alcohol]
-	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchTopic(BBCNewsRegressionTestKotlin.kt:619)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-... Removed 52 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1075261562", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1075261562'><pre>java.lang.AssertionError: expected [&apos;Sex blackmail gang&apos; victim&apos;s name revealed] but found [The women who fought to ban alcohol]
-	at org.testng.Assert.fail(Assert.java:96)
-	at org.testng.Assert.failNotEquals(Assert.java:776)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
-	at org.testng.Assert.assertEquals(Assert.java:118)
-	at org.testng.Assert.assertEquals(Assert.java:453)
-	at org.testng.Assert.assertEquals(Assert.java:463)
-	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchTopic(BBCNewsRegressionTestKotlin.kt:619)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-</pre></div></td>
-<td>8</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
-</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -224,192 +78,202 @@ function toggleAllBoxes() {
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.playingLandspace()'><b>playingLandspace</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check whether video plays in Landspace mode</td>
 <td></td>
 <td>12</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.scrubbingvideoplayback()'><b>scrubbingvideoplayback</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to scrub thise video playback </td>
 <td></td>
 <td>5</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testAddingTopicsPage()'><b>testAddingTopicsPage</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check on My News Add Topic screen and asserting all links are displayed</td>
 <td></td>
-<td>16</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>18</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testAddingTopicstoMyNewsPage()'><b>testAddingTopicstoMyNewsPage</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to add Topics under MyNews</td>
 <td></td>
-<td>53</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>52</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testAllowLocation()'><b>testAllowLocation</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test for Checking whether Location service works</td>
 <td></td>
 <td>11</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testAppbackground()'><b>testAppbackground</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: App Backgrounding</td>
 <td></td>
-<td>35</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>36</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
+<tr>
+<td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop()'><b>testArrangeTopicsFromBottomToTop</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test re-arrange topics from bottom to top</td>
+<td></td>
+<td>29</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArtictleItemWithItemBadge()'><b>testArtictleItemWithItemBadge</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test Checking an Article page with an Item Image Badge</td>
 <td></td>
-<td>19</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>21</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArtictleItemWithoutItemBadge()'><b>testArtictleItemWithoutItemBadge</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test Checking an Article page without an Item Image Badge</td>
 <td></td>
-<td>9</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>8</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testCheckAddedTopics()'><b>testCheckAddedTopics</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check whether selected topics are displayed under Added Topics in MyNews</td>
 <td></td>
-<td>15</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>9</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testCheckMostReadPopular()'><b>testCheckMostReadPopular</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to select one Article from Most Read  Article from Popular Page</td>
 <td></td>
-<td>7</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>8</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testCheckOrderingofTopicsAdded()'><b>testCheckOrderingofTopicsAdded</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to display the Ordering of the Topics</td>
 <td></td>
-<td>3</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>0</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testCheckReOrderingofTopicsAdded()'><b>testCheckReOrderingofTopicsAdded</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to re-arrange topics from top to bottom</td>
 <td></td>
 <td>17</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testMyNews()'><b>testMyNews</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check MyNews page and asserting whether all links displayed</td>
 <td></td>
-<td>5</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>6</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testMyNewsTopStoriesTopics()'><b>testMyNewsTopStoriesTopics</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test To Check the topics added from top stories are displayed under MyNews</td>
 <td></td>
-<td>16</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>18</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testOpenNewsApp()'><b>testOpenNewsApp</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Launching the app</td>
 <td></td>
-<td>4</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>5</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testPlayingVideoOnLine()'><b>testPlayingVideoOnLine</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to play a  video, while device online</td>
 <td></td>
-<td>13</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>11</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testPopularPage()'><b>testPopularPage</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check the Popular page and also to check Most Read Displayed</td>
 <td></td>
 <td>8</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testRelatedStoriesArticle()'><b>testRelatedStoriesArticle</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check Related Stories and Topics of an Article</td>
 <td></td>
-<td>28</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>25</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testRelatedTopicArticle()'><b>testRelatedTopicArticle</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check Related Topics of an Article</td>
 <td></td>
-<td>19</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>17</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchArticle()'><b>testSearchArticle</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to search for an particular article</td>
 <td></td>
-<td>15</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>14</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchStories()'><b>testSearchStories</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check for search results</td>
 <td></td>
-<td>15</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>14</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
+<tr>
+<td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchTopic()'><b>testSearchTopic</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test Checking an Topic and adding to MyNews</td>
+<td></td>
+<td>11</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSelectArticleTopic()'><b>testSelectArticleTopic</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to select An Article from the England Topics under MyNews </td>
 <td></td>
 <td>12</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSelectSearchResult()'><b>testSelectSearchResult</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to search for a Topic and navigate to topic page</td>
 <td></td>
-<td>15</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>16</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSelectVideoArticleTopic()'><b>testSelectVideoArticleTopic</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to select An Video Article from the England Topics under MyNews </td>
 <td></td>
 <td>18</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSelectedAddedTopics()'><b>testSelectedAddedTopics</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to select each of the topics displayed under MyNews </td>
 <td></td>
-<td>34</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>15</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testToCheckTopicsTopStores()'><b>testToCheckTopicsTopStores</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to scroll to a topic on home page and select a particular topic and add to MyNews</td>
 <td></td>
 <td>82</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testTopStories()'><b>testTopStories</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check whether all links present on Home Page</td>
 <td></td>
-<td>18</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>20</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testTopStoriesvideo()'><b>testTopStoriesvideo</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Playing a video from Video page</td>
 <td></td>
-<td>12</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>13</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testVideopage()'><b>testVideopage</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to play a Live video from Vide page and asserting on whether playback controls are displayed</td>
 <td></td>
-<td>30</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>29</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testcheckMenuItems()'><b>testcheckMenuItems</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check whether the Menu Options are displayed</td>
 <td></td>
 <td>24</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testcheckMostWatched()'><b>testcheckMostWatched</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check whether the Most Watched heading displayed in Popular Page</td>
 <td></td>
 <td>13</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testcheckMostWatchedArticle()'><b>testcheckMostWatchedArticle</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check whether the Most Watched heading displayed in Popular Page</td>
 <td></td>
-<td>6</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>5</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testcheckTermsPrivacyPolicy()'><b>testcheckTermsPrivacyPolicy</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check the T&C , PrivacyPolicy from Menu options</td>
 <td></td>
-<td>19</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>18</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testcheckofflinescenario()'><b>testcheckofflinescenario</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to check the offline scenario of the app</td>
 <td></td>
-<td>8</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>9</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testondemandvideoplyback()'><b>testondemandvideoplyback</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to search for an particular video article</td>
 <td></td>
-<td>9</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>8</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testplayingvideooffline()'><b>testplayingvideooffline</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to play a  video, while device offline</td>
 <td></td>
-<td>41</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>31</td>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testseekingvideobackward()'><b>testseekingvideobackward</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to seek forward videoplayback</td>
 <td></td>
 <td>2</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 <tr>
 <td title='com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testseekingvideoforward()'><b>testseekingvideoforward</b><br>Test class: com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin<br>Test method: Test to seek forward videoplayback</td>
 <td></td>
 <td>4</td>
-<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@1ebd2427</td></tr>
+<td>com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin@66194a7b</td></tr>
 </table><p>
 </body>
 </html>

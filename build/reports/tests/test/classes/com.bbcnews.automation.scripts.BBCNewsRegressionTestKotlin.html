@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">2</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">11m48.93s</div>
+<div class="counter">11m33.00s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">95%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,145 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard output</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="testArrangeTopicsFromBottomToTop"></a>
-<h3 class="failures">testArrangeTopicsFromBottomToTop</h3>
-<span class="code">
-<pre>java.lang.IndexOutOfBoundsException: Index: 5, Size: 5
-	at java.util.ArrayList.rangeCheck(ArrayList.java:657)
-	at java.util.ArrayList.get(ArrayList.java:433)
-	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testArrangeTopicsFromBottomToTop(BBCNewsRegressionTestKotlin.kt:918)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-</pre>
-</span>
-</div>
-<div class="test">
-<a name="testSearchTopic"></a>
-<h3 class="failures">testSearchTopic</h3>
-<span class="code">
-<pre>java.lang.AssertionError: expected ['Sex blackmail gang' victim's name revealed] but found [The women who fought to ban alcohol]
-	at org.testng.Assert.fail(Assert.java:96)
-	at org.testng.Assert.failNotEquals(Assert.java:776)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
-	at org.testng.Assert.assertEquals(Assert.java:118)
-	at org.testng.Assert.assertEquals(Assert.java:453)
-	at org.testng.Assert.assertEquals(Assert.java:463)
-	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSearchTopic(BBCNewsRegressionTestKotlin.kt:619)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-	at org.testng.TestRunner.privateRun(TestRunner.java:648)
-	at org.testng.TestRunner.run(TestRunner.java:505)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-	at org.testng.TestNG.runSuites(TestNG.java:1049)
-	at org.testng.TestNG.run(TestNG.java:1017)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
-	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
-	at java.lang.Thread.run(Thread.java:748)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -211,207 +79,207 @@
 </thead>
 <tr>
 <td class="success">playingLandspace</td>
-<td class="success">12.255s</td>
+<td class="success">12.767s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">scrubbingvideoplayback</td>
-<td class="success">5.966s</td>
+<td class="success">5.749s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAddingTopicsPage</td>
-<td class="success">16.874s</td>
+<td class="success">18.510s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAddingTopicstoMyNewsPage</td>
-<td class="success">53.407s</td>
+<td class="success">52.581s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAllowLocation</td>
-<td class="success">11.737s</td>
+<td class="success">11.964s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testAppbackground</td>
-<td class="success">35.527s</td>
+<td class="success">36.494s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">testArrangeTopicsFromBottomToTop</td>
-<td class="failures">7.398s</td>
-<td class="failures">failed</td>
+<td class="success">testArrangeTopicsFromBottomToTop</td>
+<td class="success">29.353s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testArtictleItemWithItemBadge</td>
-<td class="success">19.060s</td>
+<td class="success">21.292s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testArtictleItemWithoutItemBadge</td>
-<td class="success">9.184s</td>
+<td class="success">8.528s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckAddedTopics</td>
-<td class="success">15.315s</td>
+<td class="success">9.410s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckMostReadPopular</td>
-<td class="success">7.739s</td>
+<td class="success">8.437s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckOrderingofTopicsAdded</td>
-<td class="success">3.678s</td>
+<td class="success">0.779s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testCheckReOrderingofTopicsAdded</td>
-<td class="success">17.996s</td>
+<td class="success">17.629s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMyNews</td>
-<td class="success">5.916s</td>
+<td class="success">6.841s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testMyNewsTopStoriesTopics</td>
-<td class="success">16.343s</td>
+<td class="success">18.161s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testOpenNewsApp</td>
-<td class="success">4.761s</td>
+<td class="success">5.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testPlayingVideoOnLine</td>
-<td class="success">13.010s</td>
+<td class="success">11.818s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testPopularPage</td>
-<td class="success">8.807s</td>
+<td class="success">8.764s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testRelatedStoriesArticle</td>
-<td class="success">28.832s</td>
+<td class="success">25.748s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testRelatedTopicArticle</td>
-<td class="success">19.219s</td>
+<td class="success">17.191s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSearchArticle</td>
-<td class="success">15.721s</td>
+<td class="success">14.171s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSearchStories</td>
-<td class="success">15.928s</td>
+<td class="success">14.592s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">testSearchTopic</td>
-<td class="failures">8.512s</td>
-<td class="failures">failed</td>
+<td class="success">testSearchTopic</td>
+<td class="success">11.444s</td>
+<td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSelectArticleTopic</td>
-<td class="success">12.272s</td>
+<td class="success">12.690s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSelectSearchResult</td>
-<td class="success">15.962s</td>
+<td class="success">16.090s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSelectVideoArticleTopic</td>
-<td class="success">18.661s</td>
+<td class="success">18.367s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testSelectedAddedTopics</td>
-<td class="success">34.865s</td>
+<td class="success">15.428s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testToCheckTopicsTopStores</td>
-<td class="success">1m22.89s</td>
+<td class="success">1m22.52s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testTopStories</td>
-<td class="success">18.911s</td>
+<td class="success">20.431s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testTopStoriesvideo</td>
-<td class="success">12.130s</td>
+<td class="success">13.248s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testVideopage</td>
-<td class="success">30.554s</td>
+<td class="success">29.645s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testcheckMenuItems</td>
-<td class="success">24.698s</td>
+<td class="success">24.253s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testcheckMostWatched</td>
-<td class="success">13.056s</td>
+<td class="success">13.465s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testcheckMostWatchedArticle</td>
-<td class="success">6.096s</td>
+<td class="success">5.668s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testcheckTermsPrivacyPolicy</td>
-<td class="success">19.902s</td>
+<td class="success">18.511s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testcheckofflinescenario</td>
-<td class="success">8.736s</td>
+<td class="success">9.170s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testondemandvideoplyback</td>
-<td class="success">9.536s</td>
+<td class="success">8.664s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testplayingvideooffline</td>
-<td class="success">41.234s</td>
+<td class="success">31.334s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testseekingvideobackward</td>
-<td class="success">2.136s</td>
+<td class="success">2.240s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testseekingvideoforward</td>
-<td class="success">4.109s</td>
+<td class="success">4.046s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>on test method testOpenNewsApp start
@@ -477,7 +345,7 @@ on test method testSelectVideoArticleTopic start
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.10</a> at 15-Mar-2019 11:33:53</p>
+<a href="http://www.gradle.org">Gradle 4.10</a> at 22-Mar-2019 11:38:40</p>
 </div>
 </div>
 </body>

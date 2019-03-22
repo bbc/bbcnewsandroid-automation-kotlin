@@ -11,6 +11,7 @@
           <include name="getResult"/>
           <include name="testSearchTopic"/>
           <include name="testArrangeTopicsFromBottomToTop"/>
+          <include name="testVideopage"/>
           <include name="runTest"/>
           <include name="tearDown"/>
         </methods>

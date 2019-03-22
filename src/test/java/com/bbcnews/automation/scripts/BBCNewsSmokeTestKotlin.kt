@@ -27,13 +27,13 @@ import java.time.Duration
 
 class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
 {
-   private var capabilities = DesiredCapabilities()
-   private var deviceOsName: String? = null
-   private var deviceid: String? = null
-   private  var deviceName: String? = null
-   private  var appPath: String? = null
-   private var appiumPort: String? = null
-   private  lateinit var file: File
+    private var capabilities = DesiredCapabilities()
+    private var deviceOsName: String? = null
+    private var deviceid: String? = null
+    private  var deviceName: String? = null
+    private  var appPath: String? = null
+    private var appiumPort: String? = null
+    private  lateinit var file: File
     private var commonFunctionKotlin = CommonFunctionKotlin()
     private var testutility = Testutility()
     private lateinit var homePageObject: HomePageObject
@@ -80,12 +80,12 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
 
     private fun readDeviceDetailsCommandPrompt() {
         try {
-          //  deviceOsName = System.getProperty("DeviceOS")
+            //  deviceOsName = System.getProperty("DeviceOS")
             deviceid = System.getProperty("DeviceID")
             deviceName = System.getProperty("DeviceName")
             appPath = System.getProperty("AppPath")
             appiumPort = System.getProperty("AppiumPort")
-           // println("Passed The Device OS is $deviceOsName")
+            // println("Passed The Device OS is $deviceOsName")
             println("Passed The Device ID is $deviceid")
             println("Passed The Device Name is $deviceName")
             println("Passed The Appium port is $appiumPort")
@@ -130,7 +130,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
      *
      * function to initialise the page objects for Home page, Video page, popular page
      */
-   private fun initialiseobjects() {
+    private fun initialiseobjects() {
         try {
             homePageObject = HomePageObject()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
@@ -221,7 +221,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
         try {
-            androidDriver.runAppInBackground(Duration.ofSeconds(30))
+            androidDriver.runAppInBackground(Duration.ofSeconds(20))
             commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke")
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topstories, false)
             Assert.assertTrue(basePageObjectModel.topstories.isSelected)
@@ -339,16 +339,16 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
-//            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
-            commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.englandtopic)
-            commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandtopic, false)
-            commonFunctionKotlin.textpresent(androidDriver, "England", "added to")
+            commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.walestopic)
+            commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.walestopic, false)
+            commonFunctionKotlin.textpresent(androidDriver, "Wales", "added to")
 
-            commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.africatopic)
-            commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.africatopic, false)
-            commonFunctionKotlin.textpresent(androidDriver, "Africa", "added to")
+            commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.worldtopic)
+            commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
+
 
         } catch (e: StaleElementReferenceException) {
             e.printStackTrace()
@@ -357,6 +357,9 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     }
 
 
+    /**
+     * Checked the selected topics are getting displayed under Added Topics
+     */
 
     @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
     @Story("MyTopics")
@@ -365,12 +368,16 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
         try {
             commonFunctionKotlin.startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mytopics, false)
-            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Englandtopic)
-            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Africatopic)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
             commonFunctionKotlin.navigateBack(androidDriver)
         } catch (e: Exception) {
         }
     }
+
+    /**
+     * Checks for Added topics displayed under My News page
+     */
 
     @Test(priority = 9, description = "Test to check whether added topics displayed under MyNews page")
     @Story("MyNews")
@@ -378,8 +385,72 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     fun testCheckAddedTopicsUnderMyNews() {
         try {
             commonFunctionKotlin.startTest("MyNews", "Checking Added topics in MyNews", "Smoke")
-            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Englandtopic)
-            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Africatopic)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
+
+        } catch (e: Exception) {
+        }
+
+    }
+
+
+    /**
+     * removing one of the topics(England) from MyNews-Added Topics
+     */
+
+    @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
+    @Throws(Exception::class)
+    fun testMyNewsRemoveTopics() {
+        try {
+            commonFunctionKotlin.startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.mynews, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.editMyNews, false)
+            try {
+                commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
+                commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.backButton, false)
+
+        } catch (e: NullPointerException) {
+
+        }
+
+    }
+
+    /**
+     * Checks the Articles from Topics page, Checks for More button and checks for Less button displayed
+     */
+
+
+    @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
+    @Throws(Exception::class)
+    fun testCheckArtcilesofTopics() {
+        try {
+            commonFunctionKotlin.startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
+            val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
+            val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
+            val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
+            val total = contentImages.size
+            System.out.println("The size of cards are$total")
+            for (cardimage in contentImages) {
+                commonFunctionKotlin.tapButton(androidDriver, cardimage, false)
+                commonFunctionKotlin.navigateBack(androidDriver)
+            }
+            for (i in 0 until total) {
+
+                commonFunctionKotlin.elementDisplayed(androidDriver, contentCardTitle[i])
+                commonFunctionKotlin.elementDisplayed(androidDriver, contentCardUpdated[i])
+            }
+
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.showmore, false)
+            commonFunctionKotlin.scrolltoElement(androidDriver, myNewsPageObject.showless)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.showless, false)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.showmore)
+
 
         } catch (e: Exception) {
         }
@@ -389,7 +460,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     /**
      * Open the Menu items and assert whether links are displayed properly
      */
-    @Test(priority = 10, description = "Test to Check the Menu Options ")
+    @Test(priority = 12, description = "Test to Check the Menu Options ")
     @Story("Menu")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
@@ -407,7 +478,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
      * check the live video on video page
      */
 
-    @Test(priority = 11, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
+    @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
@@ -415,7 +486,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
         commonFunctionKotlin.startTest("Videopgae", "Checking the Video", "Smoke")
         commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.video, false)
         // commonFunctionKotlin.AshotScreenshot(androidDriver,"After","VideoPage");
-        Assert.assertTrue(basePageObjectModel.video.isSelected())
+        Assert.assertTrue(basePageObjectModel.video.isSelected)
         // commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.livebbchannel);
         commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.bbcnewsChannel, false)//,file.getAbsolutePath());
         commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.live_media_item_caption)
@@ -435,7 +506,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     /**
      * check the live video  seeking
      */
-    @Test(priority = 12, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
+    @Test(priority = 14, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(AssertionError::class, Exception::class)
@@ -462,7 +533,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
     /**
      * check to search for a topic
      */
-    @Test(priority = 13, description = "Test to check for search results")
+    @Test(priority = 15, description = "Test to check for search results")
     fun testSearchStories() {
         try {
             commonFunctionKotlin.startTest("Search", "Checking for Search Topics", "Smoke")
@@ -512,7 +583,7 @@ class BBCNewsSmokeTestKotlin //: CommonFunctionKotlin()
 
     @AfterMethod
     fun getResult(result: ITestResult)
-     {
+    {
         try {
             commonFunctionKotlin.getTestResult(androidDriver, result)
         } catch (e: IOException) {
