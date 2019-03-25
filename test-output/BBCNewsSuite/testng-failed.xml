@@ -11,7 +11,7 @@
           <include name="getResult"/>
           <include name="tearDown"/>
           <include name="runTest"/>
-          <include name="testMenuPage"/>
+          <include name="testAddingTopicstoMyNewsPage"/>
         </methods>
       </class> <!-- com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin -->
     </classes>

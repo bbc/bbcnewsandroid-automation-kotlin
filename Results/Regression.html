@@ -1,0 +1,3420 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='EEEE, MMMM dd, yyyy, hh:mm a '('zzz')''/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>BBC News Android Report </title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>Automation Test Report</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Monday, March 25, 2019, 01:17 PM (GMT)</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.5</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>HomePage</a></li>
+					<li><a href='#'>MyNews</a></li>
+					<li><a href='#'>Menu</a></li>
+					<li><a href='#'>LiveVideo</a></li>
+					<li><a href='#'>Search</a></li>
+					<li><a href='#'>OnDemandVideo</a></li>
+					<li><a href='#'>RelatedStories/Topics</a></li>
+					<li><a href='#'>AppBackground</a></li>
+					<li><a href='#'>Popular</a></li>
+					<li><a href='#'>Offline</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='97.436%'><span class='strong'>38</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='2.564%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='87.571%'><span class='strong'>155</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='1.695%'>3</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='10.734%'>19</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking the HomePage</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:17 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:17 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:17 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 22s+248ms</span>
+</div>
+	<div class='test-desc'>Checking the HomePage </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>HomePage</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:17:06 PM</td>
+					<td class='step-details'>Element selected</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:10 PM</td>
+					<td class='step-details'>Top Stories  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:15 PM</td>
+					<td class='step-details'>My News  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:21 PM</td>
+					<td class='step-details'>Popular  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:26 PM</td>
+					<td class='step-details'>Video  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:27 PM</td>
+					<td class='step-details'>Search  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:27 PM</td>
+					<td class='step-details'>Show navigation menu drawer  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:17:27 PM</td>
+					<td class='step-details'><span class='label white-text green'>testTopStories Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>Scrolling to topics</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:17 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:17 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:18 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 12s+307ms</span>
+</div>
+	<div class='test-desc'>Scroll to a Topics on Home Page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>HomePage</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:16 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:19 PM</td>
+					<td class='step-details'>Family & Education  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:20 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:20 PM</td>
+					<td class='step-details'>E-books create a 'less chatty story time'Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:20 PM</td>
+					<td class='step-details'>8 hours agoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:20 PM</td>
+					<td class='step-details'>HealthElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:22 PM</td>
+					<td class='step-details'>Element PresentFamily & Education added to My News</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:22 PM</td>
+					<td class='step-details'>Manage your topics  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:30 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:34 PM</td>
+					<td class='step-details'>Technology  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:35 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:35 PM</td>
+					<td class='step-details'>10 years of Grindr: A rocky relationshipElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:35 PM</td>
+					<td class='step-details'>12 hours agoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:36 PM</td>
+					<td class='step-details'>TechnologyElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:38 PM</td>
+					<td class='step-details'>Element PresentTechnology added to My News</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:39 PM</td>
+					<td class='step-details'>Manage your topics  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:40 PM</td>
+					<td class='step-details'><span class='label white-text green'>testToCheckTopicsTopStores Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>Removing Added Topics</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:18 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:18 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:18 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 12s+102ms</span>
+</div>
+	<div class='test-desc'>Test to check Topics on MyNews page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:47 PM</td>
+					<td class='step-details'>Technology  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:48 PM</td>
+					<td class='step-details'>Family & Education  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:18:52 PM</td>
+					<td class='step-details'><span class='label white-text green'>testMyNewsTopStoriesTopics Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>Allowing Location Service</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:18 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:18 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+147ms</span>
+</div>
+	<div class='test-desc'>Checking whether Location service works </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:00 PM</td>
+					<td class='step-details'><span class='label white-text green'>testAllowLocation Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Elements on MyNews Page</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 4s+962ms</span>
+</div>
+	<div class='test-desc'>Test to check MyNews page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:04 PM</td>
+					<td class='step-details'>All the latest stories from your topics will appear here.  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:04 PM</td>
+					<td class='step-details'>Add Topics to create your own personal news feed  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:05 PM</td>
+					<td class='step-details'>null  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:05 PM</td>
+					<td class='step-details'><span class='label white-text green'>testMyNews Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Elements on Edit Mynews Page</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 15s+29ms</span>
+</div>
+	<div class='test-desc'>Test to check Edit MyNews page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:19:07 PM</td>
+					<td class='step-details'>Eelement selected</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:12 PM</td>
+					<td class='step-details'>My Topics  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:17 PM</td>
+					<td class='step-details'>Edit My News  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:17 PM</td>
+					<td class='step-details'>Local news  Displayed</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:19:20 PM</td>
+					<td class='step-details'>Eelement selected</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:19:20 PM</td>
+					<td class='step-details'><span class='label white-text green'>testAddingTopicsPage Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Adding Topics</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:19 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 44s+521ms</span>
+</div>
+	<div class='test-desc'>Test to check added Topics to MyNews page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:04 PM</td>
+					<td class='step-details'><span class='label white-text green'>testAddingTopicstoMyNewsPage Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>My Topics page</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 17s+370ms</span>
+</div>
+	<div class='test-desc'>Test to check added Topics MyNews page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:10 PM</td>
+					<td class='step-details'>England  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:13 PM</td>
+					<td class='step-details'>Africa  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:16 PM</td>
+					<td class='step-details'>European Union  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:19 PM</td>
+					<td class='step-details'>Mortgages  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'>YouTube  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'><span class='label white-text green'>testCheckAddedTopics Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>My Topics Ordering</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+674ms</span>
+</div>
+	<div class='test-desc'>Test to display the Ordering of the Topics </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'>Topics Before Re-Ordering :- England</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'>Topics Before Re-Ordering :- Africa</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'>Topics Before Re-Ordering :- European Union</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'>Topics Before Re-Ordering :- Mortgages</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:20:22 PM</td>
+					<td class='step-details'>Topics Before Re-Ordering :- YouTube</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:26 PM</td>
+					<td class='step-details'><span class='label white-text green'>testCheckOrderingofTopicsAdded Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='10'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Added Topics on Mynews page</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 26s+244ms</span>
+</div>
+	<div class='test-desc'>Selecting Added Topics </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:32 PM</td>
+					<td class='step-details'>England  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:38 PM</td>
+					<td class='step-details'>European Union  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:44 PM</td>
+					<td class='step-details'>Africa  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:48 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:48 PM</td>
+					<td class='step-details'>Africa Live: #FreeOurGirls backs Burundi schoolgirl scribblersElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:48 PM</td>
+					<td class='step-details'>2hElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:20:48 PM</td>
+					<td class='step-details'>AfricaElement Present</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>1:20:50 PM</td>
+					<td class='step-details'><span class='label white-text red'>testSelectedAddedTopics Test Case is FAILED</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>1:20:50 PM</td>
+					<td class='step-details'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'mc-s097627', ip: '192.168.0.44', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.6', java.version: '1.8.0_181'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {--session-override: true, app: /Users/ramakh02/Desktop/too..., appActivity: bbc.mobile.news.v3.app.TopL..., appPackage: bbc.mobile.news.uk.internal, appiumversion: 1.8.1, automationName: UiAutomator2, databaseEnabled: false, desired: {--session-override: true, app: /Users/ramakh02/Desktop/too..., appActivity: bbc.mobile.news.v3.app.TopL..., appPackage: bbc.mobile.news.uk.internal, appiumversion: 1.8.1, automationName: UiAutomator2, deviceName: bbcnews, ignoreUnimportantViews: true, platformName: android, udid: 04157df4ec26b91a}, deviceApiLevel: 24, deviceManufacturer: samsung, deviceModel: SM-G925F, deviceName: 04157df4ec26b91a, deviceScreenDensity: 640, deviceScreenSize: 1440x2560, deviceUDID: 04157df4ec26b91a, ignoreUnimportantViews: true, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, pixelRatio: 4, platform: LINUX, platformName: Android, platformVersion: 7.0, statBarHeight: 96, takesScreenshot: true, udid: 04157df4ec26b91a, viewportRect: {height: 2464, left: 0, top: 96, width: 1440}, warnings: {}, webStorageEnabled: false}
+Session ID: d0f1f319-ce21-4fa8-9d42-dac557b841f2
+*** Element info: {Using=id, value=bbc.mobile.news.uk.internal:id/item_image}
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:231)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:368)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
+	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.isElementPresent(CommonFunctionKotlin.kt:371)
+	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSelectedAddedTopics(BBCNewsRegressionTestKotlin.kt:434)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
+	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>1:20:52 PM</td>
+					<td class='step-details'>Failedcom.aventstack.extentreports.ExtentTest@20bec471</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+							<ul class='screenshots'>
+								<li><img data-featherlight='/Users/ramakh02/Desktop/BBCNewsAndroidAutomationKotlin/Screenshots/testSelectedAddedTopics_25-3-2019 01:20.png' width='10%' src='/Users/ramakh02/Desktop/BBCNewsAndroidAutomationKotlin/Screenshots/testSelectedAddedTopics_25-3-2019 01:20.png' data-src='/Users/ramakh02/Desktop/BBCNewsAndroidAutomationKotlin/Screenshots/testSelectedAddedTopics_25-3-2019 01:20.png'></li>
+							</ul>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>Re Arrange Topics from Top-to-Bottom</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:20 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:21 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 16s+650ms</span>
+</div>
+	<div class='test-desc'>Test to re-arrange topics from top to bottom </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:21:05 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- Africa</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:21:05 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- European Union</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:21:05 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- Mortgages</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:21:05 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- England</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:21:05 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- YouTube</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:08 PM</td>
+					<td class='step-details'><span class='label white-text green'>testCheckReOrderingofTopicsAdded Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='12'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking the MenuItems</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:21 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:21 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:21 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 27s+283ms</span>
+</div>
+	<div class='test-desc'>Checking Menu Items </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Menu</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:17 PM</td>
+					<td class='step-details'>Settings  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:24 PM</td>
+					<td class='step-details'>Internal Settings  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:30 PM</td>
+					<td class='step-details'>Other BBC apps  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:36 PM</td>
+					<td class='step-details'>App info  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:36 PM</td>
+					<td class='step-details'><span class='label white-text green'>testcheckMenuItems Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='13'>
+					<div class='test-heading'>
+						<span class='test-name'>Playing a Live Video</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:21 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:21 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 23s+821ms</span>
+</div>
+	<div class='test-desc'>Checking the Video Page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>LiveVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:43 PM</td>
+					<td class='step-details'>Live: BBC News Channel  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:44 PM</td>
+					<td class='step-details'>Navigate up  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:44 PM</td>
+					<td class='step-details'>Share story  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:51 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:56 PM</td>
+					<td class='step-details'>null  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:57 PM</td>
+					<td class='step-details'>exit fullscreen  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:58 PM</td>
+					<td class='step-details'>live content  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:21:59 PM</td>
+					<td class='step-details'>volume  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:00 PM</td>
+					<td class='step-details'>7149548.0  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:00 PM</td>
+					<td class='step-details'><span class='label white-text green'>testVideopage Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='14'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Live Video in Landscape</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+495ms</span>
+</div>
+	<div class='test-desc'>Checking the Video in Landscape Mode </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>LiveVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:05 PM</td>
+					<td class='step-details'>null  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:06 PM</td>
+					<td class='step-details'>exit fullscreen  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:07 PM</td>
+					<td class='step-details'>live content  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:08 PM</td>
+					<td class='step-details'>volume  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:08 PM</td>
+					<td class='step-details'>7149555.0  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:08 PM</td>
+					<td class='step-details'><span class='label white-text green'>playingLandspace Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='15'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Live Video Scrubbing</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+268ms</span>
+</div>
+	<div class='test-desc'>Checking the Live Video in Portrait Mode and seeking </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>LiveVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:12 PM</td>
+					<td class='step-details'>1937817.0Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:13 PM</td>
+					<td class='step-details'><span class='label white-text green'>scrubbingvideoplayback Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='16'>
+					<div class='test-heading'>
+						<span class='test-name'>Search for an Topics</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 13s+141ms</span>
+</div>
+	<div class='test-desc'>Checking Search Topics </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Search</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:26 PM</td>
+					<td class='step-details'><span class='label white-text green'>testSearchStories Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>Navigate to Topic Detail Page</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 13s+360ms</span>
+</div>
+	<div class='test-desc'>Test to search for a Topic and navigate to topic page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Search</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:40 PM</td>
+					<td class='step-details'><span class='label white-text green'>testSelectSearchResult Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='18'>
+					<div class='test-heading'>
+						<span class='test-name'>Search and Adding Topic to Mynews</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 10s+249ms</span>
+</div>
+	<div class='test-desc'>Test Checking an Topic and adding to MyNews </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Search</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:22:50 PM</td>
+					<td class='step-details'><span class='label white-text green'>testSearchTopic Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='19'>
+					<div class='test-heading'>
+						<span class='test-name'>Article without ItemImage Badge</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:22 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 12s+352ms</span>
+</div>
+	<div class='test-desc'>Test Checking an Article page without an Item Image Badge </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Search</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:01 PM</td>
+					<td class='step-details'>Bishop Franco Mulakkal denies wrongoingElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:02 PM</td>
+					<td class='step-details'>India bishop accused of rape arrested in KeralaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:02 PM</td>
+					<td class='step-details'>21 Sep 2018Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:02 PM</td>
+					<td class='step-details'>IndiaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:02 PM</td>
+					<td class='step-details'><span class='label white-text green'>testArtictleItemWithoutItemBadge Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='20'>
+					<div class='test-heading'>
+						<span class='test-name'>Article with ItemImage Badge</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 15s+936ms</span>
+</div>
+	<div class='test-desc'>Checking an Article page without an Item Image Badge </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Search</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:14 PM</td>
+					<td class='step-details'>EPA  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:14 PM</td>
+					<td class='step-details'>Hundreds of people poured onto the streets demanding justice for the girlElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:14 PM</td>
+					<td class='step-details'>How India viral messages helped catch rape suspectElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:14 PM</td>
+					<td class='step-details'>10 Jul 2018Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:14 PM</td>
+					<td class='step-details'>IndiaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:18 PM</td>
+					<td class='step-details'><span class='label white-text green'>testArtictleItemWithItemBadge Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='21'>
+					<div class='test-heading'>
+						<span class='test-name'>Searching a Particular article</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 12s+390ms</span>
+</div>
+	<div class='test-desc'>Test to search for an particular article </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Search</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:28 PM</td>
+					<td class='step-details'>India man held for rape of British woman in GoaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:28 PM</td>
+					<td class='step-details'>21 Dec 2018Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:28 PM</td>
+					<td class='step-details'>IndiaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:30 PM</td>
+					<td class='step-details'><span class='label white-text green'>testSearchArticle Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='22'>
+					<div class='test-heading'>
+						<span class='test-name'>Playing a Particular OnDemand Video</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+925ms</span>
+</div>
+	<div class='test-desc'>Test to search ana play a on-demand video </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>OnDemandVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:36 PM</td>
+					<td class='step-details'>Amal Fathy: Egypt court imposes jail term over harassment video  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:36 PM</td>
+					<td class='step-details'>31st Dec 18  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:39 PM</td>
+					<td class='step-details'>In Egypt, fake news becomes weapon of choice to crush dissentElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:39 PM</td>
+					<td class='step-details'>Amal Fathy: Egypt court imposes jail term over harassment videoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:39 PM</td>
+					<td class='step-details'>31 Dec 2018Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:39 PM</td>
+					<td class='step-details'>Middle EastElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:39 PM</td>
+					<td class='step-details'><span class='label white-text green'>testondemandvideoplyback Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='23'>
+					<div class='test-heading'>
+						<span class='test-name'>Seeking Video Forward</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+337ms</span>
+</div>
+	<div class='test-desc'>Test to search ana play a on-demand video </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>OnDemandVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:43 PM</td>
+					<td class='step-details'><span class='label white-text green'>testseekingvideoforward Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='24'>
+					<div class='test-heading'>
+						<span class='test-name'>Seeking Video Backward</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+843ms</span>
+</div>
+	<div class='test-desc'>Test to search ana play a on-demand video </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>OnDemandVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:23:45 PM</td>
+					<td class='step-details'><span class='label white-text green'>testseekingvideobackward Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='25'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking for Related Story Article</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:23 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+330ms</span>
+</div>
+	<div class='test-desc'>Test to check Related Stories of an Article </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>RelatedStories/Topics</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:11 PM</td>
+					<td class='step-details'>Related stories  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:14 PM</td>
+					<td class='step-details'>18 Aug 2018Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:14 PM</td>
+					<td class='step-details'>Egypt internet: Sisi ratifies law tightening control over websitesElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:14 PM</td>
+					<td class='step-details'>Middle EastElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:14 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:15 PM</td>
+					<td class='step-details'><span class='label white-text green'>testRelatedStoriesArticle Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='26'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking for Related Topic Article</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 17s+595ms</span>
+</div>
+	<div class='test-desc'>Test to check Related Topics of an Article </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>RelatedStories/Topics</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:24 PM</td>
+					<td class='step-details'>Related topics  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:28 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:28 PM</td>
+					<td class='step-details'>Eight killed in Egypt chemical blastElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:28 PM</td>
+					<td class='step-details'>3 days agoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:28 PM</td>
+					<td class='step-details'>Middle EastElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:33 PM</td>
+					<td class='step-details'><span class='label white-text green'>testRelatedTopicArticle Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='27'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking T&C Privacy Policy</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 14s+810ms</span>
+</div>
+	<div class='test-desc'>Checking T&C and privacy Policy </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Menu</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:47 PM</td>
+					<td class='step-details'><span class='label white-text green'>testcheckTermsPrivacyPolicy Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='28'>
+					<div class='test-heading'>
+						<span class='test-name'>Playing a OnDemand Video</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+224ms</span>
+</div>
+	<div class='test-desc'>Test to play a video from Video page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>OnDemandVideo</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:55 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:56 PM</td>
+					<td class='step-details'>1 day agoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:56 PM</td>
+					<td class='step-details'>AfricaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:57 PM</td>
+					<td class='step-details'>BBC reporter Pumza Fihlani gives a glimpse of what the trail of destruction in Mozambique looks like.Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:24:57 PM</td>
+					<td class='step-details'><span class='label white-text green'>testTopStoriesvideo Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='29'>
+					<div class='test-heading'>
+						<span class='test-name'>App Background</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:24 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 35s+353ms</span>
+</div>
+	<div class='test-desc'>Test to check backgrouding the app and reopen and checking same page opens </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>AppBackground</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:25:32 PM</td>
+					<td class='step-details'><span class='label white-text green'>testAppbackground Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='30'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking PopularPage</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 6s+639ms</span>
+</div>
+	<div class='test-desc'>Checking Popular Page </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Popular</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:25:39 PM</td>
+					<td class='step-details'>Most Read  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:25:39 PM</td>
+					<td class='step-details'><span class='label white-text green'>testPopularPage Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='31'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Article from Most Read Section</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 7s+193ms</span>
+</div>
+	<div class='test-desc'>Checking Most Read Popular </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Popular</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:25:43 PM</td>
+					<td class='step-details'>Most Read  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:25:46 PM</td>
+					<td class='step-details'><span class='label white-text green'>testCheckMostReadPopular Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='32'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Most Popular Section</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:25 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 13s+382ms</span>
+</div>
+	<div class='test-desc'>Checking Most Watched </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Popular</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:00 PM</td>
+					<td class='step-details'>Most Watched  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:00 PM</td>
+					<td class='step-details'><span class='label white-text green'>testcheckMostWatched Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='33'>
+					<div class='test-heading'>
+						<span class='test-name'>Checking Most Watched Article</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 5s+83ms</span>
+</div>
+	<div class='test-desc'>Checking Most Watched </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Popular</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:04 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:04 PM</td>
+					<td class='step-details'>13 hours agoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:05 PM</td>
+					<td class='step-details'>US & CanadaElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:05 PM</td>
+					<td class='step-details'>After years of abuse, Kayti shares the horrors she lived through in a US town and how she finally got out.Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:05 PM</td>
+					<td class='step-details'><span class='label white-text green'>testcheckMostWatchedArticle Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='34'>
+					<div class='test-heading'>
+						<span class='test-name'>Re Arrange Topics from Bottom-to-Top</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 23s+493ms</span>
+</div>
+	<div class='test-desc'>Test re-arrange topics from bottom to top </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:26:24 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- Africa</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:26:24 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- Rape in India</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:26:24 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- European Union</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:26:24 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- Mortgages</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:26:24 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- England</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>1:26:24 PM</td>
+					<td class='step-details'>Topics After  Re-Ordering :- YouTube</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:28 PM</td>
+					<td class='step-details'><span class='label white-text green'>testArrangeTopicsFromBottomToTop Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='35'>
+					<div class='test-heading'>
+						<span class='test-name'>Going OffLine</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+71ms</span>
+</div>
+	<div class='test-desc'>Checking apps offline scenario </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Offline</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:37 PM</td>
+					<td class='step-details'><span class='label white-text green'>testcheckofflinescenario Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='36'>
+					<div class='test-heading'>
+						<span class='test-name'>VideoPlayback-Offline</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:26 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 28s+2ms</span>
+</div>
+	<div class='test-desc'>Checking the Video while device offline </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Offline</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:45 PM</td>
+					<td class='step-details'>Live: BBC News Channel  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:45 PM</td>
+					<td class='step-details'>Navigate up  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:46 PM</td>
+					<td class='step-details'>Share story  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:48 PM</td>
+					<td class='step-details'>This content is not currently available.  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:49 PM</td>
+					<td class='step-details'>Okay  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:26:49 PM</td>
+					<td class='step-details'>Try again  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:05 PM</td>
+					<td class='step-details'><span class='label white-text green'>testplayingvideooffline Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='37'>
+					<div class='test-heading'>
+						<span class='test-name'>VideoPlayback-Online</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+580ms</span>
+</div>
+	<div class='test-desc'>Checking the Video while device Online </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Offline</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:14 PM</td>
+					<td class='step-details'><span class='label white-text green'>testPlayingVideoOnLine Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='38'>
+					<div class='test-heading'>
+						<span class='test-name'>Selecting a Article from Africa Topics</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 11s+223ms</span>
+</div>
+	<div class='test-desc'>Test to select An Article from the Africa Topics under MyNews </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:25 PM</td>
+					<td class='step-details'>England  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:25 PM</td>
+					<td class='step-details'><span class='label white-text green'>testSelectArticleTopic Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='39'>
+					<div class='test-heading'>
+						<span class='test-name'>Select a Video Article from Africa Topic</span>
+						<span class='test-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label end-time'>Monday, March 25, 2019, 01:27 PM (GMT)</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 14s+720ms</span>
+</div>
+	<div class='test-desc'>Test to select An Video Article from the Africa Topics under MyNews </div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>MyNews</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:32 PM</td>
+					<td class='step-details'>England  Displayed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:32 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:32 PM</td>
+					<td class='step-details'>2 days agoElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:32 PM</td>
+					<td class='step-details'>ShropshireElement Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:33 PM</td>
+					<td class='step-details'>A study is testing the ethical and cost benefits for farmers of using drones to herd sheep.Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:35 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:36 PM</td>
+					<td class='step-details'>0.0Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:36 PM</td>
+					<td class='step-details'>Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:36 PM</td>
+					<td class='step-details'>00:41Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:37 PM</td>
+					<td class='step-details'>00:00Element Present</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>1:27:40 PM</td>
+					<td class='step-details'><span class='label white-text green'>testSelectVideoArticleTopic Test Case is PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>HomePage</span>
+						<span class='category-status right'>
+							<span class='label pass'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 2</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:17 PM (GMT)</td>
+										<td class='linked' test-id='1'>Checking the HomePage</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:17 PM (GMT)</td>
+										<td class='linked' test-id='2'>Scrolling to topics</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>MyNews</span>
+						<span class='category-status right'>
+							<span class='label pass'>11</span>
+							<span class='label fail'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 11</span>
+							<span class='label red lighten-1 white-text'>Failed: 1</span>
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:18 PM (GMT)</td>
+										<td class='linked' test-id='3'>Removing Added Topics</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:18 PM (GMT)</td>
+										<td class='linked' test-id='4'>Allowing Location Service</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:19 PM (GMT)</td>
+										<td class='linked' test-id='5'>Checking Elements on MyNews Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:19 PM (GMT)</td>
+										<td class='linked' test-id='6'>Checking Elements on Edit Mynews Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:19 PM (GMT)</td>
+										<td class='linked' test-id='7'>Adding Topics</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:20 PM (GMT)</td>
+										<td class='linked' test-id='8'>My Topics page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:20 PM (GMT)</td>
+										<td class='linked' test-id='9'>My Topics Ordering</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:20 PM (GMT)</td>
+										<td class='linked' test-id='10'>Checking Added Topics on Mynews page</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:20 PM (GMT)</td>
+										<td class='linked' test-id='11'>Re Arrange Topics from Top-to-Bottom</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:26 PM (GMT)</td>
+										<td class='linked' test-id='34'>Re Arrange Topics from Bottom-to-Top</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:27 PM (GMT)</td>
+										<td class='linked' test-id='38'>Selecting a Article from Africa Topics</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:27 PM (GMT)</td>
+										<td class='linked' test-id='39'>Select a Video Article from Africa Topic</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Menu</span>
+						<span class='category-status right'>
+							<span class='label pass'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 2</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:21 PM (GMT)</td>
+										<td class='linked' test-id='12'>Checking the MenuItems</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:24 PM (GMT)</td>
+										<td class='linked' test-id='27'>Checking T&C Privacy Policy</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>LiveVideo</span>
+						<span class='category-status right'>
+							<span class='label pass'>3</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 3</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:21 PM (GMT)</td>
+										<td class='linked' test-id='13'>Playing a Live Video</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:22 PM (GMT)</td>
+										<td class='linked' test-id='14'>Checking Live Video in Landscape</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:22 PM (GMT)</td>
+										<td class='linked' test-id='15'>Checking Live Video Scrubbing</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Search</span>
+						<span class='category-status right'>
+							<span class='label pass'>6</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 6</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:22 PM (GMT)</td>
+										<td class='linked' test-id='16'>Search for an Topics</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:22 PM (GMT)</td>
+										<td class='linked' test-id='17'>Navigate to Topic Detail Page</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:22 PM (GMT)</td>
+										<td class='linked' test-id='18'>Search and Adding Topic to Mynews</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:22 PM (GMT)</td>
+										<td class='linked' test-id='19'>Article without ItemImage Badge</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:23 PM (GMT)</td>
+										<td class='linked' test-id='20'>Article with ItemImage Badge</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:23 PM (GMT)</td>
+										<td class='linked' test-id='21'>Searching a Particular article</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>OnDemandVideo</span>
+						<span class='category-status right'>
+							<span class='label pass'>4</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 4</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:23 PM (GMT)</td>
+										<td class='linked' test-id='22'>Playing a Particular OnDemand Video</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:23 PM (GMT)</td>
+										<td class='linked' test-id='23'>Seeking Video Forward</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:23 PM (GMT)</td>
+										<td class='linked' test-id='24'>Seeking Video Backward</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:24 PM (GMT)</td>
+										<td class='linked' test-id='28'>Playing a OnDemand Video</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>RelatedStories/Topics</span>
+						<span class='category-status right'>
+							<span class='label pass'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 2</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:23 PM (GMT)</td>
+										<td class='linked' test-id='25'>Checking for Related Story Article</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:24 PM (GMT)</td>
+										<td class='linked' test-id='26'>Checking for Related Topic Article</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>AppBackground</span>
+						<span class='category-status right'>
+							<span class='label pass'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 1</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:24 PM (GMT)</td>
+										<td class='linked' test-id='29'>App Background</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Popular</span>
+						<span class='category-status right'>
+							<span class='label pass'>4</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 4</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:25 PM (GMT)</td>
+										<td class='linked' test-id='30'>Checking PopularPage</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:25 PM (GMT)</td>
+										<td class='linked' test-id='31'>Checking Article from Most Read Section</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:25 PM (GMT)</td>
+										<td class='linked' test-id='32'>Checking Most Popular Section</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:26 PM (GMT)</td>
+										<td class='linked' test-id='33'>Checking Most Watched Article</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Offline</span>
+						<span class='category-status right'>
+							<span class='label pass'>3</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 3</span>
+							
+							
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Monday, March 25, 2019, 01:26 PM (GMT)</td>
+										<td class='linked' test-id='35'>Going OffLine</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:26 PM (GMT)</td>
+										<td class='linked' test-id='36'>VideoPlayback-Offline</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Monday, March 25, 2019, 01:27 PM (GMT)</td>
+										<td class='linked' test-id='37'>VideoPlayback-Online</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>org.openqa.selenium.NoSuchElementException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>1</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Monday, March 25, 2019, 01:20 PM (GMT)</td>
+                                                        <td class='linked' test-id='10'>Checking Added Topics on Mynews page</td>
+                                                        <td><pre><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'mc-s097627', ip: '192.168.0.44', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.6', java.version: '1.8.0_181'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities {--session-override: true, app: /Users/ramakh02/Desktop/too..., appActivity: bbc.mobile.news.v3.app.TopL..., appPackage: bbc.mobile.news.uk.internal, appiumversion: 1.8.1, automationName: UiAutomator2, databaseEnabled: false, desired: {--session-override: true, app: /Users/ramakh02/Desktop/too..., appActivity: bbc.mobile.news.v3.app.TopL..., appPackage: bbc.mobile.news.uk.internal, appiumversion: 1.8.1, automationName: UiAutomator2, deviceName: bbcnews, ignoreUnimportantViews: true, platformName: android, udid: 04157df4ec26b91a}, deviceApiLevel: 24, deviceManufacturer: samsung, deviceModel: SM-G925F, deviceName: 04157df4ec26b91a, deviceScreenDensity: 640, deviceScreenSize: 1440x2560, deviceUDID: 04157df4ec26b91a, ignoreUnimportantViews: true, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, pixelRatio: 4, platform: LINUX, platformName: Android, platformVersion: 7.0, statBarHeight: 96, takesScreenshot: true, udid: 04157df4ec26b91a, viewportRect: {height: 2464, left: 0, top: 96, width: 1440}, warnings: {}, webStorageEnabled: false}
+Session ID: d0f1f319-ce21-4fa8-9d42-dac557b841f2
+*** Element info: {Using=id, value=bbc.mobile.news.uk.internal:id/item_image}
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:231)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:368)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
+	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:58)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.isElementPresent(CommonFunctionKotlin.kt:371)
+	at com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.testSelectedAddedTopics(BBCNewsRegressionTestKotlin.kt:434)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at org.testng.TestRunner.privateRun(TestRunner.java:648)
+	at org.testng.TestRunner.run(TestRunner.java:505)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+	at org.testng.TestNG.runSuites(TestNG.java:1049)
+	at org.testng.TestNG.run(TestNG.java:1017)
+	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.runTests(TestNGTestClassProcessor.java:139)
+	at org.gradle.api.internal.tasks.testing.testng.TestNGTestClassProcessor.stop(TestNGTestClassProcessor.java:89)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:131)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:155)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:137)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>39</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>177</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Monday, March 25, 2019, 01:17 PM (GMT)</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Monday, March 25, 2019, 01:27 PM (GMT)</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 10m 37s+559ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Device ID</td>
+								<td>04157df4ec26b91a</td>
+							</tr>
+							<tr>
+								<td>Device Name </td>
+								<td>Nexus7</td>
+							</tr>
+							<tr>
+								<td>Run Started on</td>
+								<td>Mon Mar 25 13:17:02 GMT 2019</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>HomePage</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>MyNews</td>
+							<td>11</td>
+							<td>1</td>
+							<td>0</td>
+							<td>
+									91.667%
+							</td>
+						</tr>
+						<tr>
+							<td>Menu</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>LiveVideo</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>Search</td>
+							<td>6</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>OnDemandVideo</td>
+							<td>4</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>RelatedStories/Topics</td>
+							<td>2</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>AppBackground</td>
+							<td>1</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>Popular</td>
+							<td>4</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+						<tr>
+							<td>Offline</td>
+							<td>3</td>
+							<td>0</td>
+							<td>0</td>
+							<td>
+									100%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 38,
+				failParent: 1,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 1,
+				
+				passChild: 155,
+				failChild: 3,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 19,
+				exceptionsChild: 3,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
