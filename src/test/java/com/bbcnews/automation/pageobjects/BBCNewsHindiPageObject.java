@@ -16,7 +16,7 @@ public class BBCNewsHindiPageObject {
     @AndroidFindBy(id="android:id/button2")
     public MobileElement nothanksbutton;
 
-    //@AndroidFindBy(xpath="//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='0']")
+
     @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='0']")
     public MobileElement mainitem_layout_name;
 

@@ -28,11 +28,11 @@ public class PopularPageObjects {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Watched' and @index='0']")
     public MobileElement popularmostwatched;
 
-    // @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.view.ViewGroup[@index='0']/android.widget.ImageView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/content_card_image') and @index='0']")
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/content_card_ordered_badge') and @text='1']")
     public MobileElement populararticle;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/image_item_caption")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/image_item_caption"),
@@ -41,7 +41,7 @@ public class PopularPageObjects {
     )
     public MobileElement image_item_caption;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/image_item_badge")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/image_item_badge"),
@@ -50,7 +50,7 @@ public class PopularPageObjects {
     )
     public MobileElement image_item_badge;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/headline_title")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/headline_title"),
@@ -59,7 +59,7 @@ public class PopularPageObjects {
     )
     public MobileElement headline_title;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/headline_author_name")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/headline_author_name"),
@@ -68,7 +68,7 @@ public class PopularPageObjects {
     )
     public MobileElement headline_author_name;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/headline_author_title")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/headline_author_title"),
@@ -77,7 +77,7 @@ public class PopularPageObjects {
     )
     public MobileElement headline_author_title;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/headline_info")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/headline_info"),
@@ -86,7 +86,7 @@ public class PopularPageObjects {
     )
     public MobileElement headline_info;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/headline_link")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/videoTitleHeadline"),
@@ -118,7 +118,7 @@ public class PopularPageObjects {
             };
 
 
-    //@AndroidFindBy(xpath = "//android.widget.FrameLayout[2]/android.view.ViewGroup[0]/android.widget.ImageView[@index='0']")
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='1' and @index='1']")
     public MobileElement mostRead_article;
 
@@ -128,7 +128,7 @@ public class PopularPageObjects {
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='3']/android.widget.TextView[@text='1' and @index='1']")
     public MobileElement mostwatched_article;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/videoTitleHeadline")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/videoTitleHeadline"),
@@ -137,7 +137,7 @@ public class PopularPageObjects {
     )
     public MobileElement videoTitleHeadline;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/videoTitleTimestamp")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/videoTitleTimestamp"),
@@ -146,7 +146,7 @@ public class PopularPageObjects {
     )
     public MobileElement videoTitleTimestamp;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/videoTitleTopic")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/videoTitleTopic"),
@@ -155,7 +155,7 @@ public class PopularPageObjects {
     )
     public MobileElement videoTitleTopic;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/videoSummary")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/videoSummary"),
@@ -188,14 +188,9 @@ public class PopularPageObjects {
 
 
 
-    //@AndroidFindBy(xpath="//android.support.v7.widget.RecyclerView[@index='0']/android.widget.FrameLayout[@index='3']/android.widget.RelativeLayout[@index='0']/android.widget.FrameLayout[@index=0]/android.widget.TextView[@text='2' and index='1']")
+
     @AndroidFindBy(xpath="//android.support.v7.widget.RecyclerView[@index='0']/android.widget.FrameLayout[@index='3']/android.widget.RelativeLayout[@index='0']/android.widget.FrameLayout[@index=0]/android.widget.TextView[@text='2' and index='1']")
     public MobileElement mostwatchedvideoarticle;
-
-
-
-
-
 
 
     @AndroidFindBy(xpath="//*[@content-desc='Media length' or @text='2']")
@@ -208,11 +203,11 @@ public class PopularPageObjects {
     @AndroidFindBy(xpath="//android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")
     public MobileElement item_layout_position;
 
-    //@AndroidFindBy(xpath="//android.widget.FrameLayout[@index='2']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='3']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
+
     @AndroidFindBy(xpath="//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
     public MobileElement item_layout_last_updated;
 
-    //@AndroidFindBy(xpath="//android.widget.FrameLayout[@index='2']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='3']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='2']")
+
     @AndroidFindBy(xpath="//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='2']")
     public MobileElement item_layout_home_section;
 

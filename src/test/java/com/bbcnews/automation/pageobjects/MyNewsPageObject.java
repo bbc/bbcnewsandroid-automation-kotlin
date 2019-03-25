@@ -12,7 +12,7 @@ public class MyNewsPageObject {
 
     }
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/title")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/title"),
@@ -24,7 +24,7 @@ public class MyNewsPageObject {
     @AndroidFindBy(accessibility = "OK, let's get started Button:")
     public MobileElement mynews_startButton;
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/summary")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/summary"),
@@ -33,7 +33,7 @@ public class MyNewsPageObject {
     )
     public MobileElement mynews_summary;
 
-    //@AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/icon")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/icon"),
@@ -60,7 +60,6 @@ public class MyNewsPageObject {
     @AndroidFindBy(id="com.android.packageinstaller:id/permission_deny_button")
     public MobileElement allowlocation_permission_deny;
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/request_permission")
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/request_permission"),
@@ -72,7 +71,6 @@ public class MyNewsPageObject {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit My News']")
     public MobileElement editMyTopics;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/emptyTextView")
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/emptyTextView"),
@@ -81,35 +79,7 @@ public class MyNewsPageObject {
     )
     public MobileElement mytopic_emptyview;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Wales']")
-    // @AndroidFindBy(accessibility = "Button: Add Wales to My News")
-    public MobileElement Walestopic;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Asia']")
-    //@AndroidFindBy(accessibility = "Button: Add Asia to My News")
-    public MobileElement Asiatopic;
-
-    @AndroidFindBy(accessibility = "Back")
-    public MobileElement backbutton;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='European Union']")
-    //@AndroidFindBy(accessibility = "Button: Add European Union to My News")
-    public MobileElement Europeantopic;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Mortgages']")
-    //@AndroidFindBy(accessibility = "Button: Add Mortgages to My News")
-    public MobileElement mortgagestopic;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='YouTube']")
-    //@AndroidFindBy(accessibility = "Button: Add YouTube to My News")
-    public MobileElement youtubetopic;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Education']")
-    //@AndroidFindBy(accessibility = "Button: Add Education to My News")
-    public MobileElement educationtopic;
-
-    @AndroidFindBy(accessibility = "Manage your topics")
-    public MobileElement mynews_managetopics;
 
     public  String mynewstitle_text="Add Topics to create your own personal news feed";
 
@@ -173,7 +143,8 @@ public class MyNewsPageObject {
     public MobileElement removetopiccymru;
 
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='2']")//android.widget.RelativeLayout[@index='0']/android.widget.ImageView[@index='0']")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='2']")
+    //android.widget.RelativeLayout[@index='0']/android.widget.ImageView[@index='0']")
     public MobileElement topicarticle;
 
 
@@ -201,7 +172,7 @@ public class MyNewsPageObject {
     @AndroidFindBy(xpath = "//android.support.v7.widget.RecyclerView[@index='3']/android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='3']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='2']")
     public MobileElement videoitem_layout_home_section;
 
-    //@AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/snackbar_text")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/snackbar_text"),
@@ -216,7 +187,7 @@ public class MyNewsPageObject {
     @AndroidFindBy(xpath="//android.widget.TextView[@tex'More']")
     public MobileElement morebutton;
 
-   // @AndroidFindBy(xpath="//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/item_layout_header_title') and @text='Wales']")
+
     @AndroidFindAll(
             {
                   @AndroidBy(xpath="//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/item_layout_header_title') and @text='Wales']"),
@@ -231,7 +202,7 @@ public class MyNewsPageObject {
                  @AndroidBy(id ="bbc.mobile.news.uk:id/showmore_title")
          }
  )
- //@AndroidFindBy(id ="bbc.mobile.news.uk.internal:id/showmore_title")
+
  public MobileElement showmore;
 
 

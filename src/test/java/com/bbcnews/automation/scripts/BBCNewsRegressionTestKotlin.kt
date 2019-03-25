@@ -717,7 +717,7 @@ class BBCNewsRegressionTestKotlin
             assertEquals("Articles related to \"egypt court imposes jail\"", basePageObject.searchheading.getText())//androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/heading")).getText());
             commonFunctionKotlin.elementDisplayed(androidDriver, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_title")))
             commonFunctionKotlin.elementDisplayed(androidDriver, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")))
-            val videotitle = vidoePageObject.videoarticlesearch.getText()
+            val videotitle = vidoePageObject.videoarticlesearch.text
             //val videolastupdated = androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")).text
 
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.videoarticlesearch, false)

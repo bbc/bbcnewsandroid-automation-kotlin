@@ -32,18 +32,6 @@ public class MyTopicsPageObject {
     @AndroidFindBy(accessibility = "Button: Add YouTube to My News")
     public MobileElement youtubetopic;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Allow location']")
-    public MobileElement allow_location;
-
-    @AndroidFindBy(id="com.android.packageinstaller:id/permission_allow_button")
-    public MobileElement allowlocation_premission;
-
-    @AndroidFindBy(id="com.android.packageinstaller:id/permission_deny_button")
-    public MobileElement allowlocation_permission_deny;
-
-    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/request_permission")
-    public MobileElement location_button;
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Africa']")
     public MobileElement Africatopic;
 
