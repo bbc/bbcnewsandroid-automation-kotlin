@@ -139,7 +139,7 @@ public class HomePageObject
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Check back later']")
     public MobileElement checkback_later;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/newstream_progress")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/newstream_progress"),
@@ -148,7 +148,7 @@ public class HomePageObject
     )
     public MobileElement newstream_progress;
 
-  //  @AndroidFindBy(xpath = "//android.widget.FrameLayout[1]/bbc.mobile.news.uk.internal:id/main_view[0]/android.widget.ImageView[@index='0']")
+
     @AndroidFindAll(
             {
                     @AndroidBy(xpath = "//android.widget.FrameLayout[1]/bbc.mobile.news.uk.internal:id/main_view[0]/android.widget.ImageView[@index='0']"),

@@ -22,7 +22,7 @@ public class VideoPageObjects {
     public MobileElement bbcnewsChannel;
 
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/content_card_title")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/content_card_title"),
@@ -31,7 +31,7 @@ public class VideoPageObjects {
     )
     public MobileElement livebbchannel;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/media_item_caption")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/media_item_caption"),
@@ -43,7 +43,7 @@ public class VideoPageObjects {
     @AndroidFindBy(accessibility = "Play")
     public MobileElement smp_placeholder_play_button;
 
-    //@AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/smp_pause_button")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_pause_button"),
@@ -67,7 +67,7 @@ public class VideoPageObjects {
     @AndroidFindBy(accessibility="exit fullscreen")
     public MobileElement smp_exit_fullscreen_button;
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/smp_seek_bar")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_seek_bar"),
@@ -77,7 +77,7 @@ public class VideoPageObjects {
     public MobileElement smp_seek_bar;
 
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/smp_playout_window_inset")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/smp_playout_window_inset"),
@@ -86,7 +86,7 @@ public class VideoPageObjects {
     )
     public MobileElement transportcontrol;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/smp_play_button")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/smp_play_button"),
@@ -112,7 +112,7 @@ public class VideoPageObjects {
     @AndroidFindBy(accessibility = "play video content")
     public MobileElement videooftheday_play;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/newstream_duration")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/newstream_duration"),
@@ -121,7 +121,7 @@ public class VideoPageObjects {
     )
     public  MobileElement videooftheday_duration;
 
-    //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/newstream_title")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/newstream_title"),
@@ -130,7 +130,7 @@ public class VideoPageObjects {
     )
     public  MobileElement videooftheday_title;
 
-   // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/newstream_summary")
+
     @AndroidFindAll(
             {
                     @AndroidBy(id="bbc.mobile.news.uk.internal:id/newstream_summary"),
@@ -203,7 +203,7 @@ public class VideoPageObjects {
     @AndroidFindBy(xpath="//android.widget.TextView[@text='Top Stories']")
     public MobileElement topstories;
 
-    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='2']")
+    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='3']")
     public MobileElement topstoriesvideo;
 
     @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='1']/android.view.ViewGroup[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='1']")
@@ -219,7 +219,6 @@ public class VideoPageObjects {
     public MobileElement topstoriesvideocontent_card_link;
 
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/smp_elapsed")
     @AndroidFindAll(
             {
                     @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_elapsed"),

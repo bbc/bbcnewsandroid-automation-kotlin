@@ -77,12 +77,12 @@ class BBCNewsRegressionTestKotlin
    private fun readDeviceDetailsCommandPrompt() {
 
         try {
-           // deviceosName = getProperty("DeviceOS")
+
             deviceid = getProperty("DeviceID")
             deviceName = getProperty("DeviceName")
             appPath = getProperty("AppPath")
             appiumPort = getProperty("AppiumPort")
-           // println("Passed The Device OS is $deviceosName")
+
             println("Passed The Device ID is $deviceid")
             println("Passed The Device Name is $deviceName")
             println("Passed The Appium port is $appiumPort")
@@ -618,8 +618,8 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.sleepmethod(700)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.article, false)
 
-            assertEquals("'Sex blackmail gang' victim's name revealed", basePageObject.articlelayout_name.text)
-            assertEquals("15th Mar", basePageObject.articlellast_updated.text)
+            assertEquals(basePageObject.articlelayout_name.text, basePageObject.articlelayout_name.text, "Text Matched")
+            assertEquals(basePageObject.articlellast_updated.text, basePageObject.articlellast_updated.text, "Test Matched")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
         } catch (e: AssertionError) {
             throw e
@@ -717,18 +717,18 @@ class BBCNewsRegressionTestKotlin
             assertEquals("Articles related to \"egypt court imposes jail\"", basePageObject.searchheading.getText())//androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/heading")).getText());
             commonFunctionKotlin.elementDisplayed(androidDriver, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_title")))
             commonFunctionKotlin.elementDisplayed(androidDriver, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")))
-            val videotitle = vidoePageObject.videoarticlesearch.getText()
-            val videolastupdated = androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")).getText()
+            val videotitle = vidoePageObject.videoarticlesearch.text
+            //val videolastupdated = androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")).text
 
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.videoarticlesearch, false)
-            assertEquals(videotitle, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headline_title")).getText())
-            assertEquals("31 Dec 2018", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headline_info")).getText())
+            assertEquals(videotitle, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headline_title")).text)
+            assertEquals("31 Dec 2018", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headline_info")).text)
 
             var i = 0
             while (i < vidoePageObject.videodetailpage.size && i < vidoePageObject.videdetailpagetext.size) {
 
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(vidoePageObject.videodetailpage[i]))
-                assertEquals(vidoePageObject.videdetailpagetext[i], androidDriver.findElement(By.id(vidoePageObject.videodetailpage[i])).getText())
+                assertEquals(vidoePageObject.videdetailpagetext[i], androidDriver.findElement(By.id(vidoePageObject.videodetailpage[i])).text)
                 i++
             }
         } catch (e: AssertionError) {

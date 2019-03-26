@@ -56,7 +56,7 @@ open class CommonFunctionKotlin {
 
 
     var config_file = "extent-config.xml"
-    var workingDirectory = System.getProperty("user.dir")
+    open var workingDirectory = System.getProperty("user.dir")
     private val curDate = Date()
     private val format = SimpleDateFormat("yyyy-MM-dd")
     private val DateToStr = format.format(curDate)
@@ -146,7 +146,7 @@ open class CommonFunctionKotlin {
         try {
             waitForScreenToLoad(appiumDriver, element, 3)
             element.click()
-            Thread.sleep(2000)
+            Thread.sleep(800)
             if (takescreenshot) {
                 val screenshotpath = getScreenshot(appiumDriver, element.text)
                 println("Taken Screenshotpath is $screenshotpath")
@@ -157,6 +157,13 @@ open class CommonFunctionKotlin {
             }
         } catch (e: Exception) {
         }
+
+    }
+
+
+    fun appbackground(androiddriver: AndroidDriver<MobileElement>, duration:Long)
+    {
+        androiddriver.runAppInBackground(Duration.ofMillis(duration))
 
     }
 

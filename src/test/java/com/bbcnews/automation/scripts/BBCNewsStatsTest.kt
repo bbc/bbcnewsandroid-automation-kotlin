@@ -100,13 +100,9 @@ class BBCNewsStatsTest {
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
             capabilities.setCapability("appiumversion", "1.8.1")
-            capabilities.setCapability("app", appPath) //"/Users/ramakh02/Desktop/tools/APK/BBCNews-5.5.0.35.apk");
-            //it's not mandatory to pass OS version of the device
-            // capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,Deviceos_Name);
+            capabilities.setCapability("app", appPath)
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            // capabilities.setCapability(MobileCapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, true);
-            // capabilities.setCapability("autoAcceptAlerts", true);
             capabilities.setCapability("--session-override", true)
             capabilities.setCapability("ignoreUnimportantViews",true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
@@ -182,9 +178,7 @@ class BBCNewsStatsTest {
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
         try {
-            //  androidDriver.runAppInBackground(Duration.ofSeconds(15));
 
-            //  androidDriver.currentActivity();
             commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke")
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topstories, false)
             commonFunctionKotlin.tapButton(androidDriver,basePageObjectModel.mynews, false)
