@@ -1,0 +1,12 @@
+Results
+Screenshots/
+ScreenshotRef/
+test-output
+.idea/
+.apk
+bin/
+build/
+/*/build/
+.DS_STORE
+/*/*.png
+.gradle

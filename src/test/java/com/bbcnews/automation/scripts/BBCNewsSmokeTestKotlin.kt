@@ -118,13 +118,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
             capabilities.setCapability("appiumversion", "1.8.1")
-            capabilities.setCapability("app", appPath) //"/Users/ramakh02/Desktop/tools/APK/BBCNews-5.5.0.35.apk");
-            //it's not mandatory to pass OS version of the device
-            // capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION,Deviceos_Name);
+            capabilities.setCapability("app", appPath)
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            // capabilities.setCapability(MobileCapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, true);
-            // capabilities.setCapability("autoAcceptAlerts", true);
             capabilities.setCapability("--session-override", true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
         } catch (e: Exception) {
@@ -200,6 +196,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
     }
 
+    /**
+     * un-comment if you want to check the screenshot compare tests
+     */
 
 //    @Test(priority = 2, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
 //    @Throws(IOException::class)
@@ -226,7 +225,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
         try {
-            appbackground(androidDriver,15)
+            androidDriver.runAppInBackground(Duration.ofSeconds(30))
             startTest("HomePage", "Checking the HomePage", "Smoke")
             tapButton(androidDriver, basePageObjectModel.topstories, false)
             Assert.assertTrue(basePageObjectModel.topstories.isSelected)
@@ -561,7 +560,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
     }
 
-//    @Test(priority = 14, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
+    /**
+     * un-comment if you want to check the screenshot compare tests
+     */
+
+//    @Test(priority = 16, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
 //    @Throws(IOException::class)
 //    fun testtakescreenshotafter()
 //    {
@@ -580,8 +583,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 //
 //
 
+    /**
+     * un-comment if you want to check the screenshot compare tests
+     */
 
-//    @Test(priority = 15, description = "Compares the images")
+//    @Test(priority = 17, description = "Compares the images")
 //    @Throws(IOException::class)
 //    fun testcomparetheimages()
 //    {
@@ -590,6 +596,10 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 //
 //    }
 
+
+    /**
+     * Adding the result based on Test execution status. If failed, then a Screenshot will be attached to the reports.
+     */
     @AfterMethod
     fun getResult(result: ITestResult)
     {

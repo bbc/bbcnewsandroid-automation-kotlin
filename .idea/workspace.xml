@@ -2,14 +2,98 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e64751c-338a-419e-9a70-68126479bad2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BBCNewsHindiPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BBCNewsHindiPageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/HomePageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/HomePageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/Regression.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/SmokeTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/018e6625-a0aa-4664-b494-040fafa46f01-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/0aa6baad-cc9a-4a6d-950a-b891ee1a960a-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/131f4272-fa62-4676-abf6-593c4064b40b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/183cdac9-383f-48ba-8217-82d21f207584-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/1c0fdfb4-7751-4b41-a087-dfa3a59b3382-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/1cad6f2c-f53b-4135-979c-ad1e3991936e-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/2037d0aa-47bb-4c59-a544-844f653f1e48-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/28cefc5e-f824-49a8-8d2c-6c4aa0728872-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/42dfedc8-5ae3-40c9-8ea4-c15fa295f4ad-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/4ec29021-e825-4371-9f5b-19cb6c5529ba-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/50a7c3e8-f111-401f-be23-c43235db168c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/50e060ce-df8d-4460-bc1c-49b6955627d1-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/52362067-498b-4234-95ab-4f114c1e5b9d-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/5903cfdc-9c39-462b-aced-a20cbae5c8be-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/5fd388bd-b614-473f-b489-1882ccc92410-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/60f8d698-f537-4524-af15-ff63368d3768-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/6bbcb87d-d277-4612-b3d3-cbcfd3c7f1d0-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/6f77d25a-4f0f-42c3-ada4-70242de865e1-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/71a276d9-d18d-42d1-a79a-93ad6093dc86-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/7b4a8cd0-2865-4589-81c6-7bd7b030cb2a-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/86a1717a-2105-46f4-8dfc-67e58b1a63dc-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/9568290f-32c2-4cfe-b6ac-5f8c188a6bc4-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/9b7aed4d-7745-4fb5-ba99-259ee83e261e-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/a5aa246b-4e32-4dbb-a8b4-6aa51970bc1b-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/a6f000ec-a3b2-4f06-931f-6be38ab5c1fb-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/aa2925ff-0999-4086-9fa4-fb0c740aa705-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/af6a6fe7-6835-4563-8641-526021a59b27-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/b3281208-3ed7-4de0-8050-aa642560d5ce-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/ce22a261-160d-433c-9792-2dcab385c2cb-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/ce665617-0ca1-41b3-b439-c7369cfe5345-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/dbc4a974-c6f2-4439-83ad-345659c43abe-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/e3914b32-a8bb-422d-9fa4-971f25b8abac-result.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/allure-results/fbce8b96-d9a7-4554-860d-419d3a5eba8c-container.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bbcnews/automation/pageobjects/BasePageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bbcnews/automation/pageobjects/BasePageObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bbcnews/automation/pageobjects/MyNewsPageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bbcnews/automation/pageobjects/MyNewsPageObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/bbcnews/automation/pageobjects/MyTopicsPageObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/com/bbcnews/automation/pageobjects/MyTopicsPageObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsStatsTest$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsStatsTest$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsStatsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsStatsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab.values" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab.values" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/java-sources-proto-map.tab.values.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/com.bbcnews.automation.scripts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/test/jar_extract_7120187040759775540_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsStatsTest$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsStatsTest$Companion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsStatsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsStatsTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsStatsTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsStatsTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/BBCNewsSuite/BBCNewsRegressionTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/BBCNewsSuite/testng-failed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/emailable-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/emailable-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-com.bbcnews.automation.scripts.BBCNewsRegressionTestKotlin.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/junitreports/TEST-com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-com.bbcnews.automation.scripts.ExampleDemo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/classes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods-alphabetical.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods-alphabetical.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods.html" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/old/BBCNewsSuite/methods.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/testng-failed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/testng-results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/testng-results.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -30,44 +114,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-971">
-              <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="345" column="37" selection-start-line="345" selection-start-column="33" selection-end-line="345" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/HomePageObject.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2050">
-              <caret line="150" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="197">
+              <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/CommonPageObjects.kt">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsReleaseBuildRegressionTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="-266">
+              <caret line="943" column="74" selection-start-line="943" selection-start-column="74" selection-end-line="943" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2565">
-              <caret line="174" column="4" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BBCNewsHindiPageObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2760">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <caret line="174" selection-start-line="174" selection-end-line="174" />
             </state>
           </provider>
         </entry>
@@ -75,17 +150,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="465">
               <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="420" selection-start-line="420" selection-end-line="420" />
+            <state relative-caret-position="90">
+              <caret line="353" column="29" lean-forward="true" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsStatsTest.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2325">
+              <caret line="180" selection-start-line="180" selection-end-line="180" />
             </state>
           </provider>
         </entry>
@@ -93,8 +177,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1035">
-              <caret line="132" selection-start-line="132" selection-end-line="132" />
+            <state relative-caret-position="225">
+              <caret line="200" column="6" lean-forward="true" selection-start-line="200" selection-start-column="6" selection-end-line="200" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -102,7 +186,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/StatsTestData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-101">
+            <state relative-caret-position="60">
               <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
             </state>
           </provider>
@@ -111,7 +195,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="3090">
               <caret line="209" selection-start-line="209" selection-end-line="209" />
             </state>
           </provider>
@@ -128,6 +212,9 @@
       <find>commonFunctionKotlin.</find>
       <find>testTopStoriesvideo</find>
       <find>testSelectedAddedTopics</find>
+      <find>Manch</find>
+      <find>testAppbackground</find>
+      <find>testcheckMostWatchedArticle</find>
       <find>Manc</find>
     </findStrings>
   </component>
@@ -138,15 +225,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt" />
-        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/HomePageObject.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BBCNewsHindiPageObject.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsStatsTest.kt" />
+        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" />
+        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" />
       </list>
     </option>
   </component>
@@ -200,65 +288,19 @@
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="automation" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBCNewsAndroidApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBCNewsAndroidAutomationKotlin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
-              <item name="commonfunctions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBCNewsAndroidApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBCNewsAndroidAutomationKotlin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
-              <item name="pageobjects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBCNewsAndroidApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBCNewsAndroidAutomationKotlin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBCNewsAndroidApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBCNewsAndroidAutomationKotlin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
-              <item name="testutils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBCNewsAndroidApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBCNewsAndroidAutomationKotlin" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="automation" type="462c0819:PsiDirectoryNode" />
-              <item name="testutils" type="462c0819:PsiDirectoryNode" />
-              <item name="Listeners" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$ANDROID_HOME$" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553529540544" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553534324968" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -291,7 +333,7 @@
     <frame x="0" y="23" width="1280" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27382874" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27786753" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -345,41 +387,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="148" column="26" selection-start-line="148" selection-start-column="26" selection-end-line="148" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsHindiSmokeTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1157">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="719" column="68" selection-start-line="719" selection-start-column="68" selection-end-line="719" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsReleaseBuildRegressionTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="30" column="6" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-971">
-          <caret line="54" column="13" lean-forward="true" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/HomePageObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2050">
@@ -408,38 +415,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsHindiSmokeTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1035">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/StatsTestData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-101">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="209" selection-start-line="209" selection-end-line="209" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+        <state relative-caret-position="60">
+          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2565">
-          <caret line="174" column="4" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="4" />
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyTopicsPageObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsStatsTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2325">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/StatsTestData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3090">
+          <caret line="209" selection-start-line="209" selection-end-line="209" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsReleaseBuildRegressionTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-266">
+          <caret line="943" column="74" selection-start-line="943" selection-start-column="74" selection-end-line="943" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="200" column="6" lean-forward="true" selection-start-line="200" selection-start-column="6" selection-end-line="200" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="345" column="37" selection-start-line="345" selection-start-column="33" selection-end-line="345" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="353" column="29" lean-forward="true" selection-start-line="353" selection-start-column="29" selection-end-line="353" selection-end-column="29" />
         </state>
       </provider>
     </entry>
