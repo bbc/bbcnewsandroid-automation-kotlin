@@ -47,7 +47,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
 
     override var workingDirectory = System.getProperty("user.dir")
-    private val screenshotpath = "$workingDirectory/Screenshots/"
+    private val screenshotpath = "./Screenshots/"
+    private val reportPath = "./Reports/"
 
     @BeforeTest
     fun runTest() {
@@ -153,6 +154,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
 
             testutility.emptyFolder(screenshotpath)
+            testutility.emptyFolder(reportPath)
 
             // startReport("SmokeTest");
             createrReportHive("SmokeTest", deviceName.toString(), deviceid.toString())

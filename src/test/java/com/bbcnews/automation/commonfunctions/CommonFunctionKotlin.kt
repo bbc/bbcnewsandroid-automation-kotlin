@@ -454,7 +454,7 @@ open class CommonFunctionKotlin {
         val reportfolder = extentResultFolder(absoluteFilePath)
         println("reportfolder is $reportfolder")
 
-        val subDirectory = "Results"
+        val subDirectory = "Reports"
         val resultsPaths: String
         resultsPaths = extentResultFolder(subDirectory).toString()
         val file = File(resultsPaths)

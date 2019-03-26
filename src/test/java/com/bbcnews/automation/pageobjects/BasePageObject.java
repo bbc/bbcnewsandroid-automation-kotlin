@@ -64,7 +64,7 @@ public class BasePageObject {
 
     public String[] topicspageelemnets =
             {
-                    "bbc.mobile.news.uk.internal:id/item_image",
+                    //"bbc.mobile.news.uk.internal:id/item_image",
                     "bbc.mobile.news.uk.internal:id/item_layout_name",
                     "bbc.mobile.news.uk.internal:id/item_layout_last_updated",
                     "bbc.mobile.news.uk.internal:id/item_layout_home_section"
