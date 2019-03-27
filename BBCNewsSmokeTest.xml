@@ -5,6 +5,11 @@
         <listener class-name="com.bbcnews.automation.testutils.Listeners.SmokeTestListeners" />
     </listeners>
     <test name="BBCNewsRegressionTest" enabled="true">
+        <groups>
+            <run>
+                <exclude name="ignoreTest"></exclude>
+            </run>
+        </groups>
         <classes>
             <class name="com.bbcnews.automation.scripts.BBCNewsSmokeTestKotlin" />
         </classes>

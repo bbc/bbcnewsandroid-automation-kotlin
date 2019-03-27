@@ -28,13 +28,11 @@ import java.time.Duration
 class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 {
     private var capabilities = DesiredCapabilities()
-    private var deviceOsName: String? = null
     private var deviceid: String? = null
     private  var deviceName: String? = null
     private  var appPath: String? = null
     private var appiumPort: String? = null
     private  lateinit var file: File
-    private var commonFunctionKotlin = CommonFunctionKotlin()
     private var testutility = Testutility()
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
@@ -42,7 +40,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     private lateinit var vidoePageObject: VideoPageObjects
     private lateinit var popularPageObject: PopularPageObjects
     private lateinit var basePageObjectModel: BasePageObject
-    private lateinit var commonpageobjects: CommonPageObjects
     private lateinit var myTopicsPageObject: MyTopicsPageObject
 
 
@@ -108,6 +105,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * setup the desired capabilities based on the parameter set
      */
 
+
     private fun setUP() {
         try {
             //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
@@ -156,9 +154,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             testutility.emptyFolder(screenshotpath)
             testutility.emptyFolder(reportPath)
 
-            // startReport("SmokeTest");
+
             createrReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
-            //createrReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
 
             androidDriver.context("NATIVE_APP")
             file = File(screenshotpath)
@@ -183,6 +180,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
         try {
 
             tapButton(androidDriver, basePageObjectModel.okbutton, false)
+
             tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
             try {
                 if (androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed) {
@@ -198,33 +196,33 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
     }
 
+
     /**
-     * un-comment if you want to check the screenshot compare tests
+     * This tests will be ignored from execution as we don't want to run this screen compare test
+     * to run this tests remove the groups = ["ignoreTest"] from @test
      */
 
-//    @Test(priority = 2, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
-//    @Throws(IOException::class)
-//    fun testtakeScreenshotsofPages() {
-//        tapButton(androidDriver, basePageObjectModel.topstories, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "topstories")
-//        tapButton(androidDriver, basePageObjectModel.mynews, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "mynews")
-//        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "popular")
-//        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "video")
-//        tapButton(androidDriver, basePageObjectModel.menubutton, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "menu")
-//        navigateBack(androidDriver)
-//    }
+    @Test(groups = ["ignoreTest"], priority = 2, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
+    @Throws(IOException::class)
+    fun testtakeScreenshotsofPages() {
+        tapButton(androidDriver, basePageObjectModel.topstories, false)
+        testutility.AshotScreenshot(androidDriver, "Before", "topstories")
+        tapButton(androidDriver, basePageObjectModel.mynews, false)
+        testutility.AshotScreenshot(androidDriver, "Before", "mynews")
+        tapButton(androidDriver, basePageObjectModel.popular, false)
+        testutility.AshotScreenshot(androidDriver, "Before", "popular")
+        tapButton(androidDriver, basePageObjectModel.video, false)
+        testutility.AshotScreenshot(androidDriver, "Before", "video")
+        tapButton(androidDriver, basePageObjectModel.menubutton, false)
+        testutility.AshotScreenshot(androidDriver, "Before", "menu")
+        navigateBack(androidDriver)
+    }
 
     /**
      * after app launches, checks the top stories page and assertion
      */
 
-    @Test(priority = 2, description = "Check the links on the Home page after app launched")
-    @Story("Home")
-    @Severity(SeverityLevel.CRITICAL)
+    @Test(priority = 4, description = "Check the links on the Home page after app launched")
     fun testCheckHomePage() {
         try {
             androidDriver.runAppInBackground(Duration.ofSeconds(30))
@@ -246,17 +244,42 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     }
 
     /**
+
+     * This tests will be ignored from execution as we don't want to run this screen compare test
+     * to run this tests remove the groups = ["ignoreTest"] from @test
+     * Ignoring this tests as VOD isn't displayed
+     */
+
+    @Test(groups = ["ignoreTest" ], priority = 5, description = "Test to check Video of the day displayed and swipe through all the videos")
+    @Throws(Exception::class)
+    fun testVideoofthedayDisplayed() {
+        try {
+            startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
+            sleepmethod(1000)
+            scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
+            elementDisplayed(androidDriver, homePageObject.watchvideo)
+            elementDisplayed(androidDriver, homePageObject.promocounter)
+            Assert.assertEquals("WATCH", homePageObject.watchvideo.text)
+            Assert.assertEquals("7", homePageObject.promocounter.text)
+            tapButton(androidDriver, homePageObject.videooftheday_button, false)
+            navigateBack(androidDriver)
+        } catch (e: AssertionError) {
+            throw e
+        }
+
+    }
+
+
+    /**
      * checks the mynews page by allowing the location services
      */
 
-    @Test(priority = 3, description = "Test to check the Mynews page")
-    @Story("MyNews")
-    @Severity(SeverityLevel.CRITICAL)
+    @Test(priority = 6, description = "Test to check the Mynews page")
     @Throws(Exception::class)
     fun testAllowLocation() {
         try {
             startTest("MyNews", "Checking the MyNews", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.mynews, false)//,file.getAbsolutePath());
+            tapButton(androidDriver, basePageObjectModel.mynews, false)
             tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             tapButton(androidDriver, myNewsPageObject.allow_location, false)
             tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
@@ -272,14 +295,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     /**
      * checks the popular page most read
      */
-    @Test(priority = 4, description = "Test to check the  popular page")
-    @Story("Popular")
-    @Severity(SeverityLevel.CRITICAL)
+    @Test(priority = 7, description = "Test to check the  popular page")
     @Throws(Exception::class)
     fun testPopularPage() {
         try {
             startTest("PopularPage", "Checking the Popular", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
+            tapButton(androidDriver, basePageObjectModel.popular, false)
             Assert.assertTrue(basePageObjectModel.popular.isSelected)
             elementDisplayed(androidDriver, popularPageObject.mostread)
             Assert.assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
@@ -293,7 +314,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * checks the popular most watched
      */
 
-    @Test(priority = 5, description = "checking that most watched displayed in popular page")
+    @Test(priority = 8, description = "checking that most watched displayed in popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
     fun testcheckMostWatched() {
@@ -313,14 +334,14 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      *
      */
 
-    @Test(priority = 6, description = "Test to check the Mynews page")
+    @Test(priority = 9, description = "Test to check the Mynews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class)
     fun testMyNewsPage() {
         try {
             startTest("MyNews", "Checking the MyNews", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.mynews, false)//,file.getAbsolutePath());
+            tapButton(androidDriver, basePageObjectModel.mynews, false)
             Assert.assertTrue(basePageObjectModel.mynews.isSelected)
             elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
             elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
@@ -336,7 +357,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     /**
      * Adding the topics to MyNews
      */
-    @Test(priority = 7, description = "Test to check the adding the topics to MyNews page")
+    @Test(priority = 10, description = "Test to check the adding the topics to MyNews page")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class)
     fun testAddingTopicstoMyNewsPage() {
@@ -345,6 +366,10 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
+            /**
+             * When running locally. please comment out below two lines of code. since when you run locally
+             * the based on Location. it will be London and to run it on Hive. The location will be Manchester
+             */
             Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
             elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
@@ -367,7 +392,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * Checked the selected topics are getting displayed under Added Topics
      */
 
-    @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
+    @Test(priority = 11, description = "Test to check whether selected topics displayed under MyTopics page")
     @Story("MyTopics")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyTopics() {
@@ -385,7 +410,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * Checks for Added topics displayed under My News page
      */
 
-    @Test(priority = 9, description = "Test to check whether added topics displayed under MyNews page")
+    @Test(priority = 12, description = "Test to check whether added topics displayed under MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyNews() {
@@ -404,7 +429,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * removing one of the topics(England) from MyNews-Added Topics
      */
 
-    @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
+    @Test(priority = 13, description = "Test To remove topics which are displayed under MyNews")
     @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
         try {
@@ -432,7 +457,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
 
 
-    @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
+    @Test(priority = 14, description = "Test to check the Articles displayed under topics of MyNews page")
     @Throws(Exception::class)
     fun testCheckArtcilesofTopics() {
         try {
@@ -470,7 +495,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     /**
      * Open the Menu items and assert whether links are displayed properly
      */
-    @Test(priority = 12, description = "Test to Check the Menu Options ")
+    @Test(priority = 15, description = "Test to Check the Menu Options ")
     @Story("Menu")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
@@ -488,7 +513,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * check the live video on video page
      */
 
-    @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
+    @Test(priority = 16, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
@@ -516,7 +541,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     /**
      * check the live video  seeking
      */
-    @Test(priority = 14, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
+    @Test(priority = 17, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(AssertionError::class, Exception::class)
@@ -543,7 +568,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     /**
      * check to search for a topic
      */
-    @Test(priority = 15, description = "Test to check for search results")
+    @Test(priority = 18, description = "Test to check for search results")
     fun testSearchStories() {
         try {
             startTest("Search", "Checking for Search Topics", "Smoke")
@@ -563,40 +588,42 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     }
 
     /**
-     * un-comment if you want to check the screenshot compare tests
+     * This tests will be ignored from execution as we don't want to run this screen compare test
+     * to run this tests remove the groups = ["ignoreTest"] from @test
      */
 
-//    @Test(priority = 16, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
-//    @Throws(IOException::class)
-//    fun testtakescreenshotafter()
-//    {
-//        tapButton(androidDriver, basePageObjectModel.topstories, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "topstories")
-//        tapButton(androidDriver, basePageObjectModel.mynews, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "mynews")
-//        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "popular")
-//        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "video")
-//        tapButton(androidDriver, basePageObjectModel.menubutton, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "menu")
-//        navigateBack(androidDriver)
-//    }
-//
-//
+    @Test(groups = ["ignoreTest"], priority = 19, description = "compares the screenshot of the topstories, mynews, popular,video and menu page")
+    @Throws(IOException::class)
+    fun testtakescreenshotafter()
+    {
+        tapButton(androidDriver, basePageObjectModel.topstories, false)
+        testutility.AshotScreenshot(androidDriver, "After", "topstories")
+        tapButton(androidDriver, basePageObjectModel.mynews, false)
+        testutility.AshotScreenshot(androidDriver, "After", "mynews")
+        tapButton(androidDriver, basePageObjectModel.popular, false)
+        testutility.AshotScreenshot(androidDriver, "After", "popular")
+        tapButton(androidDriver, basePageObjectModel.video, false)
+        testutility.AshotScreenshot(androidDriver, "After", "video")
+        tapButton(androidDriver, basePageObjectModel.menubutton, false)
+        testutility.AshotScreenshot(androidDriver, "After", "menu")
+        navigateBack(androidDriver)
+    }
+
+
 
     /**
-     * un-comment if you want to check the screenshot compare tests
+     * This tests will be ignored from execution as we don't want to run this screen compare test
+     * to run this tests remove the groups = ["ignoreTest"] from @test
      */
 
-//    @Test(priority = 17, description = "Compares the images")
-//    @Throws(IOException::class)
-//    fun testcomparetheimages()
-//    {
-//        startTest("CompraeImage", "Compares the HomePage", "Smoke")
-//         testutility.comparetwoimages()
-//
-//    }
+    @Test(groups = ["ignoreTest"],priority = 20, description = "Compares the images")
+    @Throws(IOException::class)
+    fun testcomparetheimages()
+    {
+        startTest("CompraeImage", "Compares the HomePage", "Smoke")
+         testutility.comparetwoimages()
+
+    }
 
 
     /**
