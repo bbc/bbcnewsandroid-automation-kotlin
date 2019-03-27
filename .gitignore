@@ -9,3 +9,5 @@ build/
 .DS_STORE
 /*/*.png
 .gradle
+misc.xml
+workspace.xml
