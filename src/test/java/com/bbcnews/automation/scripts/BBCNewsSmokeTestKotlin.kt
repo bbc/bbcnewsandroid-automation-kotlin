@@ -106,8 +106,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      *
      * setup the desired capabilities based on the parameter set
      */
-
-
+    
     private fun setUP() {
         try {
             //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
@@ -271,7 +270,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
     }
 
-
     /**
      * checks the mynews page by allowing the location services
      */
@@ -291,8 +289,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
         }
 
     }
-
-
 
     /**
      * checks the popular page most read
