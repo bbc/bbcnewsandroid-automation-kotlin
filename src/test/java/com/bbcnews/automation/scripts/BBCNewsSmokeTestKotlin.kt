@@ -35,7 +35,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     private  lateinit var file: File
     private var testutility = Testutility()
     private lateinit var homePageObject: HomePageObject
+
     private lateinit var androidDriver: AndroidDriver<MobileElement>
+
     private lateinit var myNewsPageObject: MyNewsPageObject
     private lateinit var vidoePageObject: VideoPageObjects
     private lateinit var popularPageObject: PopularPageObjects
