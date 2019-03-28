@@ -25,29 +25,25 @@ import java.io.IOException
 import java.net.URL
 import java.time.Duration
 
-class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
-{
+class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
+
     private var capabilities = DesiredCapabilities()
-    private var deviceOsName: String? = null
     private var deviceid: String? = null
-    private  var deviceName: String? = null
-    private  var appPath: String? = null
+    private var deviceName: String? = null
+    private var appPath: String? = null
     private var appiumPort: String? = null
-    private  lateinit var file: File
-    private var commonFunctionKotlin = CommonFunctionKotlin()
+    private lateinit var file: File
     private var testutility = Testutility()
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
     private lateinit var myNewsPageObject: MyNewsPageObject
-    private lateinit var vidoePageObject: VideoPageObjects
+    private lateinit var videoPageObject: VideoPageObjects
     private lateinit var popularPageObject: PopularPageObjects
     private lateinit var basePageObjectModel: BasePageObject
-    private lateinit var commonpageobjects: CommonPageObjects
     private lateinit var myTopicsPageObject: MyTopicsPageObject
 
-
-    override var workingDirectory = System.getProperty("user.dir")
-    private val screenshotpath = "$workingDirectory/Screenshots/"
+    override var workingDirectory: String = System.getProperty("user.dir")
+    private val screenshotPath = "$workingDirectory/Screenshots/"
 
     @BeforeTest
     fun runTest() {
@@ -142,8 +138,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             basePageObjectModel = BasePageObject()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
 
-            vidoePageObject = VideoPageObjects()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), vidoePageObject)
+            videoPageObject = VideoPageObjects()
+            PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
 
             popularPageObject = PopularPageObjects()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
@@ -152,18 +148,16 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
 
 
-            testutility.emptyFolder(screenshotpath)
+            testutility.emptyFolder(screenshotPath)
 
             // startReport("SmokeTest");
             createrReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
             //createrReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
 
             androidDriver.context("NATIVE_APP")
-            file = File(screenshotpath)
+            file = File(screenshotPath)
             val screenshot = file.absolutePath
             println("The ScreenShot Path is $screenshot")
-
-
 
 
         } catch (e: NullPointerException) {
@@ -244,7 +238,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     }
 
     /**
-     * checks the mynews page by allowing the location services
+     * checks the myNews page by allowing the location services
      */
 
     @Test(priority = 3, description = "Test to check the Mynews page")
@@ -264,7 +258,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
         }
 
     }
-
 
 
     /**
@@ -337,7 +330,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     @Test(priority = 7, description = "Test to check the adding the topics to MyNews page")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class)
-    fun testAddingTopicstoMyNewsPage() {
+    fun testAddingTopicsToMyNewsPage() {
         try {
             startTest("MyNews", "Adding topics to MyNews", "Smoke")
             tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
@@ -432,7 +425,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
     @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
     @Throws(Exception::class)
-    fun testCheckArtcilesofTopics() {
+    fun testCheckArticlesOfTopics() {
         try {
             startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
             val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
@@ -454,10 +447,10 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             tapButton(androidDriver, myNewsPageObject.showmore, false)
 
             scrolltoElement(androidDriver, myNewsPageObject.showless)
-            System.out.println("The text of  are:- "+myNewsPageObject.showless.text)
+            System.out.println("The text of  are:- " + myNewsPageObject.showless.text)
             tapButton(androidDriver, myNewsPageObject.showless, false)
             elementDisplayed(androidDriver, myNewsPageObject.showmore)
-            System.out.println("The text of  are:- "+myNewsPageObject.showmore.text)
+            System.out.println("The text of  are:- " + myNewsPageObject.showmore.text)
 
 
         } catch (e: Exception) {
@@ -495,9 +488,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
         tapButton(androidDriver, basePageObjectModel.video, false)
         // AshotScreenshot(androidDriver,"After","VideoPage");
         Assert.assertTrue(basePageObjectModel.video.isSelected)
-        // elementDisplayed(androidDriver, vidoePageObject.livebbchannel);
-        tapButton(androidDriver, vidoePageObject.bbcnewsChannel, false)//,file.getAbsolutePath());
-        elementDisplayed(androidDriver, vidoePageObject.live_media_item_caption)
+        // elementDisplayed(androidDriver, videoPageObject.livebbchannel);
+        tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)//,file.getAbsolutePath());
+        elementDisplayed(androidDriver, videoPageObject.live_media_item_caption)
         try {
             if (!basePageObjectModel.sharestory.isDisplayed) {
                 verticalSwipe(androidDriver, "Up")
@@ -506,7 +499,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
         } catch (e: NoSuchElementException) {
         }
 
-        tapButton(androidDriver, vidoePageObject.smp_placeholder_play_button, false)
+        tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
 
     }
 
@@ -522,15 +515,15 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
 
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
 
-        tapButton(androidDriver, vidoePageObject.transportcontrol, false)
-        tapButton(androidDriver, vidoePageObject.transportcontrol, false)
-        elementDisplayed(androidDriver, vidoePageObject.smpliveicon)
-        elementDisplayed(androidDriver, vidoePageObject.smp_volume_button)
-        elementDisplayed(androidDriver, vidoePageObject.smp_seek_bar)
-        tapButton(androidDriver, vidoePageObject.bbcnewsChannel, false)
-        tapButton(androidDriver, vidoePageObject.smp_placeholder_play_button, false)
+        tapButton(androidDriver, videoPageObject.transportcontrol, false)
+        tapButton(androidDriver, videoPageObject.transportcontrol, false)
+        elementDisplayed(androidDriver, videoPageObject.smpliveicon)
+        elementDisplayed(androidDriver, videoPageObject.smp_volume_button)
+        elementDisplayed(androidDriver, videoPageObject.smp_seek_bar)
+        tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
+        tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
         try {
-            videoplaybackseeking(androidDriver, vidoePageObject.smp_seek_bar, 0.30)
+            videoplaybackseeking(androidDriver, videoPageObject.smp_seek_bar, 0.30)
             isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_live_icon"))
         } catch (e: Exception) {
         }
@@ -546,7 +539,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
         try {
             startTest("Search", "Checking for Search Topics", "Smoke")
             tapButton(androidDriver, basePageObjectModel.searchbutton, false)
-            enterText( basePageObjectModel.searchfield, basePageObjectModel.searchtext)
+            enterText(basePageObjectModel.searchfield, basePageObjectModel.searchtext)
             sleepmethod(1000)
             Assert.assertEquals(basePageObjectModel.searchtext, basePageObjectModel.searchkeyword.text, "Text Matched")
             tapButton(androidDriver, basePageObjectModel.searchkeyword, false)
@@ -601,8 +594,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * Adding the result based on Test execution status. If failed, then a Screenshot will be attached to the reports.
      */
     @AfterMethod
-    fun getResult(result: ITestResult)
-    {
+    fun getResult(result: ITestResult) {
         try {
             getTestResult(androidDriver, result)
         } catch (e: IOException) {
