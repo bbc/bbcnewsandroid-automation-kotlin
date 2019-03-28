@@ -9,6 +9,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter
 import com.aventstack.extentreports.reporter.configuration.ChartLocation
 import com.aventstack.extentreports.reporter.configuration.Theme
+import com.bbcnews.automation.commonfunctions.FilePaths.resultsFilePath
 import com.bbcnews.automation.testutils.PlatformTouchAction
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
@@ -43,14 +44,9 @@ import javax.imageio.ImageIO
 
 open class CommonFunctionKotlin {
 
-
     private lateinit var extent: ExtentReports
     private lateinit var htmlReporter: ExtentHtmlReporter
     var test: ExtentTest? = null
-
-    open var workingDirectory: String = System.getProperty("user.dir")
-    var absoluteFilePath = "$workingDirectory/Results"
-
 
     @Throws(Exception::class)
     fun startReport(reportName: String) {
@@ -62,11 +58,10 @@ open class CommonFunctionKotlin {
         val curDate = Date()
         println(curDate.toString())
 
-
-        println("absoluteFilePath is $absoluteFilePath")
+        println("resultsFilePath is $resultsFilePath")
         Thread.sleep(4000)
 
-        val reportFolder = extentResultFolder(absoluteFilePath)
+        val reportFolder = extentResultFolder(resultsFilePath)
         println("reportFolder is $reportFolder")
         Thread.sleep(4000)
 
@@ -138,20 +133,20 @@ open class CommonFunctionKotlin {
         }
 
     }
-    
+
     fun appbackground(androidDriver: AndroidDriver<MobileElement>, duration: Long) {
         androidDriver.runAppInBackground(Duration.ofMillis(duration))
     }
-    
+
 //    fun tapButtons(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takescreenshot: Boolean) {
 //        try {
 //            waitForScreenToLoads(appiumDriver, element, 3)
 //            element?.click()
 //            Thread.sleep(2000)
 //            if (takescreenshot) {
-//                val screenshotpath = getScreenshot(appiumDriver, element?.text.toString())
-//                println("Taken Screenshotpath is $screenshotpath")
-//                test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenshotpath))
+//                val screenshotPath = getScreenshot(appiumDriver, element?.text.toString())
+//                println("Taken Screenshotpath is $screenshotPath")
+//                test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenshotPath))
 //
 //            } else {
 //
@@ -425,7 +420,7 @@ open class CommonFunctionKotlin {
 
         // val dateName = SimpleDateFormat("hh:mm").format(Date())
 
-        val reportfolder = extentResultFolder(absoluteFilePath)
+        val reportfolder = extentResultFolder(resultsFilePath)
         println("reportfolder is $reportfolder")
 
         val subDirectory = "Results"

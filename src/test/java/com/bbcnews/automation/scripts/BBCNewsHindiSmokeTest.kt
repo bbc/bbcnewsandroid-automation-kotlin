@@ -2,6 +2,7 @@ package com.bbcnews.automation.scripts
 
 import com.aventstack.extentreports.ExtentTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
+import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 import com.bbcnews.automation.testutils.Testutility
 import io.appium.java_client.MobileElement
@@ -30,8 +31,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 class BBCNewsHindiSmokeTest {
-
-
 
     private var capabilities = DesiredCapabilities()
 
@@ -66,7 +65,7 @@ class BBCNewsHindiSmokeTest {
 
     }
 
-   private  fun readDeviceDetailsCommandPrompt() = try {
+    private fun readDeviceDetailsCommandPrompt() = try {
 
         deviceid = System.getProperty("DeviceID")
         deviceName = System.getProperty("DeviceName")
@@ -82,7 +81,7 @@ class BBCNewsHindiSmokeTest {
     }
 
 
-   private fun setUP() {
+    private fun setUP() {
         try {
 
             val appium_url = "http://127.0.0.1:$AppiumPort/wd/hub"
@@ -105,7 +104,7 @@ class BBCNewsHindiSmokeTest {
 
     }
 
-   private fun launchBBCNews() {
+    private fun launchBBCNews() {
         try {
             homePageObject = HomePageObject()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
@@ -113,12 +112,12 @@ class BBCNewsHindiSmokeTest {
             bbcNewsHindiPageObject = BBCNewsHindiPageObject()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), bbcNewsHindiPageObject)
 
-            testutility.emptyFolder(screenshotpath)
+            testutility.emptyFolder(screenshotPath)
 
             commonFunctionKotlin.createrReportHive("Regression", deviceName.toString(), deviceid.toString())
 
             androidDriver.context("NATIVE_APP")
-            file = File(screenshotpath)
+            file = File(screenshotPath)
             val screenshot = file.absolutePath
             System.out.println("The ScreenShot Path is $screenshot")
 
@@ -155,30 +154,29 @@ class BBCNewsHindiSmokeTest {
 
     }
 
-   @Test(priority = 2, description = "Check the links on the Home page after app launched")
-   fun testCheckHomePage() = try {
-       commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke");
-       commonFunctionKotlin.tapButton(androidDriver,bbcNewsHindiPageObject.bbchindi_homepage,false)
-       assertTrue(bbcNewsHindiPageObject.bbchindi_homepage.isSelected)
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.mainitem_layout_name)
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.mainitem_layout_last_updated)
+    @Test(priority = 2, description = "Check the links on the Home page after app launched")
+    fun testCheckHomePage() = try {
+        commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke");
+        commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_homepage, false)
+        assertTrue(bbcNewsHindiPageObject.bbchindi_homepage.isSelected)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.mainitem_layout_name)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.mainitem_layout_last_updated)
 
-       commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
-       if(!bbcNewsHindiPageObject.frontpage.isDisplayed)
-       {
-           System.out.println("Scrolling up")
-           commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
-       }
+        commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        if (!bbcNewsHindiPageObject.frontpage.isDisplayed) {
+            System.out.println("Scrolling up")
+            commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
+        }
 
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.imageitembadge)
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlinetitle)
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineinfo)
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineauthorname)
-       commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineauthortitle)
-       commonFunctionKotlin.navigateBack(androidDriver)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.imageitembadge)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlinetitle)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineinfo)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineauthorname)
+        commonFunctionKotlin.elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineauthortitle)
+        commonFunctionKotlin.navigateBack(androidDriver)
 
-   } catch (e:Exception ) {
-   }
+    } catch (e: Exception) {
+    }
 
     @Test(priority = 3, description = "checking the india page")
     @Throws(Exception::class)
@@ -455,11 +453,8 @@ class BBCNewsHindiSmokeTest {
     }
 
     companion object {
-
         private val curDate = Date()
         private val format = SimpleDateFormat("yyyy-MM-dd")
         private val DateToStr = format.format(curDate)
-        var workingDirectory = System.getProperty("user.dir")
-        private val screenshotpath = workingDirectory + "/Screenshots/"
     }
 }

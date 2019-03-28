@@ -1,6 +1,7 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
+import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 
 
@@ -42,9 +43,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     private lateinit var basePageObjectModel: BasePageObject
     private lateinit var myTopicsPageObject: MyTopicsPageObject
 
-    override var workingDirectory: String = System.getProperty("user.dir")
-    private val screenshotPath = "$workingDirectory/Screenshots/"
-
     @BeforeTest
     fun runTest() {
 
@@ -70,7 +68,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             if (locked) {
                 androidDriver.unlockDevice()
             }
-            initialiseobjects()
+            initialiseObjects()
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -127,7 +125,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      *
      * function to initialise the page objects for Home page, Video page, popular page
      */
-    private fun initialiseobjects() {
+    private fun initialiseObjects() {
         try {
             homePageObject = HomePageObject()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
@@ -146,7 +144,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
             myTopicsPageObject = MyTopicsPageObject()
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
-
 
             testutility.emptyFolder(screenshotPath)
 
