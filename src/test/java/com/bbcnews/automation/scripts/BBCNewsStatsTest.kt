@@ -1,8 +1,8 @@
 package com.bbcnews.automation.scripts
 
-import com.aventstack.extentreports.ExtentTest
 import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
+import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 import com.bbcnews.automation.testutils.Testutility
 import io.appium.java_client.MobileElement
@@ -24,61 +24,56 @@ import org.testng.annotations.Test
 import java.io.File
 import java.io.IOException
 import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.Date
 
 class BBCNewsStatsTest {
 
     private var capabilities = DesiredCapabilities()
-    private var deviceosName: String? = null
-    private var deviceid: String? = null
+    private var deviceOsName: String? = null
+    private var deviceId: String? = null
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
     private lateinit var file: File
 
     private var commonFunctionKotlin = CommonFunctionKotlin()
-    private var testutility = Testutility()
+    private var testUtility = Testutility()
 
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
     private lateinit var myNewsPageObject: MyNewsPageObject
     //private lateinit var basePageObject: BasePageObject
-    private lateinit var vidoePageObject: VideoPageObjects
+    private lateinit var videoPageObject: VideoPageObjects
     private lateinit var popularPageObject: PopularPageObjects
     private lateinit var basePageObjectModel: BasePageObject
-    private lateinit var commonpageobjects: CommonPageObjects
 
-    internal var charlesProxy = CharlesProxy()
-    var statsTestData = StatsTestData()
-
+    private var charlesProxy = CharlesProxy()
+    private var statsTestData = StatsTestData()
 
     @BeforeTest
     @Throws(Exception::class)
-    fun RunTest() {
+    fun runTest() {
 
         try {
-
             readDeviceDetailsCommandPrompt()
             charlesProxy.startCharles()
-            setUP()
-            initialiseobjects()
+            setUp()
+            initialiseObjects()
         } catch (e: Exception) {
             e.printStackTrace()
         }
 
     }
 
-    fun readDeviceDetailsCommandPrompt() {
+    private fun readDeviceDetailsCommandPrompt() {
 
         try {
-            deviceosName = System.getProperty("DeviceOS")
-            deviceid = System.getProperty("DeviceID")
+            deviceOsName = System.getProperty("DeviceOS")
+            deviceId = System.getProperty("DeviceID")
             deviceName = System.getProperty("DeviceName")
             appPath = System.getProperty("AppPath")
             appiumPort = System.getProperty("AppiumPort")
-            println("Passed The Device OS is $deviceosName")
-            println("Passed The Device ID is $deviceid")
+            println("Passed The Device OS is $deviceOsName")
+            println("Passed The Device ID is $deviceId")
             println("Passed The Device Name is $deviceName")
             println("Passed The Appium port is $appiumPort")
             println("Passed The Application path  is $appPath")
@@ -89,13 +84,13 @@ class BBCNewsStatsTest {
 
     }
 
-    private  fun setUP() {
+    private fun setUp() {
         try {
             //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-            val appiumurl = "http://127.0.0.1:$appiumPort/wd/hub"
-            println("Appium Server Address : - $appiumurl")
+            val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
+            println("Appium Server Address : - $appiumUrl")
             capabilities = DesiredCapabilities()
-            capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
+            capabilities.setCapability(MobileCapabilityType.UDID, deviceId)
             capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
@@ -104,13 +99,13 @@ class BBCNewsStatsTest {
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
             capabilities.setCapability("--session-override", true)
-            capabilities.setCapability("ignoreUnimportantViews",true)
-            androidDriver = AndroidDriver(URL(appiumurl), capabilities)
+            capabilities.setCapability("ignoreUnimportantViews", true)
+            androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
         } catch (e: Exception) {
         }
     }
 
-    private fun initialiseobjects() = try {
+    private fun initialiseObjects() = try {
         homePageObject = HomePageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
 
@@ -120,28 +115,26 @@ class BBCNewsStatsTest {
         basePageObjectModel = BasePageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
 
-        vidoePageObject = VideoPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), vidoePageObject)
+        videoPageObject = VideoPageObjects()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
 
         popularPageObject = PopularPageObjects()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
 
-        testutility.emptyFolder(screenshotpath)
+        testUtility.emptyFolder(screenshotPath)
 
-
-        commonFunctionKotlin.createrReportHive("Regression", deviceName.toString(), deviceid.toString())
-
+        commonFunctionKotlin.createrReportHive("Regression", deviceName.toString(), deviceId.toString())
 
         androidDriver.context("NATIVE_APP")
-        file = File(screenshotpath)
+        file = File(screenshotPath)
         val screenshot = file.absolutePath
         println("The ScreenShot Path is $screenshot")
 
         val orientation = androidDriver.orientation
         if (orientation != ScreenOrientation.LANDSCAPE) {
             androidDriver.rotate(ScreenOrientation.PORTRAIT)
+        } else {
         }
-        else { }
     } catch (e: NullPointerException) {
         e.printStackTrace()
     } catch (e: Exception) {
@@ -154,8 +147,6 @@ class BBCNewsStatsTest {
     @Throws(Exception::class)
     fun testOpenNewsApp() {
         try {
-
-
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.okbutton, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.menubutton, false)
@@ -181,7 +172,7 @@ class BBCNewsStatsTest {
 
             commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke")
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topstories, false)
-            commonFunctionKotlin.tapButton(androidDriver,basePageObjectModel.mynews, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.mynews, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.popular, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.video, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.searchbutton, false)
@@ -195,7 +186,7 @@ class BBCNewsStatsTest {
 
     @Test(priority = 3, description = "Test to stop the charles recording ")
     @Throws(Exception::class)
-    fun testStopcharlesRecord() {
+    fun testStopCharlesRecord() {
 
         try {
             charlesProxy.stopCharlesSession()
@@ -209,20 +200,18 @@ class BBCNewsStatsTest {
 
     @Test(priority = 4, description = "Test to download the charles recording session")
     @Throws(Exception::class)
-    fun testDownloadcharlesRecord() {
-
+    fun testDownloadCharlesRecord() {
         try {
             charlesProxy.downloadCharlesSession()
             Thread.sleep(2000)
         } catch (e: AssertionError) {
             throw e
         }
-
     }
 
     @Test(priority = 5, description = "Test to convert the charles session to CSV format")
     @Throws(Exception::class)
-    fun testConvertCharlesSessiontoCSV() {
+    fun testConvertCharlesSessionToCSV() {
 
         try {
             charlesProxy.converttoCSV()
@@ -231,9 +220,7 @@ class BBCNewsStatsTest {
         } catch (e: AssertionError) {
             throw e
         }
-
     }
-
 
     @Test(priority = 6, description = "Test to check the compared the downloaded stats")
     fun testBBVNewsBasicStats() {
@@ -245,7 +232,6 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
 
@@ -314,7 +300,6 @@ class BBCNewsStatsTest {
 
     }
 
-
     @AfterMethod
     fun getResult(result: ITestResult) {
         try {
@@ -329,18 +314,7 @@ class BBCNewsStatsTest {
         commonFunctionKotlin.publishReport()
         androidDriver.closeApp()
         androidDriver.quit()
-
     }
-
-    companion object {
-
-        private val curDate = Date()
-        private val format = SimpleDateFormat("yyyy-MM-dd")
-        private val DateToStr = format.format(curDate)
-        var workingDirectory = System.getProperty("user.dir")
-        private val screenshotpath = "$workingDirectory/Screenshots/"
-    }
-
 
 }
 
