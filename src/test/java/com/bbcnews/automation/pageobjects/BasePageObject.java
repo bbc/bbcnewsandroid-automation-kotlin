@@ -21,8 +21,21 @@ public class BasePageObject {
     public MobileElement navigate_back;
 
 
-    @AndroidFindBy(id="android:id/button1")
+    @AndroidFindAll(
+            {
+                    @AndroidBy(id = "android:id/button1"),
+                    @AndroidBy(xpath = "//android.widget.Button[@text='OK' and @index='1']")
+            }
+    )
     public MobileElement okbutton;
+
+    @AndroidFindAll(
+            {
+                    @AndroidBy(id = "android:id/button1"),
+                    @AndroidBy(xpath = "//android.widget.Button[@text='YES.' and @index='1']")
+            }
+    )
+    public MobileElement yesbutton;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='GO TO SETTINGS']")
     public MobileElement settingsButton;
@@ -31,7 +44,12 @@ public class BasePageObject {
     public MobileElement backButton;
 
 
-    @AndroidFindBy(id="android:id/button2")
+    @AndroidFindAll(
+            {
+                    @AndroidBy(id = "android:id/button2"),
+                    @AndroidBy(xpath="//android.widget.Button[@text='NO, THANKS.' and @index='0']")
+            }
+    )
     public MobileElement nothanksbutton;
 
     @AndroidFindAll(

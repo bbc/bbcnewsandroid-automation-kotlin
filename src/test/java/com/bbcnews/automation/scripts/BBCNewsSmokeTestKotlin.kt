@@ -182,17 +182,16 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
             tapButton(androidDriver, basePageObjectModel.okbutton, false)
 
-            tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
+            tapButton(androidDriver, basePageObjectModel.yesbutton, false)
             try {
                 if (androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed) {
                     androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
 
                 }
-            } catch (e: org.openqa.selenium.NoSuchElementException) {
+            } catch (e:NoSuchElementException) {
             }
 
         } catch (e: Exception) {
-            e.printStackTrace()
         }
 
     }
@@ -465,6 +464,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         elementDisplayed(androidDriver, basePageObjectModel.Appinfo)
         elementDisplayed(androidDriver, basePageObjectModel.OtherBBCapps)
         elementDisplayed(androidDriver, basePageObjectModel.settings)
+        elementDisplayed(androidDriver, basePageObjectModel.internalsettings)
         navigateBack(androidDriver)
     }
 
