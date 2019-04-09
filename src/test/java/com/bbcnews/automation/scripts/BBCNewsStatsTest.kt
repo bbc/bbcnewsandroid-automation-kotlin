@@ -123,7 +123,7 @@ class BBCNewsStatsTest {
 
         testUtility.emptyFolder(screenshotPath)
 
-        commonFunctionKotlin.createrReportHive("Regression", deviceName.toString(), deviceId.toString())
+        commonFunctionKotlin.createAReportHive("Regression", deviceName.toString(), deviceId.toString())
 
         androidDriver.context("NATIVE_APP")
         file = File(screenshotPath)

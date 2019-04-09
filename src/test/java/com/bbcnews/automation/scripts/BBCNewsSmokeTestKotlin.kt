@@ -1,10 +1,9 @@
 package com.bbcnews.automation.scripts
 
+
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
-
-
 import com.bbcnews.automation.testutils.Testutility
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -20,7 +19,10 @@ import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.PageFactory
 import org.testng.Assert
 import org.testng.ITestResult
-import org.testng.annotations.*
+import org.testng.annotations.AfterMethod
+import org.testng.annotations.AfterTest
+import org.testng.annotations.BeforeTest
+import org.testng.annotations.Test
 import java.io.File
 import java.io.IOException
 import java.net.URL
@@ -45,33 +47,28 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
     @BeforeTest
     fun runTest() {
+        readDeviceDetailsCommandPrompt()
+        setUp()
+        /**
+         *  since on Hive, sometimes device wifi might be turned off
+         */
+        checkConnection(androidDriver)
 
-        try {
-
-            readDeviceDetailsCommandPrompt()
-            setUP()
-            /**
-             *  checking the connection , since on Hive, sometime device wifi might be in turned OFF
-             */
-            checkConnection(androidDriver)
-            /**
-             *  setting the view mode to Portrait , since on Hive, sometime device might be in Landscape mode
-             */
-            val orientation = androidDriver.orientation
-            if (orientation == ScreenOrientation.LANDSCAPE) {
-                androidDriver.rotate(ScreenOrientation.PORTRAIT)
-            }
-            /**
-             *  Unlocking device
-             */
-            val locked = androidDriver.isDeviceLocked
-            if (locked) {
-                androidDriver.unlockDevice()
-            }
-            initialiseObjects()
-        } catch (e: Exception) {
-            e.printStackTrace()
+        /**
+         *  setting the view mode to Portrait , since on Hive, sometime device might be in Landscape mode
+         */
+        val orientation = androidDriver.orientation
+        if (orientation == ScreenOrientation.LANDSCAPE) {
+            androidDriver.rotate(ScreenOrientation.PORTRAIT)
         }
+        /**
+         *  Unlocking device
+         */
+        val locked = androidDriver.isDeviceLocked
+        if (locked) {
+            androidDriver.unlockDevice()
+        }
+        initialiseObjects()
     }
 
     /**
@@ -79,89 +76,66 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
 
     private fun readDeviceDetailsCommandPrompt() {
-        try {
-
-            deviceid = System.getProperty("DeviceID")
-            deviceName = System.getProperty("DeviceName")
-            appPath = System.getProperty("AppPath")
-            appiumPort = System.getProperty("AppiumPort")
-            println("Passed The Device ID is $deviceid")
-            println("Passed The Device Name is $deviceName")
-            println("Passed The Appium port is $appiumPort")
-            println("Passed The Application path  is $appPath")
-        } catch (e: Exception) {
-            e.printStackTrace()
-
-        }
-
+        deviceid = System.getProperty("DeviceID")
+        deviceName = System.getProperty("DeviceName")
+        appPath = System.getProperty("AppPath")
+        appiumPort = System.getProperty("AppiumPort")
+        println("Passed The Device ID is $deviceid")
+        println("Passed The Device Name is $deviceName")
+        println("Passed The Appium port is $appiumPort")
+        println("Passed The Application path  is $appPath")
     }
 
     /**
      *
      * setup the desired capabilities based on the parameter set
      */
-
-    private fun setUP() {
-        try {
-            //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-            val appiumurl = "http://127.0.0.1:$appiumPort/wd/hub"
-            println("Appium Server Address : - $appiumurl")
-            capabilities = DesiredCapabilities()
-            capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
-            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-            capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-            capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-            capabilities.setCapability("appiumversion", "1.8.1")
-            capabilities.setCapability("app", appPath)
-            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
-            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            capabilities.setCapability("--session-override", true)
-            androidDriver = AndroidDriver(URL(appiumurl), capabilities)
-        } catch (e: Exception) {
-        }
+    private fun setUp() {
+        //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
+        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
+        println("Appium Server Address : - $appiumUrl")
+        capabilities = DesiredCapabilities()
+        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
+        capabilities.setCapability("appiumversion", "1.8.1")
+        capabilities.setCapability("app", appPath)
+        capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
+        capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
+        capabilities.setCapability("--session-override", true)
+        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
     }
 
-    /**
-     *
-     * function to initialise the page objects for Home page, Video page, popular page
-     */
     private fun initialiseObjects() {
-        try {
-            homePageObject = HomePageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
+        homePageObject = HomePageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
 
-            myNewsPageObject = MyNewsPageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
+        myNewsPageObject = MyNewsPageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
 
-            basePageObjectModel = BasePageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
+        basePageObjectModel = BasePageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
 
-            videoPageObject = VideoPageObjects()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
+        videoPageObject = VideoPageObjects()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
 
-            popularPageObject = PopularPageObjects()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
+        popularPageObject = PopularPageObjects()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
 
-            myTopicsPageObject = MyTopicsPageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
+        myTopicsPageObject = MyTopicsPageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
 
-            testutility.emptyFolder(screenshotPath)
+        testutility.emptyFolder(screenshotPath)
 
-            // startReport("SmokeTest");
-            createrReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
-            //createrReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
+        // startReport("SmokeTest");
+        createAReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
+        //createAReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
 
-            androidDriver.context("NATIVE_APP")
-            file = File(screenshotPath)
-            val screenshot = file.absolutePath
-            println("The ScreenShot Path is $screenshot")
-
-
-        } catch (e: NullPointerException) {
-            e.printStackTrace()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        androidDriver.context("NATIVE_APP")
+        file = File(screenshotPath)
+        val screenshot = file.absolutePath
+        println("The ScreenShot Path is $screenshot")
     }
 
     /**
@@ -169,137 +143,83 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
     @Test(priority = 1, description = "Launching the app")
     fun testOpenNewsApp() {
-        try {
+        tapButton(androidDriver, basePageObjectModel.okbutton, false)
+        tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
 
-            tapButton(androidDriver, basePageObjectModel.okbutton, false)
-            tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
-            try {
-                if (androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed) {
-                    androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
-
-                }
-            } catch (e: org.openqa.selenium.NoSuchElementException) {
-            }
-
-        } catch (e: Exception) {
-            e.printStackTrace()
+        if (androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed) {
+            androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
         }
-
     }
 
     /**
-     * un-comment if you want to check the screenshot compare tests
+     * uncomment if you want to check the screenshot compare tests
      */
-
 //    @Test(priority = 2, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
 //    @Throws(IOException::class)
 //    fun testtakeScreenshotsofPages() {
 //        tapButton(androidDriver, basePageObjectModel.topstories, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "topstories")
+//        testutility.aShotScreenshot(androidDriver, "Before", "topstories")
 //        tapButton(androidDriver, basePageObjectModel.mynews, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "mynews")
+//        testutility.aShotScreenshot(androidDriver, "Before", "mynews")
 //        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "popular")
+//        testutility.aShotScreenshot(androidDriver, "Before", "popular")
 //        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "video")
+//        testutility.aShotScreenshot(androidDriver, "Before", "video")
 //        tapButton(androidDriver, basePageObjectModel.menubutton, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "menu")
+//        testutility.aShotScreenshot(androidDriver, "Before", "menu")
 //        navigateBack(androidDriver)
 //    }
-
-    /**
-     * after app launches, checks the top stories page and assertion
-     */
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
-        try {
-            androidDriver.runAppInBackground(Duration.ofSeconds(30))
-            startTest("HomePage", "Checking the HomePage", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.topstories, false)
-            Assert.assertTrue(basePageObjectModel.topstories.isSelected)
-            elementDisplayed(androidDriver, basePageObjectModel.item_layout_name)
-            elementDisplayed(androidDriver, basePageObjectModel.item_layout_home_section)
-            elementDisplayed(androidDriver, basePageObjectModel.item_layout_last_updated)
-            elementDisplayed(androidDriver, basePageObjectModel.mynews)
-            elementDisplayed(androidDriver, basePageObjectModel.popular)
-            elementDisplayed(androidDriver, basePageObjectModel.video)
-            elementDisplayed(androidDriver, basePageObjectModel.menubutton)
-            elementDisplayed(androidDriver, basePageObjectModel.search)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
+        androidDriver.runAppInBackground(Duration.ofSeconds(30))
+        startTest("HomePage", "Checking the HomePage", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.topstories, false)
+        Assert.assertTrue(basePageObjectModel.topstories.isSelected)
+        elementDisplayed(androidDriver, basePageObjectModel.item_layout_name)
+        elementDisplayed(androidDriver, basePageObjectModel.item_layout_home_section)
+        elementDisplayed(androidDriver, basePageObjectModel.item_layout_last_updated)
+        elementDisplayed(androidDriver, basePageObjectModel.mynews)
+        elementDisplayed(androidDriver, basePageObjectModel.popular)
+        elementDisplayed(androidDriver, basePageObjectModel.video)
+        elementDisplayed(androidDriver, basePageObjectModel.menubutton)
+        elementDisplayed(androidDriver, basePageObjectModel.search)
     }
-
-    /**
-     * checks the myNews page by allowing the location services
-     */
 
     @Test(priority = 3, description = "Test to check the Mynews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testAllowLocation() {
-        try {
-            startTest("MyNews", "Checking the MyNews", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.mynews, false)//,file.getAbsolutePath());
-            tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            tapButton(androidDriver, myNewsPageObject.allow_location, false)
-            tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
-            navigateBack(androidDriver)
-        } catch (e: AssertionError) {
-            e.printStackTrace()
-        }
-
+        startTest("MyNews", "Checking the MyNews", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.mynews, false)//,file.getAbsolutePath());
+        tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
+        tapButton(androidDriver, myNewsPageObject.allow_location, false)
+        tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
+        navigateBack(androidDriver)
     }
 
-
-    /**
-     * checks the popular page most read
-     */
     @Test(priority = 4, description = "Test to check the  popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testPopularPage() {
-        try {
-            startTest("PopularPage", "Checking the Popular", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
-            Assert.assertTrue(basePageObjectModel.popular.isSelected)
-            elementDisplayed(androidDriver, popularPageObject.mostread)
-            Assert.assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
-        } catch (e: AssertionError) {
-            e.printStackTrace()
-        }
-
+        startTest("PopularPage", "Checking the Popular", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
+        Assert.assertTrue(basePageObjectModel.popular.isSelected)
+        elementDisplayed(androidDriver, popularPageObject.mostread)
+        Assert.assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
     }
-
-    /**
-     * checks the popular most watched
-     */
 
     @Test(priority = 5, description = "checking that most watched displayed in popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    fun testcheckMostWatched() {
-        try {
-            startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
-            scrolltoElement(androidDriver, popularPageObject.popularmostwatched)
-            Assert.assertEquals("Most Watched", popularPageObject.popularmostwatched.text, "Text Matched")
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
+    fun testMostWatched() {
+        startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
+        scrollToElement(androidDriver, popularPageObject.popularmostwatched)
+        Assert.assertEquals("Most Watched", popularPageObject.popularmostwatched.text, "Text Matched")
     }
 
-
-    /**
-     * check the MyNews Page
-     *
-     */
 
     @Test(priority = 6, description = "Test to check the Mynews page")
     @Story("MyNews")
@@ -336,11 +256,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
             elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
-            scrolltoElement(androidDriver, myTopicsPageObject.walestopic)
+            scrollToElement(androidDriver, myTopicsPageObject.walestopic)
             tapButton(androidDriver, myTopicsPageObject.walestopic, false)
-            textpresent(androidDriver, "Wales", "added to")
+            textPresent(androidDriver, "Wales", "added to")
 
-            scrolltoElement(androidDriver, myTopicsPageObject.worldtopic)
+            scrollToElement(androidDriver, myTopicsPageObject.worldtopic)
             tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
 
 
@@ -443,7 +363,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
             tapButton(androidDriver, myNewsPageObject.showmore, false)
 
-            scrolltoElement(androidDriver, myNewsPageObject.showless)
+            scrollToElement(androidDriver, myNewsPageObject.showless)
             System.out.println("The text of  are:- " + myNewsPageObject.showless.text)
             tapButton(androidDriver, myNewsPageObject.showless, false)
             elementDisplayed(androidDriver, myNewsPageObject.showmore)
@@ -483,7 +403,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testVideoPage() {
         startTest("Videopgae", "Checking the Video", "Smoke")
         tapButton(androidDriver, basePageObjectModel.video, false)
-        // AshotScreenshot(androidDriver,"After","VideoPage");
+        // aShotScreenshot(androidDriver,"After","VideoPage");
         Assert.assertTrue(basePageObjectModel.video.isSelected)
         // elementDisplayed(androidDriver, videoPageObject.livebbchannel);
         tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)//,file.getAbsolutePath());
@@ -520,7 +440,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
         tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
         try {
-            videoplaybackseeking(androidDriver, videoPageObject.smp_seek_bar, 0.30)
+            videoPlaybackSeeking(androidDriver, videoPageObject.smp_seek_bar, 0.30)
             isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_live_icon"))
         } catch (e: Exception) {
         }
@@ -537,7 +457,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("Search", "Checking for Search Topics", "Smoke")
             tapButton(androidDriver, basePageObjectModel.searchbutton, false)
             enterText(basePageObjectModel.searchfield, basePageObjectModel.searchtext)
-            sleepmethod(1000)
+            waitFor(1000)
             Assert.assertEquals(basePageObjectModel.searchtext, basePageObjectModel.searchkeyword.text, "Text Matched")
             tapButton(androidDriver, basePageObjectModel.searchkeyword, false)
             val title = getText(basePageObjectModel.headlinetitle)
@@ -559,15 +479,15 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 //    fun testtakescreenshotafter()
 //    {
 //        tapButton(androidDriver, basePageObjectModel.topstories, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "topstories")
+//        testutility.aShotScreenshot(androidDriver, "After", "topstories")
 //        tapButton(androidDriver, basePageObjectModel.mynews, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "mynews")
+//        testutility.aShotScreenshot(androidDriver, "After", "mynews")
 //        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "popular")
+//        testutility.aShotScreenshot(androidDriver, "After", "popular")
 //        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "video")
+//        testutility.aShotScreenshot(androidDriver, "After", "video")
 //        tapButton(androidDriver, basePageObjectModel.menubutton, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "menu")
+//        testutility.aShotScreenshot(androidDriver, "After", "menu")
 //        navigateBack(androidDriver)
 //    }
 //
@@ -582,7 +502,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 //    fun testcomparetheimages()
 //    {
 //        startTest("CompraeImage", "Compares the HomePage", "Smoke")
-//         testutility.comparetwoimages()
+//         testutility.campareTwoImages()
 //
 //    }
 

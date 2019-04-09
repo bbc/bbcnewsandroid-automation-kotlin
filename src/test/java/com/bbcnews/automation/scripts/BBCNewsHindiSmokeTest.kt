@@ -90,7 +90,7 @@ class BBCNewsHindiSmokeTest {
 
         testutility.emptyFolder(screenshotPath)
 
-        commonFunctionKotlin.createrReportHive("Regression", deviceName.toString(), deviceid.toString())
+        commonFunctionKotlin.createAReportHive("Regression", deviceName.toString(), deviceid.toString())
 
         androidDriver.context("NATIVE_APP")
         file = File(screenshotPath)
@@ -161,7 +161,7 @@ class BBCNewsHindiSmokeTest {
                 bbcNewsHindiPageObject.headlineauthortitle
         )
 
-        commonFunctionKotlin.scrolltoElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
+        commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
 
         assertDisplayingElements(bbcNewsHindiPageObject.relatedarticles)
         pressBack()
@@ -206,7 +206,7 @@ class BBCNewsHindiSmokeTest {
                 bbcNewsHindiPageObject.headlineinfo)
 
 
-        commonFunctionKotlin.scrolltoElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
+        commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
         assertDisplayingElements(bbcNewsHindiPageObject.relatedarticles)
 
         pressBack()
@@ -232,7 +232,7 @@ class BBCNewsHindiSmokeTest {
                 bbcNewsHindiPageObject.imageitemcaption
         )
 
-        commonFunctionKotlin.scrolltoElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
+        commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
         assertDisplayingElements(bbcNewsHindiPageObject.relatedarticles)
 
         pressBack()
@@ -274,7 +274,7 @@ class BBCNewsHindiSmokeTest {
                 bbcNewsHindiPageObject.headlineinfo
         )
 
-        commonFunctionKotlin.scrolltoElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
+        commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
 
         pressBack()
     }
