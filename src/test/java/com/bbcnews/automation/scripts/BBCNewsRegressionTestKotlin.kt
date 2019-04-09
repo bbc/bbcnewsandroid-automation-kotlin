@@ -106,8 +106,8 @@ class BBCNewsRegressionTestKotlin
             capabilities.setCapability("app", appPath)
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-          //  capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
-           // capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
+//            capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
+//            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
             capabilities.setCapability("--session-override", true)
             capabilities.setCapability("ignoreUnimportantViews",true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
@@ -345,8 +345,8 @@ class BBCNewsRegressionTestKotlin
              * When running locally. please comment out below two lines of code. since when you run locally
              * the based on Location. it will be London and to run it on Hive. The location will be Manchester
              */
-            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.getText())
-            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+//            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.getText())
+//            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.englandtopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandtopic, false)
