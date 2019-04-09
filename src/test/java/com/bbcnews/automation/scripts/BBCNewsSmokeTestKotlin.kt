@@ -25,14 +25,13 @@ import java.io.IOException
 import java.net.URL
 import java.time.Duration
 
-class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
-{
+class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     private var capabilities = DesiredCapabilities()
     private var deviceid: String? = null
-    private  var deviceName: String? = null
-    private  var appPath: String? = null
+    private var deviceName: String? = null
+    private var appPath: String? = null
     private var appiumPort: String? = null
-    private  lateinit var file: File
+    private lateinit var file: File
     private var testutility = Testutility()
     private lateinit var homePageObject: HomePageObject
 
@@ -106,7 +105,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      *
      * setup the desired capabilities based on the parameter set
      */
-    
+
     private fun setUP() {
         try {
             //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
@@ -121,7 +120,10 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             capabilities.setCapability("app", appPath)
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
+//            capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
+//            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
             capabilities.setCapability("--session-override", true)
+            capabilities.setCapability("disableWindowAnimation", true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
         } catch (e: Exception) {
         }
@@ -162,8 +164,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             file = File(screenshotpath)
             val screenshot = file.absolutePath
             println("The ScreenShot Path is $screenshot")
-
-
 
 
         } catch (e: NullPointerException) {
@@ -226,18 +226,19 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     @Test(priority = 4, description = "Check the links on the Home page after app launched")
     fun testCheckHomePage() {
         try {
-            androidDriver.runAppInBackground(Duration.ofSeconds(30))
+
             startTest("HomePage", "Checking the HomePage", "Smoke")
             tapButton(androidDriver, basePageObjectModel.topstories, false)
-            Assert.assertTrue(basePageObjectModel.topstories.isSelected)
-            elementDisplayed(androidDriver, basePageObjectModel.item_layout_name)
-            elementDisplayed(androidDriver, basePageObjectModel.item_layout_home_section)
-            elementDisplayed(androidDriver, basePageObjectModel.item_layout_last_updated)
-            elementDisplayed(androidDriver, basePageObjectModel.mynews)
-            elementDisplayed(androidDriver, basePageObjectModel.popular)
-            elementDisplayed(androidDriver, basePageObjectModel.video)
-            elementDisplayed(androidDriver, basePageObjectModel.menubutton)
-            elementDisplayed(androidDriver, basePageObjectModel.search)
+            tapButton(androidDriver, basePageObjectModel.video, false)
+            tapButton(androidDriver, basePageObjectModel.mynews, false)
+            tapButton(androidDriver, basePageObjectModel.popular, false)
+//            tapButton(androidDriver, basePageObjectModel.topstories, false)
+//            Assert.assertTrue(basePageObjectModel.topstories.isSelected)
+//            elementDisplayed(androidDriver, basePageObjectModel.mynews)
+//            elementDisplayed(androidDriver, basePageObjectModel.popular)
+//            elementDisplayed(androidDriver, basePageObjectModel.video)
+//            elementDisplayed(androidDriver, basePageObjectModel.menubutton)
+//            elementDisplayed(androidDriver, basePageObjectModel.search)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -251,7 +252,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * Ignoring this tests as VOD isn't displayed
      */
 
-    @Test(groups = ["ignoreTest" ], priority = 5, description = "Test to check Video of the day displayed and swipe through all the videos")
+    @Test(groups = ["ignoreTest"], priority = 5, description = "Test to check Video of the day displayed and swipe through all the videos")
     @Throws(Exception::class)
     fun testVideoofthedayDisplayed() {
         try {
@@ -313,8 +314,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
 
     @Test(priority = 8, description = "checking that most watched displayed in popular page")
-    @Story("Popular")
-    @Severity(SeverityLevel.CRITICAL)
     fun testcheckMostWatched() {
         try {
             startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
@@ -333,19 +332,17 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
 
     @Test(priority = 9, description = "Test to check the Mynews page")
-    @Story("MyNews")
-    @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class)
     fun testMyNewsPage() {
         try {
             startTest("MyNews", "Checking the MyNews", "Smoke")
             tapButton(androidDriver, basePageObjectModel.mynews, false)
             Assert.assertTrue(basePageObjectModel.mynews.isSelected)
-            elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
-            elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
-            elementDisplayed(androidDriver, myNewsPageObject.addnews_button)
-            Assert.assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text matched")
-            Assert.assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text matched")
+//            elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
+//            elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
+//            elementDisplayed(androidDriver, myNewsPageObject.mynews_startButton)
+//            Assert.assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text matched")
+//            Assert.assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text matched")
         } catch (e: AssertionError) {
             e.printStackTrace()
         }
@@ -356,10 +353,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * Adding the topics to MyNews
      */
     @Test(priority = 10, description = "Test to check the adding the topics to MyNews page")
-    @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testAddingTopicstoMyNewsPage() {
-        try {
             startTest("MyNews", "Adding topics to MyNews", "Smoke")
             tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             tapButton(androidDriver, myNewsPageObject.addtopics, false)
@@ -378,11 +372,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             scrolltoElement(androidDriver, myTopicsPageObject.worldtopic)
             tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
 
-
-        } catch (e: StaleElementReferenceException) {
-            e.printStackTrace()
-        }
-
     }
 
 
@@ -391,8 +380,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
 
     @Test(priority = 11, description = "Test to check whether selected topics displayed under MyTopics page")
-    @Story("MyTopics")
-    @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyTopics() {
         try {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
@@ -409,8 +396,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
 
     @Test(priority = 12, description = "Test to check whether added topics displayed under MyNews page")
-    @Story("MyNews")
-    @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyNews() {
         try {
             startTest("MyNews", "Checking Added topics in MyNews", "Smoke")
@@ -430,7 +415,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     @Test(priority = 13, description = "Test To remove topics which are displayed under MyNews")
     @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
-        try {
             startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
             tapButton(androidDriver, basePageObjectModel.mynews, false)
             tapButton(androidDriver, myNewsPageObject.editMyNews, false)
@@ -444,9 +428,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             tapButton(androidDriver, myNewsPageObject.removetopics, false)
             tapButton(androidDriver, basePageObjectModel.backButton, false)
 
-        } catch (e: NullPointerException) {
-
-        }
 
     }
 
@@ -458,18 +439,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
     @Test(priority = 14, description = "Test to check the Articles displayed under topics of MyNews page")
     @Throws(Exception::class)
     fun testCheckArtcilesofTopics() {
-        try {
             startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
             val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
             val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
             val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
             val total = contentImages.size
             System.out.println("The size of cards are$total")
-
-//            for (cardimage in contentImages) {
-//                tapButton(androidDriver, cardimage, false)
-//                navigateBack(androidDriver)
-//            }
             for (i in 0 until total) {
 
                 elementDisplayed(androidDriver, contentCardTitle[i])
@@ -479,14 +454,13 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
             tapButton(androidDriver, myNewsPageObject.showmore, false)
 
             scrolltoElement(androidDriver, myNewsPageObject.showless)
-            System.out.println("The text of  are:- "+myNewsPageObject.showless.text)
+            System.out.println("The text of  are:- " + myNewsPageObject.showless.text)
             tapButton(androidDriver, myNewsPageObject.showless, false)
             elementDisplayed(androidDriver, myNewsPageObject.showmore)
-            System.out.println("The text of  are:- "+myNewsPageObject.showmore.text)
+            System.out.println("The text of  are:- " + myNewsPageObject.showmore.text)
 
 
-        } catch (e: Exception) {
-        }
+
 
     }
 
@@ -494,15 +468,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * Open the Menu items and assert whether links are displayed properly
      */
     @Test(priority = 15, description = "Test to Check the Menu Options ")
-    @Story("Menu")
-    @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
     fun testMenuPage() {
         startTest("Menu", "Checking the Menu Items", "Smoke")
         tapButton(androidDriver, basePageObjectModel.menubutton, false)//,file.getAbsolutePath());
         elementDisplayed(androidDriver, basePageObjectModel.Appinfo)
         elementDisplayed(androidDriver, basePageObjectModel.OtherBBCapps)
-        elementDisplayed(androidDriver, basePageObjectModel.InternalSettings)
         elementDisplayed(androidDriver, basePageObjectModel.settings)
         navigateBack(androidDriver)
     }
@@ -512,15 +483,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
 
     @Test(priority = 16, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
-    @Story("VideoPage")
-    @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
     fun testVideoPage() {
         startTest("Videopgae", "Checking the Video", "Smoke")
         tapButton(androidDriver, basePageObjectModel.video, false)
-        // AshotScreenshot(androidDriver,"After","VideoPage");
         Assert.assertTrue(basePageObjectModel.video.isSelected)
-        // elementDisplayed(androidDriver, vidoePageObject.livebbchannel);
         tapButton(androidDriver, vidoePageObject.bbcnewsChannel, false)//,file.getAbsolutePath());
         elementDisplayed(androidDriver, vidoePageObject.live_media_item_caption)
         try {
@@ -540,8 +507,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      * check the live video  seeking
      */
     @Test(priority = 17, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
-    @Story("VideoPage")
-    @Severity(SeverityLevel.CRITICAL)
     @Throws(AssertionError::class, Exception::class)
     fun testCheckLiveVideoSeeking() {
 
@@ -568,83 +533,75 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin()
      */
     @Test(priority = 18, description = "Test to check for search results")
     fun testSearchStories() {
-        try {
-            startTest("Search", "Checking for Search Topics", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.searchbutton, false)
-            enterText( basePageObjectModel.searchfield, basePageObjectModel.searchtext)
-            sleepmethod(1000)
-            Assert.assertEquals(basePageObjectModel.searchtext, basePageObjectModel.searchkeyword.text, "Text Matched")
-            tapButton(androidDriver, basePageObjectModel.searchkeyword, false)
-            val title = getText(basePageObjectModel.headlinetitle)
-            Assert.assertEquals(basePageObjectModel.searchtext, title)
-            tapButton(androidDriver, basePageObjectModel.backButton, false)
-            navigateBack(androidDriver)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
 
-    }
-
-    /**
-     * This tests will be ignored from execution as we don't want to run this screen compare test
-     * to run this tests remove the groups = ["ignoreTest"] from @test
-     */
-
-    @Test(groups = ["ignoreTest"], priority = 19, description = "compares the screenshot of the topstories, mynews, popular,video and menu page")
-    @Throws(IOException::class)
-    fun testtakescreenshotafter()
-    {
-        tapButton(androidDriver, basePageObjectModel.topstories, false)
-        testutility.AshotScreenshot(androidDriver, "After", "topstories")
-        tapButton(androidDriver, basePageObjectModel.mynews, false)
-        testutility.AshotScreenshot(androidDriver, "After", "mynews")
-        tapButton(androidDriver, basePageObjectModel.popular, false)
-        testutility.AshotScreenshot(androidDriver, "After", "popular")
-        tapButton(androidDriver, basePageObjectModel.video, false)
-        testutility.AshotScreenshot(androidDriver, "After", "video")
-        tapButton(androidDriver, basePageObjectModel.menubutton, false)
-        testutility.AshotScreenshot(androidDriver, "After", "menu")
+        startTest("Search", "Checking for Search Topics", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.searchbutton, false)
+        enterText(basePageObjectModel.searchfield, basePageObjectModel.searchtext)
+        sleepmethod(1000)
+        Assert.assertEquals(basePageObjectModel.searchtext, basePageObjectModel.searchkeyword.text, "Text Matched")
+        tapButton(androidDriver, basePageObjectModel.searchkeyword, false)
+        val title = getText(basePageObjectModel.headlinetitle)
+        Assert.assertEquals(basePageObjectModel.searchtext, title)
+        tapButton(androidDriver, basePageObjectModel.backButton, false)
         navigateBack(androidDriver)
     }
 
+        /**
+         * This tests will be ignored from execution as we don't want to run this screen compare test
+         * to run this tests remove the groups = ["ignoreTest"] from @test
+         */
 
-
-    /**
-     * This tests will be ignored from execution as we don't want to run this screen compare test
-     * to run this tests remove the groups = ["ignoreTest"] from @test
-     */
-
-    @Test(groups = ["ignoreTest"],priority = 20, description = "Compares the images")
-    @Throws(IOException::class)
-    fun testcomparetheimages()
-    {
-        startTest("CompraeImage", "Compares the HomePage", "Smoke")
-         testutility.comparetwoimages()
-
-    }
-
-
-    /**
-     * Adding the result based on Test execution status. If failed, then a Screenshot will be attached to the reports.
-     */
-    @AfterMethod
-    fun getResult(result: ITestResult)
-    {
-        try {
-            getTestResult(androidDriver, result)
-        } catch (e: IOException) {
+        @Test(groups = ["ignoreTest"], priority = 19, description = "compares the screenshot of the topstories, mynews, popular,video and menu page")
+        @Throws(IOException::class)
+        fun testtakescreenshotafter() {
+            tapButton(androidDriver, basePageObjectModel.topstories, false)
+            testutility.AshotScreenshot(androidDriver, "After", "topstories")
+            tapButton(androidDriver, basePageObjectModel.mynews, false)
+            testutility.AshotScreenshot(androidDriver, "After", "mynews")
+            tapButton(androidDriver, basePageObjectModel.popular, false)
+            testutility.AshotScreenshot(androidDriver, "After", "popular")
+            tapButton(androidDriver, basePageObjectModel.video, false)
+            testutility.AshotScreenshot(androidDriver, "After", "video")
+            tapButton(androidDriver, basePageObjectModel.menubutton, false)
+            testutility.AshotScreenshot(androidDriver, "After", "menu")
+            navigateBack(androidDriver)
         }
 
-    }
 
-    @AfterTest
-    fun tearDown() {
-        publishReport()
-        testutility.emptyFolder("./Screenshots/Before")
-        testutility.emptyFolder("./Screenshots/After")
-        androidDriver.closeApp()
-        androidDriver.removeApp("bbc.mobile.news.uk.internal")
-        androidDriver.quit()
+        /**
+         * This tests will be ignored from execution as we don't want to run this screen compare test
+         * to run this tests remove the groups = ["ignoreTest"] from @test
+         */
 
+        @Test(groups = ["ignoreTest"], priority = 20, description = "Compares the images")
+        @Throws(IOException::class)
+        fun testcomparetheimages() {
+            startTest("CompraeImage", "Compares the HomePage", "Smoke")
+            testutility.comparetwoimages()
+
+        }
+
+
+        /**
+         * Adding the result based on Test execution status. If failed, then a Screenshot will be attached to the reports.
+         */
+        @AfterMethod
+        fun getResult(result: ITestResult) {
+            try {
+                getTestResult(androidDriver, result)
+            } catch (e: IOException) {
+            }
+
+        }
+
+        @AfterTest
+        fun tearDown() {
+            publishReport()
+            testutility.emptyFolder("./Screenshots/Before")
+            testutility.emptyFolder("./Screenshots/After")
+            androidDriver.closeApp()
+            androidDriver.removeApp("bbc.mobile.news.uk.internal")
+            androidDriver.quit()
+
+        }
     }
-}

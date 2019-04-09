@@ -21,7 +21,11 @@ public class MyNewsPageObject {
     )
     public MobileElement mynewstitle;
 
-    @AndroidFindBy(accessibility = "OK, let's get started Button:")
+    @AndroidFindAll(
+            {
+                    @AndroidBy(accessibility = "OK, let's get started Button:"),
+                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/button")
+            })
     public MobileElement mynews_startButton;
 
 

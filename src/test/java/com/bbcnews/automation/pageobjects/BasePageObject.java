@@ -34,16 +34,37 @@ public class BasePageObject {
     @AndroidFindBy(id="android:id/button2")
     public MobileElement nothanksbutton;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Top Stories']")
+    @AndroidFindAll(
+            {
+                    @AndroidBy(accessibility = "Top Stories"),
+                    @AndroidBy(xpath = "//android.widget.HorizontalScrollView[@index='3']/android.widget.TextView[@text='Top Stories']")
+            }
+    )
     public MobileElement topstories;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='My News']")
+
+   @AndroidFindAll(
+           {
+                   @AndroidBy(accessibility = "My News"),
+                   @AndroidBy(xpath = "//android.widget.TextView[@text='My News']")
+           }
+   )
     public MobileElement mynews;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Popular']")
+    @AndroidFindAll(
+            {
+                    @AndroidBy(accessibility = "Popular"),
+                    @AndroidBy(xpath = "//android.widget.TextView[@text='Popular']")
+            }
+    )
     public MobileElement popular;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Video']")
+    @AndroidFindAll(
+            {
+                    @AndroidBy(accessibility = "Video"),
+                    @AndroidBy(xpath = "//android.widget.TextView[@text='Video']")
+            }
+    )
     public MobileElement video;
 
     @AndroidFindBy(accessibility = "Search")
@@ -78,20 +99,20 @@ public class BasePageObject {
                     "bbc.mobile.news.uk:id/item_layout_home_section"
             };
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name")
+
     @AndroidFindAll(
             {
-                    @AndroidBy(id="bbc.mobile.news.uk.internal:id/item_layout_name"),
-                    @AndroidBy(id="bbc.mobile.news.uk:id/item_layout_name")
+                    @AndroidBy(id="bbc.mobile.news.uk.internal:id/content_card_title"),
+                    @AndroidBy(id="bbc.mobile.news.uk:id/content_card_title")
             }
     )
     public MobileElement item_layout_name;
 
-   // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_last_updated")
+
     @AndroidFindAll(
             {
-                    @AndroidBy(id="bbc.mobile.news.uk.internal:id/item_layout_last_updated"),
-                    @AndroidBy(id="bbc.mobile.news.uk:id/item_layout_last_updated")
+                    @AndroidBy(id="bbc.mobile.news.uk.internal:id/content_card_info"),
+                    @AndroidBy(id="bbc.mobile.news.uk:id/content_card_info")
             }
     )
     public MobileElement item_layout_last_updated;
@@ -99,8 +120,8 @@ public class BasePageObject {
 
     @AndroidFindAll(
             {
-                    @AndroidBy(id="bbc.mobile.news.uk.internal:id/item_layout_home_section"),
-                    @AndroidBy(id="bbc.mobile.news.uk:id/item_layout_home_section")
+                    @AndroidBy(id="bbc.mobile.news.uk.internal:id/content_card_link"),
+                    @AndroidBy(id="bbc.mobile.news.uk:id/content_card_link")
             }
     )
     public MobileElement item_layout_home_section;
