@@ -104,10 +104,10 @@ class BBCNewsRegressionTestKotlin
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
             capabilities.setCapability("appiumversion", "1.8.1")
             capabilities.setCapability("app", appPath)
-//            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
-//            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
+            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
+          //  capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
+           // capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
             capabilities.setCapability("--session-override", true)
             capabilities.setCapability("ignoreUnimportantViews",true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
@@ -155,30 +155,21 @@ class BBCNewsRegressionTestKotlin
 
     @Test(priority = 0, description = "Launching the app")
     fun testOpenNewsApp() {
-        try {
 
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.okbutton, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.nothanksbutton, false)
             try {
                 if (commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/error_retry")))
-                    //    !androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed)
                 {
                     androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
-                    //wait.until(extenttestReport.elementFoundAndClicked(By.id("bbc.mobile.news.uk.internal:id/error_retry")));
                 }
             } catch (e:NoSuchElementException) {
             }
-
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
 
     }
 
     @Test(priority = 1, description = "Test to check whether all links present on Home Page")
     fun testTopStories() {
-        try {
             commonFunctionKotlin.startTest("Checking the HomePage", "Checking the HomePage", "HomePage")
             commonFunctionKotlin.iselementSelected(basePageObject.topstories)
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.topstories)
@@ -188,9 +179,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.search)
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.menubutton)
 
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
     }
 
 
@@ -229,7 +217,6 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 3, description = "Test to scroll to a topic on home page and select a particular topic and add to MyNews")
     @Throws(Exception::class)
     fun testToCheckTopicsTopStores() {
-        try {
             commonFunctionKotlin.startTest("Scrolling to topics", "Scroll to a Topics on Home Page", "HomePage")
 
             //scrolls to Reality Check topics on Top Stories page
@@ -269,8 +256,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageyourtopics)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
-        } catch (e: Exception) {
-        }
 
     }
 
@@ -320,22 +305,22 @@ class BBCNewsRegressionTestKotlin
 
     @Test(priority = 6, description = "Test to check MyNews page and asserting whether all links displayed")
     @Throws(Exception::class)
-    fun testMyNews() = try {
-        commonFunctionKotlin.startTest("Checking Elements on MyNews Page", "Test to check MyNews page", "MyNews")
-        commonFunctionKotlin.tapButton(androidDriver, basePageObject.mynews, false)
-        commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
-        commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
-        commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.addnews_button)
-        assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text Mesaaged")
-        assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text Mesaaged")
-    } catch (e: NullPointerException) {
-    }
+    fun testMyNews()
+            {
+                commonFunctionKotlin.startTest("Checking Elements on MyNews Page", "Test to check MyNews page", "MyNews")
+                commonFunctionKotlin.tapButton(androidDriver, basePageObject.mynews, false)
+                commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
+                commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
+                commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.addnews_button)
+                assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text Mesaaged")
+                assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text Mesaaged")
 
-    // @Test(dependsOnMethods = {"testMyNews"})
+            }
+
     @Test(priority = 7, description = "Test to check on My News Add Topic screen and asserting all links are displayed")
     @Throws(Exception::class)
     fun testAddingTopicsPage() {
-        try {
+
             commonFunctionKotlin.startTest("Checking Elements on Edit Mynews Page", "Test to check Edit MyNews page", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             commonFunctionKotlin.elementIsSelected(myNewsPageObject.addtopics)
@@ -345,13 +330,10 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mytopics, false)//,file.getAbsolutePath());
             commonFunctionKotlin.elementIsSelected(myNewsPageObject.mytopics)
             assertEquals(myNewsPageObject.mytopic_emptyview_text, myNewsPageObject.mytopic_emptyview.text, "Text Mesaaged")
-        } catch (e: NullPointerException) {
-        }
 
     }
 
 
-    // @Test(dependsOnMethods = {"testAddingTopicsPage"})
     @Test(priority = 8, description = "Test to add Topics under MyNews")
     @Throws(Exception::class)
     fun testAddingTopicstoMyNewsPage() {

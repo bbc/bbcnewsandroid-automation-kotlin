@@ -452,9 +452,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             elementDisplayed(androidDriver, myNewsPageObject.showmore)
             System.out.println("The text of  are:- " + myNewsPageObject.showmore.text)
 
-
-
-
     }
 
     /**
