@@ -1,6 +1,5 @@
 package com.bbcnews.automation.scripts
 
-import com.aventstack.extentreports.ExtentTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
@@ -32,19 +31,16 @@ import java.net.URL
 class BBCNewsHindiSmokeTest {
 
     private var capabilities = DesiredCapabilities()
-
     private var deviceid: String? = null
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
-    private lateinit var file: File
-    internal var test: ExtentTest? = null
-
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
-    private lateinit var bbcNewsHindiPageObject: BBCNewsHindiPageObject
-
     private var commonFunctionKotlin = CommonFunctionKotlin()
     private var testutility = Testutility()
+
+    private lateinit var file: File
+    private lateinit var androidDriver: AndroidDriver<MobileElement>
+    private lateinit var bbcNewsHindiPageObject: BBCNewsHindiPageObject
 
     @BeforeTest
     fun runTest() {
@@ -143,7 +139,6 @@ class BBCNewsHindiSmokeTest {
         )
 
         pressBack()
-
     }
 
     @Test(priority = 3, description = "checking the india page")
@@ -192,7 +187,6 @@ class BBCNewsHindiSmokeTest {
 
         pressBack()
     }
-
 
     @Test(priority = 4, description = "checking the Entertainment page")
     fun testEntertainmentPage() {
