@@ -37,7 +37,7 @@ public class BasePageObject {
     @AndroidFindAll(
             {
                     @AndroidBy(accessibility = "Top Stories"),
-                    @AndroidBy(xpath = "//android.widget.HorizontalScrollView[@index='3']/android.widget.TextView[@text='Top Stories']")
+                   // @AndroidBy(xpath = "//android.widget.HorizontalScrollView[@index='3']/android.widget.TextView[@text='Top Stories']")
             }
     )
     public MobileElement topstories;
@@ -46,7 +46,7 @@ public class BasePageObject {
    @AndroidFindAll(
            {
                    @AndroidBy(accessibility = "My News"),
-                   @AndroidBy(xpath = "//android.widget.TextView[@text='My News']")
+                 //  @AndroidBy(xpath = "//android.widget.TextView[@text='My News']")
            }
    )
     public MobileElement mynews;
@@ -54,7 +54,7 @@ public class BasePageObject {
     @AndroidFindAll(
             {
                     @AndroidBy(accessibility = "Popular"),
-                    @AndroidBy(xpath = "//android.widget.TextView[@text='Popular']")
+                   // @AndroidBy(xpath = "//android.widget.TextView[@text='Popular']")
             }
     )
     public MobileElement popular;
@@ -62,7 +62,7 @@ public class BasePageObject {
     @AndroidFindAll(
             {
                     @AndroidBy(accessibility = "Video"),
-                    @AndroidBy(xpath = "//android.widget.TextView[@text='Video']")
+                   // @AndroidBy(xpath = "//android.widget.TextView[@text='Video']")
             }
     )
     public MobileElement video;

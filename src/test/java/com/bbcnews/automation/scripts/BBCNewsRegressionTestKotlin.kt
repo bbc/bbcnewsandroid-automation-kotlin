@@ -104,7 +104,9 @@ class BBCNewsRegressionTestKotlin
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
             capabilities.setCapability("appiumversion", "1.8.1")
             capabilities.setCapability("app", appPath)
-            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
+//            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
+//            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
+            capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
             capabilities.setCapability("--session-override", true)
             capabilities.setCapability("ignoreUnimportantViews",true)
@@ -151,7 +153,7 @@ class BBCNewsRegressionTestKotlin
     }
 
 
-    @Test(priority = 1, description = "Launching the app")
+    @Test(priority = 0, description = "Launching the app")
     fun testOpenNewsApp() {
         try {
 
@@ -174,7 +176,7 @@ class BBCNewsRegressionTestKotlin
 
     }
 
-    @Test(priority = 2, description = "Test to check whether all links present on Home Page")
+    @Test(priority = 1, description = "Test to check whether all links present on Home Page")
     fun testTopStories() {
         try {
             commonFunctionKotlin.startTest("Checking the HomePage", "Checking the HomePage", "HomePage")
@@ -193,32 +195,35 @@ class BBCNewsRegressionTestKotlin
 
 
     /**
-     * commented out as VideoOfTheDay isn't displayed  on Home page
+
+     * This tests will be ignored from execution as we don't want to run this screen compare test
+     * to run this tests remove the groups = ["ignoreTest"] from @test
+     * Ignoring this tests as VOD isn't displayed
      */
 
-//    @Test(priority = 3, description = "Test to check Video of the day displayed and swipe through all the videos")
-//    @Throws(Exception::class)
-//    fun testVideoofthedayDisplayed() {
-//        try {
-//            commonFunctionKotlin.startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
-//            commonFunctionKotlin.sleepmethod(1000)
-//            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.videooftheday_watchtext)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.promocounter)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.vodeoofthedaypromosummary)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.vodeoofthedaytitle)
-//            Assert.assertEquals("Videos of the day", homePageObject.vodeoofthedaytitle.getText())
-//            Assert.assertEquals("WATCH", homePageObject.videooftheday_watchtext.getText())
-//            Assert.assertEquals("7", homePageObject.promocounter.getText())
-//            Assert.assertEquals("Swipe through the latest news videos", homePageObject.vodeoofthedaypromosummary.getText())
-//            commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
-//            commonFunctionKotlin.scrolltoEndofStories(androidDriver, homePageObject.newstream_progress, vidoePageObject.videsofthedayRelease, homePageObject.checkback_later)
-//            commonFunctionKotlin.navigateBack(androidDriver)
-//        } catch (e: AssertionError) {
-//            throw e
-//        }
-//
-//    }
+    @Test(groups = ["ignoreTest"],priority = 2, description = "Test to check Video of the day displayed and swipe through all the videos")
+    @Throws(Exception::class)
+    fun testVideoofthedayDisplayed() {
+        try {
+            commonFunctionKotlin.startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
+            commonFunctionKotlin.sleepmethod(1000)
+            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
+            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.videooftheday_watchtext)
+            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.promocounter)
+            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.vodeoofthedaypromosummary)
+            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.vodeoofthedaytitle)
+            Assert.assertEquals("Videos of the day", homePageObject.vodeoofthedaytitle.getText())
+            Assert.assertEquals("WATCH", homePageObject.videooftheday_watchtext.getText())
+            Assert.assertEquals("7", homePageObject.promocounter.getText())
+            Assert.assertEquals("Swipe through the latest news videos", homePageObject.vodeoofthedaypromosummary.getText())
+            commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
+        //    commonFunctionKotlin.scrolltoEndofStories(androidDriver, homePageObject.newstream_progress, vidoePageObject.videsofthedayRelease, homePageObject.checkback_later)
+            commonFunctionKotlin.navigateBack(androidDriver)
+        } catch (e: AssertionError) {
+            throw e
+        }
+
+    }
 
 
     @Test(priority = 3, description = "Test to scroll to a topic on home page and select a particular topic and add to MyNews")
@@ -284,10 +289,8 @@ class BBCNewsRegressionTestKotlin
             }
 
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
-           // commonFunctionKotlin.textpresent(androidDriver, "Family & Education", "removed from")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
-           // commonFunctionKotlin.textpresent(androidDriver, "Technology", "removed from")
-           // commonFunctionKotlin.navigateBack(androidDriver)
+            commonFunctionKotlin.textpresent(androidDriver, "Technology", "removed from")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
         } catch (e: StaleElementReferenceException) {
@@ -357,6 +360,10 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
+            /**
+             * When running locally. please comment out below two lines of code. since when you run locally
+             * the based on Location. it will be London and to run it on Hive. The location will be Manchester
+             */
             Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.getText())
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
@@ -372,7 +379,7 @@ class BBCNewsRegressionTestKotlin
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.mortgagestopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.mortgagestopic, false)
-            //
+
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.youtubetopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.youtubetopic, false)
@@ -559,8 +566,7 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.enterText(basePageObject.searchfield, "India")
             commonFunctionKotlin.sleepmethod(2000)
             val searchTopics_text = commonFunctionKotlin.getText( basePageObject.searchheading)
-                    //androidDriver.findElement(By.xpath("android.widget.TextView[@text='Topics (5)']")).text
-                    //commonFunctionKotlin.getText( basePageObject.searchheading)
+
             assertEquals(searchTopics_text, "Topics (5)", "matched")
             commonFunctionKotlin.sleepmethod(1000)
             val searchRelatedheading_text = commonFunctionKotlin.getText( basePageObject.searchheading2)
@@ -574,7 +580,7 @@ class BBCNewsRegressionTestKotlin
             val searchRelatedheading_text2 = commonFunctionKotlin.getText( basePageObject.searchheading2)
             assertEquals(searchRelatedheading_text2, "More Topics", "matched")
 
-            //Assert.assertEquals(basePageObject.searchheading4.getText(),"My Topics","matched");
+            Assert.assertEquals(basePageObject.searchheading4.getText(),"My Topics","matched");
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
         } catch (e: AssertionError) {
@@ -613,7 +619,6 @@ class BBCNewsRegressionTestKotlin
         try {
             commonFunctionKotlin.startTest("Search and Adding Topic to Mynews", "Test Checking an Topic and adding to MyNews", "Search")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.searchbutton, false)
-           // basePageObject.searchfield.clear()
             commonFunctionKotlin.enterText( basePageObject.searchfield, "India")
             commonFunctionKotlin.sleepmethod(700)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.article, false)
@@ -683,9 +688,7 @@ class BBCNewsRegressionTestKotlin
         try {
             commonFunctionKotlin.startTest("Searching a Particular article", "Test to search for an particular article", "Search")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.searchbutton, false)
-            // basePageObject.searchfield.clear();
             commonFunctionKotlin.enterText(basePageObject.searchfield, "A rape victim's two-year wait for justice")
-            //androidDriver.hideKeyboard();
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.articlesearch, false)
             commonFunctionKotlin.sleepmethod(500)
 
@@ -718,7 +721,7 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_title")))
             commonFunctionKotlin.elementDisplayed(androidDriver, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")))
             val videotitle = vidoePageObject.videoarticlesearch.text
-            //val videolastupdated = androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")).text
+
 
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.videoarticlesearch, false)
             assertEquals(videotitle, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headline_title")).text)
@@ -811,17 +814,9 @@ class BBCNewsRegressionTestKotlin
 
         commonFunctionKotlin.startTest("Playing a OnDemand Video", "Test to play a video from Video page", "OnDemandVideo")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
-        //commented out as Top Stories link isn't displayed
-        //commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.topstories)
-//        commonFunctionKotlin.scrolltoElement(androidDriver, vidoePageObject.topstoriesvideo)
-//        commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.topstoriesvideoplaytime)
-//        commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.topstoriesvideocontent_card_title)
-//        commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.topstoriesvideocontent_card_link)
-//        commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.topstoriesvideocontent_card_info)
 
         commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.topstoriesvideo, false)
         commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.smp_placeholder_play_button, false)
-        // androidDriver.findElementByAccessibilityId("Play").click();
         vidoePageObject.transportcontrol.click()
         vidoePageObject.transportcontrol.click()
         for (i in 0 until popularPageObject.popularvideoelements.size) {
@@ -862,13 +857,9 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 32, description = "Test to select one Article from Most Read  Article from Popular Page")
     @Throws(Exception::class)
     fun testCheckMostReadPopular() {
-        try {
             commonFunctionKotlin.startTest("Checking Article from Most Read Section", "Checking Most Read Popular", "Popular")
             commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.mostread)
             commonFunctionKotlin.tapButton(androidDriver, popularPageObject.mostRead_article, false)
-
-        } catch (e: NullPointerException) {
-        }
 
     }
 
@@ -876,14 +867,11 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 33, description = "Test to check whether the Most Watched heading displayed in Popular Page")
     @Throws(Exception::class)
     fun testcheckMostWatched() {
-        try {
             commonFunctionKotlin.navigateBack(androidDriver)
             commonFunctionKotlin.startTest("Checking Most Popular Section", "Checking Most Watched", "Popular")
             commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.popularmostwatched)
             commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.popularmostwatched)
 
-        } catch (e: NullPointerException) {
-        }
 
     }
 
@@ -891,8 +879,6 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 34, description = "Test to check whether the Most Watched heading displayed in Popular Page")
     @Throws(Exception::class)
     fun testcheckMostWatchedArticle() {
-        try {
-
             commonFunctionKotlin.startTest("Checking Most Watched Article ", "Checking Most Watched", "Popular")
             commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.mostwatchedartcilevideo)
             System.out.println("The Element selected is  :- " + popularPageObject.mostwatchedartcilevideo.text)
@@ -904,10 +890,6 @@ class BBCNewsRegressionTestKotlin
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(vidoePageObject.videowallelements[i]))
             }
             commonFunctionKotlin.navigateBack(androidDriver)
-
-
-        } catch (e: NullPointerException) {
-        }
 
     }
 
@@ -925,7 +907,6 @@ class BBCNewsRegressionTestKotlin
 
         assertNotEquals("Rape in India", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='5']/android.widget.TextView[@index='1']")).text, "Test Didn't Matched")
         assertEquals("Rape in India", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='1']/android.widget.TextView[@index='1']")).text, "Test Matched")
-        // Assert.assertEquals("European Union",androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='2']/android.widget.TextView[@index='1']")).getText(), "Test Matched");
         assertEquals("YouTube", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='5']/android.widget.TextView[@index='1']")).text, "Test Matched")
         commonFunctionKotlin.tapButton(androidDriver,myNewsPageObject.removetopics,false)
         commonFunctionKotlin.tapButton(androidDriver,myNewsPageObject.removetopics,false)
@@ -950,7 +931,6 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 37, description = "Test to play a  video, while device offline")
     @Throws(Exception::class)
     fun testplayingvideooffline() {
-        try {
             commonFunctionKotlin.startTest("VideoPlayback-Offline", "Checking the Video while device offline", "Offline")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.bbcnewsChannel, false)
@@ -972,16 +952,12 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.mynews, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.popular, false)
 
-        } catch (e: Exception) {
-        }
-
     }
 
 
     @Test(priority = 38, description = "Test to play a  video, while device online")
     @Throws(Exception::class)
     fun testPlayingVideoOnLine() {
-        try {
 
             commonFunctionKotlin.startTest("VideoPlayback-Online", "Checking the Video while device Online", "Offline")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
@@ -989,17 +965,12 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.smp_placeholder_play_button, false)
             commonFunctionKotlin.tapButton(androidDriver,basePageObject.navigate_back,false)
 
-        } catch (e: Exception) {
-
-        }
-
     }
 
 
     @Test(priority = 39, description = "Test to select An Article from the England Topics under MyNews ")
     @Throws(Exception::class)
     fun testSelectArticleTopic() {
-        try {
             commonFunctionKotlin.startTest("Selecting a Article from Africa Topics", "Test to select An Article from the Africa Topics under MyNews", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver,basePageObject.mynews,false)
             commonFunctionKotlin.tapButton(androidDriver,myTopicsPageObject.Englandtopic,false)
@@ -1007,15 +978,11 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, myTopicsPageObject.Englandtopic)
             commonFunctionKotlin.navigateBack(androidDriver)
 
-        } catch (e: StaleElementReferenceException) {
-        }
-
     }
 
     @Test(priority = 40, description = "Test to select An Video Article from the England Topics under MyNews ")
     @Throws(Exception::class)
     fun testSelectVideoArticleTopic() {
-        try {
             commonFunctionKotlin.startTest("Select a Video Article from Africa Topic", "Test to select An Video Article from the Africa Topics under MyNews", "MyNews")
             commonFunctionKotlin.scrolltoElement(androidDriver, myNewsPageObject.mynewsrecyclerview)
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicvideoarticle, false)
@@ -1030,8 +997,6 @@ class BBCNewsRegressionTestKotlin
             }
             commonFunctionKotlin.navigateBack(androidDriver)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
-        } catch (e: StaleElementReferenceException) {
-        }
 
     }
 

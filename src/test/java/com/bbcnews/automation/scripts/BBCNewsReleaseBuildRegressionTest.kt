@@ -72,13 +72,10 @@ class BBCNewsReleaseBuildRegressionTest
     private fun readDeviceDetailsCommandPrompt() {
 
         try {
-            //  Deviceos_Name = System.getProperty("DeviceOS");
-            // deviceosName = getProperty("DeviceOS")
             deviceid = System.getProperty("DeviceID")
             deviceName = System.getProperty("DeviceName")
             appPath = System.getProperty("AppPath")
             appiumPort = System.getProperty("AppiumPort")
-            // println("Passed The Device OS is $deviceosName")
             println("Passed The Device ID is $deviceid")
             println("Passed The Device Name is $deviceName")
             println("Passed The Appium port is $appiumPort")
@@ -93,9 +90,6 @@ class BBCNewsReleaseBuildRegressionTest
     private fun setUP() {
         try {
 
-            //commented out to start appium server, as this taken care by hive, to run locally un-comment below line of code
-            //appiumStart.startAppium(Integer.parseInt(Appium_Port));
-            //  AppiumManager.startAppium(Integer.parseInt(Appium_Port));
             val appium_url = "http://127.0.0.1:$appiumPort/wd/hub"
             System.out.println("Appium Server Address : - $appium_url")
             capabilities = DesiredCapabilities()
@@ -197,7 +191,7 @@ class BBCNewsReleaseBuildRegressionTest
     }
 
 
-    @Test(priority = 3, description = "Test to check Video of the day displayed and swipe through all the videos")
+    @Test(groups = ["ignoreTest"],priority = 3, description = "Test to check Video of the day displayed and swipe through all the videos")
     @Throws(Exception::class)
     fun testVideoofthedayDisplayed() {
         try {
@@ -241,7 +235,6 @@ class BBCNewsReleaseBuildRegressionTest
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicspageelemnets_Release[i]))
             }
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
-            commonFunctionKotlin.textpresent(androidDriver, "Family & Education", "added to")
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageyourtopics)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
@@ -260,7 +253,6 @@ class BBCNewsReleaseBuildRegressionTest
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicspageelemnets_Release[i]))
             }
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
-            commonFunctionKotlin.textpresent(androidDriver, "Technology", "added to")
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageyourtopics)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
@@ -284,10 +276,9 @@ class BBCNewsReleaseBuildRegressionTest
             }
 
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
-            commonFunctionKotlin.textpresent(androidDriver, "Family & Education", "removed from")
+          //  commonFunctionKotlin.textpresent(androidDriver, "Family & Education", "removed from")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
-            commonFunctionKotlin.textpresent(androidDriver, "Technology", "removed from")
-            // commonFunctionKotlin.navigateBack(androidDriver)
+           // commonFunctionKotlin.textpresent(androidDriver, "Technology", "removed from")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
         } catch (e: StaleElementReferenceException) {
@@ -337,7 +328,6 @@ class BBCNewsReleaseBuildRegressionTest
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             commonFunctionKotlin.elementIsSelected(myNewsPageObject.addtopics)
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.mytopics)
-            //commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.location_button);
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.editMyTopics)
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews)
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mytopics, false)//,file.getAbsolutePath());
@@ -357,7 +347,11 @@ class BBCNewsReleaseBuildRegressionTest
             commonFunctionKotlin.startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
-            Assert.assertEquals("London", myNewsPageObject.localnews_displayed.text)
+            /**
+             * When running locally. please comment out below two lines of code. since when you run locally
+             * the based on Location. it will be London and to run it on Hive. The location will be Manchester
+             */
+            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.englandtopic)

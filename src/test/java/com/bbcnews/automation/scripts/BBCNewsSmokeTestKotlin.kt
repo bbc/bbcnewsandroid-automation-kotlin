@@ -229,16 +229,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
             startTest("HomePage", "Checking the HomePage", "Smoke")
             tapButton(androidDriver, basePageObjectModel.topstories, false)
-            tapButton(androidDriver, basePageObjectModel.video, false)
-            tapButton(androidDriver, basePageObjectModel.mynews, false)
-            tapButton(androidDriver, basePageObjectModel.popular, false)
-//            tapButton(androidDriver, basePageObjectModel.topstories, false)
-//            Assert.assertTrue(basePageObjectModel.topstories.isSelected)
-//            elementDisplayed(androidDriver, basePageObjectModel.mynews)
-//            elementDisplayed(androidDriver, basePageObjectModel.popular)
-//            elementDisplayed(androidDriver, basePageObjectModel.video)
-//            elementDisplayed(androidDriver, basePageObjectModel.menubutton)
-//            elementDisplayed(androidDriver, basePageObjectModel.search)
+            Assert.assertTrue(basePageObjectModel.topstories.isSelected)
+            elementDisplayed(androidDriver, basePageObjectModel.mynews)
+            elementDisplayed(androidDriver, basePageObjectModel.popular)
+            elementDisplayed(androidDriver, basePageObjectModel.video)
+            elementDisplayed(androidDriver, basePageObjectModel.menubutton)
+            elementDisplayed(androidDriver, basePageObjectModel.search)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -278,16 +274,13 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Test(priority = 6, description = "Test to check the Mynews page")
     @Throws(Exception::class)
     fun testAllowLocation() {
-        try {
+
             startTest("MyNews", "Checking the MyNews", "Smoke")
             tapButton(androidDriver, basePageObjectModel.mynews, false)
             tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             tapButton(androidDriver, myNewsPageObject.allow_location, false)
             tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
             navigateBack(androidDriver)
-        } catch (e: AssertionError) {
-            e.printStackTrace()
-        }
 
     }
 
@@ -338,11 +331,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("MyNews", "Checking the MyNews", "Smoke")
             tapButton(androidDriver, basePageObjectModel.mynews, false)
             Assert.assertTrue(basePageObjectModel.mynews.isSelected)
-//            elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
-//            elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
-//            elementDisplayed(androidDriver, myNewsPageObject.mynews_startButton)
-//            Assert.assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text matched")
-//            Assert.assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text matched")
+            elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
+            elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
+            elementDisplayed(androidDriver, myNewsPageObject.mynews_startButton)
+            Assert.assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text matched")
+            Assert.assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text matched")
         } catch (e: AssertionError) {
             e.printStackTrace()
         }
