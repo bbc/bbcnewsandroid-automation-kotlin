@@ -11,7 +11,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.bbcnews.automation.scripts.BBCNewsReleaseBuildRegressionTest" />
+            <class name="com.bbcnews.automation.scripts.BBCNewsReleaseBuildTest" />
         </classes>
     </test>
 </suite> <!-- Suite -->

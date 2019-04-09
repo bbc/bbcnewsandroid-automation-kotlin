@@ -217,7 +217,7 @@ class BBCNewsRegressionTestKotlin
             Assert.assertEquals("7", homePageObject.promocounter.getText())
             Assert.assertEquals("Swipe through the latest news videos", homePageObject.vodeoofthedaypromosummary.getText())
             commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
-        //    commonFunctionKotlin.scrolltoEndofStories(androidDriver, homePageObject.newstream_progress, vidoePageObject.videsofthedayRelease, homePageObject.checkback_later)
+            commonFunctionKotlin.scrolltoEndofStories(androidDriver, homePageObject.newstream_progress,vidoePageObject.videsoftheday ,homePageObject.checkback_later);
             commonFunctionKotlin.navigateBack(androidDriver)
         } catch (e: AssertionError) {
             throw e
@@ -340,7 +340,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             commonFunctionKotlin.elementIsSelected(myNewsPageObject.addtopics)
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.mytopics)
-            //commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.location_button);
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.editMyTopics)
             commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews)
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mytopics, false)//,file.getAbsolutePath());
