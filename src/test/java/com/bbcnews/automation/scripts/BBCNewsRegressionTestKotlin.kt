@@ -94,7 +94,7 @@ class BBCNewsRegressionTestKotlin
 
    private  fun setUP() {
         try {
-            //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
+
             val appiumurl = "http://127.0.0.1:$appiumPort/wd/hub"
             println("Appium Server Address : - $appiumurl")
             capabilities = DesiredCapabilities()
@@ -106,10 +106,7 @@ class BBCNewsRegressionTestKotlin
             capabilities.setCapability("app", appPath)
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-//            capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
-//            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            //capabilities.setCapability("--session-override", true)
-          //  capabilities.setCapability("ignoreUnimportantViews",true)
+            capabilities.setCapability("--session-override", true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
         } catch (e: Exception) {
         }
@@ -181,10 +178,9 @@ class BBCNewsRegressionTestKotlin
 
     }
 
-
     /**
 
-     * This tests will be ignored from execution as we don't want to run this screen compare test
+     * This tests will be ignored from execution ,  VOTD isn't displayed on top stories page
      * to run this tests remove the groups = ["ignoreTest"] from @test
      * Ignoring this tests as VOD isn't displayed
      */
@@ -286,7 +282,6 @@ class BBCNewsRegressionTestKotlin
 
 
     @Test(priority = 5, description = "Test for Checking whether Location service works")
-    @Story("MyNews")
     @Throws(Exception::class)
     fun testAllowLocation() {
         try {
@@ -297,7 +292,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
             commonFunctionKotlin.navigateBack(androidDriver)
         } catch (e: AssertionError) {
-            e.printStackTrace()
         }
 
     }
@@ -337,7 +331,6 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 8, description = "Test to add Topics under MyNews")
     @Throws(Exception::class)
     fun testAddingTopicstoMyNewsPage() {
-        try {
             commonFunctionKotlin.startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
@@ -345,8 +338,8 @@ class BBCNewsRegressionTestKotlin
              * When running locally. please comment out below two lines of code. since when you run locally
              * the based on Location. it will be London and to run it on Hive. The location will be Manchester
              */
-//            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.getText())
-//            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.getText())
+            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.englandtopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandtopic, false)
@@ -365,8 +358,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.youtubetopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.youtubetopic, false)
             commonFunctionKotlin.textpresent(androidDriver, "YouTube", "added to")
-        } catch (e: NullPointerException) {
-        }
 
     }
 
@@ -389,7 +380,8 @@ class BBCNewsRegressionTestKotlin
 
     @Test(priority = 10, description = "Test to display the Ordering of the Topics")
     @Throws(Exception::class)
-    fun testCheckOrderingofTopicsAdded() = try {
+    fun testCheckOrderingofTopicsAdded()
+    {
         commonFunctionKotlin.startTest("My Topics Ordering", "Test to display the Ordering of the Topics", "MyNews")
         commonFunctionKotlin.readRecyclerView(androidDriver, "Topics Before Re-Ordering :- ")
         System.out.println("The Text at get(0) is " + androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")).text)
@@ -400,7 +392,6 @@ class BBCNewsRegressionTestKotlin
         assertEquals("England", androidDriver.findElement(By.xpath("//android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")).text, "Test Matched")
         commonFunctionKotlin.navigateBack(androidDriver)
 
-    } catch (e: NullPointerException) {
     }
 
     @Test(priority = 11, description = "Test to select each of the topics displayed under MyNews ")
@@ -437,7 +428,8 @@ class BBCNewsRegressionTestKotlin
 
     @Test(priority = 12, description = "Test to re-arrange topics from top to bottom")
     @Throws(Exception::class)
-    fun testCheckReOrderingofTopicsAdded() = try {
+    fun testCheckReOrderingofTopicsAdded()
+    {
         commonFunctionKotlin.startTest("Re Arrange Topics from Top-to-Bottom", "Test to re-arrange topics from top to bottom", "MyNews")
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 
@@ -457,7 +449,6 @@ class BBCNewsRegressionTestKotlin
 
         commonFunctionKotlin.navigateBack(androidDriver)
 
-    } catch (e: NullPointerException) {
     }
 
 
@@ -465,7 +456,6 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 13, description = "Test to check whether the Menu Options are displayed")
     @Throws(Exception::class)
     fun testcheckMenuItems() {
-        try {
             commonFunctionKotlin.startTest("Checking the MenuItems", "Checking Menu Items ", "Menu")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.menubutton, false)
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.settings)
@@ -473,8 +463,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.OtherBBCapps)
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.Appinfo)
             commonFunctionKotlin.navigateBack(androidDriver)
-        } catch (e: NullPointerException) {
-        }
 
     }
 
@@ -482,7 +470,6 @@ class BBCNewsRegressionTestKotlin
     @Test(priority = 14, description = "Test to play a Live video from Vide page and asserting on whether playback controls are displayed")
     @Throws(Exception::class)
     fun testVideopage() {
-        try {
             commonFunctionKotlin.startTest("Playing a Live Video", "Checking the Video Page", "Live Video")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.bbcnewsChannel, false)
@@ -507,9 +494,6 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.smpliveicon)
             commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.smp_volume_button)
             commonFunctionKotlin.elementDisplayed(androidDriver, vidoePageObject.smp_seek_bar)
-        } catch (e: NullPointerException) {
-        }
-
     }
 
     @Test(priority = 15, description = "Test to check whether video plays in Landspace mode")
@@ -981,21 +965,24 @@ class BBCNewsRegressionTestKotlin
 
     }
 
+
     /**
-     * commented out as Video of the day isn't displayed
+
+     * This tests will be ignored from execution ,  VOTD isn't displayed on top stories page
+     * to run this tests remove the groups = ["ignoreTest"] from @test
+     * Ignoring this tests as VOD isn't displayed
      */
 
-//    @Test(priority = 42, description = "Test to check the offline scenario of the app")
-//    fun testcheckOnlineinescenario() {
-//        commonFunctionKotlin.startTest("VideOfTheDay - Online", "Checking apps offline scenario", "Offline")
-//        commonFunctionKotlin.tapButton(androidDriver, basePageObject.topstories, false)
-//        commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
-//        commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
-//        //extenttestReport.isElementPresent(androidDriver,By.id("bbc.mobile.news.uk:id/snackbar_text"));
-//        commonFunctionKotlin.navigateBack(androidDriver)
-//
-//
-//    }
+    @Test(groups = ["ignoreTest"],priority = 41, description = "Test to check the offline scenario of the app")
+    fun testcheckOnlineinescenario() {
+        commonFunctionKotlin.startTest("VideOfTheDay - Online", "Checking apps offline scenario", "Offline")
+        commonFunctionKotlin.tapButton(androidDriver, basePageObject.topstories, false)
+        commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
+        commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
+        commonFunctionKotlin.navigateBack(androidDriver)
+
+
+    }
 
     @AfterMethod
     fun getResult(result: ITestResult)

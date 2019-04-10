@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6e64751c-338a-419e-9a70-68126479bad2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -69,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="110" column="14" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
+            <state relative-caret-position="15">
+              <caret line="980" column="97" selection-start-line="980" selection-start-column="97" selection-end-line="980" selection-end-column="97" />
               <folding>
                 <element signature="e#40#1233#0" expanded="true" />
               </folding>
@@ -269,7 +268,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$ANDROID_HOME$" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554833437175" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554909080622" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -516,8 +515,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="110" column="14" selection-start-line="110" selection-start-column="14" selection-end-line="110" selection-end-column="14" />
+        <state relative-caret-position="15">
+          <caret line="980" column="97" selection-start-line="980" selection-start-column="97" selection-end-line="980" selection-end-column="97" />
           <folding>
             <element signature="e#40#1233#0" expanded="true" />
           </folding>
