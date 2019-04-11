@@ -120,10 +120,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             capabilities.setCapability("app", appPath)
             capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
             capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-//            capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
-//            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-          //  capabilities.setCapability("--session-override", true)
-          //  capabilities.setCapability("disableWindowAnimation", true)
+            capabilities.setCapability("--session-override", true)
             androidDriver = AndroidDriver(URL(appiumurl), capabilities)
         } catch (e: Exception) {
         }
