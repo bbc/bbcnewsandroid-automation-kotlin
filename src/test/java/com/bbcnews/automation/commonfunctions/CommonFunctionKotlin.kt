@@ -60,51 +60,10 @@ open class CommonFunctionKotlin {
     private val curDate = Date()
     private val format = SimpleDateFormat("yyyy-MM-dd")
     private val DateToStr = format.format(curDate)
-    var absoluteFilePath = "$workingDirectory/Results"
+    //var absoluteFilePath = "$workingDirectory/Results"
     var screenshotpathfolder = "$workingDirectory/Screenshots"
 
-    @Throws(Exception::class)
-    fun startReport(reportname: String) {
 
-        val Deviceos_Name = System.getProperty("DeviceOS")
-        val Device_id = System.getProperty("DeviceID")
-        val Device_Name = System.getProperty("DeviceName")
-
-
-        val curDate = Date()
-        println(curDate.toString())
-
-
-        println("absoluteFilePath is $absoluteFilePath")
-        Thread.sleep(4000)
-
-        val reportfolder = extentResultFolder(absoluteFilePath)
-        println("reportfolder is $reportfolder")
-        Thread.sleep(4000)
-
-        //htmlReporter = new ExtentHtmlReporter(reportfolder+File.separator+reportname+device_name+dateName+".html");
-        htmlReporter = ExtentHtmlReporter("$reportfolder$reportname$Device_Name.html")
-        extent = ExtentReports()
-        extent.attachReporter(htmlReporter)
-
-        htmlReporter.setAppendExisting(true)
-
-
-        extent.setSystemInfo("Device ID", Device_id)
-        extent.setSystemInfo("Firmware version", Deviceos_Name)
-        extent.setSystemInfo("Device Name ", Device_Name)
-        extent.setSystemInfo("Run Started on", curDate.toString())
-
-
-        htmlReporter.config().chartVisibilityOnOpen = true
-        htmlReporter.config().documentTitle = "BBC News Android Report "
-        htmlReporter.config().reportName = "Test Report"
-        htmlReporter.config().testViewChartLocation = ChartLocation.TOP
-        htmlReporter.config().theme = Theme.STANDARD
-        htmlReporter.config().timeStampFormat = "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
-
-
-    }
 
     open fun startTest(testName: String, testDecsription: String, category: String) = try {
         test = extent.createTest(testName, testDecsription)
@@ -451,8 +410,8 @@ open class CommonFunctionKotlin {
 
         // val dateName = SimpleDateFormat("hh:mm").format(Date())
 
-        val reportfolder = extentResultFolder(absoluteFilePath)
-        println("reportfolder is $reportfolder")
+//        val reportfolder = extentResultFolder(absoluteFilePath)
+//        println("reportfolder is $reportfolder")
 
         val subDirectory = "Reports"
         val resultsPaths: String

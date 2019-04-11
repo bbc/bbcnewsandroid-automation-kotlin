@@ -2,7 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e64751c-338a-419e-9a70-68126479bad2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/kotlin/test/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/build-history.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.keystream.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.len" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileTestKotlin/last-build.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -23,8 +51,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="12" />
+            <state relative-caret-position="135">
+              <caret line="351" selection-start-line="351" selection-end-line="351" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/io/File.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="554" column="18" selection-start-line="554" selection-start-column="18" selection-end-line="554" selection-end-column="18" />
+              <folding>
+                <element signature="e#23018#23019#0" expanded="true" />
+                <element signature="e#23057#23058#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="405" column="8" selection-start-line="405" selection-start-column="8" selection-end-line="405" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -32,17 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="185" column="25" selection-start-line="185" selection-start-column="25" selection-end-line="185" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="94" column="26" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="26" />
+            <state relative-caret-position="362">
+              <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -68,8 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="980" column="97" selection-start-line="980" selection-start-column="97" selection-end-line="980" selection-end-column="97" />
+            <state relative-caret-position="180">
+              <caret line="340" column="37" selection-start-line="340" selection-start-column="33" selection-end-line="340" selection-end-column="37" />
               <folding>
                 <element signature="e#40#1233#0" expanded="true" />
               </folding>
@@ -137,10 +178,11 @@
       <find>testondemandvideoplyback</find>
       <find>manc</find>
       <find>testRelatedTopicArticle</find>
-      <find>testToCheckTopicsTopStores</find>
       <find>testMen</find>
-      <find>Manc</find>
       <find>testMyNewsRemoveTopics</find>
+      <find>testToCheckTopicsTopStores</find>
+      <find>testcheckMenuItems</find>
+      <find>Manc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,7 +197,6 @@
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/VideoPageObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/PopularPageObjects.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsStatsTest.kt" />
-        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/MyNewsPageObject.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/Example.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/Example.kt" />
@@ -164,6 +205,7 @@
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsReleaseBuildTest.kt" />
         <option value="$PROJECT_DIR$/BBCRegressionTest.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt" />
         <option value="$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt" />
       </list>
@@ -179,7 +221,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -263,12 +305,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$ANDROID_HOME$" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554909080622" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554909084036" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -301,7 +343,7 @@
     <frame x="0" y="23" width="1280" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31502423" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31987077" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -399,13 +441,6 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="144" column="8" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1110">
@@ -461,13 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BBCRegressionTest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsReleaseBuildTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5025">
@@ -492,6 +520,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="103" column="40" selection-start-line="103" selection-start-column="40" selection-end-line="103" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BBCRegressionTest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BBCNewsSmokeTest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -499,24 +541,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/pageobjects/BasePageObject.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="185" column="25" selection-start-line="185" selection-start-column="25" selection-end-line="185" selection-end-column="25" />
+        <state relative-caret-position="197">
+          <caret line="554" column="18" selection-start-line="554" selection-start-column="18" selection-end-line="554" selection-end-column="18" />
+          <folding>
+            <element signature="e#23018#23019#0" expanded="true" />
+            <element signature="e#23057#23058#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/commonfunctions/CommonFunctionKotlin.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="405" column="8" selection-start-line="405" selection-start-column="8" selection-end-line="405" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsSmokeTestKotlin.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="124" column="12" selection-start-line="124" selection-start-column="12" selection-end-line="124" selection-end-column="12" />
+        <state relative-caret-position="135">
+          <caret line="351" selection-start-line="351" selection-end-line="351" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/bbcnews/automation/scripts/BBCNewsRegressionTestKotlin.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="980" column="97" selection-start-line="980" selection-start-column="97" selection-end-line="980" selection-end-column="97" />
+        <state relative-caret-position="180">
+          <caret line="340" column="37" selection-start-line="340" selection-start-column="33" selection-end-line="340" selection-end-column="37" />
           <folding>
             <element signature="e#40#1233#0" expanded="true" />
           </folding>

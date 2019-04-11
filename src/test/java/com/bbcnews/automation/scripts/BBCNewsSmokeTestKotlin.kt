@@ -247,7 +247,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      * Ignoring this tests as VOD isn't displayed
      */
 
-    @Test(groups = ["ignoreTest"], priority = 5, description = "Test to check Video of the day displayed and swipe through all the videos")
+    @Test(priority = 5, description = "Test to check Video of the day displayed and swipe through all the videos")
     @Throws(Exception::class)
     fun testVideoofthedayDisplayed() {
         try {
