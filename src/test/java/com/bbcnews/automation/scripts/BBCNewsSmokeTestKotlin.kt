@@ -9,12 +9,8 @@ import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
 import io.appium.java_client.remote.MobileCapabilityType
-import io.qameta.allure.Severity
-import io.qameta.allure.SeverityLevel
-import io.qameta.allure.Story
 import org.openqa.selenium.By
 import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.PageFactory
 import org.testng.Assert
@@ -23,7 +19,7 @@ import org.testng.annotations.*
 import java.io.File
 import java.io.IOException
 import java.net.URL
-import java.time.Duration
+
 
 class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     private var capabilities = DesiredCapabilities()

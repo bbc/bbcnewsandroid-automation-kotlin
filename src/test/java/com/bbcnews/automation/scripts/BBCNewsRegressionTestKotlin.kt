@@ -14,7 +14,6 @@ import java.io.File
 import java.io.IOException
 import java.net.URL
 import java.util.*
-import io.qameta.allure.Story
 import com.bbcnews.automation.pageobjects.MyNewsPageObject
 import com.bbcnews.automation.pageobjects.VideoPageObjects
 import com.bbcnews.automation.pageobjects.PopularPageObjects
@@ -33,7 +32,6 @@ import java.time.Duration
 class BBCNewsRegressionTestKotlin
 {
     private var capabilities = DesiredCapabilities()
-    private var deviceosName: String? = null
     private var deviceid: String? = null
     private var deviceName: String? = null
     private var appPath: String? = null
@@ -185,7 +183,7 @@ class BBCNewsRegressionTestKotlin
      * Ignoring this tests as VOD isn't displayed
      */
 
-    @Test(groups = ["ignoreTest"],priority = 2, description = "Test to check Video of the day displayed and swipe through all the videos")
+    @Test(priority = 2, description = "Test to check Video of the day displayed and swipe through all the videos")
     @Throws(Exception::class)
     fun testVideoofthedayDisplayed() {
         try {
@@ -223,8 +221,6 @@ class BBCNewsRegressionTestKotlin
                 commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
             }
             commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.family_educationTopic)
-            System.out.println("Topics is :-" + homePageObject.family_educationTopic.text)
-
             for (i in 0 until basePageObject.topicspageelemnets.size) {
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicspageelemnets[i]))
             }
@@ -241,9 +237,7 @@ class BBCNewsRegressionTestKotlin
                 System.out.println("Scrolling up")
                 commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
             }
-            System.out.println("The Topic is " + homePageObject.technologytopic.text)
             commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.technologytopic)
-            System.out.println("Topics is :-" + homePageObject.technologytopic.text)
             for (i in 0 until basePageObject.topicspageelemnets.size) {
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicspageelemnets[i]))
             }
@@ -477,7 +471,7 @@ class BBCNewsRegressionTestKotlin
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.navigate_back)
             commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.sharestory)
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.smp_placeholder_play_button, false)
-            commonFunctionKotlin.sleepmethod(1400)
+            commonFunctionKotlin.sleepmethod(1700)
             commonFunctionKotlin.tapButton(androidDriver, vidoePageObject.smp_fullscreen_button, false)
             commonFunctionKotlin.sleepmethod(1400)
             try {

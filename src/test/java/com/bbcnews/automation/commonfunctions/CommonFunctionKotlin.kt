@@ -278,9 +278,9 @@ open class CommonFunctionKotlin {
     /**
      * wait method
      */
-    fun sleepmethod(seconds: Long) {
+    fun sleepmethod(miliseconds: Long) {
         try {
-            Thread.sleep(seconds)
+            Thread.sleep(miliseconds)
         } catch (e: Exception) {
         }
 
@@ -462,7 +462,6 @@ open class CommonFunctionKotlin {
                 }
                 Thread.sleep(800)
                 element2.isDisplayed()
-                //element.click();
                 break
             } catch (e: Exception) {
 
