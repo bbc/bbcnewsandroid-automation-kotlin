@@ -245,7 +245,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
 
     @Test(priority = 5, description = "Test to check Video of the day displayed and swipe through all the videos")
-    @Throws(Exception::class)
     fun testVideoofthedayDisplayed() {
         try {
             startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
@@ -268,7 +267,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
 
     @Test(priority = 6, description = "Test to check the Mynews page")
-    @Throws(Exception::class)
     fun testAllowLocation() {
 
             startTest("MyNews", "Checking the MyNews", "Smoke")
@@ -284,7 +282,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      * checks the popular page most read
      */
     @Test(priority = 7, description = "Test to check the  popular page")
-    @Throws(Exception::class)
     fun testPopularPage() {
         try {
             startTest("PopularPage", "Checking the Popular", "Smoke")
@@ -321,7 +318,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
 
     @Test(priority = 9, description = "Test to check the Mynews page")
-    @Throws(Exception::class)
     fun testMyNewsPage() {
         try {
             startTest("MyNews", "Checking the MyNews", "Smoke")
@@ -343,6 +339,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
     @Test(priority = 10, description = "Test to check the adding the topics to MyNews page")
     fun testAddingTopicstoMyNewsPage() {
+        try {
             startTest("MyNews", "Adding topics to MyNews", "Smoke")
             tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
             tapButton(androidDriver, myNewsPageObject.addtopics, false)
@@ -360,6 +357,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
             scrolltoElement(androidDriver, myTopicsPageObject.worldtopic)
             tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
+        }catch (e : AssertionError){}
 
     }
 
@@ -402,7 +400,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
 
     @Test(priority = 13, description = "Test To remove topics which are displayed under MyNews")
-    @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
             startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
             tapButton(androidDriver, basePageObjectModel.mynews, false)
@@ -426,7 +423,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
 
     @Test(priority = 14, description = "Test to check the Articles displayed under topics of MyNews page")
-    @Throws(Exception::class)
     fun testCheckArtcilesofTopics() {
             startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
             val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
@@ -494,7 +490,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      * check the live video  seeking
      */
     @Test(priority = 17, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
-    @Throws(AssertionError::class, Exception::class)
     fun testCheckLiveVideoSeeking() {
 
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
@@ -527,8 +522,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         sleepmethod(1000)
         Assert.assertEquals(basePageObjectModel.searchtext, basePageObjectModel.searchkeyword.text, "Text Matched")
         tapButton(androidDriver, basePageObjectModel.searchkeyword, false)
-//        val title = getText(basePageObjectModel.headlinetitle)
-//        Assert.assertEquals(basePageObjectModel.searchtext, title)
         tapButton(androidDriver, basePageObjectModel.backButton, false)
         navigateBack(androidDriver)
     }
