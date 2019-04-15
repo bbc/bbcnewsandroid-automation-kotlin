@@ -147,12 +147,12 @@ class BBCNewsStatsTest {
     @Throws(Exception::class)
     fun testOpenNewsApp() {
         try {
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.okbutton, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.menubutton, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.internalsettings, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.cpscontent, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.trevortest, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.okButton, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.menuButton, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.internalSettings, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.cpsContent, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.trevorTest, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.navigate_back, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.reloadButton, false)
             charlesProxy.startcharlesSession()
@@ -171,11 +171,11 @@ class BBCNewsStatsTest {
         try {
 
             commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke")
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topstories, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.mynews, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topStories, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.myNews, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.popular, false)
             commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.video, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.searchbutton, false)
+            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.searchButton, false)
 
         } catch (e: Exception) {
             e.printStackTrace()

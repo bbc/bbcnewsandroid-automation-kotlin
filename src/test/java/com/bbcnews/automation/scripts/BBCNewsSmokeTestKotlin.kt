@@ -144,8 +144,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
     @Test(priority = 1, description = "Launching the app")
     fun testOpenNewsApp() {
-        tapButton(androidDriver, basePageObjectModel.okbutton, false)
-        tapButton(androidDriver, basePageObjectModel.nothanksbutton, false)
+        tapButton(androidDriver, basePageObjectModel.okButton, false)
+        tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
 
         try {
             androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
@@ -158,18 +158,18 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * uncomment if you want to check the screenshot compare tests
      */
-    @Test(priority = 2, description = "takes the screenshot of the topstories, mynews, popular,video and menu page")
+    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
     @Throws(IOException::class)
     fun testTakeScreenshotsOfPages() {
-        tapButton(androidDriver, basePageObjectModel.topstories, false)
-        testUtility.screenshot(androidDriver, "Before", "topstories")
-        tapButton(androidDriver, basePageObjectModel.mynews, false)
-        testUtility.screenshot(androidDriver, "Before", "mynews")
+        tapButton(androidDriver, basePageObjectModel.topStories, false)
+        testUtility.screenshot(androidDriver, "Before", "topStories")
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
+        testUtility.screenshot(androidDriver, "Before", "myNews")
         tapButton(androidDriver, basePageObjectModel.popular, false)
         testUtility.screenshot(androidDriver, "Before", "popular")
         tapButton(androidDriver, basePageObjectModel.video, false)
         testUtility.screenshot(androidDriver, "Before", "video")
-        tapButton(androidDriver, basePageObjectModel.menubutton, false)
+        tapButton(androidDriver, basePageObjectModel.menuButton, false)
         testUtility.screenshot(androidDriver, "Before", "menu")
         navigateBack(androidDriver)
     }
@@ -180,16 +180,16 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testCheckHomePage() {
         androidDriver.runAppInBackground(Duration.ofSeconds(30))
         startTest("HomePage", "Checking the HomePage", "Smoke")
-        tapButton(androidDriver, basePageObjectModel.topstories, false)
-        assertTrue(basePageObjectModel.topstories.isSelected)
+        tapButton(androidDriver, basePageObjectModel.topStories, false)
+        assertTrue(basePageObjectModel.topStories.isSelected)
         assertDisplayingElements(androidDriver,
                 basePageObjectModel.item_layout_name,
                 basePageObjectModel.item_layout_home_section,
                 basePageObjectModel.item_layout_last_updated,
-                basePageObjectModel.mynews,
+                basePageObjectModel.myNews,
                 basePageObjectModel.popular,
                 basePageObjectModel.video,
-                basePageObjectModel.menubutton,
+                basePageObjectModel.menuButton,
                 basePageObjectModel.search
         )
     }
@@ -199,7 +199,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Severity(SeverityLevel.CRITICAL)
     fun testAllowLocation() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
-        tapButton(androidDriver, basePageObjectModel.mynews, false)
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
         tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
         tapButton(androidDriver, myNewsPageObject.allow_location, false)
         tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
@@ -231,9 +231,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Severity(SeverityLevel.CRITICAL)
     fun testMyNewsPage() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
-        tapButton(androidDriver, basePageObjectModel.mynews, false)
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
 
-        assertTrue(basePageObjectModel.mynews.isSelected)
+        assertTrue(basePageObjectModel.myNews.isSelected)
 
         assertDisplayingElements(androidDriver,
                 myNewsPageObject.mynews_summary,
@@ -310,7 +310,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
         startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
-        tapButton(androidDriver, basePageObjectModel.mynews, false)
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
         tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 
         assertDisplayingElements(androidDriver,
@@ -367,11 +367,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Throws(Exception::class, AssertionError::class)
     fun testMenuPage() {
         startTest("Menu", "Checking the Menu Items", "Smoke")
-        tapButton(androidDriver, basePageObjectModel.menubutton, false)
+        tapButton(androidDriver, basePageObjectModel.menuButton, false)
 
         assertDisplayingElements(androidDriver,
-                basePageObjectModel.Appinfo,
-                basePageObjectModel.OtherBBCapps,
+                basePageObjectModel.appInfo,
+                basePageObjectModel.otherBbcApps,
                 basePageObjectModel.InternalSettings,
                 basePageObjectModel.settings
         )
@@ -396,10 +396,10 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)//,file.getAbsolutePath())
         assertDisplayingElements(androidDriver, videoPageObject.live_media_item_caption)
         try {
-            if (!basePageObjectModel.sharestory.isDisplayed) {
+            if (!basePageObjectModel.shareStory.isDisplayed) {
                 verticalSwipe(androidDriver, "Up")
 
-                assertDisplayingElements(androidDriver, basePageObjectModel.sharestory)
+                assertDisplayingElements(androidDriver, basePageObjectModel.shareStory)
             }
         } catch (e: NoSuchElementException) {
         }
@@ -445,13 +445,13 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testSearchStories() {
         try {
             startTest("Search", "Checking for Search Topics", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.searchbutton, false)
-            enterText(basePageObjectModel.searchfield, basePageObjectModel.searchtext)
+            tapButton(androidDriver, basePageObjectModel.searchButton, false)
+            enterText(basePageObjectModel.searchField, basePageObjectModel.searchText)
             waitFor(1000)
-            assertEquals(basePageObjectModel.searchtext, basePageObjectModel.searchkeyword.text, "Text Matched")
-            tapButton(androidDriver, basePageObjectModel.searchkeyword, false)
-            val title = getText(basePageObjectModel.headlinetitle)
-            assertEquals(basePageObjectModel.searchtext, title)
+            assertEquals(basePageObjectModel.searchText, basePageObjectModel.searchKeyword.text, "Text Matched")
+            tapButton(androidDriver, basePageObjectModel.searchKeyword, false)
+            val title = getText(basePageObjectModel.headlineTitle)
+            assertEquals(basePageObjectModel.searchText, title)
             tapButton(androidDriver, basePageObjectModel.backButton, false)
             navigateBack(androidDriver)
         } catch (e: Exception) {
@@ -463,19 +463,18 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * un-comment if you want to check the screenshot compare tests
      */
-
     @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
     @Throws(IOException::class)
     fun testTakeScreenShotAfter() {
-        tapButton(androidDriver, basePageObjectModel.topstories, false)
-        testUtility.screenshot(androidDriver, "After", "topstories")
-        tapButton(androidDriver, basePageObjectModel.mynews, false)
-        testUtility.screenshot(androidDriver, "After", "mynews")
+        tapButton(androidDriver, basePageObjectModel.topStories, false)
+        testUtility.screenshot(androidDriver, "After", "topStories")
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
+        testUtility.screenshot(androidDriver, "After", "myNews")
         tapButton(androidDriver, basePageObjectModel.popular, false)
         testUtility.screenshot(androidDriver, "After", "popular")
         tapButton(androidDriver, basePageObjectModel.video, false)
         testUtility.screenshot(androidDriver, "After", "video")
-        tapButton(androidDriver, basePageObjectModel.menubutton, false)
+        tapButton(androidDriver, basePageObjectModel.menuButton, false)
         testUtility.screenshot(androidDriver, "After", "menu")
         navigateBack(androidDriver)
     }
