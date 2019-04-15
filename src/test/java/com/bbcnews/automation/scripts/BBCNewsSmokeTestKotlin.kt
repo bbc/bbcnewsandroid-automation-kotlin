@@ -428,13 +428,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
 
         waitForScreenToLoad(androidDriver, videoPageObject.smpPlaceholderPlayButton, 1)
-        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPauseButton, false)
 
-        try {
-            videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
-            isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smpLiveIcon"))
-        } catch (e: Exception) {
-        }
+        videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
+        isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smpLiveIcon"))
+
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
 
         navigateBack(androidDriver)
     }

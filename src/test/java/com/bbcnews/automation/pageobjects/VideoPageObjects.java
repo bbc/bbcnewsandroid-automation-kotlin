@@ -32,6 +32,9 @@ public class VideoPageObjects {
     @AndroidFindBy(accessibility = "Play")
     public MobileElement smpPlaceholderPlayButton;
 
+    @AndroidFindBy(accessibility = "Pause")
+    public MobileElement smpPlaceholderPauseButton;
+
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smpPauseButton"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/smpPauseButton")
