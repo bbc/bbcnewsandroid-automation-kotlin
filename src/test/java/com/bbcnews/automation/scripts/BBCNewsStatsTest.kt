@@ -226,7 +226,7 @@ class BBCNewsStatsTest {
     fun testBBVNewsBasicStats() {
         commonFunctionKotlin.startTest("BasicStats", "Test to check the compared the downloaded stats", "Stat's")
         try {
-            statsTestData.comapre_StatsData(statsTestData.csvFile, statsTestData.BBCnewsBasicstats)
+            statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.bbcNewsBasicStats)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -239,7 +239,7 @@ class BBCNewsStatsTest {
     fun testCheckTopStoresStats() {
         commonFunctionKotlin.startTest("TopStores", "Test to check the TopStores Page downloaded stats", "TopStoriesStat's")
         try {
-            statsTestData.comapre_StatsData(statsTestData.csvFile, statsTestData.topstores)
+            statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.topStories)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -252,7 +252,7 @@ class BBCNewsStatsTest {
     fun testCheckMyNewsStats() {
         commonFunctionKotlin.startTest("MyNews", "Test to check the MyNews Page downloaded stats", "MyNews Stat's")
         try {
-            statsTestData.comapre_StatsData(statsTestData.csvFile, statsTestData.mynews)
+            statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.myNews)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -265,7 +265,7 @@ class BBCNewsStatsTest {
     fun testCheckPopularPageStats() {
         commonFunctionKotlin.startTest("Popular", "Test to check the Popular Page downloaded stats", "Popular Stat's")
         try {
-            statsTestData.comapre_StatsData(statsTestData.csvFile, statsTestData.popularpage)
+            statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.popularPage)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -278,7 +278,7 @@ class BBCNewsStatsTest {
     fun testCheckVideoPageStats() {
         commonFunctionKotlin.startTest("Video", "Test to check the Video Page downloaded stats", "Video Stat's")
         try {
-            statsTestData.comapre_StatsData(statsTestData.csvFile, statsTestData.videopage)
+            statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.videoPage)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: IOException) {
@@ -291,7 +291,7 @@ class BBCNewsStatsTest {
     fun testCheckPopularStats() {
         commonFunctionKotlin.startTest("Search", "Test to check the Search Page downloaded stats", "Search Stat's")
         try {
-            statsTestData.comapre_StatsData(statsTestData.csvFile, statsTestData.searchstats)
+            statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.searchStats)
         } catch (e: InterruptedException) {
             e.printStackTrace()
         } catch (e: IOException) {

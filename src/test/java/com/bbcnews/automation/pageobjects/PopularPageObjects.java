@@ -171,7 +171,7 @@ public class PopularPageObjects {
 
 
     public String popularvideoelements [] = {
-            "bbc.mobile.news.uk.internal:id/smp_pause_button",
+            "bbc.mobile.news.uk.internal:id/smpPauseButton",
             // "bbc.mobile.news.uk.internal:id/videoTitleHeadline",
             "bbc.mobile.news.uk.internal:id/videoTitleTimestamp",
             "bbc.mobile.news.uk.internal:id/videoTitleTopic",
@@ -179,7 +179,7 @@ public class PopularPageObjects {
     };
 
     public String popularvideoelements_Release [] = {
-            "bbc.mobile.news.uk:id/smp_pause_button",
+            "bbc.mobile.news.uk:id/smpPauseButton",
             "bbc.mobile.news.uk:id/videoTitleHeadline",
             "bbc.mobile.news.uk:id/videoTitleTimestamp",
             "bbc.mobile.news.uk:id/videoTitleTopic",

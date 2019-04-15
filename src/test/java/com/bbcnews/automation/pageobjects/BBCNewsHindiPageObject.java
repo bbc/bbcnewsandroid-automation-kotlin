@@ -165,14 +165,14 @@ public class BBCNewsHindiPageObject {
     public MobileElement mediaItemCaption;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/smp_seek_bar"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/smp_seek_bar")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/smpSeekBar"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/smpSeekBar")
     })
     public MobileElement seekBar;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/smp_pause_button"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/smp_pause_button")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/smpPauseButton"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/smpPauseButton")
     })
     public MobileElement pauseButton;
 
