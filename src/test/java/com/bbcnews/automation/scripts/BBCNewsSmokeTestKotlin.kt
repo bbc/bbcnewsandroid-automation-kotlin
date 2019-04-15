@@ -183,7 +183,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, basePageObjectModel.topStories, false)
         assertTrue(basePageObjectModel.topStories.isSelected)
         assertDisplayingElements(androidDriver,
-                basePageObjectModel.item_layout_name,
+                basePageObjectModel.itemLayoutName,
                 basePageObjectModel.item_layout_home_section,
                 basePageObjectModel.item_layout_last_updated,
                 basePageObjectModel.myNews,
