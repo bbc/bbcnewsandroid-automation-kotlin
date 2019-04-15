@@ -25,7 +25,8 @@ import org.openqa.selenium.*
 import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
-import org.testng.Assert
+import org.testng.Assert.assertTrue
+import org.testng.Assert.fail
 import org.testng.ITestResult
 import ru.yandex.qatools.ashot.AShot
 import java.awt.Toolkit
@@ -313,7 +314,7 @@ open class CommonFunctionKotlin {
     fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
         try {
             waitForScreenToLoad(appiumDriver, element, 3)
-            Assert.assertTrue(element.isDisplayed)
+            assertTrue(element.isDisplayed)
             if (element.isDisplayed) {
                 if (element.text.isEmpty()) {
                     test?.log(Status.PASS, element.getAttribute("contentDescription") + "  Displayed")
@@ -322,14 +323,14 @@ open class CommonFunctionKotlin {
                 }
 
             } else {
-                test?.log(Status.FAIL, element.text + "  isn't Displayed")
+                test?.log(Status.FAIL, element.text + "  is not Displayed")
             }
 
         } catch (e: AssertionError) {
             e.printStackTrace()
-            org.testng.Assert.fail()
+            println("Element $element not found")
+            fail()
         }
-
     }
 
     fun getTestResult(appiumDriver: AppiumDriver<MobileElement>, result: ITestResult) {

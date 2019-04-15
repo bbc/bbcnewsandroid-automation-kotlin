@@ -4,7 +4,7 @@ import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
-import com.bbcnews.automation.testutils.Testutility
+import com.bbcnews.automation.testutils.TestUtility
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
@@ -36,7 +36,7 @@ class BBCNewsStatsTest {
     private lateinit var file: File
 
     private var commonFunctionKotlin = CommonFunctionKotlin()
-    private var testUtility = Testutility()
+    private var testUtility = TestUtility()
 
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>

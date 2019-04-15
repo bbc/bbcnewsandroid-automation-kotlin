@@ -5,7 +5,7 @@ import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
-import com.bbcnews.automation.testutils.Testutility
+import com.bbcnews.automation.testutils.TestUtility
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.StartsActivity
@@ -33,7 +33,7 @@ class BBCNewsRegressionTestKotlin {
 
     private var commonFunctionKotlin = CommonFunctionKotlin()
     private var capabilities = DesiredCapabilities()
-    private var testutility = Testutility()
+    private var testutility = TestUtility()
     private var deviceName: String? = null
     private var appiumPort: String? = null
     private var deviceid: String? = null

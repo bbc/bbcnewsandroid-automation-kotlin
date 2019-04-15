@@ -6,7 +6,7 @@ import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject
 import com.bbcnews.automation.pageobjects.HomePageObject
-import com.bbcnews.automation.testutils.Testutility
+import com.bbcnews.automation.testutils.TestUtility
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
@@ -36,7 +36,7 @@ class BBCNewsHindiSmokeTest {
     private var appPath: String? = null
     private var appiumPort: String? = null
     private var commonFunctionKotlin = CommonFunctionKotlin()
-    private var testutility = Testutility()
+    private var testutility = TestUtility()
 
     private lateinit var file: File
     private lateinit var androidDriver: AndroidDriver<MobileElement>
