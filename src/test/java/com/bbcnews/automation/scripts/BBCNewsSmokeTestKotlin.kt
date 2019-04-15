@@ -402,7 +402,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         elementDisplayed(androidDriver, videoPageObject.smp_volume_button)
         elementDisplayed(androidDriver, videoPageObject.smp_seek_bar)
 
-        waitForScreenToLoad(androidDriver, videoPageObject.smp_placeholder_play_button, 2)
+        waitForScreenToLoad(androidDriver, videoPageObject.smp_placeholder_play_button, 1)
         tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
         tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
 
