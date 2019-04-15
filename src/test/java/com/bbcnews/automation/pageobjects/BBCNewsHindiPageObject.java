@@ -7,21 +7,17 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class BBCNewsHindiPageObject {
 
-
     public BBCNewsHindiPageObject() {
-
     }
 
     @AndroidFindBy(id = "android:id/button2")
     public MobileElement noThanksButton;
-
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='0']")
     public MobileElement mainItemLayoutName;
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.LinearLayout[@index='1']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
     public MobileElement mainItemLayoutLastUpdated;
-
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")
     public MobileElement articleItemLayoutName;
@@ -30,7 +26,6 @@ public class BBCNewsHindiPageObject {
     public MobileElement articleItemLayoutLastUpdated;
 
     //BBC News Hindi Common Page Objects
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='होम पेज']")
     public MobileElement bbcHindiHomepage;
 
@@ -125,14 +120,12 @@ public class BBCNewsHindiPageObject {
             @AndroidBy(id = "uk.co.bbc.hindi.internal:id/image_item_caption"),
             @AndroidBy(id = "uk.co.bbc.hindi:id/image_item_caption")
     })
-
     public MobileElement imageItemCaption;
 
     @AndroidFindAll({
             @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_title"),
             @AndroidBy(id = "uk.co.bbc.hindi:id/headline_title")
     })
-
     public MobileElement headlineTitle;
 
     @AndroidFindAll({
@@ -195,7 +188,6 @@ public class BBCNewsHindiPageObject {
             @AndroidBy(id = "uk.co.bbc.hindi:id/subtitle")
     })
     public MobileElement picturesSubtitle;
-
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@index='2']")
     public MobileElement radioPageText;
