@@ -197,17 +197,17 @@ class BBCNewsRegressionTestKotlin {
 //        try {
 //            commonFunctionKotlin.startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
 //            commonFunctionKotlin.sleepmethod(1000)
-//            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.videooftheday_watchtext)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.promocounter)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.vodeoofthedaypromosummary)
-//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.vodeoofthedaytitle)
-//            Assert.assertEquals("Videos of the day", homePageObject.vodeoofthedaytitle.getText())
-//            Assert.assertEquals("WATCH", homePageObject.videooftheday_watchtext.getText())
-//            Assert.assertEquals("7", homePageObject.promocounter.getText())
-//            Assert.assertEquals("Swipe through the latest news videos", homePageObject.vodeoofthedaypromosummary.getText())
-//            commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
-//            commonFunctionKotlin.scrolltoEndofStories(androidDriver, homePageObject.newstream_progress, videoPageObject.videsofthedayRelease, homePageObject.checkback_later)
+//            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOfTheDayWatch)
+//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.videoOfTheDayWatchNext)
+//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.promoCounter)
+//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.videoOfTheDayPromoSummary)
+//            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.videoOfTheDayTitle)
+//            Assert.assertEquals("Videos of the day", homePageObject.videoOfTheDayTitle.getText())
+//            Assert.assertEquals("WATCH", homePageObject.videoOfTheDayWatchNext.getText())
+//            Assert.assertEquals("7", homePageObject.promoCounter.getText())
+//            Assert.assertEquals("Swipe through the latest news videos", homePageObject.videoOfTheDayPromoSummary.getText())
+//            commonFunctionKotlin.tapButton(androidDriver, homePageObject.videoOfTheDayButton, false)
+//            commonFunctionKotlin.scrolltoEndofStories(androidDriver, homePageObject.newsStreamProgress, videoPageObject.videsofthedayRelease, homePageObject.checkBackLater)
 //            pressBack()
 //        } catch (e: AssertionError) {
 //            throw e
@@ -222,14 +222,14 @@ class BBCNewsRegressionTestKotlin {
             commonFunctionKotlin.startTest("Scrolling to topics", "Scroll to a Topics on Home Page", "HomePage")
 
             //scrolls to Reality Check topics on Top Stories page
-            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.educationstopics)
-            commonFunctionKotlin.tapButton(androidDriver, homePageObject.educationstopics, false)
+            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.educationTopics)
+            commonFunctionKotlin.tapButton(androidDriver, homePageObject.educationTopics, false)
             if (!commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
                 System.out.println("Scrolling up")
                 commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
             }
-            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.family_educationTopic)
-            System.out.println("Topics is :-" + homePageObject.family_educationTopic.text)
+            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.familyEducationTopic)
+            System.out.println("Topics is :-" + homePageObject.familyEducationTopic.text)
 
             for (i in 0 until basePageObject.topicsPageElements.size) {
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
@@ -241,15 +241,15 @@ class BBCNewsRegressionTestKotlin {
 
 
             //scrolls to health topics on Top Stories page
-            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.technologytopic)
-            commonFunctionKotlin.tapButton(androidDriver, homePageObject.technologytopic, false)
+            commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.technologyTopic)
+            commonFunctionKotlin.tapButton(androidDriver, homePageObject.technologyTopic, false)
             if (!commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
                 System.out.println("Scrolling up")
                 commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
             }
-            System.out.println("The Topic is " + homePageObject.technologytopic.text)
-            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.technologytopic)
-            System.out.println("Topics is :-" + homePageObject.technologytopic.text)
+            System.out.println("The Topic is " + homePageObject.technologyTopic.text)
+            commonFunctionKotlin.elementDisplayed(androidDriver, homePageObject.technologyTopic)
+            System.out.println("Topics is :-" + homePageObject.technologyTopic.text)
             for (i in 0 until basePageObject.topicsPageElements.size) {
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
             }
@@ -272,8 +272,8 @@ class BBCNewsRegressionTestKotlin {
             commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.editMyNews, false)
             try {
                 assertDisplayingElements(
-                        homePageObject.technologytopic,
-                        homePageObject.family_educationTopic
+                        homePageObject.technologyTopic,
+                        homePageObject.familyEducationTopic
                 )
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -944,8 +944,8 @@ class BBCNewsRegressionTestKotlin {
         androidDriver.connection = state
 //        commonFunctionKotlin.waitForScreenToLoad(androidDriver,basePageObject.topStories,10);
 //        commonFunctionKotlin.tapButton(androidDriver,basePageObject.topStories,false);
-//        commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch);
-//        commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false);
+//        commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOfTheDayWatch);
+//        commonFunctionKotlin.tapButton(androidDriver, homePageObject.videoOfTheDayButton, false);
 //        Assert.assertEquals("You're not connected to the internet.", myNewsPageObject.snackbar.getText(), "Text Matched");
     }
 
@@ -1043,8 +1043,8 @@ class BBCNewsRegressionTestKotlin {
 //    fun testCheckOnlineScenario() {
 //        commonFunctionKotlin.startTest("VideOfTheDay - Online", "Checking apps offline scenario", "Offline")
 //        commonFunctionKotlin.tapButton(androidDriver, basePageObject.topStories, false)
-//        commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOftheDay_watch)
-//        commonFunctionKotlin.tapButton(androidDriver, homePageObject.videooftheday_button, false)
+//        commonFunctionKotlin.scrolltoElement(androidDriver, homePageObject.videoOfTheDayWatch)
+//        commonFunctionKotlin.tapButton(androidDriver, homePageObject.videoOfTheDayButton, false)
 //        //extenttestReport.isElementPresent(androidDriver,By.id("bbc.mobile.news.uk:id/snackbar_text"));
 //        pressBack()
 //    }
