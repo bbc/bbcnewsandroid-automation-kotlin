@@ -109,18 +109,18 @@ class TestUtility {
         try {
             // take buffer data from both image files //
             val biA = ImageIO.read(fileA)
-            val dbA = biA.data.dataBuffer
-            val sizeA = dbA.size
             val biB = ImageIO.read(fileB)
+            val dbA = biA.data.dataBuffer
             val dbB = biB.data.dataBuffer
+            val sizeA = dbA.size
             val sizeB = dbB.size
             var count = 0
-            // compare data-buffer objects //
 
+            // compare data-buffer objects //
             if (sizeA == sizeB) {
 
                 for (i in 0 until sizeA) {
-                    if (dbA.getElem(i) === dbB.getElem(i)) count += 1
+                    if (dbA.getElem(i) == dbB.getElem(i)) count += 1
                 }
 
                 percentage = (count * 100 / sizeA).toFloat()
