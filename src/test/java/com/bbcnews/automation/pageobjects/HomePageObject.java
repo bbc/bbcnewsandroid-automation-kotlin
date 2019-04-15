@@ -61,7 +61,7 @@ public class HomePageObject {
     public MobileElement topStoriesPolitics;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='UK Politics']")
-    public MobileElement uKPoliticsTopHeading;
+    public MobileElement ukPoliticsTopHeading;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Business']")
     public MobileElement businessTopics;
@@ -83,35 +83,30 @@ public class HomePageObject {
 
     public MobileElement promoCounter;
 
-
     // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/newstream_promo_watch_label")
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_promo_watch_label"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/newstream_promo_watch_label")
     })
-
     public MobileElement watchVideo;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk:id/newstream_promo_title"),
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_promo_title")
     })
-
     public MobileElement videoOfTheDayTitle;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_promo_summary"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/newstream_promo_summary")
     })
-
     public MobileElement videoOfTheDayPromoSummary;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_promo_watch_label"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/newstream_promo_watch_label")
     })
-
-    public MobileElement videoOfTheDayWatchText;
+    public MobileElement videoOfTheDayWatchNext;
 
     @AndroidFindBy(accessibility = "Exit")
     public MobileElement closeWindow;
@@ -132,7 +127,13 @@ public class HomePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/newsStreamProgress"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/newsStreamProgress")
     })
-
     public MobileElement newsStreamProgress;
+
+    @AndroidFindAll({
+            @AndroidBy(xpath = "//android.widget.FrameLayout[1]/bbc.mobile.news.uk.internal:id/main_view[0]/android.widget.ImageView[@index='0']"),
+            @AndroidBy(xpath = "//android.widget.FrameLayout[1]/bbc.mobile.news.uk:id/main_view[0]/android.widget.ImageView[@index='0']")
+    })
+
+    public MobileElement topStoriesArticle;
 
 }

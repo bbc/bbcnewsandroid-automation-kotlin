@@ -158,14 +158,14 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.scrollToElement(androidDriver, homePageObject.videoOfTheDayWatch)
 
         assertDisplayingElements(androidDriver,
-                homePageObject.videoOfTheDayWatchText,
+                homePageObject.videoOfTheDayWatchNext,
                 homePageObject.promoCounter,
                 homePageObject.videoOfTheDayPromoSummary,
                 homePageObject.videoOfTheDayTitle
         )
 
         assertEquals("Videos of the day", homePageObject.videoOfTheDayTitle.text)
-        assertEquals("WATCH", homePageObject.videoOfTheDayWatchText.text)
+        assertEquals("WATCH", homePageObject.videoOfTheDayWatchNext.text)
         assertEquals("7", homePageObject.promoCounter.text)
         assertEquals("Swipe through the latest news videos", homePageObject.videoOfTheDayPromoSummary.text)
 
@@ -187,7 +187,7 @@ class BBCNewsReleaseBuildRegressionTest {
             commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
         }
 
-        assertDisplayingElements(androidDriver,homePageObject.familyEducationTopic)
+        assertDisplayingElements(androidDriver, homePageObject.familyEducationTopic)
         System.out.println("Topics is :-" + homePageObject.familyEducationTopic.text)
 
         for (i in 0 until basePageObject.topicsPageElementsRelease.size) {
@@ -195,7 +195,7 @@ class BBCNewsReleaseBuildRegressionTest {
         }
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
         commonFunctionKotlin.textPresent(androidDriver, "Family & Education", "added to")
-        assertDisplayingElements(androidDriver,myNewsPageObject.manageyourtopics)
+        assertDisplayingElements(androidDriver, myNewsPageObject.manageyourtopics)
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
         //scrolls to health topics on Top Stories page
@@ -209,7 +209,7 @@ class BBCNewsReleaseBuildRegressionTest {
 
         System.out.println("The Topic is " + homePageObject.technologyTopic.text)
 
-        assertDisplayingElements(androidDriver,homePageObject.technologyTopic)
+        assertDisplayingElements(androidDriver, homePageObject.technologyTopic)
         System.out.println("Topics is :-" + homePageObject.technologyTopic.text)
 
         for (i in 0 until basePageObject.topicsPageElementsRelease.size) {
@@ -218,7 +218,7 @@ class BBCNewsReleaseBuildRegressionTest {
 
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
         commonFunctionKotlin.textPresent(androidDriver, "Technology", "added to")
-        assertDisplayingElements(androidDriver,myNewsPageObject.manageyourtopics)
+        assertDisplayingElements(androidDriver, myNewsPageObject.manageyourtopics)
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
     }
 
