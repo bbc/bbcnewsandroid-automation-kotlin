@@ -56,13 +56,13 @@ class CommonPageObjects
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"), AndroidBy(accessibility = "Search"))
     var search: MobileElement? = null
 
-    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name")
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutName")
     var item_layout_name: MobileElement? = null
 
-    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_last_updated")
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated")
     var item_layout_last_updated: MobileElement? = null
 
-    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_home_section")
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection")
     var item_layout_home_section: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
