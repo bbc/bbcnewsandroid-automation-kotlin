@@ -392,9 +392,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, basePageObjectModel.video, false)
         // aShotScreenshot(androidDriver,"After","VideoPage")
         assertTrue(basePageObjectModel.video.isSelected)
-        // assertDisplayingElements(androidDriver,videoPageObject.livebbchannel)
-        tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)//,file.getAbsolutePath())
-        assertDisplayingElements(androidDriver, videoPageObject.live_media_item_caption)
+        // assertDisplayingElements(androidDriver,videoPageObject.liveBbcChannel)
+        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)//,file.getAbsolutePath())
+        assertDisplayingElements(androidDriver, videoPageObject.liveMediaItemCaption)
         try {
             if (!basePageObjectModel.shareStory.isDisplayed) {
                 verticalSwipe(androidDriver, "Up")
@@ -404,7 +404,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         } catch (e: NoSuchElementException) {
         }
 
-        tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
     }
 
     /**
@@ -416,22 +416,23 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testCheckLiveVideoSeeking() {
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
 
-        tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        tapButton(androidDriver, videoPageObject.transportcontrol, false)
+        tapButton(androidDriver, videoPageObject.transportControls, false)
+        tapButton(androidDriver, videoPageObject.transportControls, false)
 
         assertDisplayingElements(androidDriver,
-                videoPageObject.smpliveicon,
-                videoPageObject.smp_volume_button,
-                videoPageObject.smp_seek_bar
+                videoPageObject.smpLiveIcon,
+                videoPageObject.smpVolumeButton,
+                videoPageObject.smpSeekBar
         )
 
-        waitForScreenToLoad(androidDriver, videoPageObject.smp_placeholder_play_button, 1)
-        tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
-        tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
+        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
+
+        waitForScreenToLoad(androidDriver, videoPageObject.smpPlaceholderPlayButton, 1)
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
 
         try {
-            videoPlaybackSeeking(androidDriver, videoPageObject.smp_seek_bar, 0.30)
-            isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_live_icon"))
+            videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
+            isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smpLiveIcon"))
         } catch (e: Exception) {
         }
 

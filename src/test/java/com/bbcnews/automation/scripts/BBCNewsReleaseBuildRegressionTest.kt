@@ -170,7 +170,7 @@ class BBCNewsReleaseBuildRegressionTest {
         assertEquals("Swipe through the latest news videos", homePageObject.videoOfTheDayPromoSummary.text)
 
         commonFunctionKotlin.tapButton(androidDriver, homePageObject.videoOfTheDayButton, false)
-        commonFunctionKotlin.scrollToEndOfStories(androidDriver, homePageObject.newsStreamProgress, videoPageObject.videsoftheday_Release, homePageObject.checkBackLater)
+        commonFunctionKotlin.scrollToEndOfStories(androidDriver, homePageObject.newsStreamProgress, videoPageObject.videosOfTheDayRelease, homePageObject.checkBackLater)
         pressBack()
     }
 
@@ -367,13 +367,13 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.startTest("Select a Video Article from Asia Topic", "Test to select An Video Article from the Asia Topics under MyNews", "MyNews")
         commonFunctionKotlin.scrollToElement(androidDriver, myNewsPageObject.mynewsrecyclerview)
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicvideoarticle, false)
-        for (i in 0 until videoPageObject.videowallelements_Release.size) {
-            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videowallelements_Release[i]))
+        for (i in 0 until videoPageObject.videoWallElementsRelease.size) {
+            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videoWallElementsRelease[i]))
         }
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
         commonFunctionKotlin.waitFor(1300)
-        for (i in 0 until videoPageObject.playbackcontrols_Release.size) {
-            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.playbackcontrols_Release[i]))
+        for (i in 0 until videoPageObject.playbackControlsRelease.size) {
+            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.playbackControlsRelease[i]))
         }
         pressBack()
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
@@ -419,50 +419,50 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testVideoPage() {
         commonFunctionKotlin.startTest("Playing a Live Video", "Checking the Video Page", "Live Video")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.live_media_item_caption)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.liveMediaItemCaption)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.navigate_back)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.shareStory)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
         commonFunctionKotlin.waitFor(1400)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_fullscreen_button, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpFullScreenButton, false)
         commonFunctionKotlin.waitFor(1400)
         try {
             if (commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_play_button"))) {
-                commonFunctionKotlin.tapButton(androidDriver, videoPageObject.playbutton, false)
+                commonFunctionKotlin.tapButton(androidDriver, videoPageObject.playButton, false)
             }
         } catch (e: NoSuchElementException) {
         }
 
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_pause_button)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_exit_fullscreen_button)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpliveicon)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_volume_button)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_seek_bar)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportControls, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportControls, false)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpPauseButton)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpExitFullScreenButton)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpLiveIcon)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpVolumeButton)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpSeekBar)
     }
 
     @Test(priority = 18, description = "Test to check whether video plays in Landspace mode")
     fun playingLandscape() {
         commonFunctionKotlin.startTest("Checking Live Video in Landscape", "Checking the Video in Landscape Mode", "Live Video")
         androidDriver.rotate(ScreenOrientation.LANDSCAPE)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_pause_button)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_exit_fullscreen_button)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpliveicon)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_volume_button)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smp_seek_bar)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportControls, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportControls, false)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpPauseButton)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpExitFullScreenButton)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpLiveIcon)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpVolumeButton)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpSeekBar)
     }
 
     @Test(priority = 19, description = "Test to scrub thise video playback ")
     fun scrubbingVideoPlayback() {
         androidDriver.rotate(ScreenOrientation.PORTRAIT)
         commonFunctionKotlin.startTest("Checking Live Video Scrubbing", "Checking the Live Video in Portrait Mode and seeking", "Live Video")
-        commonFunctionKotlin.seeking(videoPageObject.smp_seek_bar, .30, "forward")
-        commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_seek_bar"))
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_exit_fullscreen_button, false)
+        commonFunctionKotlin.seeking(videoPageObject.smpSeekBar, .30, "forward")
+        commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smpSeekBar"))
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpExitFullScreenButton, false)
         pressBack()
     }
 
@@ -584,16 +584,16 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.startTest("Playing a Particular OnDemand Video", "Test to search ana play a on-demand video", "OnDemandVideo")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.search, false)
         commonFunctionKotlin.enterText(basePageObject.searchField, "Egypt court imposes jail")
-        commonFunctionKotlin.waitForScreenToLoad(androidDriver, videoPageObject.videoarticlesearch, 3)
+        commonFunctionKotlin.waitForScreenToLoad(androidDriver, videoPageObject.videoArticleSearch, 3)
         // androidDriver.hideKeyboard();
-        // commonFunctionKotlin.scrollToElement(androidDriver, videoPageObject.videoarticlesearch);
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.videoarticlesearch, false)
-        //commonFunctionKotlin.waitForScreenToLoad(androidDriver, videoPageObject.smp_placeholder_play_button, 3);
+        // commonFunctionKotlin.scrollToElement(androidDriver, videoPageObject.videoArticleSearch);
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.videoArticleSearch, false)
+        //commonFunctionKotlin.waitForScreenToLoad(androidDriver, videoPageObject.smpPlaceholderPlayButton, 3);
         var i = 0
-        while (i < videoPageObject.videodetailpage_Release.size && i < videoPageObject.videdetailpagetext.size) {
+        while (i < videoPageObject.videoDetailPageRelease.size && i < videoPageObject.videoDetailPageText.size) {
 
-            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videodetailpage_Release[i]))
-            assertEquals(videoPageObject.videdetailpagetext[i], androidDriver.findElement(By.id(videoPageObject.videodetailpage_Release[i])).text)
+            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videoDetailPageRelease[i]))
+            assertEquals(videoPageObject.videoDetailPageText[i], androidDriver.findElement(By.id(videoPageObject.videoDetailPageRelease[i])).text)
             i++
         }
     }
@@ -601,17 +601,17 @@ class BBCNewsReleaseBuildRegressionTest {
     @Test(priority = 27, description = "Test to seek forward videoplayback")
     fun testSeekVideoForward() {
         commonFunctionKotlin.startTest("Seeking Video Forward", "Test to search ana play a on-demand video", "OnDemandVideo")
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
-        commonFunctionKotlin.seeking(videoPageObject.smp_seek_bar, .50, "forward")
-        videoPageObject.elapsedtime_forward = videoPageObject.smpelapsedtime.text
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.seeking(videoPageObject.smpSeekBar, .50, "forward")
+        videoPageObject.elapsedTimeForward = videoPageObject.smpElapsedTime.text
     }
 
     @Test(priority = 28, description = "Test to seek forward videoplayback")
     fun testSeekVideoBack() {
         commonFunctionKotlin.startTest("Seeking Video Backward", "Test to search ana play a on-demand video", "OnDemandVideo")
-        commonFunctionKotlin.seeking(videoPageObject.smp_seek_bar, .30, "backward")
-        videoPageObject.elapsedtime_backward = videoPageObject.smpelapsedtime.text
-        assertNotEquals(videoPageObject.elapsedtime_forward, videoPageObject.elapsedtime_backward)
+        commonFunctionKotlin.seeking(videoPageObject.smpSeekBar, .30, "backward")
+        videoPageObject.elapsedTimeBackward = videoPageObject.smpElapsedTime.text
+        assertNotEquals(videoPageObject.elapsedTimeForward, videoPageObject.elapsedTimeBackward)
     }
 
     @Test(priority = 29, description = "Test to check Related Stories and Topics of an Article")
@@ -661,15 +661,15 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testTopStoriesVideo() {
         commonFunctionKotlin.startTest("Playing a OnDemand Video", "Test to play a video from Video page", "OnDemandVideo")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topstories)
-        // commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topstoriesvideoplaytime)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topStories)
+        // commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topStoriesVideoPlayTime)
         // commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topstoriesvideolayoutname)
-        commonFunctionKotlin.scrollToElement(androidDriver, videoPageObject.topstoriesvideo)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.topstoriesvideo, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
+        commonFunctionKotlin.scrollToElement(androidDriver, videoPageObject.topStoriesVideo)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.topStoriesVideo, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
         // androidDriver.findElementByAccessibilityId("Play").click();
-        videoPageObject.transportcontrol.click()
-        videoPageObject.transportcontrol.click()
+        videoPageObject.transportControls.click()
+        videoPageObject.transportControls.click()
         for (i in 0 until popularPageObject.popularvideoelements_Release.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(popularPageObject.popularvideoelements_Release[i]))
         }
@@ -721,8 +721,8 @@ class BBCNewsReleaseBuildRegressionTest {
         if (!popularPageObject.mostpopular.isDisplayed) {
             commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
         }
-        for (i in 0 until videoPageObject.videowallelements_Release.size) {
-            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videowallelements_Release[i]))
+        for (i in 0 until videoPageObject.videoWallElementsRelease.size) {
+            commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videoWallElementsRelease[i]))
         }
         pressBack()
     }
@@ -764,11 +764,11 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testPlayingVideoOffline() {
         commonFunctionKotlin.startTest("VideoPlayback-Offline", "Checking the Video while device offline", "Offline")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
-        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.live_media_item_caption)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
+        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.liveMediaItemCaption)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.navigate_back)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.shareStory)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpErrorMessage)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpErrorOkButton)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpRetryButton)
@@ -789,8 +789,8 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testPlayingVideoOnLine() {
         commonFunctionKotlin.startTest("VideoPlayback-Online", "Checking the Video while device Online", "Offline")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
         commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_error_message"))
         commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_retry_button"))
         commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_error_button"))
