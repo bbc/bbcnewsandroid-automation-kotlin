@@ -182,7 +182,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         startTest("HomePage", "Checking the HomePage", "Smoke")
         tapButton(androidDriver, basePageObjectModel.topstories, false)
         assertTrue(basePageObjectModel.topstories.isSelected)
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 basePageObjectModel.item_layout_name,
                 basePageObjectModel.item_layout_home_section,
                 basePageObjectModel.item_layout_last_updated,
@@ -213,7 +213,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         startTest("PopularPage", "Checking the Popular", "Smoke")
         tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
         assertTrue(basePageObjectModel.popular.isSelected)
-        assertDisplayingElements(popularPageObject.mostread)
+        assertDisplayingElements(androidDriver, popularPageObject.mostread)
         assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
     }
 
@@ -235,7 +235,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
         assertTrue(basePageObjectModel.mynews.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 myNewsPageObject.mynews_summary,
                 myNewsPageObject.mynewstitle,
                 myNewsPageObject.addnews_button
@@ -256,7 +256,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, myNewsPageObject.addtopics, false)
 
         assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
-        assertDisplayingElements(myNewsPageObject.localnews_displayed)
+        assertDisplayingElements(androidDriver, myNewsPageObject.localnews_displayed)
 
         scrollToElement(androidDriver, myTopicsPageObject.walestopic)
         tapButton(androidDriver, myTopicsPageObject.walestopic, false)
@@ -277,7 +277,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         try {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
             tapButton(androidDriver, myNewsPageObject.mytopics, false)
-            assertDisplayingElements(
+            assertDisplayingElements(androidDriver,
                     myTopicsPageObject.Walestopic,
                     myTopicsPageObject.Worldtopic
             )
@@ -296,7 +296,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testCheckAddedTopicsUnderMyNews() {
         startTest("MyNews", "Checking Added topics in MyNews", "Smoke")
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 myTopicsPageObject.Walestopic,
                 myTopicsPageObject.Worldtopic
         )
@@ -313,7 +313,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, basePageObjectModel.mynews, false)
         tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 myTopicsPageObject.Walestopic,
                 myTopicsPageObject.Worldtopic
         )
@@ -342,7 +342,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 //                navigateBack(androidDriver)
 //            }
         for (i in 0 until total) {
-            assertDisplayingElements(
+            assertDisplayingElements(androidDriver,
                     contentCardTitle[i],
                     contentCardUpdated[i]
             )
@@ -354,7 +354,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         System.out.println("\"Show less\" text= " + myNewsPageObject.showless.text)
 
         tapButton(androidDriver, myNewsPageObject.showless, false)
-        assertDisplayingElements(myNewsPageObject.showmore)
+        assertDisplayingElements(androidDriver, myNewsPageObject.showmore)
         System.out.println("\"Show more\" text= " + myNewsPageObject.showmore.text)
     }
 
@@ -369,7 +369,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         startTest("Menu", "Checking the Menu Items", "Smoke")
         tapButton(androidDriver, basePageObjectModel.menubutton, false)//,file.getAbsolutePath());
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 basePageObjectModel.Appinfo,
                 basePageObjectModel.OtherBBCapps,
                 basePageObjectModel.InternalSettings,
@@ -392,14 +392,14 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, basePageObjectModel.video, false)
         // aShotScreenshot(androidDriver,"After","VideoPage")
         assertTrue(basePageObjectModel.video.isSelected)
-        // assertDisplayingElements(videoPageObject.livebbchannel)
+        // assertDisplayingElements(androidDriver,videoPageObject.livebbchannel)
         tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)//,file.getAbsolutePath())
-        assertDisplayingElements(videoPageObject.live_media_item_caption)
+        assertDisplayingElements(androidDriver, videoPageObject.live_media_item_caption)
         try {
             if (!basePageObjectModel.sharestory.isDisplayed) {
                 verticalSwipe(androidDriver, "Up")
 
-                assertDisplayingElements(basePageObjectModel.sharestory)
+                assertDisplayingElements(androidDriver, basePageObjectModel.sharestory)
             }
         } catch (e: NoSuchElementException) {
         }
@@ -419,7 +419,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, videoPageObject.transportcontrol, false)
         tapButton(androidDriver, videoPageObject.transportcontrol, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 videoPageObject.smpliveicon,
                 videoPageObject.smp_volume_button,
                 videoPageObject.smp_seek_bar

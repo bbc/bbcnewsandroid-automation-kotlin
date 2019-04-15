@@ -119,7 +119,7 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_homepage, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_homepage.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver, 
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
@@ -130,7 +130,7 @@ class BBCNewsHindiSmokeTest {
             commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
         }
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver, 
                 bbcNewsHindiPageObject.imageitembadge,
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo,
@@ -146,14 +146,14 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.startTest("IndiaPage", "Checking the IndiaPage", "Smoke")
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_india, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_india.isSelected)
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver, 
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver, 
                 bbcNewsHindiPageObject.imageitembadge,
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo,
@@ -163,24 +163,24 @@ class BBCNewsHindiSmokeTest {
 
         commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
 
-        assertDisplayingElements(bbcNewsHindiPageObject.relatedarticles)
+        assertDisplayingElements(androidDriver,  bbcNewsHindiPageObject.relatedarticles)
         pressBack()
     }
 
     @Test(priority = 3, description = "checking the international page")
     fun testInternationalPage() {
-        commonFunctionKotlin.startTest("InternationalaPage", "Checking the InternationalPage", "Smoke")
+        commonFunctionKotlin.startTest("InternationalPage", "Checking the InternationalPage", "Smoke")
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_international, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_international.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver, 
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver, 
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo
         )
@@ -193,21 +193,21 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.startTest("EntertainmentPage", "Checking the EntertainmentPage", "Smoke")
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_entertainment, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_entertainment.isSelected)
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 //bbcNewsHindiPageObject.imageitembadge,
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo)
 
 
         commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
-        assertDisplayingElements(bbcNewsHindiPageObject.relatedarticles)
+        assertDisplayingElements(androidDriver, bbcNewsHindiPageObject.relatedarticles)
 
         pressBack()
     }
@@ -218,14 +218,14 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_sports, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_sports.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.imageitembadge,
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo,
@@ -233,7 +233,7 @@ class BBCNewsHindiSmokeTest {
         )
 
         commonFunctionKotlin.scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedtopics)
-        assertDisplayingElements(bbcNewsHindiPageObject.relatedarticles)
+        assertDisplayingElements(androidDriver, bbcNewsHindiPageObject.relatedarticles)
 
         pressBack()
     }
@@ -262,14 +262,14 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_sciencetechnology, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_sciencetechnology.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo
         )
@@ -285,14 +285,14 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_lookat, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_lookat.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.playbutton,
                 bbcNewsHindiPageObject.mediaitemcaption,
                 bbcNewsHindiPageObject.headlinetitle,
@@ -301,7 +301,7 @@ class BBCNewsHindiSmokeTest {
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.playbutton, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.volumebutton,
                 bbcNewsHindiPageObject.Fullscreenbutton,
                 bbcNewsHindiPageObject.seekbar,
@@ -317,14 +317,14 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_thephotos, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_thephotos.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.picturestitle,
                 bbcNewsHindiPageObject.picturessubtitle
         )
@@ -342,14 +342,14 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_social, false)
         assertTrue(bbcNewsHindiPageObject.bbchindi_social.isSelected)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.mainitem_layout_name,
                 bbcNewsHindiPageObject.mainitem_layout_last_updated
         )
 
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.headlinetitle,
                 bbcNewsHindiPageObject.headlineinfo
         )
@@ -364,7 +364,7 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.startTest("MoreOptions", "Checking the MoreOptions Menu", "Smoke")
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbc_moreoptions, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.bbchindi_help,
                 //  bbcNewsHindiPageObject.bbchindi_Internalsettings,
                 bbcNewsHindiPageObject.bbchindi_settings,
@@ -380,7 +380,7 @@ class BBCNewsHindiSmokeTest {
         commonFunctionKotlin.startTest("MoreOptions", "Checking the More Settings Options Menu", "Smoke")
         commonFunctionKotlin.tapButton(androidDriver, bbcNewsHindiPageObject.bbchindi_Moresettings, false)
 
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 // bbcNewsHindiPageObject.bbchindi_localnews,
                 bbcNewsHindiPageObject.bbchindi_topics
         )
@@ -392,7 +392,7 @@ class BBCNewsHindiSmokeTest {
     fun testMoreSettingsOptions_Topics() {
         commonFunctionKotlin.startTest("MoreOptionsTopics", "Checking the More Settings Options Topics", "Smoke")
         //  commonFunctionKotlin.tapButton(androidDriver,bbcNewsHindiPageObject.bbchindi_topics_collapsegroup,false);
-        assertDisplayingElements(
+        assertDisplayingElements(androidDriver,
                 bbcNewsHindiPageObject.hindihomepage,
                 bbcNewsHindiPageObject.hindibharath,
                 bbcNewsHindiPageObject.hindienrairnment,
