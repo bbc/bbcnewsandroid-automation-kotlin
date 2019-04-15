@@ -8,227 +8,228 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 public class BBCNewsHindiPageObject {
 
 
-    public BBCNewsHindiPageObject()
-    {
+    public BBCNewsHindiPageObject() {
 
     }
 
-    @AndroidFindBy(id="android:id/button2")
-    public MobileElement nothanksbutton;
+    @AndroidFindBy(id = "android:id/button2")
+    public MobileElement noThanksButton;
 
 
-    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='0']")
-    public MobileElement mainitem_layout_name;
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='0']")
+    public MobileElement mainItemLayoutName;
 
-    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.LinearLayout[@index='1']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
-    public MobileElement mainitem_layout_last_updated;
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='0']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.LinearLayout[@index='1']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
+    public MobileElement mainItemLayoutLastUpdated;
 
 
-    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='1']/android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")
-    public MobileElement articleitemlayoutname;
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")
+    public MobileElement articleItemLayoutName;
 
-    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='1']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='2']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
-    public MobileElement articleitemlayoutlastupdated;
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.widget.RelativeLayout[@index='0']/android.widget.LinearLayout[@index='2']/android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
+    public MobileElement articleItemLayoutLastUpdated;
 
     //BBC News Hindi Common Page Objects
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='होम पेज']")
-    public MobileElement bbchindi_homepage;
+    public MobileElement bbcHindiHomepage;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='भारत']")
-    public MobileElement bbchindi_india;
+    public MobileElement bbcHindiIndia;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='अंतरराष्ट्रीय']")
-    public MobileElement bbchindi_international;
+    public MobileElement bbcHindiInternational;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मनोरंजन']")
-    public MobileElement bbchindi_entertainment;
+    public MobileElement bbcHindiEntertainment;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='खेल']")
-    public MobileElement bbchindi_sports;
+    public MobileElement bbcHindiSports;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='रेडियो']")
-    public MobileElement bbchindi_radio;
+    public MobileElement bbcHindiRadio;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='विज्ञान-टेक्नॉलॉजी']")
-    public MobileElement bbchindi_sciencetechnology;
+    public MobileElement bbcHindiScienceTechnology;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='देखिए']")
-    public MobileElement bbchindi_lookat;
+    public MobileElement bbcHindiLookAt;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='तस्वीरें']")
-    public MobileElement bbchindi_thephotos;
+    public MobileElement bbcHindiThePhotos;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सोशल']")
-    public MobileElement bbchindi_social;
+    public MobileElement bbcHindiSocial;
 
     @AndroidFindBy(accessibility = "More options")
-    public MobileElement bbc_moreoptions;
+    public MobileElement bbcMoreOptions;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सेटिंग्स']")
-    public MobileElement bbchindi_settings;
+    public MobileElement bbcHindiSettings;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मदद']")
-    public MobileElement bbchindi_help;
+    public MobileElement bbcHindiHelp;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='संपर्क करें']")
-    public MobileElement bbchindi_pleasecontact;
+    public MobileElement bbcHindiPleaseContact;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='बीबीसी के दूसरे ऐप्स']")
-    public MobileElement bbchindi_OtherBBCapplications;
+    public MobileElement bbcHindiOtherBbcApplications;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Internal Settings']")
-    public MobileElement bbchindi_Internalsettings;
+    public MobileElement bbcHindiInternalSettings;
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@index='0']/android.view.ViewGroup[@index='0']/android.widget.ImageButton[@index='0']")
-    public MobileElement bbchindi_Moresettings;
+    public MobileElement bbcHindiMoreSettings;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='स्थानीय समाचार']")
-    public MobileElement bbchindi_localnews;
+    public MobileElement bbcHindiLocalNews;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='टॉपिक्स']")
-    public MobileElement bbchindi_topics;
+    public MobileElement bbcHindiTopics;
 
     @AndroidFindBy(accessibility = "Button: टॉपिक्स , collapse group")
-    public MobileElement bbchindi_topics_collapsegroup;
+    public MobileElement bbcHindiTopicsCollapseGroup;
 
     @AndroidFindBy(accessibility = "Button: स्थानीय समाचार , collapse group")
-    public MobileElement bbchindi_localnews_collapsegroup;
+    public MobileElement bbcHindiLocalNewsCollapseGroup;
 
     @AndroidFindBy(accessibility = "Button: होम पेज ")
-    public MobileElement hindihomepage;
+    public MobileElement hindiHomepage;
 
     @AndroidFindBy(accessibility = "Button: भारत ")
-    public MobileElement hindibharath;
+    public MobileElement hindiBharath;
 
     @AndroidFindBy(accessibility = "Button: अंतरराष्ट्रीय ")
-    public MobileElement hindiinternatonal;
+    public MobileElement hindiInternational;
 
     @AndroidFindBy(accessibility = "Button: मनोरंजन ")
-    public MobileElement hindienrairnment;
+    public MobileElement hindiEntertainment;
 
     @AndroidFindBy(accessibility = "Button: खेल ")
-    public MobileElement hindisports;
+    public MobileElement hindiSports;
 
     @AndroidFindBy(accessibility = "Button: विज्ञान-टेक्नॉलॉजी ")
-    public MobileElement hindiscience;
+    public MobileElement hindiScience;
 
     @AndroidFindBy(accessibility = "Button: सोशल ")
-    public MobileElement hindisocial;
+    public MobileElement hindiSocial;
 
     @AndroidFindBy(accessibility = "Button: देखिए ")
-    public MobileElement hindilookat;
+    public MobileElement hindiLookAt;
 
     @AndroidFindBy(accessibility = "Button: तस्वीरें ")
-    public MobileElement hindiphotos;
+    public MobileElement hindiPhotos;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/image_item_caption"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/image_item_caption")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/image_item_caption"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/image_item_caption")
     })
-    public MobileElement imageitemcaption;
+
+    public MobileElement imageItemCaption;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/headline_title"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/headline_title")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_title"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_title")
     })
-    public MobileElement headlinetitle;
+
+    public MobileElement headlineTitle;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/headline_info"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/headline_info")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_info"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_info")
     })
-    public MobileElement headlineinfo;
+    public MobileElement headlineInfo;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/headline_author_name"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/headline_author_name")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_author_name"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_author_name")
     })
-    public MobileElement headlineauthorname;
+    public MobileElement headlineAuthorName;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/headline_author_title"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/headline_author_title")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_author_title"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_author_title")
     })
-    public MobileElement headlineauthortitle;
+    public MobileElement headlineAuthorTitle;
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//android.widget.Button[@index='1']"),
             @AndroidBy(xpath = "//android.widget.Button[@text='ओके']")
     })
-    public MobileElement bbchindi_okbutton;
+    public MobileElement bbcHindiOkButton;
 
     @AndroidFindAll({
             @AndroidBy(id = "uk.co.bbc.hindi.internal:id/image_item_badge"),
             @AndroidBy(id = "uk.co.bbc.hindi:id/image_item_badge")
     })
-    public MobileElement imageitembadge;
+    public MobileElement imageItemBadge;
 
     @AndroidFindAll({
             @AndroidBy(id = "uk.co.bbc.hindi.internal:id/media_item_caption"),
             @AndroidBy(id = "uk.co.bbc.hindi:id/media_item_caption")
     })
-    public MobileElement mediaitemcaption;
+    public MobileElement mediaItemCaption;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/smp_seek_bar"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/smp_seek_bar")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/smp_seek_bar"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/smp_seek_bar")
     })
-    public MobileElement seekbar;
+    public MobileElement seekBar;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/smp_pause_button"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/smp_pause_button")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/smp_pause_button"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/smp_pause_button")
     })
-    public MobileElement pausebutton;
+    public MobileElement pauseButton;
 
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/title"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/title")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/title"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/title")
     })
-    public MobileElement picturestitle;
+    public MobileElement picturesTitle;
 
     @AndroidFindAll({
-            @AndroidBy(id="uk.co.bbc.hindi.internal:id/subtitle"),
-            @AndroidBy(id="uk.co.bbc.hindi:id/subtitle")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/subtitle"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/subtitle")
     })
-    public MobileElement picturessubtitle;
+    public MobileElement picturesSubtitle;
 
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@index='2']")
-    public MobileElement radiopagetext;
+    public MobileElement radioPageText;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@index='3']")
-    public MobileElement radiopagetextdaily;
+    public MobileElement radioPageTextDaily;
 
-    @AndroidFindBy(id="android:id/message")
-    public MobileElement bbchindi_message;
+    @AndroidFindBy(id = "android:id/message")
+    public MobileElement bbcHindiMessage;
 
     @AndroidFindBy(accessibility = "बैक")
-    public MobileElement backbutton;
+    public MobileElement backButton;
 
-    @AndroidFindBy(xpath="//android.widget.TextView[@text='हेमिल्टन जीता तो इतिहास रच देगी टीम इंडिया']")
-    public MobileElement sportsarticle;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='हेमिल्टन जीता तो इतिहास रच देगी टीम इंडिया']")
+    public MobileElement sportsArticle;
 
-    @AndroidFindBy(xpath="//android.widget.FrameLayout[@index='2']")
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='2']")
     public MobileElement article;
 
-    @AndroidFindBy(xpath="//android.widget.TextView[@text='संबंधित टॉपिक']")
-    public MobileElement relatedtopics;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='संबंधित टॉपिक']")
+    public MobileElement relatedTopics;
 
-    @AndroidFindBy(xpath="//android.widget.TextView[@text='संबंधित स्टोरीज़']")
-    public MobileElement relatedarticles;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='संबंधित स्टोरीज़']")
+    public MobileElement relatedArticles;
 
     @AndroidFindBy(accessibility = "Play")
-    public MobileElement playbutton;
+    public MobileElement playButton;
 
     @AndroidFindBy(accessibility = "volume")
-    public MobileElement volumebutton;
+    public MobileElement volumeButton;
 
     @AndroidFindBy(accessibility = "Fullscreen")
-    public MobileElement Fullscreenbutton;
+    public MobileElement fullScreenButton;
 
-    @AndroidFindBy(xpath="//android.widget.TextView[@text='Front page']")
-    public MobileElement frontpage;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Front page']")
+    public MobileElement frontPage;
 }

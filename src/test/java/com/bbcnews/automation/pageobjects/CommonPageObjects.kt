@@ -126,67 +126,67 @@ class CommonPageObjects
     //BBC News Hindi Common Page Objects
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='होम पेज']")
-    var bbchindi_homepage: MobileElement? = null
+    var bbcHindi_homepage: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='भारत']")
-    var bbchindi_india: MobileElement? = null
+    var bbcHindi_india: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='अंतरराष्ट्रीय']")
-    var bbchindi_international: MobileElement? = null
+    var bbcHindi_international: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मनोरंजन']")
-    var bbchindi_entertainment: MobileElement? = null
+    var bbcHindi_entertainment: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='खेल']")
-    var bbchindi_sports: MobileElement? = null
+    var bbcHindi_sports: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='रेडियो']")
-    var bbchindi_radio: MobileElement? = null
+    var bbcHindi_radio: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='विज्ञान-टेक्नॉलॉजी']")
-    var bbchindi_sciencetechnology: MobileElement? = null
+    var bbcHindi_sciencetechnology: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='देखिए']")
-    var bbchindi_lookat: MobileElement? = null
+    var bbcHindi_lookat: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='तस्वीरें']")
-    var bbchindi_thephotos: MobileElement? = null
+    var bbcHindi_thephotos: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सोशल']")
-    var bbchindi_social: MobileElement? = null
+    var bbcHindi_social: MobileElement? = null
 
     @AndroidFindBy(accessibility = "More options")
     var bbc_moreoptions: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सेटिंग्स']")
-    var bbchindi_settings: MobileElement? = null
+    var bbcHindi_settings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मदद']")
-    var bbchindi_help: MobileElement? = null
+    var bbcHindi_help: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='संपर्क करें']")
-    var bbchindi_pleasecontact: MobileElement? = null
+    var bbcHindi_pleasecontact: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='बीबीसी के दूसरे ऐप्स']")
-    var bbchindi_OtherBBCapplications: MobileElement? = null
+    var bbcHindi_OtherBBCapplications: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Internal Settings']")
-    var bbchindi_Internalsettings: MobileElement? = null
+    var bbcHindi_Internalsettings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@index='0']/android.view.ViewGroup[@index='0']/android.widget.ImageButton[@index='0']")
-    var bbchindi_Moresettings: MobileElement? = null
+    var bbcHindi_Moresettings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='स्थानीय समाचार']")
-    var bbchindi_localnews: MobileElement? = null
+    var bbcHindi_localnews: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='टॉपिक्स']")
-    var bbchindi_topics: MobileElement? = null
+    var bbcHindi_topics: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: टॉपिक्स , collapse group")
-    var bbchindi_topics_collapsegroup: MobileElement? = null
+    var bbcHindi_topics_collapsegroup: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: स्थानीय समाचार , collapse group")
-    var bbchindi_localnews_collapsegroup: MobileElement? = null
+    var bbcHindi_localnews_collapsegroup: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: होम पेज ")
     var hindihomepage: MobileElement? = null
@@ -216,7 +216,7 @@ class CommonPageObjects
     var hindiphotos: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.Button[@index=1]")
-    var bbchindi_okbutton: MobileElement? = null
+    var bbcHindi_okbutton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='UK Politics added to My News']")
     //   @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/snackbar_text")
