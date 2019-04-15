@@ -124,16 +124,16 @@ public class MyNewsPageObject {
 
 
     public String articlepageview[] =
-            {       "bbc.mobile.news.uk.internal:id/item_layout_name",
-                    "bbc.mobile.news.uk.internal:id/item_layout_last_updated",
-                    "bbc.mobile.news.uk.internal:id/item_layout_home_section"
+            {       "bbc.mobile.news.uk.internal:id/itemLayoutName",
+                    "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated",
+                    "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection"
             };
 
 
     public String articlepageview_Release[] =
-            {       "bbc.mobile.news.uk:id/item_layout_name",
-                    "bbc.mobile.news.uk:id/item_layout_last_updated",
-                    "bbc.mobile.news.uk:id/item_layout_home_section"
+            {       "bbc.mobile.news.uk:id/itemLayoutName",
+                    "bbc.mobile.news.uk:id/itemLayoutLastUpdated",
+                    "bbc.mobile.news.uk:id/itemLayoutHomeSection"
             };
 
     @AndroidFindBy(accessibility = "Manage your topics")

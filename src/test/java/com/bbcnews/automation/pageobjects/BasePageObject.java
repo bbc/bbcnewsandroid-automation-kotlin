@@ -12,14 +12,11 @@ public class BasePageObject {
 
     AppiumDriver<MobileElement> appiumDriver;
 
-
     public BasePageObject() {
-
     }
 
     @AndroidFindBy(accessibility = "Navigate up")
     public MobileElement navigate_back;
-
 
     @AndroidFindBy(id = "android:id/button1")
     public MobileElement okButton;
@@ -29,7 +26,6 @@ public class BasePageObject {
 
     @AndroidFindBy(accessibility = "Back")
     public MobileElement backButton;
-
 
     @AndroidFindBy(id = "android:id/button2")
     public MobileElement noThanksButton;
@@ -57,45 +53,39 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk:id/action_search"),
             @AndroidBy(accessibility = "Search")
     })
-
     public MobileElement search;
 
     public String[] topicsPageElements = {
             "bbc.mobile.news.uk.internal:id/item_image",
-            "bbc.mobile.news.uk.internal:id/item_layout_name",
-            "bbc.mobile.news.uk.internal:id/item_layout_last_updated",
-            "bbc.mobile.news.uk.internal:id/item_layout_home_section"
+            "bbc.mobile.news.uk.internal:id/itemLayoutName",
+            "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated",
+            "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection"
     };
 
     public String[] topicsPageElementsRelease = {
             "bbc.mobile.news.uk:id/item_image",
-            "bbc.mobile.news.uk:id/item_layout_name",
-            "bbc.mobile.news.uk:id/item_layout_last_updated",
-            "bbc.mobile.news.uk:id/item_layout_home_section"
+            "bbc.mobile.news.uk:id/itemLayoutName",
+            "bbc.mobile.news.uk:id/itemLayoutLastUpdated",
+            "bbc.mobile.news.uk:id/itemLayoutHomeSection"
     };
 
-    // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name")
-    @AndroidFindAll(
-            {
-                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name"),
-                    @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_name")
-            }
-    )
-    public MobileElement item_layout_name;
+     @AndroidFindAll({
 
-    // @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/item_layout_last_updated")
+                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutName"),
+                    @AndroidBy(id = "bbc.mobile.news.uk:id/itemLayoutName")
+    })
+    public MobileElement itemLayoutName;
+
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_last_updated"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_last_updated")
     })
-
     public MobileElement item_layout_last_updated;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_home_section"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_home_section")
     })
-
     public MobileElement item_layout_home_section;
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
@@ -134,29 +124,24 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/title"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/title")
     })
-
     public MobileElement headlineTitle;
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/heading') and @index='0']"),
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk:id/heading') and @index='0']")
     })
-
     public MobileElement searchHeading;
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='2']"),
             @AndroidBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk:id/heading' and @index='2']")
     })
-
     public MobileElement searchHeading2;
 
-    @AndroidFindAll(
-            {
-                    @AndroidBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='4']"),
-                    @AndroidBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk:id/heading' and @index='4']")
-            }
-    )
+    @AndroidFindAll({
+            @AndroidBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='4']"),
+            @AndroidBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk:id/heading' and @index='4']")
+    })
     public MobileElement searchHeading4;
 
     @AndroidFindAll({
@@ -199,11 +184,11 @@ public class BasePageObject {
     public MobileElement alertText;
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='UNDO' and @index='1']")
-    public MobileElement undo_button;
+    public MobileElement undoButton;
 
-    public String alert_text_uk = "UK Politics added to My News";
+    public String alertTextUk = "UK Politics added to My News";
 
-    public String alert_text_business = "Business added to My News";
+    public String alertTextBusiness = "Business added to My News";
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Rape in India']")
     public MobileElement article;
@@ -220,7 +205,6 @@ public class BasePageObject {
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[6]/bbc.mobile.news.uk.internal:id/main_view[0]/android.widget.ImageView[@index='0']")
     public MobileElement articleItemImage;
-
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/item_layout_name') and @index='0']"),
@@ -256,7 +240,6 @@ public class BasePageObject {
             "bbc.mobile.news.uk:id/headline_info",
             "bbc.mobile.news.uk:id/headline_link"
     };
-
 
     public String[] articleItemWithImageBadge = {
             "Hundreds of people poured onto the streets demanding justice for the girl",
@@ -328,7 +311,6 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/error_retry"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/error_retry")
     })
-
     public MobileElement errorRetryButton;
 
     @AndroidFindBy(xpath = "//android.widget.ListView[@index='0']")
@@ -366,7 +348,6 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/snackbar_action"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/snackbar_action")
     })
-
     public MobileElement reloadButton;
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Settings']")
