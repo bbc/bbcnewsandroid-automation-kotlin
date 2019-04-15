@@ -10,3 +10,4 @@ build/
 .DS_STORE
 /*/*.png
 .gradle
+*/out/test/
