@@ -424,14 +424,24 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
 
         waitForScreenToLoad(androidDriver, videoPageObject.smpPlaceholderPlayButton, 1)
-        tapButton(androidDriver, videoPageObject.smpPlaceholderPauseButton, false)
+        tapPlayPauseButton()
 
         videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
         assertDisplayingElements(androidDriver, videoPageObject.smpLiveIcon)
 
-        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        tapPlayPauseButton()
 
         navigateBack(androidDriver)
+    }
+
+    private fun tapPlayPauseButton() {
+        if (videoPageObject.playButton.isDisplayed) {
+            println("Succeeded: playButton.isDisplayed")
+            tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        } else {
+            println("Failed: playButton.isDisplayed, trying smpPauseButton")
+            tapButton(androidDriver, videoPageObject.smpPlaceholderPauseButton, false)
+        }
     }
 
     /**
