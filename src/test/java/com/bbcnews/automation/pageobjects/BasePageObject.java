@@ -57,22 +57,21 @@ public class BasePageObject {
 
     public String[] topicsPageElements = {
             "bbc.mobile.news.uk.internal:id/item_image",
-            "bbc.mobile.news.uk.internal:id/itemLayoutName",
-            "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated",
-            "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection"
+            "bbc.mobile.news.uk.internal:id/item_layout_name",
+            "bbc.mobile.news.uk.internal:id/item_layout_last_updated",
+            "bbc.mobile.news.uk.internal:id/item_layout_home_section"
     };
 
     public String[] topicsPageElementsRelease = {
             "bbc.mobile.news.uk:id/item_image",
-            "bbc.mobile.news.uk:id/itemLayoutName",
-            "bbc.mobile.news.uk:id/itemLayoutLastUpdated",
-            "bbc.mobile.news.uk:id/itemLayoutHomeSection"
+            "bbc.mobile.news.uk:id/item_layout_name",
+            "bbc.mobile.news.uk:id/item_layout_last_updated",
+            "bbc.mobile.news.uk:id/item_layout_home_section"
     };
 
      @AndroidFindAll({
-
-                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutName"),
-                    @AndroidBy(id = "bbc.mobile.news.uk:id/itemLayoutName")
+                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name"),
+                    @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_name")
     })
     public MobileElement itemLayoutName;
 
@@ -193,7 +192,6 @@ public class BasePageObject {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Rape in India']")
     public MobileElement article;
 
-
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='3']/android.view.ViewGroup[@index='0']/android.widget.ImageView[@index='0']")
     public MobileElement articleSearch;
 
@@ -277,7 +275,6 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/image_item_badge"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/image_item_badge")
     })
-
     public MobileElement articleImageBadge;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Related stories']")
@@ -290,21 +287,18 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_error_message"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/smp_error_message")
     })
-
     public MobileElement smpErrorMessage;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_error_button"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/smp_error_button")
     })
-
     public MobileElement smpErrorOkButton;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_retry_button"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/smp_retry_button")
     })
-
     public MobileElement smpRetryButton;
 
     @AndroidFindAll({
