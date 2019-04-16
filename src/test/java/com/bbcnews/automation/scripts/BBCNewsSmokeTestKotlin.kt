@@ -461,6 +461,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
     @Throws(IOException::class)
     fun testTakeScreenShotAfter() {
+        if (basePageObjectModel.navigate_back.isDisplayed) {
+            // go back to homepage if currently in an article
+            tapButton(androidDriver, basePageObjectModel.navigate_back,false)
+        }
+
         tapButton(androidDriver, basePageObjectModel.topStories, false)
         testUtility.screenshot(androidDriver, "After", "topStories")
         tapButton(androidDriver, basePageObjectModel.myNews, false)
