@@ -148,7 +148,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
 
         try {
-            androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
+            tapButton(androidDriver, basePageObjectModel.errorRetryButton, false)
         } catch (e: Exception) {
             // if the retry button is not present then do nothing
         }
