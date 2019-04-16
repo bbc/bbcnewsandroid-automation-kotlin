@@ -234,9 +234,9 @@ class BBCNewsRegressionTestKotlin {
             for (i in 0 until basePageObject.topicsPageElements.size) {
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
             }
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myNewsAddTopics, false)
             commonFunctionKotlin.textpresent(androidDriver, "Family & Education", "added to")
-            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageyourtopics)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageYourTopics)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
 
@@ -253,9 +253,9 @@ class BBCNewsRegressionTestKotlin {
             for (i in 0 until basePageObject.topicsPageElements.size) {
                 commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
             }
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myNewsAddTopics, false)
             commonFunctionKotlin.textpresent(androidDriver, "Technology", "added to")
-            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageyourtopics)
+            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.manageYourTopics)
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
 
         } catch (e: Exception) {
@@ -279,9 +279,9 @@ class BBCNewsRegressionTestKotlin {
                 e.printStackTrace()
             }
 
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removeTopics, false)
             // commonFunctionKotlin.textpresent(androidDriver, "Family & Education", "removed from")
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removeTopics, false)
             // commonFunctionKotlin.textpresent(androidDriver, "Technology", "removed from")
             // pressBack()
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.backButton, false)
@@ -297,9 +297,9 @@ class BBCNewsRegressionTestKotlin {
         try {
             commonFunctionKotlin.startTest("Allowing Location Service ", "Checking whether Location service works ", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.myNews, false)//,file.getAbsolutePath());
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.allow_location, false)
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.allowLocation, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.allowLocationPermission, false)
             pressBack()
         } catch (e: AssertionError) {
             e.printStackTrace()
@@ -313,12 +313,12 @@ class BBCNewsRegressionTestKotlin {
         commonFunctionKotlin.startTest("Checking Elements on MyNews Page", "Test to check MyNews page", "MyNews")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.myNews, false)
         assertDisplayingElements(
-                myNewsPageObject.mynews_summary,
-                myNewsPageObject.mynewstitle,
-                myNewsPageObject.addnews_button
+                myNewsPageObject.myNewsSummary,
+                myNewsPageObject.myNewsTitle,
+                myNewsPageObject.addNewsButton
         )
-        assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text Mesaaged")
-        assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text Mesaaged")
+        assertEquals(myNewsPageObject.myNewsTitleText, myNewsPageObject.myNewsTitle.text, "Text Mesaaged")
+        assertEquals(myNewsPageObject.myNewsSummaryText, myNewsPageObject.myNewsSummary.text, "Text Mesaaged")
     } catch (e: NullPointerException) {
     }
 
@@ -328,19 +328,19 @@ class BBCNewsRegressionTestKotlin {
     fun testAddingTopicsPage() {
         try {
             commonFunctionKotlin.startTest("Checking Elements on Edit Mynews Page", "Test to check Edit MyNews page", "MyNews")
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            commonFunctionKotlin.elementIsSelected(myNewsPageObject.addtopics)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
+            commonFunctionKotlin.elementIsSelected(myNewsPageObject.addTopics)
 
             assertDisplayingElements(
-                    myNewsPageObject.mytopics,
-                    // myNewsPageObject.location_button
+                    myNewsPageObject.myTopics,
+                    // myNewsPageObject.locationButton
                     myNewsPageObject.editMyTopics,
-                    myNewsPageObject.localnews
+                    myNewsPageObject.localNews
             )
 
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mytopics, false)//,file.getAbsolutePath());
-            commonFunctionKotlin.elementIsSelected(myNewsPageObject.mytopics)
-            assertEquals(myNewsPageObject.mytopic_emptyview_text, myNewsPageObject.mytopic_emptyview.text, "Text Mesaaged")
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myTopics, false)//,file.getAbsolutePath());
+            commonFunctionKotlin.elementIsSelected(myNewsPageObject.myTopics)
+            assertEquals(myNewsPageObject.myTopicEmptyViewText, myNewsPageObject.myTopicEmptyView.text, "Text Mesaaged")
         } catch (e: NullPointerException) {
         }
     }
@@ -351,10 +351,10 @@ class BBCNewsRegressionTestKotlin {
     fun testAddingTopicsToMyNewsPage() {
         try {
             commonFunctionKotlin.startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addtopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.addTopics, false)
 
-            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.getText())
-            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+            Assert.assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.getText())
+            commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localNewsDisplayed)
 
             commonFunctionKotlin.scrolltoElement(androidDriver, myTopicsPageObject.englandtopic)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandtopic, false)
@@ -382,7 +382,7 @@ class BBCNewsRegressionTestKotlin {
     fun testCheckAddedTopics() {
         try {
             commonFunctionKotlin.startTest("My Topics page", "Test to check added Topics MyNews page", "MyNews")
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mytopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myTopics, false)
 
             assertDisplayingElements(
                     myTopicsPageObject.Englandtopic,
@@ -473,10 +473,9 @@ class BBCNewsRegressionTestKotlin {
     } catch (e: NullPointerException) {
     }
 
-
     @Test(priority = 13, description = "Test to check whether the Menu Options are displayed")
     @Throws(Exception::class)
-    fun testcheckMenuItems() {
+    fun testCheckMenuItems() {
         try {
             commonFunctionKotlin.startTest("Checking the MenuItems", "Checking Menu Items ", "Menu")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.menuButton, false)
@@ -494,7 +493,7 @@ class BBCNewsRegressionTestKotlin {
 
     @Test(priority = 14, description = "Test to play a Live video from Vide page and asserting on whether playback controls are displayed")
     @Throws(Exception::class)
-    fun testVideopage() {
+    fun testVideoPage() {
         try {
             commonFunctionKotlin.startTest("Playing a Live Video", "Checking the Video Page", "Live Video")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
@@ -628,7 +627,7 @@ class BBCNewsRegressionTestKotlin {
 
             assertEquals(basePageObject.articleLayoutName.text, basePageObject.articleLayoutName.text, "Text Matched")
             assertEquals(basePageObject.articleLastUpdated.text, basePageObject.articleLastUpdated.text, "Test Matched")
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.mynews_addtopics, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myNewsAddTopics, false)
         } catch (e: AssertionError) {
             throw e
         }
@@ -681,9 +680,7 @@ class BBCNewsRegressionTestKotlin {
         } catch (e: AssertionError) {
             throw e
         }
-
     }
-
 
     @Test(priority = 22, description = "Test to search for an particular article")
     @Throws(Exception::class)
@@ -929,8 +926,8 @@ class BBCNewsRegressionTestKotlin {
         assertEquals("Rape in India", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='1']/android.widget.TextView[@index='1']")).text, "Test Matched")
         // Assert.assertEquals("European Union",androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='2']/android.widget.TextView[@index='1']")).getText(), "Test Matched");
         assertEquals("YouTube", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='5']/android.widget.TextView[@index='1']")).text, "Test Matched")
-        commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
-        commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removetopics, false)
+        commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removeTopics, false)
+        commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.removeTopics, false)
         pressBack()
     }
 
@@ -999,7 +996,7 @@ class BBCNewsRegressionTestKotlin {
             commonFunctionKotlin.startTest("Selecting a Article from Africa Topics", "Test to select An Article from the Africa Topics under MyNews", "MyNews")
             commonFunctionKotlin.tapButton(androidDriver, basePageObject.myNews, false)
             commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.Englandtopic, false)
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicarticle, false)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicArticle, false)
             assertDisplayingElements(myTopicsPageObject.Englandtopic)
             pressBack()
 
@@ -1013,8 +1010,8 @@ class BBCNewsRegressionTestKotlin {
     fun testSelectVideoArticleTopic() {
         try {
             commonFunctionKotlin.startTest("Select a Video Article from Africa Topic", "Test to select An Video Article from the Africa Topics under MyNews", "MyNews")
-            commonFunctionKotlin.scrolltoElement(androidDriver, myNewsPageObject.mynewsrecyclerview)
-            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicvideoarticle, false)
+            commonFunctionKotlin.scrolltoElement(androidDriver, myNewsPageObject.myNewsRecyclerView)
+            commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicVideoArticle, false)
             assertDisplayingElements(myTopicsPageObject.Englandtopic)
 
             for (i in 0 until videoPageObject.videoWallElements.size) {
