@@ -18,7 +18,7 @@ class StatsTestData {
     var csvFile = "./CharlesFolder/BBCNews.csv"
 
     @Throws(InterruptedException::class, IOException::class)
-    fun compareStatsData(csvfile: String, statsData: Array<String>) {
+    fun compareStatsData(csvFile: String, statsData: Array<String>) {
         // String csvFile = "./CharlesFolder/BBCNews.csv";
         var br: BufferedReader? = null
         var line: String
@@ -28,7 +28,7 @@ class StatsTestData {
         val aListColors = ArrayList<String>()
         try {
 
-            br = BufferedReader(FileReader(csvfile))
+            br = BufferedReader(FileReader(csvFile))
             line = br.readLine()
             while (line != null) {
                 // use comma as separator

@@ -788,11 +788,11 @@ class BBCNewsReleaseBuildRegressionTest {
     @Throws(Exception::class)
     fun testRelatedStoriesArticle() {
         commonFunctionKotlin.startTest("Checking for Related Story Article", "Test to check Related Stories of an Article", "Related Stories/Topics")
-        commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.relatedstorieArticle)
+        commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.relatedStoriesArticle)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.relatedStories)
-        commonFunctionKotlin.tapButton(androidDriver, popularPageObject.relatedstorieArticle, false)
-        for (i in 0 until popularPageObject.mostreadpopularlinks_Release.size) {
-            commonFunctionKotlin.isElementPresent(androidDriver, By.id(popularPageObject.mostreadpopularlinks_Release[i]))
+        commonFunctionKotlin.tapButton(androidDriver, popularPageObject.relatedStoriesArticle, false)
+        for (i in 0 until popularPageObject.mostReadPopularLinksRelease.size) {
+            commonFunctionKotlin.isElementPresent(androidDriver, By.id(popularPageObject.mostReadPopularLinksRelease[i]))
         }
         if (!basePageObject.shareStory.isDisplayed) {
             commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
@@ -805,9 +805,9 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testRelatedTopicArticle() {
 
         commonFunctionKotlin.startTest("Checking for Related Topic Article", "Test to check Related Topics of an Article", "Related Stories/Topics")
-        commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.relatedtopicsArticle)
+        commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.relatedTopicsArticle)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.relatedTopics)
-        commonFunctionKotlin.tapButton(androidDriver, popularPageObject.relatedtopicsArticle, false)
+        commonFunctionKotlin.tapButton(androidDriver, popularPageObject.relatedTopicsArticle, false)
         assertEquals("Egypt", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/title")).text)
         assertEquals("Add topic", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/menu_follow")).getAttribute("contentDescription"))
         for (i in 0 until basePageObject.topicsPageElementsRelease.size) {
@@ -847,8 +847,8 @@ class BBCNewsReleaseBuildRegressionTest {
         // androidDriver.findElementByAccessibilityId("Play").click();
         videoPageObject.transportControls.click()
         videoPageObject.transportControls.click()
-        for (i in 0 until popularPageObject.popularvideoelements_Release.size) {
-            commonFunctionKotlin.isElementPresent(androidDriver, By.id(popularPageObject.popularvideoelements_Release[i]))
+        for (i in 0 until popularPageObject.popularVideoElementsRelease.size) {
+            commonFunctionKotlin.isElementPresent(androidDriver, By.id(popularPageObject.popularVideoElementsRelease[i]))
         }
         pressBack()
     }
@@ -874,7 +874,7 @@ class BBCNewsReleaseBuildRegressionTest {
         try {
             commonFunctionKotlin.startTest("Checking PopularPage", "Checking Popular Page", "Popular")
             commonFunctionKotlin.tapButton(androidDriver, popularPageObject.popular, false)
-            commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.mostread)
+            commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.mostRead)
         } catch (e: AssertionError) {
         }
 
@@ -885,11 +885,11 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testCheckMostReadPopular() {
         try {
             commonFunctionKotlin.startTest("Checking Article from Most Read Section", "Checking Most Read Popular", "Popular")
-            commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.mostread)
-            commonFunctionKotlin.tapButton(androidDriver, popularPageObject.mostRead_article, false)
-            //            for(int i=0;i<popularPageObject.mostreadpopularlinks.length;i++)
+            commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.mostRead)
+            commonFunctionKotlin.tapButton(androidDriver, popularPageObject.mostReadArticle, false)
+            //            for(int i=0;i<popularPageObject.mostReadPopularLinks.length;i++)
             //            {
-            //                commonFunctionKotlin.isElementPresent(androidDriver,By.id(popularPageObject.mostreadpopularlinks[i]));
+            //                commonFunctionKotlin.isElementPresent(androidDriver,By.id(popularPageObject.mostReadPopularLinks[i]));
             //            }
 
         } catch (e: NullPointerException) {
@@ -904,8 +904,8 @@ class BBCNewsReleaseBuildRegressionTest {
         try {
             pressBack()
             commonFunctionKotlin.startTest("Checking Most Popular Section", "Checking Most Watched", "Popular")
-            commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.popularmostwatched)
-            commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.popularmostwatched)
+            commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.popularMostWatched)
+            commonFunctionKotlin.elementDisplayed(androidDriver, popularPageObject.popularMostWatched)
 
         } catch (e: NullPointerException) {
         }
@@ -919,10 +919,10 @@ class BBCNewsReleaseBuildRegressionTest {
         try {
 
             commonFunctionKotlin.startTest("Checking Most Watched Article ", "Checking Most Watched", "Popular")
-            commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.mostwatchedartcilevideo)
-            System.out.println("The Element selected is  :- " + popularPageObject.mostwatchedartcilevideo.text)
-            popularPageObject.mostwatchedartcilevideo.click()
-            if (!popularPageObject.mostpopular.isDisplayed) {
+            commonFunctionKotlin.scrolltoElement(androidDriver, popularPageObject.mostWatchedArticleVideo)
+            System.out.println("The Element selected is  :- " + popularPageObject.mostWatchedArticleVideo.text)
+            popularPageObject.mostWatchedArticleVideo.click()
+            if (!popularPageObject.mostPopular.isDisplayed) {
                 commonFunctionKotlin.verticalSwipe(androidDriver, "Up")
             }
             for (i in 0 until videoPageObject.videoWallElementsRelease.size) {

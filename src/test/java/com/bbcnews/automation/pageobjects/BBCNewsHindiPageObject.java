@@ -117,32 +117,32 @@ public class BBCNewsHindiPageObject {
     public MobileElement hindiPhotos;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/image_item_caption"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/image_item_caption")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/imageItemCaption"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/imageItemCaption")
     })
     public MobileElement imageItemCaption;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_title"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_title")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headlineTitle"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headlineTitle")
     })
     public MobileElement headlineTitle;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_info"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_info")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headlineInfo"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headlineInfo")
     })
     public MobileElement headlineInfo;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_author_name"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_author_name")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headlineAuthorName"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headlineAuthorName")
     })
     public MobileElement headlineAuthorName;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headline_author_title"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/headline_author_title")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/headlineAuthorTitle"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/headlineAuthorTitle")
     })
     public MobileElement headlineAuthorTitle;
 
@@ -153,8 +153,8 @@ public class BBCNewsHindiPageObject {
     public MobileElement bbcHindiOkButton;
 
     @AndroidFindAll({
-            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/image_item_badge"),
-            @AndroidBy(id = "uk.co.bbc.hindi:id/image_item_badge")
+            @AndroidBy(id = "uk.co.bbc.hindi.internal:id/imageItemBadge"),
+            @AndroidBy(id = "uk.co.bbc.hindi:id/imageItemBadge")
     })
     public MobileElement imageItemBadge;
 

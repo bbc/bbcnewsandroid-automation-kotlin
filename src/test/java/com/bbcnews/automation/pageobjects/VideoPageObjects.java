@@ -18,8 +18,8 @@ public class VideoPageObjects {
     public MobileElement bbcNewsChannel;
 
     @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/content_card_title"),
-            @AndroidBy(id = "bbc.mobile.news.uk:id/content_card_title")
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/contentCardTitle"),
+            @AndroidBy(id = "bbc.mobile.news.uk:id/contentCardTitle")
     })
     public MobileElement liveBbcChannel;
 
@@ -106,9 +106,9 @@ public class VideoPageObjects {
 
     public String[] videoDetailPage = {
             "bbc.mobile.news.uk.internal:id/media_item_caption",
-            "bbc.mobile.news.uk.internal:id/headline_title",
-            "bbc.mobile.news.uk.internal:id/headline_info",
-            "bbc.mobile.news.uk.internal:id/headline_link"
+            "bbc.mobile.news.uk.internal:id/headlineTitle",
+            "bbc.mobile.news.uk.internal:id/headlineInfo",
+            "bbc.mobile.news.uk.internal:id/headlineLink"
     };
 
     public String[] videoDetailPageText = {
@@ -120,9 +120,9 @@ public class VideoPageObjects {
 
     public String[] videoDetailPageRelease = {
             "bbc.mobile.news.uk:id/media_item_caption",
-            "bbc.mobile.news.uk:id/headline_title",
-            "bbc.mobile.news.uk:id/headline_info",
-            "bbc.mobile.news.uk:id/headline_link"
+            "bbc.mobile.news.uk:id/headlineTitle",
+            "bbc.mobile.news.uk:id/headlineInfo",
+            "bbc.mobile.news.uk:id/headlineLink"
     };
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Amal Fathy: Egypt court imposes jail term over harassment video' and @index='1']")

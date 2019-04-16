@@ -269,8 +269,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("PopularPage", "Checking the Popular", "Smoke")
             tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
             Assert.assertTrue(basePageObjectModel.popular.isSelected)
-            elementDisplayed(androidDriver, popularPageObject.mostread)
-            Assert.assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
+            elementDisplayed(androidDriver, popularPageObject.mostRead)
+            Assert.assertEquals("Most Read", popularPageObject.mostRead.text, "Text Matched")
         } catch (e: AssertionError) {
             e.printStackTrace()
         }
@@ -287,8 +287,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testcheckMostWatched() {
         try {
             startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
-            scrolltoElement(androidDriver, popularPageObject.popularmostwatched)
-            Assert.assertEquals("Most Watched", popularPageObject.popularmostwatched.text, "Text Matched")
+            scrolltoElement(androidDriver, popularPageObject.popularMostWatched)
+            Assert.assertEquals("Most Watched", popularPageObject.popularMostWatched.text, "Text Matched")
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -426,7 +426,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         try {
             startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
             val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
-            val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
+            val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/contentCardTitle"))
             val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
             val total = contentImages.size
             System.out.println("The size of cards are$total")

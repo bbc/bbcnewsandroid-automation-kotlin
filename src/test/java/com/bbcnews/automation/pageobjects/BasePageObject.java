@@ -215,17 +215,17 @@ public class BasePageObject {
     public MobileElement articlelHomeSection;
 
     public String[] articleDetailPageLinks = {
-            "bbc.mobile.news.uk.internal:id/image_item_caption",
-            "bbc.mobile.news.uk.internal:id/headline_title",
-            "bbc.mobile.news.uk.internal:id/headline_info",
-            "bbc.mobile.news.uk.internal:id/headline_link"
+            "bbc.mobile.news.uk.internal:id/imageItemCaption",
+            "bbc.mobile.news.uk.internal:id/headlineTitle",
+            "bbc.mobile.news.uk.internal:id/headlineInfo",
+            "bbc.mobile.news.uk.internal:id/headlineLink"
     };
 
     public String[] articleDetailPageLinksRelease = {
-            "bbc.mobile.news.uk:id/image_item_caption",
-            "bbc.mobile.news.uk:id/headline_title",
-            "bbc.mobile.news.uk:id/headline_info",
-            "bbc.mobile.news.uk:id/headline_link"
+            "bbc.mobile.news.uk:id/imageItemCaption",
+            "bbc.mobile.news.uk:id/headlineTitle",
+            "bbc.mobile.news.uk:id/headlineInfo",
+            "bbc.mobile.news.uk:id/headlineLink"
     };
 
     public String[] articleItemWithImageBadge = {
@@ -249,20 +249,20 @@ public class BasePageObject {
     };
 
     public String[] articlePageDetailElements = {
-            "bbc.mobile.news.uk.internal:id/headline_title",
-            "bbc.mobile.news.uk.internal:id/headline_info",
-            "bbc.mobile.news.uk.internal:id/headline_link"
+            "bbc.mobile.news.uk.internal:id/headlineTitle",
+            "bbc.mobile.news.uk.internal:id/headlineInfo",
+            "bbc.mobile.news.uk.internal:id/headlineLink"
     };
 
     public String[] articlePageDetailElementsRelease = {
-            "bbc.mobile.news.uk:id/headline_title",
-            "bbc.mobile.news.uk:id/headline_info",
-            "bbc.mobile.news.uk:id/headline_link"
+            "bbc.mobile.news.uk:id/headlineTitle",
+            "bbc.mobile.news.uk:id/headlineInfo",
+            "bbc.mobile.news.uk:id/headlineLink"
     };
 
     @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/image_item_badge"),
-            @AndroidBy(id = "bbc.mobile.news.uk:id/image_item_badge")
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/imageItemBadge"),
+            @AndroidBy(id = "bbc.mobile.news.uk:id/imageItemBadge")
     })
     public MobileElement articleImageBadge;
 

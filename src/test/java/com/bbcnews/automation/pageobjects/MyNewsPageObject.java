@@ -106,19 +106,19 @@ public class MyNewsPageObject {
     public MobileElement asiavideoaudiosection;
 
     public String articlepageelements[] =
-            {       //"bbc.mobile.news.uk.internal:id/image_item_badge",
-                    "bbc.mobile.news.uk.internal:id/headline_info",
-                    "bbc.mobile.news.uk.internal:id/headline_title",
+            {       //"bbc.mobile.news.uk.internal:id/imageItemBadge",
+                    "bbc.mobile.news.uk.internal:id/headlineInfo",
+                    "bbc.mobile.news.uk.internal:id/headlineTitle",
                     "bbc.mobile.news.uk.internal:id/image_item",
-                    "bbc.mobile.news.uk.internal:id/headline_link",
+                    "bbc.mobile.news.uk.internal:id/headlineLink",
             };
 
     public String articlepageelements_Release[] =
-            {       //"bbc.mobile.news.uk:id/image_item_badge",
-                    "bbc.mobile.news.uk:id/headline_info",
-                    "bbc.mobile.news.uk:id/headline_title",
+            {       //"bbc.mobile.news.uk:id/imageItemBadge",
+                    "bbc.mobile.news.uk:id/headlineInfo",
+                    "bbc.mobile.news.uk:id/headlineTitle",
                     "bbc.mobile.news.uk:id/image_item",
-                    "bbc.mobile.news.uk:id/headline_link",
+                    "bbc.mobile.news.uk:id/headlineLink",
             };
 
 
