@@ -290,22 +290,22 @@ class BBCNewsRegressionTestKotlin {
         Assert.assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
         commonFunctionKotlin.elementDisplayed(androidDriver, myNewsPageObject.localNewsDisplayed)
 
-        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.englandtopic)
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandtopic, false)
+        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.addEnglandTopicButton)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.addEnglandTopicButton, false)
         // commonFunctionKotlin.textPresent(androidDriver, "England", "added to")
 
-        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.africatopic)
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.africatopic, false)
+        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.addAfricaTopicButton)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.addAfricaTopicButton, false)
 
-        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.europeuniontopic)
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.europeuniontopic, false)
+        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.addEuTopicButton)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.addEuTopicButton, false)
 
-        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.mortgagestopic)
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.mortgagestopic, false)
+        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.addMortgagesTopicButton)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.addMortgagesTopicButton, false)
         //  commonFunctionKotlin.textPresent(androidDriver, "Mortgages", "added to")
 
-        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.youtubetopic)
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.youtubetopic, false)
+        commonFunctionKotlin.scrollToElement(androidDriver, myTopicsPageObject.addYouTubeTopicButton)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.addYouTubeTopicButton, false)
         //  commonFunctionKotlin.textPresent(androidDriver, "YouTube", "added to")
     }
 
@@ -315,11 +315,11 @@ class BBCNewsRegressionTestKotlin {
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.myTopics, false)
 
         assertDisplayingElements(androidDriver,
-                myTopicsPageObject.Englandtopic,
-                myTopicsPageObject.Africatopic,
-                myTopicsPageObject.Europeantopic,
-                myTopicsPageObject.Mortgagestopic,
-                myTopicsPageObject.Youtubetopic
+                myTopicsPageObject.englandTopic,
+                myTopicsPageObject.africaTopic,
+                myTopicsPageObject.europeanTopic,
+                myTopicsPageObject.mortgagesTopic,
+                myTopicsPageObject.youTubeTopic
         )
     }
 
@@ -342,22 +342,22 @@ class BBCNewsRegressionTestKotlin {
         commonFunctionKotlin.waitFor(1000)
 
         assertDisplayingElements(androidDriver,
-                myTopicsPageObject.Englandtopic,
-                myTopicsPageObject.Europeantopic,
-                myTopicsPageObject.Africatopic
+                myTopicsPageObject.englandTopic,
+                myTopicsPageObject.europeanTopic,
+                myTopicsPageObject.africaTopic
         )
 
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.Africatopic, false)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.africaTopic, false)
         for (i in 0 until basePageObject.topicsPageElements.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
         }
         pressBack()
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.Europeantopic, false)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.europeanTopic, false)
         for (i in 0 until basePageObject.topicsPageElements.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
         }
         pressBack()
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.Englandtopic, false)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandTopic, false)
         for (i in 0 until basePageObject.topicsPageElements.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
         }
@@ -803,9 +803,9 @@ class BBCNewsRegressionTestKotlin {
     fun testSelectArticleTopic() {
         commonFunctionKotlin.startTest("Selecting a Article from Africa Topics", "Test to select An Article from the Africa Topics under MyNews", "MyNews")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.myNews, false)
-        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.Englandtopic, false)
+        commonFunctionKotlin.tapButton(androidDriver, myTopicsPageObject.englandTopic, false)
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicArticle, false)
-        assertDisplayingElements(androidDriver, myTopicsPageObject.Englandtopic)
+        assertDisplayingElements(androidDriver, myTopicsPageObject.englandTopic)
         pressBack()
     }
 
@@ -814,7 +814,7 @@ class BBCNewsRegressionTestKotlin {
         commonFunctionKotlin.startTest("Select a Video Article from Africa Topic", "Test to select An Video Article from the Africa Topics under MyNews", "MyNews")
         commonFunctionKotlin.scrollToElement(androidDriver, myNewsPageObject.myNewsRecyclerView)
         commonFunctionKotlin.tapButton(androidDriver, myNewsPageObject.topicVideoArticle, false)
-        assertDisplayingElements(androidDriver, myTopicsPageObject.Englandtopic)
+        assertDisplayingElements(androidDriver, myTopicsPageObject.englandTopic)
 
         for (i in 0 until videoPageObject.videoWallElements.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videoWallElements[i]))

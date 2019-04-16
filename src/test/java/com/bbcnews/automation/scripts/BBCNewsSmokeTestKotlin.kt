@@ -258,12 +258,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
         assertDisplayingElements(androidDriver, myNewsPageObject.localNewsDisplayed)
 
-        scrollToElement(androidDriver, myTopicsPageObject.walestopic)
-        tapButton(androidDriver, myTopicsPageObject.walestopic, false)
+        scrollToElement(androidDriver, myTopicsPageObject.addWalesTopicButton)
+        tapButton(androidDriver, myTopicsPageObject.addWalesTopicButton, false)
         textPresent(androidDriver, "Wales", "added to")
 
-        scrollToElement(androidDriver, myTopicsPageObject.worldtopic)
-        tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
+        scrollToElement(androidDriver, myTopicsPageObject.addWorldTopicButton)
+        tapButton(androidDriver, myTopicsPageObject.addWorldTopicButton, false)
     }
 
 
@@ -278,8 +278,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
             tapButton(androidDriver, myNewsPageObject.myTopics, false)
             assertDisplayingElements(androidDriver,
-                    myTopicsPageObject.Walestopic,
-                    myTopicsPageObject.Worldtopic
+                    myTopicsPageObject.walesTopic,
+                    myTopicsPageObject.worldTopic
             )
             navigateBack(androidDriver)
         } catch (e: Exception) {
@@ -297,15 +297,14 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         startTest("MyNews", "Checking Added topics in MyNews", "Smoke")
 
         assertDisplayingElements(androidDriver,
-                myTopicsPageObject.Walestopic,
-                myTopicsPageObject.Worldtopic
+                myTopicsPageObject.walesTopic,
+                myTopicsPageObject.worldTopic
         )
     }
 
     /**
      * removing one of the topics(England) from MyNews-Added Topics
      */
-
     @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
     @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
@@ -314,8 +313,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 
         assertDisplayingElements(androidDriver,
-                myTopicsPageObject.Walestopic,
-                myTopicsPageObject.Worldtopic
+                myTopicsPageObject.walesTopic,
+                myTopicsPageObject.worldTopic
         )
 
         tapButton(androidDriver, myNewsPageObject.removeTopics, false)
@@ -377,7 +376,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * check the live video on video page
      */
-
     @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
