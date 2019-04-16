@@ -427,7 +427,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         tapButton(androidDriver, videoPageObject.smpPlaceholderPauseButton, false)
 
         videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
-        isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_live_icon"))
+        assertDisplayingElements(androidDriver, videoPageObject.smpLiveIcon)
 
         tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
 

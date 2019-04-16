@@ -44,9 +44,6 @@ public class VideoPageObjects {
     @AndroidFindBy(accessibility = "volume")
     public MobileElement smpVolumeButton;
 
-    @AndroidFindBy(accessibility = "live content")
-    public MobileElement smpLiveIcon;
-
     @AndroidFindBy(accessibility = "Fullscreen")
     public MobileElement smpFullScreenButton;
 
@@ -58,6 +55,12 @@ public class VideoPageObjects {
             @AndroidBy(id = "bbc.mobile.news.uk:id/smp_seek_bar")
     })
     public MobileElement smpSeekBar;
+
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_live_icon"),
+            @AndroidBy(accessibility = "live content")
+    })
+    public MobileElement smpLiveIcon;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_playout_window_inset"),
