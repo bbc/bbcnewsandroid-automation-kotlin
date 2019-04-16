@@ -246,9 +246,9 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         try {
             startTest("MyNews", "Checking the MyNews", "Smoke")
             tapButton(androidDriver, basePageObjectModel.myNews, false)//,file.getAbsolutePath());
-            tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            tapButton(androidDriver, myNewsPageObject.allow_location, false)
-            tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
+            tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
+            tapButton(androidDriver, myNewsPageObject.allowLocation, false)
+            tapButton(androidDriver, myNewsPageObject.allowLocationPermission, false)
             navigateBack(androidDriver)
         } catch (e: AssertionError) {
             e.printStackTrace()
@@ -269,8 +269,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("PopularPage", "Checking the Popular", "Smoke")
             tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
             Assert.assertTrue(basePageObjectModel.popular.isSelected)
-            elementDisplayed(androidDriver, popularPageObject.mostread)
-            Assert.assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
+            elementDisplayed(androidDriver, popularPageObject.mostRead)
+            Assert.assertEquals("Most Read", popularPageObject.mostRead.text, "Text Matched")
         } catch (e: AssertionError) {
             e.printStackTrace()
         }
@@ -284,11 +284,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Test(priority = 5, description = "checking that most watched displayed in popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    fun testcheckMostWatched() {
+    fun testCheckMostWatched() {
         try {
             startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
-            scrolltoElement(androidDriver, popularPageObject.popularmostwatched)
-            Assert.assertEquals("Most Watched", popularPageObject.popularmostwatched.text, "Text Matched")
+            scrolltoElement(androidDriver, popularPageObject.popularMostWatched)
+            Assert.assertEquals("Most Watched", popularPageObject.popularMostWatched.text, "Text Matched")
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -310,11 +310,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("MyNews", "Checking the MyNews", "Smoke")
             tapButton(androidDriver, basePageObjectModel.myNews, false)//,file.getAbsolutePath());
             Assert.assertTrue(basePageObjectModel.myNews.isSelected)
-            elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
-            elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
-            elementDisplayed(androidDriver, myNewsPageObject.addnews_button)
-            Assert.assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text matched")
-            Assert.assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text matched")
+            elementDisplayed(androidDriver, myNewsPageObject.myNewsSummary)
+            elementDisplayed(androidDriver, myNewsPageObject.myNewsTitle)
+            elementDisplayed(androidDriver, myNewsPageObject.addNewsButton)
+            Assert.assertEquals(myNewsPageObject.myNewsTitleText, myNewsPageObject.myNewsTitle.text, "Text matched")
+            Assert.assertEquals(myNewsPageObject.myNewsSummaryText, myNewsPageObject.myNewsSummary.text, "Text matched")
         } catch (e: AssertionError) {
             e.printStackTrace()
         }
@@ -330,11 +330,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testAddingTopicsToMyNewsPage() {
         try {
             startTest("MyNews", "Adding topics to MyNews", "Smoke")
-            tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            tapButton(androidDriver, myNewsPageObject.addtopics, false)
+            tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
+            tapButton(androidDriver, myNewsPageObject.addTopics, false)
 
-            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
-            elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+            Assert.assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
+            elementDisplayed(androidDriver, myNewsPageObject.localNewsDisplayed)
 
             scrolltoElement(androidDriver, myTopicsPageObject.walestopic)
             tapButton(androidDriver, myTopicsPageObject.walestopic, false)
@@ -361,7 +361,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testCheckAddedTopicsUnderMyTopics() {
         try {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
-            tapButton(androidDriver, myNewsPageObject.mytopics, false)
+            tapButton(androidDriver, myNewsPageObject.myTopics, false)
             elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
             elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
             navigateBack(androidDriver)
@@ -406,7 +406,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
                 e.printStackTrace()
             }
 
-            tapButton(androidDriver, myNewsPageObject.removetopics, false)
+            tapButton(androidDriver, myNewsPageObject.removeTopics, false)
             tapButton(androidDriver, basePageObjectModel.backButton, false)
 
         } catch (e: NullPointerException) {
@@ -426,7 +426,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         try {
             startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
             val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
-            val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
+            val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/contentCardTitle"))
             val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
             val total = contentImages.size
             System.out.println("The size of cards are$total")
@@ -441,13 +441,13 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
                 elementDisplayed(androidDriver, contentCardUpdated[i])
             }
 
-            tapButton(androidDriver, myNewsPageObject.showmore, false)
+            tapButton(androidDriver, myNewsPageObject.showMore, false)
 
-            scrolltoElement(androidDriver, myNewsPageObject.showless)
-            System.out.println("The text of  are:- " + myNewsPageObject.showless.text)
-            tapButton(androidDriver, myNewsPageObject.showless, false)
-            elementDisplayed(androidDriver, myNewsPageObject.showmore)
-            System.out.println("The text of  are:- " + myNewsPageObject.showmore.text)
+            scrolltoElement(androidDriver, myNewsPageObject.showLess)
+            System.out.println("The text of  are:- " + myNewsPageObject.showLess.text)
+            tapButton(androidDriver, myNewsPageObject.showLess, false)
+            elementDisplayed(androidDriver, myNewsPageObject.showMore)
+            System.out.println("The text of  are:- " + myNewsPageObject.showMore.text)
 
 
         } catch (e: Exception) {
