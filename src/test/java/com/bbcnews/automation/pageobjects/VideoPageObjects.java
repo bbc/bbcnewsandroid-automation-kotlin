@@ -59,7 +59,6 @@ public class VideoPageObjects {
     })
     public MobileElement smpSeekBar;
 
-
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_playout_window_inset"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/smp_playout_window_inset")
