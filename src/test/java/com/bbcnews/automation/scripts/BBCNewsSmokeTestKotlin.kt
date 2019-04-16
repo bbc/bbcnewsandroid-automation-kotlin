@@ -325,23 +325,18 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * Checks the Articles from Topics page, Checks for More button and checks for Less button displayed
      */
-
-
     @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
     fun testCheckArticlesOfTopics() {
         startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
 
         val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
-        val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/contentCardTitle"))
+        val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
         val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
-        val total = contentImages.size
-        System.out.println("The size of cards are$total")
 
-//            for (cardimage in contentImages) {
-//                tapButton(androidDriver, cardimage, false)
-//                navigateBack(androidDriver)
-//            }
-        for (i in 0 until total) {
+        val total = contentImages.size
+        System.out.println("The number of cards is: $total")
+
+        for (i in contentImages.indices) {
             assertDisplayingElements(androidDriver,
                     contentCardTitle[i],
                     contentCardUpdated[i]

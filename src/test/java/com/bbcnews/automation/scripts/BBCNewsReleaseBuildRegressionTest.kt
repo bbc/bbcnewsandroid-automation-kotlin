@@ -403,7 +403,7 @@ class BBCNewsReleaseBuildRegressionTest {
     }
 
     //@Test(dependsOnMethods = {"testcheckMostWatched"})
-    @Test(priority = 16, description = "Test to check whether the Menu Options are displayed")
+    @Test(priority = 16, description = "Test to check whether the menu options are displayed")
     fun testMenuItems() {
         commonFunctionKotlin.startTest("Checking the MenuItems", "Checking Menu Items ", "Menu")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.menuButton, false)
@@ -415,7 +415,7 @@ class BBCNewsReleaseBuildRegressionTest {
     }
 
 
-    @Test(priority = 17, description = "Test to play a Live video from Vide page and asserting on whether playback controls are displayed")
+    @Test(priority = 17, description = "Test to play a Live video from Video page and asserting on whether playback controls are displayed")
     fun testVideoPage() {
         commonFunctionKotlin.startTest("Playing a Live Video", "Checking the Video Page", "Live Video")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
@@ -443,9 +443,9 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpSeekBar)
     }
 
-    @Test(priority = 18, description = "Test to check whether video plays in Landspace mode")
+    @Test(priority = 18, description = "Test to check whether video plays in landscape mode")
     fun playingLandscape() {
-        commonFunctionKotlin.startTest("Checking Live Video in Landscape", "Checking the Video in Landscape Mode", "Live Video")
+        commonFunctionKotlin.startTest("Checking live video in landscape", "Checking video in landscape mode", "Live Video")
         androidDriver.rotate(ScreenOrientation.LANDSCAPE)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportControls, false)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.transportControls, false)
@@ -456,7 +456,7 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.smpSeekBar)
     }
 
-    @Test(priority = 19, description = "Test to scrub thise video playback ")
+    @Test(priority = 19, description = "Test to scrub video playback ")
     fun scrubbingVideoPlayback() {
         androidDriver.rotate(ScreenOrientation.PORTRAIT)
         commonFunctionKotlin.startTest("Checking Live Video Scrubbing", "Checking the Live Video in Portrait Mode and seeking", "Live Video")

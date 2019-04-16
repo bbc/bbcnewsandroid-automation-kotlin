@@ -24,7 +24,7 @@ class StatsTestData {
         val line: String
         val cvsSplitBy = ","
         var country: Array<String>?
-        var staturl: Array<String>?
+        var statUrl: Array<String>?
         val aListColors = ArrayList<String>()
 
         try {
@@ -33,19 +33,19 @@ class StatsTestData {
             while (line != null) {
                 // use comma as separator
                 country = line.split(cvsSplitBy.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-                staturl = country[0].split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-                for (i in staturl.indices) {
-                    if (!aListColors.contains(staturl[i])) {
-                        aListColors.add(staturl[i])
+                statUrl = country[0].split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                for (i in statUrl.indices) {
+                    if (!aListColors.contains(statUrl[i])) {
+                        aListColors.add(statUrl[i])
                     }
                 }
             }
 
-            staturl = aListColors.toTypedArray()
-            for (i in staturl.indices) {
+            statUrl = aListColors.toTypedArray()
+            for (i in statUrl.indices) {
                 for (j in statsData.indices) {
-                    if (staturl[i].equals(statsData[j], ignoreCase = true)) {
-                        val matchedStats = staturl[i]
+                    if (statUrl[i].equals(statsData[j], ignoreCase = true)) {
+                        val matchedStats = statUrl[i]
                         println("The New Generated Stats " + matchedStats.replace("[-+^:,%2E5BD3AF]".toRegex(), ""))
                     }
                 }
