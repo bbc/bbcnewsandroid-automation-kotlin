@@ -336,12 +336,12 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             Assert.assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
             elementDisplayed(androidDriver, myNewsPageObject.localNewsDisplayed)
 
-            scrolltoElement(androidDriver, myTopicsPageObject.walestopic)
-            tapButton(androidDriver, myTopicsPageObject.walestopic, false)
+            scrolltoElement(androidDriver, myTopicsPageObject.addWalesTopicButton)
+            tapButton(androidDriver, myTopicsPageObject.addWalesTopicButton, false)
             textpresent(androidDriver, "Wales", "added to")
 
-            scrolltoElement(androidDriver, myTopicsPageObject.worldtopic)
-            tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
+            scrolltoElement(androidDriver, myTopicsPageObject.addWorldTopicButton)
+            tapButton(androidDriver, myTopicsPageObject.addWorldTopicButton, false)
 
 
         } catch (e: StaleElementReferenceException) {
@@ -362,8 +362,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         try {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
             tapButton(androidDriver, myNewsPageObject.myTopics, false)
-            elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
-            elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
+            elementDisplayed(androidDriver, myTopicsPageObject.walesTopic)
+            elementDisplayed(androidDriver, myTopicsPageObject.worldTopic)
             navigateBack(androidDriver)
         } catch (e: Exception) {
         }
@@ -379,8 +379,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     fun testCheckAddedTopicsUnderMyNews() {
         try {
             startTest("MyNews", "Checking Added topics in MyNews", "Smoke")
-            elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
-            elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
+            elementDisplayed(androidDriver, myTopicsPageObject.walesTopic)
+            elementDisplayed(androidDriver, myTopicsPageObject.worldTopic)
 
         } catch (e: Exception) {
         }
@@ -391,7 +391,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * removing one of the topics(England) from MyNews-Added Topics
      */
-
     @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
     @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
@@ -400,8 +399,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             tapButton(androidDriver, basePageObjectModel.myNews, false)
             tapButton(androidDriver, myNewsPageObject.editMyNews, false)
             try {
-                elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
-                elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
+                elementDisplayed(androidDriver, myTopicsPageObject.walesTopic)
+                elementDisplayed(androidDriver, myTopicsPageObject.worldTopic)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -412,14 +411,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         } catch (e: NullPointerException) {
 
         }
-
     }
 
     /**
      * Checks the Articles from Topics page, Checks for More button and checks for Less button displayed
      */
-
-
     @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
     @Throws(Exception::class)
     fun testCheckArticlesOfTopics() {
@@ -475,7 +471,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * check the live video on video page
      */
-
     @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
@@ -553,7 +548,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * un-comment if you want to check the screenshot compare tests
      */
-
 //    @Test(priority = 16, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
 //    @Throws(IOException::class)
 //    fun testtakescreenshotafter()
@@ -576,7 +570,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     /**
      * un-comment if you want to check the screenshot compare tests
      */
-
 //    @Test(priority = 17, description = "Compares the images")
 //    @Throws(IOException::class)
 //    fun testcomparetheimages()
@@ -596,7 +589,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             getTestResult(androidDriver, result)
         } catch (e: IOException) {
         }
-
     }
 
     @AfterTest
@@ -607,6 +599,5 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         androidDriver.closeApp()
         androidDriver.removeApp("bbc.mobile.news.uk.internal")
         androidDriver.quit()
-
     }
 }
