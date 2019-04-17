@@ -385,11 +385,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Throws(Exception::class, AssertionError::class)
     fun testVideoPage() {
         startTest("VideoPage", "Checking the Video", "Smoke")
+
         tapButton(androidDriver, basePageObjectModel.video, false)
-        // aShotScreenshot(androidDriver,"After","VideoPage")
         assertTrue(basePageObjectModel.video.isSelected)
-        // assertDisplayingElements(androidDriver,videoPageObject.liveBbcChannel)
-        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)//,file.getAbsolutePath())
+
+        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
         assertDisplayingElements(androidDriver, videoPageObject.liveMediaItemCaption)
         try {
             if (!basePageObjectModel.shareStory.isDisplayed) {
@@ -400,7 +400,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         } catch (e: NoSuchElementException) {
         }
 
-        tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
     }
 
     /**
