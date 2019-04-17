@@ -422,10 +422,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         )
 
         tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
-
-        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
-
         waitForScreenToLoad(androidDriver,videoPageObject.smpSeekBar, 3)
+
         videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
         assertDisplayingElements(androidDriver, videoPageObject.smpLiveIcon)
 
@@ -435,7 +433,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
         navigateBack(androidDriver)
     }
-
 
     /**
      * check to search for a topic
