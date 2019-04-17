@@ -370,7 +370,7 @@ class BBCNewsReleaseBuildRegressionTest {
         for (i in 0 until videoPageObject.videoWallElementsRelease.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videoWallElementsRelease[i]))
         }
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.waitFor(1300)
         for (i in 0 until videoPageObject.playbackControlsRelease.size) {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.playbackControlsRelease[i]))
@@ -423,7 +423,7 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.liveMediaItemCaption)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.navigate_back)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.shareStory)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.waitFor(1400)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpFullScreenButton, false)
         commonFunctionKotlin.waitFor(1400)
@@ -588,7 +588,7 @@ class BBCNewsReleaseBuildRegressionTest {
         // androidDriver.hideKeyboard();
         // commonFunctionKotlin.scrollToElement(androidDriver, videoPageObject.videoArticleSearch);
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.videoArticleSearch, false)
-        //commonFunctionKotlin.waitForScreenToLoad(androidDriver, videoPageObject.smpPlaceholderPlayButton, 3);
+        //commonFunctionKotlin.waitForScreenToLoad(androidDriver, videoPageObject.accessibilityPlay, 3);
         var i = 0
         while (i < videoPageObject.videoDetailPageRelease.size && i < videoPageObject.videoDetailPageText.size) {
 
@@ -601,7 +601,7 @@ class BBCNewsReleaseBuildRegressionTest {
     @Test(priority = 27, description = "Test to seek forward videoplayback")
     fun testSeekVideoForward() {
         commonFunctionKotlin.startTest("Seeking Video Forward", "Test to search ana play a on-demand video", "OnDemandVideo")
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.seeking(videoPageObject.smpSeekBar, .50, "forward")
         videoPageObject.elapsedTimeForward = videoPageObject.smpElapsedTime.text
     }
@@ -666,7 +666,7 @@ class BBCNewsReleaseBuildRegressionTest {
         // commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topstoriesvideolayoutname)
         commonFunctionKotlin.scrollToElement(androidDriver, videoPageObject.topStoriesVideo)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.topStoriesVideo, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         // androidDriver.findElementByAccessibilityId("Play").click();
         videoPageObject.transportControls.click()
         videoPageObject.transportControls.click()
@@ -768,7 +768,7 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.liveMediaItemCaption)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.navigate_back)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.shareStory)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpErrorMessage)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpErrorOkButton)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpRetryButton)
@@ -790,7 +790,7 @@ class BBCNewsReleaseBuildRegressionTest {
         commonFunctionKotlin.startTest("VideoPlayback-Online", "Checking the Video while device Online", "Offline")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_error_message"))
         commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_retry_button"))
         commonFunctionKotlin.isElementPresent(androidDriver, By.id("bbc.mobile.news.uk:id/smp_error_button"))

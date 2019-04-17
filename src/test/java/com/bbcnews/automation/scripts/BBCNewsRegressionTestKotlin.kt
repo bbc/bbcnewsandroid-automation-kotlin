@@ -15,7 +15,6 @@ import io.appium.java_client.remote.MobileCapabilityType
 import io.qameta.allure.Story
 import org.openqa.selenium.By
 import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.PageFactory
 import org.testng.Assert
@@ -412,7 +411,7 @@ class BBCNewsRegressionTestKotlin {
                 basePageObject.navigate_back,
                 basePageObject.shareStory
         )
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.waitFor(1400)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpFullScreenButton, false)
         commonFunctionKotlin.waitFor(1400)
@@ -604,7 +603,7 @@ class BBCNewsRegressionTestKotlin {
     @Test(priority = 24, description = "Test to seek forward videoplayback")
     fun testSeekingVideoForward() {
         commonFunctionKotlin.startTest("Seeking Video Forward", "Test to search ana play a on-demand video", "OnDemandVideo")
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.seeking(videoPageObject.smpSeekBar, .50, "forward")
         videoPageObject.elapsedTimeForward = videoPageObject.smpElapsedTime.text
     }
@@ -673,7 +672,7 @@ class BBCNewsRegressionTestKotlin {
 //        commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.topStoriesVideoContentCardInfo)
 
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.topStoriesVideo, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         // androidDriver.findElementByAccessibilityId("Play").click();
         videoPageObject.transportControls.click()
         videoPageObject.transportControls.click()
@@ -774,7 +773,7 @@ class BBCNewsRegressionTestKotlin {
         commonFunctionKotlin.elementDisplayed(androidDriver, videoPageObject.liveMediaItemCaption)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.navigate_back)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.shareStory)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpErrorMessage)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpErrorOkButton)
         commonFunctionKotlin.elementDisplayed(androidDriver, basePageObject.smpRetryButton)
@@ -795,7 +794,7 @@ class BBCNewsRegressionTestKotlin {
         commonFunctionKotlin.startTest("VideoPlayback-Online", "Checking the Video while device Online", "Offline")
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.video, false)
         commonFunctionKotlin.tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.tapButton(androidDriver, basePageObject.navigate_back, false)
     }
 
@@ -820,7 +819,7 @@ class BBCNewsRegressionTestKotlin {
             commonFunctionKotlin.isElementPresent(androidDriver, By.id(videoPageObject.videoWallElements[i]))
         }
 
-        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        commonFunctionKotlin.tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
         commonFunctionKotlin.waitFor(1300)
 
         for (i in 0 until videoPageObject.playbackControls.size) {

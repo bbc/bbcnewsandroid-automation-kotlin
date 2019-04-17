@@ -29,17 +29,28 @@ public class VideoPageObjects {
     })
     public MobileElement liveMediaItemCaption;
 
-    @AndroidFindBy(accessibility = "Play")
-    public MobileElement smpPlaceholderPlayButton;
+    @AndroidFindBy(accessibility = "Play button")
+    public MobileElement accessibilityPlay;
 
-    @AndroidFindBy(accessibility = "Pause")
-    public MobileElement smpPlaceholderPauseButton;
+    @AndroidFindBy(accessibility = "Pause button")
+    public MobileElement accessibilityPause;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_pause_button"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/smp_pause_button")
     })
     public MobileElement smpPauseButton;
+
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk:id/smp_play_pause_container")
+    })
+    public MobileElement smpPlayPauseButton;
+
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk:id/smp_placeholder_play_button"),
+            @AndroidBy(accessibility = "Play")
+    })
+    public MobileElement smpPlaceholderPlayButton;
 
     @AndroidFindBy(accessibility = "volume")
     public MobileElement smpVolumeButton;

@@ -400,7 +400,7 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         } catch (e: NoSuchElementException) {
         }
 
-        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        tapButton(androidDriver, videoPageObject.accessibilityPlay, false)
     }
 
     /**
@@ -423,26 +423,19 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
         tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
 
-        waitForScreenToLoad(androidDriver, videoPageObject.smpPlaceholderPlayButton, 1)
-        tapPlayPauseButton()
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
 
+        waitForScreenToLoad(androidDriver,videoPageObject.smpSeekBar, 3)
         videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
         assertDisplayingElements(androidDriver, videoPageObject.smpLiveIcon)
 
-        tapPlayPauseButton()
+        assertDisplayingElements(androidDriver,videoPageObject.accessibilityPause)
+        tapButton(androidDriver, videoPageObject.smpPlayPauseButton, false)
+        assertDisplayingElements(androidDriver,videoPageObject.accessibilityPlay)
 
         navigateBack(androidDriver)
     }
 
-    private fun tapPlayPauseButton() {
-        if (videoPageObject.playButton.isDisplayed) {
-            println("Succeeded: playButton.isDisplayed")
-            tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
-        } else {
-            println("Failed: playButton.isDisplayed, trying smpPauseButton")
-            tapButton(androidDriver, videoPageObject.smpPlaceholderPauseButton, false)
-        }
-    }
 
     /**
      * check to search for a topic
