@@ -425,7 +425,6 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         waitForScreenToLoad(androidDriver,videoPageObject.smpSeekBar, 3)
 
         videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
-        assertDisplayingElements(androidDriver, videoPageObject.smpLiveIcon)
 
         assertDisplayingElements(androidDriver,videoPageObject.accessibilityPause)
         tapButton(androidDriver, videoPageObject.smpPlayPauseButton, false)
