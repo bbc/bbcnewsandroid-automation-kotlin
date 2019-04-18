@@ -18,33 +18,42 @@ public class VideoPageObjects {
     public MobileElement bbcNewsChannel;
 
     @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/contentCardTitle"),
-            @AndroidBy(id = "bbc.mobile.news.uk:id/contentCardTitle")
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/content_card_title"),
+            @AndroidBy(id = "bbc.mobile.news.uk:id/content_card_title")
     })
     public MobileElement liveBbcChannel;
 
-    @AndroidFindAll(
-            {
-                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/media_item_caption"),
-                    @AndroidBy(id = "bbc.mobile.news.uk:id/media_item_caption")
-            }
-    )
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/media_item_caption"),
+            @AndroidBy(id = "bbc.mobile.news.uk:id/media_item_caption")
+    })
     public MobileElement liveMediaItemCaption;
 
-    @AndroidFindBy(accessibility = "Play")
-    public MobileElement smpPlaceholderPlayButton;
+    @AndroidFindBy(accessibility = "Play button")
+    public MobileElement accessibilityPlay;
+
+    @AndroidFindBy(accessibility = "Pause button")
+    public MobileElement accessibilityPause;
 
     @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smpPauseButton"),
-            @AndroidBy(id = "bbc.mobile.news.uk:id/smpPauseButton")
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_pause_button"),
+            @AndroidBy(id = "bbc.mobile.news.uk:id/smp_pause_button")
     })
     public MobileElement smpPauseButton;
 
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_play_pause_container")
+    })
+    public MobileElement smpPlayPauseButton;
+
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk:id/smp_placeholder_play_button"),
+            @AndroidBy(accessibility = "Play")
+    })
+    public MobileElement smpPlaceholderPlayButton;
+
     @AndroidFindBy(accessibility = "volume")
     public MobileElement smpVolumeButton;
-
-    @AndroidFindBy(accessibility = "live content")
-    public MobileElement smpLiveIcon;
 
     @AndroidFindBy(accessibility = "Fullscreen")
     public MobileElement smpFullScreenButton;
@@ -53,10 +62,16 @@ public class VideoPageObjects {
     public MobileElement smpExitFullScreenButton;
 
     @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smpSeekBar"),
-            @AndroidBy(id = "bbc.mobile.news.uk:id/smpSeekBar")
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_seek_bar"),
+            @AndroidBy(id = "bbc.mobile.news.uk:id/smp_seek_bar")
     })
     public MobileElement smpSeekBar;
+
+    @AndroidFindAll({
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_live_icon"),
+            @AndroidBy(accessibility = "live content")
+    })
+    public MobileElement smpLiveIcon;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_playout_window_inset"),
@@ -106,9 +121,9 @@ public class VideoPageObjects {
 
     public String[] videoDetailPage = {
             "bbc.mobile.news.uk.internal:id/media_item_caption",
-            "bbc.mobile.news.uk.internal:id/headlineTitle",
-            "bbc.mobile.news.uk.internal:id/headlineInfo",
-            "bbc.mobile.news.uk.internal:id/headlineLink"
+            "bbc.mobile.news.uk.internal:id/headline_title",
+            "bbc.mobile.news.uk.internal:id/headline_info",
+            "bbc.mobile.news.uk.internal:id/headline_link"
     };
 
     public String[] videoDetailPageText = {
@@ -120,32 +135,32 @@ public class VideoPageObjects {
 
     public String[] videoDetailPageRelease = {
             "bbc.mobile.news.uk:id/media_item_caption",
-            "bbc.mobile.news.uk:id/headlineTitle",
-            "bbc.mobile.news.uk:id/headlineInfo",
-            "bbc.mobile.news.uk:id/headlineLink"
+            "bbc.mobile.news.uk:id/headline_title",
+            "bbc.mobile.news.uk:id/headline_info",
+            "bbc.mobile.news.uk:id/headline_link"
     };
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Amal Fathy: Egypt court imposes jail term over harassment video' and @index='1']")
     public MobileElement videoArticleSearch;
 
     public String[] playbackControls = {
-            "bbc.mobile.news.uk.internal:id/smpPauseButton",
-            "bbc.mobile.news.uk.internal:id/smpSeekBar",
-            "bbc.mobile.news.uk.internal:id/smpFullScreenButton",
+            "bbc.mobile.news.uk.internal:id/smp_pause_button",
+            "bbc.mobile.news.uk.internal:id/smp_seek_bar",
+            "bbc.mobile.news.uk.internal:id/smp_fullscreen_button",
             "bbc.mobile.news.uk.internal:id/smp_duration",
             "bbc.mobile.news.uk.internal:id/smp_elapsed"
     };
 
     public String[] playbackControlsRelease = {
-            "bbc.mobile.news.uk:id/smpPauseButton",
-            "bbc.mobile.news.uk:id/smpSeekBar",
-            "bbc.mobile.news.uk:id/smpFullScreenButton",
+            "bbc.mobile.news.uk:id/smp_pause_button",
+            "bbc.mobile.news.uk:id/smp_seek_bar",
+            "bbc.mobile.news.uk:id/smp_fullscreen_button",
             "bbc.mobile.news.uk:id/smp_duration",
             "bbc.mobile.news.uk:id/smp_elapsed"
     };
 
     public String[] videoWallElements = {
-            "bbc.mobile.news.uk.internal:id/smpPlaceholderPlayButton",
+            "bbc.mobile.news.uk.internal:id/smp_placeholder_play_button",
             // "bbc.mobile.news.uk.internal:id/videoTitleHeadline",
             "bbc.mobile.news.uk.internal:id/videoTitleTimestamp",
             "bbc.mobile.news.uk.internal:id/videoTitleTopic",
@@ -153,7 +168,7 @@ public class VideoPageObjects {
     };
 
     public String[] videoWallElementsRelease = {
-            "bbc.mobile.news.uk:id/smpPlaceholderPlayButton",
+            "bbc.mobile.news.uk:id/smp_placeholder_play_button",
             // "bbc.mobile.news.uk.internal:id/videoTitleHeadline",
             "bbc.mobile.news.uk:id/videoTitleTimestamp",
             "bbc.mobile.news.uk:id/videoTitleTopic",

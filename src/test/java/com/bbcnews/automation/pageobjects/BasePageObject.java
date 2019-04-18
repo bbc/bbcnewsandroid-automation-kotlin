@@ -69,9 +69,9 @@ public class BasePageObject {
             "bbc.mobile.news.uk:id/item_layout_home_section"
     };
 
-    @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name"),
-            @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_name")
+     @AndroidFindAll({
+                    @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name"),
+                    @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_name")
     })
     public MobileElement itemLayoutName;
 
@@ -79,13 +79,13 @@ public class BasePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_last_updated"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_last_updated")
     })
-    public MobileElement itemLayoutLastUpdated;
+    public MobileElement item_layout_last_updated;
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_home_section"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_home_section")
     })
-    public MobileElement itemLayoutHomeSection;
+    public MobileElement item_layout_home_section;
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
     public MobileElement menuButton;
@@ -106,12 +106,14 @@ public class BasePageObject {
             "//android.widget.CheckedTextView[@text='Settings']",
             "//android.widget.CheckedTextView[@text='App info']",
             "//android.widget.CheckedTextView[@text='Other BBC apps']",
-            "//android.widget.CheckedTextView[@text='Internal Settings']"};
+            "//android.widget.CheckedTextView[@text='Internal Settings']"
+    };
 
     @AndroidFindAll({
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/search"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/search")
     })
+
     public MobileElement searchField;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Brexit' and @index='0']")
@@ -145,21 +147,27 @@ public class BasePageObject {
             @AndroidBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='1']"),
             @AndroidBy(xpath = "//bbc.mobile.news.uk:id/chip_item[@index='1']")
     })
+
     public MobileElement searchSuggest1;
+
     public static String searchSuggest1Text = "India";
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='2']"),
             @AndroidBy(xpath = "//bbc.mobile.news.uk:id/chip_item[@index='2']")
     })
+
     public MobileElement searchSuggest2;
+
     public static String searchSuggest2Text = "India-Pakistan independence";
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='3']"),
             @AndroidBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='3']")
     })
-    public MobileElement searchsuggest3;
+
+    public MobileElement searchSuggest3;
+
     public static String searchSuggest3Text = "Rape in India";
 
     @AndroidFindBy(accessibility = "Cancel search")
@@ -200,19 +208,22 @@ public class BasePageObject {
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/item_layout_name') and @index='0']"),
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk:id/item_layout_name') and @index='0']")
     })
+
     public MobileElement articleLayoutName;
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/item_layout_last_updated') and @index='0']"),
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk:id/item_layout_last_updated') and @index='0']")
     })
+
     public MobileElement articleLastUpdated;
 
     @AndroidFindAll({
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/item_layout_home_section') and @index='0']"),
             @AndroidBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk:id/item_layout_home_section') and @index='0']")
     })
-    public MobileElement articlelHomeSection;
+
+    public MobileElement articleHomeSection;
 
     public String[] articleDetailPageLinks = {
             "bbc.mobile.news.uk.internal:id/image_item_caption",
@@ -303,7 +314,7 @@ public class BasePageObject {
     public MobileElement menuAppInfo;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Terms of use']")
-    public MobileElement termsOfUse;
+    public MobileElement termsConditions;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Privacy policy']")
     public MobileElement privacyPolicy;

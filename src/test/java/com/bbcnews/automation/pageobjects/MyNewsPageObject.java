@@ -179,4 +179,3 @@ public class MyNewsPageObject {
     public MobileElement showLess;
 
 }
-

@@ -46,7 +46,7 @@ public class HomePageObject {
     public MobileElement search;
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
-    public MobileElement menubutton;
+    public MobileElement menuButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Technology']")
     public MobileElement technologyTopic;
@@ -80,6 +80,7 @@ public class HomePageObject {
             @AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_promo_counter"),
             @AndroidBy(id = "bbc.mobile.news.uk:id/newstream_promo_counter")
     })
+
     public MobileElement promoCounter;
 
     // @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/newstream_promo_watch_label")

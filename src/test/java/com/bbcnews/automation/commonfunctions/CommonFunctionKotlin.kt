@@ -22,23 +22,20 @@ import io.appium.java_client.touch.offset.ElementOption
 import io.appium.java_client.touch.offset.PointOption
 import org.apache.commons.io.FileUtils
 import org.openqa.selenium.*
+import org.openqa.selenium.NoSuchElementException
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
-import org.testng.Assert
+import org.testng.Assert.*
 import org.testng.ITestResult
 import ru.yandex.qatools.ashot.AShot
-
-import java.awt.*
+import java.awt.Toolkit
 import java.awt.image.PixelGrabber
 import java.io.*
-import java.nio.file.Paths
-
 import java.nio.file.Files
+import java.nio.file.Paths
 import java.text.SimpleDateFormat
 import java.time.Duration
-import java.util.ArrayList
-import java.util.Date
-
+import java.util.*
 import javax.imageio.ImageIO
 
 
@@ -46,11 +43,11 @@ open class CommonFunctionKotlin {
 
     private lateinit var extent: ExtentReports
     private lateinit var htmlReporter: ExtentHtmlReporter
+    private lateinit var androidDriver: AndroidDriver<MobileElement>
+
     var test: ExtentTest? = null
 
-    @Throws(Exception::class)
     fun startReport(reportName: String) {
-
         val deviceOsName = System.getProperty("DeviceOS")
         val deviceId = System.getProperty("DeviceID")
         val deviceName = System.getProperty("DeviceName")
@@ -83,20 +80,14 @@ open class CommonFunctionKotlin {
         htmlReporter.config().testViewChartLocation = ChartLocation.TOP
         htmlReporter.config().theme = Theme.STANDARD
         htmlReporter.config().timeStampFormat = "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
-
     }
 
-    open fun startTest(testName: String, testDecsription: String, category: String) = try {
-        test = extent.createTest(testName, testDecsription)
+    open fun startTest(testName: String, testDescription: String, category: String) {
+        test = extent.createTest(testName, testDescription)
         test?.assignCategory(category)
-    } catch (e: Exception) {
-
     }
 
-    open fun publishReport() {
-        extent.flush()
-    }
-
+    open fun publishReport() = extent.flush()
 
     /**
      * Appium Android default method
@@ -104,7 +95,6 @@ open class CommonFunctionKotlin {
      *
      * @param, androidDriver, only works with Android
      */
-
     fun navigateBack(androidDriver: AndroidDriver<MobileElement>) {
         //androidDriver.pressKeyCode(AndroidKeyCode.BACK);
         androidDriver.pressKey(KeyEvent(AndroidKey.BACK))
@@ -117,57 +107,45 @@ open class CommonFunctionKotlin {
      * boolean to take screenshot ( true = takes screenshot and attached to testReport, fail= wont take screenshot)
      * Screenshot path
      */
-    fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, takescreenshot: Boolean) {
-        try {
-            waitForScreenToLoad(appiumDriver, element, 3)
-            element.click()
-            Thread.sleep(800)
-            if (takescreenshot) {
-                val screenShotPath = getScreenshot(appiumDriver, element.text)
-                println("Taken ScreenShotpath is $screenShotPath")
-                test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenShotPath))
+    fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, takeScreenshot: Boolean) {
+        waitForScreenToLoad(appiumDriver, element, 3)
+        element.click()
+        Thread.sleep(800)
+        if (takeScreenshot) {
+            val screenShotPath = getScreenshot(appiumDriver, element.text)
+            println("Taken screenshot path is $screenShotPath")
+            test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenShotPath))
 
-            } else {
-            }
-        } catch (e: Exception) {
         }
-
     }
 
     fun appbackground(androidDriver: AndroidDriver<MobileElement>, duration: Long) {
         androidDriver.runAppInBackground(Duration.ofMillis(duration))
     }
 
-//    fun tapButtons(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takescreenshot: Boolean) {
-//        try {
-//            waitForScreenToLoads(appiumDriver, element, 3)
-//            element?.click()
-//            Thread.sleep(2000)
-//            if (takescreenshot) {
-//                val screenshotPath = getScreenshot(appiumDriver, element?.text.toString())
-//                println("Taken Screenshotpath is $screenshotPath")
-//                test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenshotPath))
-//
-//            } else {
-//
-//            }
-//        } catch (e: Exception) {
-//        }
-//
-//    }
+    fun tapButtons(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
+        waitForScreenToLoad(appiumDriver, element, 3)
+        element?.click()
+        Thread.sleep(2000)
+
+        when {
+            takeScreenshot -> {
+                val screenshotPath = getScreenshot(appiumDriver, element?.text.toString())
+                println("Path for screenshot is $screenshotPath")
+                test?.log(Status.INFO, "Screenshot attached:-" + test?.addScreenCaptureFromPath(screenshotPath))
+            }
+        }
+    }
 
     /**
      * Function to wait until the screen is fully loaded
-     * @param, drivertype , element and seconds to wait for page to load
+     * @param, driver, element and seconds to wait for page to load
      */
 
     open fun waitForScreenToLoad(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
-
         val wait = WebDriverWait(driver, seconds.toLong())
         wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
-
     }
-
 
 //    open fun waitForScreenToLoads(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
 //
@@ -180,26 +158,22 @@ open class CommonFunctionKotlin {
      * @param, drivertype, screenshot path, screenshot name
      * attaches the screenshot to the test report
      */
-
     private fun getScreenshot(appiumDriver: AppiumDriver<MobileElement>, screenshotName: String): String {
-        val subDirectory = "Screenshots"
-        val screenshotPaths: String
-
         try {
             val dateName = SimpleDateFormat("dd-M-yyyy hh:mm").format(Date())
-            val ts = appiumDriver as TakesScreenshot
-            val source = ts.getScreenshotAs(OutputType.FILE)
+            val takeScreenshot = appiumDriver as TakesScreenshot
+            val source = takeScreenshot.getScreenshotAs(OutputType.FILE)
+            val file = File(extentResultFolder("Screenshots").toString())
+            val destination = file.absolutePath + File.separator + screenshotName + "_" + dateName + ".png"
 
-            screenshotPaths = extentResultFolder(subDirectory).toString()
-            val file = File(screenshotPaths)
             println("the ScreenShot  Folder is :- " + file.absolutePath)
+            println("Screenshot path name:------$destination")
 
-            val dest = file.absolutePath + File.separator + screenshotName + "_" + dateName + ".png"
-            println("Screenshot path name:------$dest")
-            val destination = File(dest)
-            FileUtils.copyFile(source, destination)
+            FileUtils.copyFile(source, File(destination))
+
             println("ScreenShot Taken")
-            return dest
+            return destination
+
         } catch (e: Exception) {
             println("Exception While Taking screenshot" + e.message)
             return e.message.toString()
@@ -212,25 +186,18 @@ open class CommonFunctionKotlin {
      * @param, Directory path
      */
     open fun extentResultFolder(path: String): String? {
-        var strManyDirectories: String? = null
         try {
-            //  String strDirectoy = path;
-            strManyDirectories = path
-
             // Create one directory
-            val
-            // Create multiple directories
-                    success = File(strManyDirectories).mkdirs()
-            if (success) {
-                println("Directories: "
-                        + strManyDirectories + " created")
-            }
+            val success = File(path).mkdirs()
 
-        } catch (e: Exception) {//Catch exception if any
+            // Create multiple directories
+            if (success) println("Directories: $path created")
+
+        } catch (e: Exception) {
             System.err.println("Error: " + e.message)
         }
 
-        return strManyDirectories
+        return path
     }
 
 
@@ -239,18 +206,14 @@ open class CommonFunctionKotlin {
      *
      * @param, driverType, element to be scrolled, screenshot
      */
-    fun scrolltoElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
+    fun scrollToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
         for (i in 0..20) {
             try {
                 element.isDisplayed
-                //element.click()
                 break
             } catch (e: Exception) {
                 verticalSwipe(appiumDriver, "Down")
-
-
             }
-
         }
     }
 
@@ -273,28 +236,18 @@ open class CommonFunctionKotlin {
 //        action.press(PointOption.point(startX, startY))
 //                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 //                .moveTo(PointOption.point(startX, endY)).release().perform()
-        if (swipingdirection.equals("Down")) {
+        if (swipingdirection == "Down") {
             PlatformTouchAction(driver).press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(startX, endY)).release().perform()
-        } else if (swipingdirection.equals("Up")) {
+        } else if (swipingdirection == "Up") {
             PlatformTouchAction(driver).press(PointOption.point(startX, endY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(startX, startY)).release().perform()
         }
     }
 
-
-    /**
-     * wait method
-     */
-    fun sleepmethod(seconds: Long) {
-        try {
-            Thread.sleep(seconds)
-        } catch (e: Exception) {
-        }
-
-    }
+    fun waitFor(seconds: Long) = Thread.sleep(seconds)
 
     /**
      * Function to seek the video, you need pass the percentage of seeking
@@ -305,14 +258,17 @@ open class CommonFunctionKotlin {
      */
 
     fun livevideoseeking(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
-        val startx = element.location.getX()
-        val endx = element.size.width
-        val yaxis = element.location.getY()
-        val moveToXDirectionAt = (endx * d).toInt()
+        val startX = element.location.getX()
+        val endX = element.size.width
+        val yAxis = element.location.getY()
+        val moveToXDirectionAt = (endX * d).toInt()
 
-        PlatformTouchAction(appiumDriver).press(PointOption.point(startx, yaxis)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).moveTo(PointOption.point(moveToXDirectionAt, yaxis)).release().perform()
-
-
+        PlatformTouchAction(appiumDriver)
+                .press(PointOption.point(startX, yAxis))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                .moveTo(PointOption.point(moveToXDirectionAt, yAxis))
+                .release()
+                .perform()
     }
 
 
@@ -320,7 +276,6 @@ open class CommonFunctionKotlin {
     Function to enter the text into a textfeld
     @param, driverType, element and string that's need to be entered
      */
-
     fun entersearchtext(element: MobileElement, searchkey: String) {
         element.sendKeys(searchkey)
     }
@@ -329,16 +284,15 @@ open class CommonFunctionKotlin {
     /**
      * Function to check whether an Element is present or not
      */
-
     fun isElementPresent(appiumDriver: AppiumDriver<MobileElement>, locatorKey: By): Boolean {
-        try {
+        return try {
             appiumDriver.findElement(locatorKey)
-            test?.log(Status.PASS, appiumDriver.findElement(locatorKey).getText() + "Element Present")
-            return true
+            test?.log(Status.PASS, appiumDriver.findElement(locatorKey).text + "Element Present")
+            true
 
         } catch (e: NoSuchElementException) {
-            test?.log(Status.INFO, appiumDriver.findElement(locatorKey).getText() + "Element Not Present")
-            return false
+            test?.log(Status.INFO, appiumDriver.findElement(locatorKey).text + "Element Not Present")
+            false
         }
     }
 
@@ -350,13 +304,10 @@ open class CommonFunctionKotlin {
      *
      * @param, drivertype, element name
      */
-
-    @Throws(Exception::class)
     fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
-
         try {
             waitForScreenToLoad(appiumDriver, element, 3)
-            Assert.assertTrue(element.isDisplayed)
+            assertTrue(element.isDisplayed)
             if (element.isDisplayed) {
                 if (element.text.isEmpty()) {
                     test?.log(Status.PASS, element.getAttribute("contentDescription") + "  Displayed")
@@ -365,40 +316,33 @@ open class CommonFunctionKotlin {
                 }
 
             } else {
-                test?.log(Status.FAIL, element.text + "  isn't Displayed")
+                test?.log(Status.FAIL, element.text + "  is not Displayed")
             }
 
         } catch (e: AssertionError) {
             e.printStackTrace()
-            org.testng.Assert.fail()
+            println("Element $element not found")
+            fail()
         }
-
     }
 
     fun getTestResult(appiumDriver: AppiumDriver<MobileElement>, result: ITestResult) {
-        try {
-            when {
-                result.status == ITestResult.FAILURE -> {
-
-                    test?.fail(MarkupHelper.createLabel(result.name + " Test Case is FAILED", ExtentColor.RED))
-                    test?.fail(result.throwable)
-                    try {
-                        val screenshotPath = getScreenshot(appiumDriver, result.name)
-                        test?.log(Status.FAIL, "Failed" + test?.addScreenCaptureFromPath(screenshotPath))
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-
-                }
-                result.status == ITestResult.SUCCESS -> test?.pass(MarkupHelper.createLabel(result.name + " Test Case is PASSED", ExtentColor.GREEN))
-                result.status == ITestResult.SKIP -> {
-                    test?.skip(MarkupHelper.createLabel(result.name + " Test Case is SKIPPED", ExtentColor.YELLOW))
-                    test?.skip(result.throwable)
-
+        when {
+            result.status == ITestResult.FAILURE -> {
+                test?.fail(MarkupHelper.createLabel(result.name + " Test Case is FAILED", ExtentColor.RED))
+                test?.fail(result.throwable)
+                try {
+                    val screenshotPath = getScreenshot(appiumDriver, result.name)
+                    test?.log(Status.FAIL, "Failed" + test?.addScreenCaptureFromPath(screenshotPath))
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
-        } catch (e: NullPointerException) {
-
+            result.status == ITestResult.SUCCESS -> test?.pass(MarkupHelper.createLabel(result.name + " Test Case is PASSED", ExtentColor.GREEN))
+            result.status == ITestResult.SKIP -> {
+                test?.skip(MarkupHelper.createLabel(result.name + " Test Case is SKIPPED", ExtentColor.YELLOW))
+                test?.skip(result.throwable)
+            }
         }
 
     }
@@ -406,22 +350,19 @@ open class CommonFunctionKotlin {
 
     /**
      * function to create a ExtentReport
-     * @reportname
+     * @reportName
      * @deviceOS, @deviceName, @deviceId
-     *
      */
-
-
     @Throws(Exception::class)
-    fun createrReportHive(reportname: String, deviceName: String, deviceId: String) {
+    fun createAReportHive(reportName: String, deviceName: String, deviceId: String) {
 
         val curDate = Date()
         println(curDate.toString())
 
         // val dateName = SimpleDateFormat("hh:mm").format(Date())
 
-        val reportfolder = extentResultFolder(resultsFilePath)
-        println("reportfolder is $reportfolder")
+        val reportFolder = extentResultFolder(resultsFilePath)
+        println("Report folder is $reportFolder")
 
         val subDirectory = "Results"
         val resultsPaths: String
@@ -429,16 +370,13 @@ open class CommonFunctionKotlin {
         val file = File(resultsPaths)
         println("the Result path Folder is :- " + file.absolutePath)
 
-
-        htmlReporter = ExtentHtmlReporter(file.absolutePath + File.separator + reportname + ".html")//"_"+deviceName+"_"+deviceOS+ ".html");
+        htmlReporter = ExtentHtmlReporter(file.absolutePath + File.separator + reportName + ".html")//"_"+deviceName+"_"+deviceOS+ ".html");
         extent = ExtentReports()
         extent.attachReporter(htmlReporter)
         htmlReporter.setAppendExisting(false)
         extent.setSystemInfo("Device ID", deviceId)
-        // extent.setSystemInfo("Firmware version", deviceOS)
         extent.setSystemInfo("Device Name ", deviceName)
         extent.setSystemInfo("Run Started on", curDate.toString())
-
 
         htmlReporter.config().chartVisibilityOnOpen = true
         htmlReporter.config().documentTitle = "BBC News Android Report "
@@ -446,8 +384,6 @@ open class CommonFunctionKotlin {
         htmlReporter.config().testViewChartLocation = ChartLocation.TOP
         htmlReporter.config().theme = Theme.STANDARD
         htmlReporter.config().timeStampFormat = "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
-
-
     }
 
 
@@ -455,23 +391,21 @@ open class CommonFunctionKotlin {
      * Function to scroll on TopStories - Videos and Stories carousel
      * @param, driverType, element and path for screenshot to be taken
      */
-
-    fun scrolltoEndofStories(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement,
-                             elements: Array<String>, element2: MobileElement
-    ) {
+    fun scrollToEndOfStories(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement,
+                             elements: Array<String>, element2: MobileElement) {
         // val flag = false
         for (i in 0..20) {
             try {
                 waitForScreenToLoad(appiumDriver, element, 5)
                 Thread.sleep(800)
-                val element_title = element.getText()
-                test?.log(Status.INFO, element_title)
+                val elementTitle = element.text
+                test?.log(Status.INFO, elementTitle)
                 for (j in elements.indices) {
                     isElementPresent(appiumDriver, By.id(elements[j]))
                     test?.log(Status.PASS, elements[j])
                 }
                 Thread.sleep(800)
-                element2.isDisplayed()
+                element2.isDisplayed
                 //element.click();
                 break
             } catch (e: Exception) {
@@ -493,61 +427,33 @@ open class CommonFunctionKotlin {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
         val width = dimension.getWidth()
-        val startXaxis = (width * 0.90).toInt()
-        val yaxis = (height * 0.20).toInt()
-        val endXaxis = (width * 0.10).toInt()
+        val startXAxis = (width * 0.90).toInt()
+        val yAxis = (height * 0.20).toInt()
+        val endXAxis = (width * 0.10).toInt()
 
 //         val action = TouchAction(driver)
-//         action.press(PointOption.point(startXaxis, Yaxis))
+//         action.press(PointOption.point(startXAxis, YAxis))
 //                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-//                 .moveTo(PointOption.point(endXaxis, Yaxis)).release().perform()
+//                 .moveTo(PointOption.point(endXAxis, YAxis)).release().perform()
 
-        PlatformTouchAction(driver).press(PointOption.point(startXaxis, yaxis))
+        PlatformTouchAction(driver).press(PointOption.point(startXAxis, yAxis))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(endXaxis, yaxis)).release().perform()
-
-
+                .moveTo(PointOption.point(endXAxis, yAxis)).release().perform()
     }
 
-
-    /**
-     * Function to check, whether given element is selected or not
-     * @param, drivertype, element name
-     */
-    fun iselementSelected(element: MobileElement): Boolean {
+    fun isElementSelected(element: MobileElement): Boolean {
         return if (element.isSelected) {
             test?.log(Status.INFO, "Element selected")
             true
-
         } else {
             test?.log(Status.INFO, "Element not selected")
             false
-
         }
     }
 
-    /**
-     * Function to enter the text into a textfeld
-     * @param, element and string that's need to be entered
-     */
+    fun enterText(element: MobileElement, searchKey: String) = element.sendKeys(searchKey)
 
-    fun enterText(element: MobileElement, searchkey: String) {
-        try {
-            element.sendKeys(searchkey)
-        } catch (e: Exception) {
-        }
-
-    }
-
-    /**
-     * function to get the element text
-     * @param, element
-     */
-
-    fun getText(element: MobileElement): String {
-        return element.text
-    }
-
+    fun getText(element: MobileElement): String = element.text
 
     /**
      * Returns all png images from a directory in an array.
@@ -560,102 +466,85 @@ open class CommonFunctionKotlin {
     @Throws(IOException::class)
     fun getAllImages(directory: File, descendIntoSubDirectories: Boolean): ArrayList<String> {
         val resultList = ArrayList<String>(256)
-        val f = directory.listFiles()
-        for (file in f!!) {
+        val files = directory.listFiles()
+
+        for (file in files) {
             if (file != null && file.name.toLowerCase().endsWith(".png")) {
                 resultList.add(file.canonicalPath)
             }
-            if (descendIntoSubDirectories && file!!.isDirectory) {
+            if (descendIntoSubDirectories && file.isDirectory) {
                 val tmp = getAllImages(file, true)
-                if (true) {
-                    resultList.addAll(tmp)
-                }
+                resultList.addAll(tmp)
             }
         }
-        if (resultList.size > 0)
-            return resultList
-        else
-            return null!!
-
+        return if (resultList.size > 0) resultList
+        else null!!
     }
 
 
     /**
-     * Function which compare the two images bi pixels and by dimension
+     * Function which compares the two images by pixels and by dimension
      *
      * @throws IOException
      */
+    @Throws(IOException::class)
+    fun compareTwoImages() {
+        val expected = File("./Screenshots/Before")
+        val actual = File("./Screenshots/After")
 
-//    @Throws(IOException::class)
-//    fun comparetwoimages() {
-//        val expected = File("./Screenshots/Before")
-//        val actual = File("./Screenshots/After")
-//
-//     //   var expectedresults = //ArrayList<String>()
-//        var expectedresults = getAllImages(expected, false)
-//        val expectedimages = expectedresults.toTypedArray()
-//
-//   //     var actualresults: ArrayList<String> = ArrayList()
-//        var actualresults = getAllImages(actual, false)
-//        val actualimages = actualresults.toArray(arrayOfNulls<String>(actualresults.size))
-//        var i = 0
-//        while (i < expectedimages.size && i < actualimages.size) {
-//            println("Expected Image :=" + expectedimages[i])
-//            println("Actual Image :=" + actualimages[i])
-//
-//            compareImage(File(expectedimages[i]), File(actualimages[i]))
-//            processImage(expectedimages[i], actualimages[i])
-//            i++
-//
-//
-//        }
-//    }
+        val expectedResults: ArrayList<String> = getAllImages(expected, false)
+        val expectedImages = expectedResults.toTypedArray()
+
+        val actualResults: ArrayList<String> = getAllImages(actual, false)
+        val actualImages = actualResults.toArray(arrayOfNulls<String>(actualResults.size))
+        var i = 0
+        while (i < expectedImages.size && i < actualImages.size) {
+            println("Expected Image :=" + expectedImages[i])
+            println("Actual Image :=" + actualImages[i])
+
+            compareImage(File(expectedImages[i]), File(actualImages[i]))
+            processImage(expectedImages[i], actualImages[i])
+            i++
+        }
+    }
 
 
     /**
-     * Function to compare two images and display the diffrence
-     * @param fileA
-     * @param fileB
-     * @return
+     * Function to compare two images and display the difference
      */
+    fun compareImage(fileA: File, fileB: File): Float {
+        var percentage = 0f
+        try {
+            // take buffer data from both image files //
+            val biA = ImageIO.read(fileA)
+            val biB = ImageIO.read(fileB)
+            val dbA = biA.data.dataBuffer
+            val dbB = biB.data.dataBuffer
+            val sizeA = dbA.size
+            val sizeB = dbB.size
+            var count = 0
 
-//         fun compareImage(fileA: File, fileB: File): Float {
-//
-//            var percentage = 0f
-//            try {
-//                // take buffer data from both image files //
-//                val biA = ImageIO.read(fileA)
-//                val dbA = biA.getData().getDataBuffer()
-//                val sizeA = dbA.getSize()
-//                val biB = ImageIO.read(fileB)
-//                val dbB = biB.getData().getDataBuffer()
-//                val sizeB = dbB.getSize()
-//                var count = 0
-//                // compare data-buffer objects //
-//                if (sizeA == sizeB) {
-//
-//                    for (i in 0 until sizeA) {
-//
-//                        if (dbA.getElem(i) === dbB.getElem(i)) {
-//                            count = count + 1
-//                        }
-//
-//                    }
-//                    percentage = (count * 100 / sizeA).toFloat()
-//                    println("Image Difference Percentage --> :- $percentage")
-//                    test?.log(Status.PASS,"Image Difference Percentage --> :- " + percentage);
-//
-//                } else {
-//                    println("Both the images are not of same size")
-//                    // test.log(Status.FAIL,"Both the images are not of same size");
-//                }
-//
-//            } catch (e: Exception) {
-//                println("Failed to compare image files ...")
-//            }
-//
-//            return percentage
-//        }
+            // compare data-buffer objects //
+            if (sizeA == sizeB) {
+                for (i in 0 until sizeA) {
+                    if (dbA.getElem(i) == dbB.getElem(i)) count += 1
+                }
+
+                percentage = (count * 100 / sizeA).toFloat()
+                println("Image Difference Percentage --> :- $percentage")
+                test?.log(Status.PASS, "Image Difference Percentage --> :- $percentage")
+
+            } else {
+                println("Both the images are not of same size")
+                test?.log(Status.FAIL, "Both the images are not of same size")
+            }
+
+        } catch (e: Exception) {
+            println("Failed to compare image files ...")
+        }
+
+        return percentage
+    }
 
 
     /**
@@ -664,12 +553,12 @@ open class CommonFunctionKotlin {
      * @param actual
      */
     private fun processImage(expected: String?, actual: String?) {
-        val imagesrc = Toolkit.getDefaultToolkit().getImage(expected)
-        val imagecom = Toolkit.getDefaultToolkit().getImage(actual)
+        val imageSrc = Toolkit.getDefaultToolkit().getImage(expected)
+        val imageCom = Toolkit.getDefaultToolkit().getImage(actual)
 
         try {
-            val grab1 = PixelGrabber(imagesrc, 0, 0, -1, -1, false)
-            val grab2 = PixelGrabber(imagecom, 0, 0, -1, -1, false)
+            val grab1 = PixelGrabber(imageSrc, 0, 0, -1, -1, false)
+            val grab2 = PixelGrabber(imageCom, 0, 0, -1, -1, false)
 
             var data1: IntArray? = null
 
@@ -677,7 +566,7 @@ open class CommonFunctionKotlin {
                 //    val width = grab1.getWidth()
                 //   val height = grab1.getHeight()
                 //data1 = IntArray(width * height)
-                data1 = grab1.getPixels() as IntArray?
+                data1 = grab1.pixels as IntArray?
             }
 
             var data2: IntArray? = null
@@ -686,7 +575,7 @@ open class CommonFunctionKotlin {
                 //    val width = grab2.getWidth()
                 //  val height = grab2.getHeight()
                 //data2 = IntArray(width * height)
-                data2 = grab2.getPixels() as IntArray?
+                data2 = grab2.pixels as IntArray?
             }
 
             println("Pixels equal: " + java.util.Arrays.equals(data1, data2))
@@ -699,15 +588,8 @@ open class CommonFunctionKotlin {
     }
 
 
-    /**
-     * Function to take screenshot of page using the Ashot API
-     * @param driver
-     * @param folder
-     * @param imagename
-     * @throws IOException
-     */
     @Throws(IOException::class)
-    fun AshotScreenshot(driver: AndroidDriver<MobileElement>, folder: String, imagename: String) {
+    fun screenshot(driver: AndroidDriver<MobileElement>, folder: String, imageName: String) {
         val dateName = SimpleDateFormat("dd-M-yyyy hh:mm").format(Date())
         val directory = "Screenshots"
         val screenshotPaths = extentResultFolder(directory)
@@ -723,11 +605,11 @@ open class CommonFunctionKotlin {
             Files.createDirectory(screenshotFolder)
         // To save the screenshot in desired location
 
-
-        ImageIO.write(myScreenshot.getImage(), "PNG",
-                File(screenshotFolder.toString() + File.separator + imagename + dateName + ".png"))
-
-
+        ImageIO.write(
+                myScreenshot.image,
+                "PNG",
+                File(screenshotFolder.toString() + File.separator + imageName + dateName + ".png")
+        )
     }
 
 
@@ -736,20 +618,19 @@ open class CommonFunctionKotlin {
      * @param, driverType, Element type
      * double the seeking position ex(.30) means 30% seek
      */
-
     @Throws(InterruptedException::class)
-    fun videoplaybackseeking(driver: AppiumDriver<MobileElement>, element: MobileElement, d: Double, seekingtype: String) {
+    fun videoPlaybackSeeking(driver: AppiumDriver<MobileElement>, element: MobileElement, d: Double, seekingtype: String) {
         val startX = element.location.getX()
-        println("Startx :$startX")
+        println("Start x: $startX")
 
         val endX = element.size.getWidth()
-        println("Endx  :$endX")
+        println("End x: $endX")
 
         val yAxis = element.location.getY()
-        println("Yaxis  :$yAxis")
+        println("Y axis: $yAxis")
 
         val moveToXDirectionAt = (endX * d).toInt()
-        println("Moving seek bar at $moveToXDirectionAt In X direction.")
+        println("Moving seek bar at $moveToXDirectionAt in x direction.")
         Thread.sleep(3000)
 
         if (seekingtype.equals("forward", ignoreCase = true)) {
@@ -758,98 +639,80 @@ open class CommonFunctionKotlin {
                     .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
 
         } else if (seekingtype.equals("backward", ignoreCase = true)) {
-
             PlatformTouchAction(driver).press(PointOption.point(endX, yAxis))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
         }
-
     }
 
-
-    /**
-     *function to drag and drop an element
-     * @param androidDriver
-     * @param elementfrom
-     * @param elementto
-     */
-
-    fun elementdragdrop(androiddriver: AndroidDriver<MobileElement>, elementfrom: MobileElement, elementto: MobileElement) {
-        PlatformTouchAction(androiddriver).longPress(ElementOption.element(elementfrom)).moveTo(ElementOption.element(elementto)).release().perform()
+    fun elementDragDrop(androidDriver: AndroidDriver<MobileElement>, elementFrom: MobileElement, elementTo: MobileElement) {
+        PlatformTouchAction(androidDriver)
+                .longPress(ElementOption.element(elementFrom))
+                .moveTo(ElementOption.element(elementTo))
+                .release()
+                .perform()
     }
-
-//    public void elementdragdrop(AndroidDriver<MobileElement> androidDriver, MobileElement elementfrom, MobileElement elementto) {
-//        TouchAction action = new TouchAction((MobileDriver) androidDriver);
-//        action.longPress(ElementOption.element(elementfrom)).
-//                moveTo(ElementOption.element(elementto)).release().perform();
-
 
     /**
      * function to read the text from a recyclerview
      * @param androidDriver
      */
     fun readRecyclerView(androidDriver: AndroidDriver<MobileElement>, text: String) {
+        val elements = androidDriver
+                .findElementByClassName("android.support.v7.widget.RecyclerView")
+                .findElements(By.id("bbc.mobile.news.uk.internal:id/text"))
 
-        val elements = androidDriver.findElementByClassName("android.support.v7.widget.RecyclerView").findElements(By.id("bbc.mobile.news.uk.internal:id/text"))
         for (element in elements) {
             //System.out.println("Topics After  Re-Ordering :- "+element.getText());
-            test?.log(Status.INFO, text + element.getText())
+            test?.log(Status.INFO, text + element.text)
         }
     }
 
 
-//    @Throws(InterruptedException::class, IOException::class)
-//    fun comapreStatsData(csv: String, statsdata: Array<String>)
-//    {
-//        var br: BufferedReader? = null
-//        var line= ""
-//        val cvsSplitBy = ","
-//        var country: Array<String>? = null
-//        var staturl: Array<String>? = null
-//
-//        try {
-//
-//            br = BufferedReader(FileReader(csv))
-//            line = br.readLine()
-//            while (line  != null)
-//            {
-//                // use comma as separator
-//                country = line.split(cvsSplitBy.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-//                staturl = country[0].split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-//                println("Stat's URL " + country[0])
-//                for (i in staturl.indices) {
-//
-//                    //System.out.println("The New Generated Stats " + staturl[i]);
-//                    for (j in statsdata.indices) {
-//                        if (staturl[i].equals(statsdata[j], ignoreCase = true)) {
-//
-//                            assertEquals(staturl[i], statsdata[j], "Stat's Matched")
-//                            val matchedstats = staturl[i]
-//                            println("The New Generated Stats $matchedstats")//list.add(staturl[i].toString()));
-//                        }
-//                    }
-//
-//                }
-//
-//            }
-//
-//        } catch (e: FileNotFoundException) {
-//            e.printStackTrace()
-//
-//        } finally {
-//            if (br != null) {
-//                try {
-//                    br.close()
-//                } catch (e: IOException) {
-//                    e.printStackTrace()
-//                }
-//
-//            }
-//
-//
-//        }
-//
-//    }
+    @Throws(InterruptedException::class, IOException::class)
+    fun comapreStatsData(csv: String, statsData: Array<String>) {
+        var br: BufferedReader? = null
+        val line: String
+        val cvsSplitBy = ","
+        var country: Array<String>?
+        var statUrl: Array<String>?
+
+        try {
+            br = BufferedReader(FileReader(csv))
+            line = br.readLine()
+            while (false) {
+                // use comma as separator
+                country = line.split(cvsSplitBy.toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                statUrl = country[0].split("&".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+                println("Stat's URL " + country[0])
+                for (i in statUrl.indices) {
+
+//                    System.out.println("The New Generated Stats " + staturl[i]);
+                    for (j in statsData.indices) {
+                        if (statUrl[i].equals(statsData[j], ignoreCase = true)) {
+
+                            assertEquals(statUrl[i], statsData[j], "Stat's Matched")
+                            val matchedStats = statUrl[i]
+                            println("The New Generated Stats $matchedStats")
+//                            list.add(staturl[i].toString()))
+                        }
+                    }
+                }
+            }
+
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+
+        } finally {
+            when {
+                br != null -> try {
+                    br.close()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
 
 
     /**
@@ -857,30 +720,22 @@ open class CommonFunctionKotlin {
      * If not, enables the WiFi Connection
      * @param androidDriver
      */
-
     fun checkConnection(androidDriver: AndroidDriver<MobileElement>) {
-        try {
-            val state = androidDriver.setConnection(ConnectionStateBuilder()
-                    .withWiFiEnabled()
-                    .build())
-            System.out.println("The WiFi Status is " + state.isWiFiEnabled())
-            if (!state.isWiFiEnabled()) {
-                androidDriver.setConnection(state)
-            }
-        } catch (e: NullPointerException) {
+        val state = androidDriver.setConnection(ConnectionStateBuilder()
+                .withWiFiEnabled()
+                .build())
 
-        }
+        System.out.println("The WiFi status is " + state.isWiFiEnabled)
 
+        if (!state.isWiFiEnabled) androidDriver.connection = state
     }
 
     /**
      *
      */
-    @Throws(Exception::class)
-    fun textpresent(appiumDriver: AppiumDriver<MobileElement>, text: String, text1: String) {
-        val textpresent = appiumDriver.findElement(By.xpath("//android.widget.TextView[@text='$text $text1 My News']"))
-        test?.log(Status.PASS, "Element Present" + textpresent.text)
-
+    fun textPresent(appiumDriver: AppiumDriver<MobileElement>, text: String, text1: String) {
+        val textPresent = appiumDriver.findElement(By.xpath("//android.widget.TextView[@text='$text $text1 My News']"))
+        test?.log(Status.PASS, "Element Present" + textPresent.text)
     }
 
     /**
@@ -890,18 +745,16 @@ open class CommonFunctionKotlin {
      * @param d
      * @throws InterruptedException
      */
-
-
     @Throws(InterruptedException::class)
-    fun videoplaybackseeking(driver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
-        val startX = element.getLocation().getX()
-        System.out.println("Startx :$startX")
+    fun videoPlaybackSeeking(driver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
+        val startX = element.location.getX()
+        System.out.println("startX :$startX")
 
-        val endX = element.getSize().getWidth()
-        System.out.println("Endx  :$endX")
+        val endX = element.size.getWidth()
+        System.out.println("endX  :$endX")
 
-        val yAxis = element.getLocation().getY()
-        System.out.println("Yaxis  :$yAxis")
+        val yAxis = element.location.getY()
+        System.out.println("yAxis  :$yAxis")
 
         val moveToXDirectionAt = (endX * d).toInt()
         System.out.println("Moving seek bar at $moveToXDirectionAt In X direction.")
@@ -918,59 +771,44 @@ open class CommonFunctionKotlin {
      * @param, driverType, Element type
      * double the seeking position ex(.30) means 30% seek
      */
+    fun seeking(element: MobileElement, double: Double, seekingDirection: String) {
+        val elementWidth = element.size.getWidth()
+        val startX = element.location.getX()
+        val endX = (elementWidth * double).toInt()
 
-    @Throws(InterruptedException::class)
-    fun seeking(driver: AppiumDriver<MobileElement>, element: MobileElement, d: Double, seekingtype: String) {
-        val startX = element.getLocation().getX()
-        val endX = element.getSize().getWidth()
-        val yAxis = element.getLocation().getY()
-        val moveToXDirectionAt = (endX * d).toInt()
-
-        if (seekingtype.equals("forward")) {
-
-            PlatformTouchAction(driver).press(PointOption.point(startX, yAxis))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
-
-        } else if (seekingtype.equals("backward")) {
-
-            PlatformTouchAction(driver).press(PointOption.point(endX, yAxis))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
+        when (seekingDirection) {
+            "forward" -> seekFromPointToPoint(element, startX, endX)
+            "backward" -> seekFromPointToPoint(element, elementWidth, endX)
         }
-
     }
 
+    private fun seekFromPointToPoint(element: MobileElement, xStart: Int, xFinish: Int) {
+        val yAxis = element.location.getY()
 
-    /**
-     * Function to check, whether given element is selected or not
-     * @param, drivertype, element name
-     */
+        PlatformTouchAction(androidDriver)
+                .press(PointOption.point(xStart, yAxis))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+                .moveTo(PointOption.point(xFinish, yAxis))
+                .release()
+                .perform()
+    }
+
     fun elementIsSelected(element: MobileElement): Boolean {
-        if (element.isSelected()) {
-            test?.log(Status.INFO, "Eelement selected")
-            return true
-
+        return if (element.isSelected) {
+            test?.log(Status.INFO, "Element selected")
+            true
         } else {
-            test?.log(Status.INFO, "Eelement not selected")
-            return false
-
+            test?.log(Status.INFO, "Element not selected")
+            false
         }
     }
 
-
-    /**
-     *
-     * @param appiumDriver
-     * @param elementID
-     */
     fun getElements(appiumDriver: AppiumDriver<MobileElement>, elementID: String) {
-        var elements: List<MobileElement>
-        elements = appiumDriver.findElements(By.id(elementID))
-        System.out.println("The elements counts are" + elements.size)
-        for (i in 0 until elements.size) {
-            System.out.println("The Text are " + elements[i].getText())
-        }
+        val elements = appiumDriver.findElements(By.id(elementID))
+
+        System.out.println("Element count: " + elements.size)
+        System.out.println("Element text: \n")
+        for (element in elements) System.out.println(element.text + "\n")
     }
 
 //    /**
@@ -990,9 +828,4 @@ open class CommonFunctionKotlin {
 //        }
 //    }
 
-
 }
-
-
-
-

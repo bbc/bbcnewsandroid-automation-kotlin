@@ -1,6 +1,5 @@
 package com.bbcnews.automation.testutils
 
-import com.aventstack.extentreports.Status
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import ru.yandex.qatools.ashot.AShot
@@ -14,15 +13,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.imageio.ImageIO
 
-class Testutility {
+class TestUtility {
     /**
      * Function to create a folder with the project path
      * @param, Directory path
      */
-    fun extentResultFolder(path: String): String? {
+    private fun extentResultFolder(path: String): String? {
         var strManyDirectories: String? = null
         try {
-            //  String strDirectoy = path;
+            //  String strDirectory = path;
             strManyDirectories = path
 
             // Create one directory
@@ -34,7 +33,7 @@ class Testutility {
                         + strManyDirectories + " created")
             }
 
-        } catch (e: Exception) {//Catch exception if any
+        } catch (e: Exception) {
             System.err.println("Error: " + e.message)
         }
 
@@ -48,27 +47,25 @@ class Testutility {
      */
 
     @Throws(IOException::class)
-    fun comparetwoimages() {
+    fun compareTwoImages() {
         val expected = File("./Screenshots/Before")
         val actual = File("./Screenshots/After")
 
-        //var expectedresults = ArrayList<String>()
-       var  expectedresults = getAllImages(expected, false)
-        val expectedimages = expectedresults.toTypedArray()
+        //var expectedResults = ArrayList<String>()
+        val expectedResults = getAllImages(expected, false)
+        val expectedImages = expectedResults.toTypedArray()
 
-       // var actualresults: ArrayList<String> = ArrayList()
-        var actualresults = getAllImages(actual, false)
-        val actualimages = actualresults.toArray(arrayOfNulls<String>(actualresults.size))
+        // var actualResults: ArrayList<String> = ArrayList()
+        val actualResults = getAllImages(actual, false)
+        val actualImages = actualResults.toArray(arrayOfNulls<String>(actualResults.size))
         var i = 0
-        while (i < expectedimages.size && i < actualimages.size) {
-            println("Expected Image :=" + expectedimages[i])
-            println("Actual Image :=" + actualimages[i])
+        while (i < expectedImages.size && i < actualImages.size) {
+            println("Expected Image :=" + expectedImages[i])
+            println("Actual Image :=" + actualImages[i])
 
-            compareImage(File(expectedimages[i]), File(actualimages[i]))
-            processImage(expectedimages[i], actualimages[i])
+            compareImage(File(expectedImages[i]), File(actualImages[i]))
+            processImage(expectedImages[i], actualImages[i])
             i++
-
-
         }
     }
 
@@ -91,15 +88,13 @@ class Testutility {
             }
             if (descendIntoSubDirectories && file!!.isDirectory) {
                 val tmp = getAllImages(file, true)
-                if (true) {
-                    resultList.addAll(tmp)
-                }
+                resultList.addAll(tmp)
             }
         }
-        if (resultList.size > 0)
-            return resultList
+        return if (resultList.size > 0)
+            resultList
         else
-            return null!!
+            null!!
 
     }
 
@@ -109,28 +104,25 @@ class Testutility {
      * @param fileB
      * @return
      */
-    fun compareImage(fileA: File, fileB: File): Float {
-
+    private fun compareImage(fileA: File, fileB: File): Float {
         var percentage = 0f
         try {
             // take buffer data from both image files //
             val biA = ImageIO.read(fileA)
-            val dbA = biA.getData().getDataBuffer()
-            val sizeA = dbA.getSize()
             val biB = ImageIO.read(fileB)
-            val dbB = biB.getData().getDataBuffer()
-            val sizeB = dbB.getSize()
+            val dbA = biA.data.dataBuffer
+            val dbB = biB.data.dataBuffer
+            val sizeA = dbA.size
+            val sizeB = dbB.size
             var count = 0
+
             // compare data-buffer objects //
             if (sizeA == sizeB) {
 
                 for (i in 0 until sizeA) {
-
-                    if (dbA.getElem(i) === dbB.getElem(i)) {
-                        count = count + 1
-                    }
-
+                    if (dbA.getElem(i) == dbB.getElem(i)) count += 1
                 }
+
                 percentage = (count * 100 / sizeA).toFloat()
                 println("Image Difference Percentage --> :- $percentage")
                 // test?.log(Status.PASS,"Image Difference Percentage --> :- " + percentage);
@@ -154,29 +146,29 @@ class Testutility {
      * @param actual
      */
     private fun processImage(expected: String?, actual: String?) {
-        val imagesrc = Toolkit.getDefaultToolkit().getImage(expected)
-        val imagecom = Toolkit.getDefaultToolkit().getImage(actual)
+        val imageSrc = Toolkit.getDefaultToolkit().getImage(expected)
+        val imageCom = Toolkit.getDefaultToolkit().getImage(actual)
 
         try {
-            val grab1 = PixelGrabber(imagesrc, 0, 0, -1, -1, false)
-            val grab2 = PixelGrabber(imagecom, 0, 0, -1, -1, false)
+            val grab1 = PixelGrabber(imageSrc, 0, 0, -1, -1, false)
+            val grab2 = PixelGrabber(imageCom, 0, 0, -1, -1, false)
 
             var data1: IntArray? = null
 
             if (grab1.grabPixels()) {
-           //     val width = grab1.getWidth()
-             //   val height = grab1.getHeight()
+                //     val width = grab1.getWidth()
+                //   val height = grab1.getHeight()
                 //data1 = IntArray(width * height)
-                data1 = grab1.getPixels() as IntArray?
+                data1 = grab1.pixels as IntArray?
             }
 
             var data2: IntArray? = null
 
             if (grab2.grabPixels()) {
-             //   val width = grab2.getWidth()
-               // val height = grab2.getHeight()
+                //   val width = grab2.getWidth()
+                // val height = grab2.getHeight()
                 //data2 = IntArray(width * height)
-                data2 = grab2.getPixels() as IntArray?
+                data2 = grab2.pixels as IntArray?
             }
 
             println("Pixels equal: " + java.util.Arrays.equals(data1, data2))
@@ -191,13 +183,13 @@ class Testutility {
 
     /**
      * Function to take screenshot of page using the Ashot API
-     * @param driver
+     * @param androidDriver
      * @param folder
-     * @param imagename
+     * @param imageName
      * @throws IOException
      */
     @Throws(IOException::class)
-    fun AshotScreenshot(androiddriver: AndroidDriver<MobileElement>, folder: String, imagename: String) {
+    fun screenshot(androidDriver: AndroidDriver<MobileElement>, folder: String, imageName: String) {
         val dateName = SimpleDateFormat("dd-M-yyyy hh:mm").format(Date())
         val directory = "Screenshots"
         val screenshotPaths = extentResultFolder(directory)
@@ -207,17 +199,15 @@ class Testutility {
         File(screenshotPaths)
         // success = (new File(strManyDirectories)).mkdirs();
 
-        val myScreenshot = AShot().takeScreenshot(androiddriver)
+        val myScreenshot = AShot().takeScreenshot(androidDriver)
         val screenshotFolder = Paths.get(directory, folder)
         if (Files.notExists(screenshotFolder))
             Files.createDirectory(screenshotFolder)
         // To save the screenshot in desired location
 
 
-        ImageIO.write(myScreenshot.getImage(), "PNG",
-                File(screenshotFolder.toString() + File.separator + imagename + dateName + ".png"))
-
-
+        ImageIO.write(myScreenshot.image, "PNG",
+                File(screenshotFolder.toString() + File.separator + imageName + dateName + ".png"))
     }
 
     /**
