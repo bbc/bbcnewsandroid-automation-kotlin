@@ -42,7 +42,7 @@ public class VideoPageObjects {
     public MobileElement smpPauseButton;
 
     @AndroidFindAll({
-            @AndroidBy(id = "bbc.mobile.news.uk:id/smp_play_pause_container")
+            @AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_play_pause_container")
     })
     public MobileElement smpPlayPauseButton;
 
