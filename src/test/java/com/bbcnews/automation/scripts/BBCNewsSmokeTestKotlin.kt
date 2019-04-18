@@ -422,13 +422,13 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
         )
 
         tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
-        waitForScreenToLoad(androidDriver,videoPageObject.smpSeekBar, 3)
+        waitForScreenToLoad(androidDriver, videoPageObject.smpSeekBar, 3)
 
         videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
 
-        assertDisplayingElements(androidDriver,videoPageObject.accessibilityPause)
+        assertDisplayingElements(androidDriver, videoPageObject.accessibilityPause)
         tapButton(androidDriver, videoPageObject.smpPlayPauseButton, false)
-        assertDisplayingElements(androidDriver,videoPageObject.accessibilityPlay)
+        assertDisplayingElements(androidDriver, videoPageObject.accessibilityPlay)
 
         navigateBack(androidDriver)
     }
@@ -455,47 +455,45 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
     }
 
-    /**
-     * un-comment if you want to check the screenshot compare tests
-     */
-    @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
-    @Throws(IOException::class)
-    fun testTakeScreenShotAfter() {
-        try {
-            tapButton(androidDriver, basePageObjectModel.navigate_back,false)
-        } catch (e: NoSuchElementException) {
-            // Ignore if already on the main screen
-            assertDisplayingElements(androidDriver, homePageObject.menuButton)
-        }
-
-        tapButton(androidDriver, basePageObjectModel.topStories, false)
-        testUtility.screenshot(androidDriver, "After", "topStories")
-
-        tapButton(androidDriver, basePageObjectModel.myNews, false)
-        testUtility.screenshot(androidDriver, "After", "myNews")
-
-        tapButton(androidDriver, basePageObjectModel.popular, false)
-        testUtility.screenshot(androidDriver, "After", "popular")
-
-        tapButton(androidDriver, basePageObjectModel.video, false)
-        testUtility.screenshot(androidDriver, "After", "video")
-
-        tapButton(androidDriver, basePageObjectModel.menuButton, false)
-        testUtility.screenshot(androidDriver, "After", "menu")
-
-        navigateBack(androidDriver)
-    }
-
-    /**
-     * un-comment if you want to check the screenshot compare tests
-     */
+//    /**
+//     * un-comment if you want to check the screenshot compare tests
+//     */
+//    @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
+//    @Throws(IOException::class)
+//    fun testTakeScreenshotAfter() {
+//        try {
+//            tapButton(androidDriver, basePageObjectModel.navigate_back, false)
+//        } catch (e: NoSuchElementException) {
+//            // Ignore if already on the main screen
+//            assertDisplayingElements(androidDriver, homePageObject.menuButton)
+//        }
+//
+//        tapButton(androidDriver, basePageObjectModel.topStories, false)
+//        testUtility.screenshot(androidDriver, "After", "topStories")
+//
+//        tapButton(androidDriver, basePageObjectModel.myNews, false)
+//        testUtility.screenshot(androidDriver, "After", "myNews")
+//
+//        tapButton(androidDriver, basePageObjectModel.popular, false)
+//        testUtility.screenshot(androidDriver, "After", "popular")
+//
+//        tapButton(androidDriver, basePageObjectModel.video, false)
+//        testUtility.screenshot(androidDriver, "After", "video")
+//
+//        tapButton(androidDriver, basePageObjectModel.menuButton, false)
+//        testUtility.screenshot(androidDriver, "After", "menu")
+//
+//        navigateBack(androidDriver)
+//    }
+//
+//    /**
+//     * un-comment if you want to check the screenshot compare tests
+//     */
 //    @Test(priority = 17, description = "Compares the images")
 //    @Throws(IOException::class)
-//    fun testCompareImages()
-//    {
+//    fun testCompareImages() {
 //        startTest("CompareImages", "Compares the HomePage", "Smoke")
-//         testUtility.compareTwoImages()
-//
+//        testUtility.compareTwoImages()
 //    }
 
 
