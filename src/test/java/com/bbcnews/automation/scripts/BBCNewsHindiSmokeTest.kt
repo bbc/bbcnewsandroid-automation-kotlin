@@ -13,6 +13,56 @@ import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.article
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiEntertainment
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiHelp
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiHomepage
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiIndia
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiInternational
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiLookAt
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiMessage
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiMoreSettings
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiOkButton
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiOtherBbcApplications
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiPleaseContact
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiRadio
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiScienceTechnology
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiSettings
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiSocial
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiSports
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiThePhotos
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiTopics
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcMoreOptions
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.frontPage
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.fullScreenButton
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.headlineAuthorName
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.headlineAuthorTitle
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.headlineInfo
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.headlineTitle
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiBharath
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiEntertainment
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiHomepage
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiInternational
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiLookAt
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiPhotos
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiScience
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.hindiSocial
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.imageItemBadge
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.imageItemCaption
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.mainItemLayoutLastUpdated
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.mainItemLayoutName
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.mediaItemCaption
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.noThanksButton
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.pauseButton
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.picturesSubtitle
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.picturesTitle
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.playButton
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.radioPageText
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.radioPageTextDaily
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedArticles
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedTopics
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.seekBar
+import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.volumeButton
 import com.bbcnews.automation.pageobjects.HomePageObject
 import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
@@ -46,7 +96,6 @@ class BBCNewsHindiSmokeTest {
 
     private lateinit var file: File
     private lateinit var androidDriver: AndroidDriver<MobileElement>
-    private lateinit var bbcNewsHindiPageObject: BBCNewsHindiPageObject
 
     @BeforeTest
     fun runTest() {
@@ -89,8 +138,7 @@ class BBCNewsHindiSmokeTest {
     private fun launchBbcNews() {
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
 
-        bbcNewsHindiPageObject = BBCNewsHindiPageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), bbcNewsHindiPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), BBCNewsHindiPageObject)
 
         emptyFolder(screenshotPath)
 
@@ -111,35 +159,35 @@ class BBCNewsHindiSmokeTest {
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
     fun testOpenNewsApp() {
-        assertEquals("ओके", bbcNewsHindiPageObject.bbcHindiOkButton.text, "Text Matched")
-        assertEquals("बीबीसी न्यूज़ आपको नोटिफ़िकेशंस भेजना चाहता है. आप कभी भी सेटिंग्स में जाकर बदलाव कर सकते हैं.", bbcNewsHindiPageObject.bbcHindiMessage.text)
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiOkButton, false)
-        tapButton(androidDriver, bbcNewsHindiPageObject.noThanksButton, false)
+        assertEquals("ओके", bbcHindiOkButton?.text, "Text Matched")
+        assertEquals("बीबीसी न्यूज़ आपको नोटिफ़िकेशंस भेजना चाहता है. आप कभी भी सेटिंग्स में जाकर बदलाव कर सकते हैं.", bbcHindiMessage?.text)
+        tapButton(androidDriver, bbcHindiOkButton, false)
+        tapButton(androidDriver, noThanksButton, false)
     }
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
     fun testCheckHomePage() {
         startTest("HomePage", "Checking the HomePage", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiHomepage, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiHomepage.isSelected)
+        tapButton(androidDriver, bbcHindiHomepage, false)
+        assertTrue(bbcHindiHomepage?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
-        if (!bbcNewsHindiPageObject.frontPage.isDisplayed) {
+        tapButton(androidDriver, article, false)
+        if (frontPage?.isDisplayed!!) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
         }
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.imageItemBadge,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo,
-                bbcNewsHindiPageObject.headlineAuthorName,
-                bbcNewsHindiPageObject.headlineAuthorTitle
+                imageItemBadge,
+                headlineTitle,
+                headlineInfo,
+                headlineAuthorName,
+                headlineAuthorTitle
         )
 
         pressBack()
@@ -148,45 +196,45 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 3, description = "checking the india page")
     fun testIndiaPage() {
         startTest("IndiaPage", "Checking the IndiaPage", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiIndia, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiIndia.isSelected)
+        tapButton(androidDriver, bbcHindiIndia, false)
+        assertTrue(bbcHindiIndia?.isSelected!!)
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.imageItemBadge,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo,
-                bbcNewsHindiPageObject.headlineAuthorName,
-                bbcNewsHindiPageObject.headlineAuthorTitle
+                imageItemBadge,
+                headlineTitle,
+                headlineInfo,
+                headlineAuthorName,
+                headlineAuthorTitle
         )
 
-        scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedTopics)
+        scrollToElement(androidDriver, relatedTopics)
 
-        assertDisplayingElements(androidDriver, bbcNewsHindiPageObject.relatedArticles)
+        assertDisplayingElements(androidDriver, relatedArticles)
         pressBack()
     }
 
     @Test(priority = 3, description = "checking the international page")
     fun testInternationalPage() {
         startTest("InternationalPage", "Checking the InternationalPage", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiInternational, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiInternational.isSelected)
+        tapButton(androidDriver, bbcHindiInternational, false)
+        assertTrue(bbcHindiInternational?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo
+                headlineTitle,
+                headlineInfo
         )
 
         pressBack()
@@ -195,23 +243,23 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 4, description = "checking the Entertainment page")
     fun testEntertainmentPage() {
         startTest("EntertainmentPage", "Checking the EntertainmentPage", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiEntertainment, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiEntertainment.isSelected)
+        tapButton(androidDriver, bbcHindiEntertainment, false)
+        assertTrue(bbcHindiEntertainment?.isSelected!!)
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                //bbcNewsHindiPageObject.imageItemBadge,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo)
+                //imageItemBadge,
+                headlineTitle,
+                headlineInfo
+        )
 
-
-        scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedTopics)
-        assertDisplayingElements(androidDriver, bbcNewsHindiPageObject.relatedArticles)
+        scrollToElement(androidDriver, relatedTopics)
+        assertDisplayingElements(androidDriver, relatedArticles)
 
         pressBack()
     }
@@ -219,25 +267,25 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 5, description = "checking the Sports page")
     fun testSportsPage() {
         startTest("Sports", "Checking the Sports", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiSports, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiSports.isSelected)
+        tapButton(androidDriver, bbcHindiSports, false)
+        assertTrue(bbcHindiSports?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.imageItemBadge,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo,
-                bbcNewsHindiPageObject.imageItemCaption
+                imageItemBadge,
+                headlineTitle,
+                headlineInfo,
+                imageItemCaption
         )
 
-        scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedTopics)
-        assertDisplayingElements(androidDriver, bbcNewsHindiPageObject.relatedArticles)
+        scrollToElement(androidDriver, relatedTopics)
+        assertDisplayingElements(androidDriver, relatedArticles)
 
         pressBack()
     }
@@ -245,40 +293,40 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 6, description = "checking the Radio page")
     fun testRadioPage() {
         startTest("Radio", "Checking the Radio", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiRadio, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiRadio.isSelected)
+        tapButton(androidDriver, bbcHindiRadio, false)
+        assertTrue(bbcHindiRadio?.isSelected!!)
 
-        elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineTitle)
-        assertEquals("सुनिए", bbcNewsHindiPageObject.headlineTitle.text)
-        elementDisplayed(androidDriver, bbcNewsHindiPageObject.headlineInfo)
-        assertEquals("12 अप्रै 2018", bbcNewsHindiPageObject.headlineInfo.text)
+        elementDisplayed(androidDriver, headlineTitle)
+        assertEquals("सुनिए", headlineTitle?.text)
+        elementDisplayed(androidDriver, headlineInfo)
+        assertEquals("12 अप्रै 2018", headlineInfo?.text)
 
-        elementDisplayed(androidDriver, bbcNewsHindiPageObject.radioPageText)
-        assertEquals("नमस्कार भारत  (06.30IST - 07.00IST)", bbcNewsHindiPageObject.radioPageText.text)
+        elementDisplayed(androidDriver, radioPageText)
+        assertEquals("नमस्कार भारत  (06.30IST - 07.00IST)", radioPageText?.text)
 
-        elementDisplayed(androidDriver, bbcNewsHindiPageObject.radioPageTextDaily)
-        assertEquals("दिनभर (19.30IST - 20.00IST)", bbcNewsHindiPageObject.radioPageTextDaily.text)
+        elementDisplayed(androidDriver, radioPageTextDaily)
+        assertEquals("दिनभर (19.30IST - 20.00IST)", radioPageTextDaily?.text)
     }
 
     @Test(priority = 7, description = "checking the Science&Technology page")
     fun testScienceTechnologyPage() {
         startTest("Science&Technology", "Checking the Science&Technology", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiScienceTechnology, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiScienceTechnology.isSelected)
+        tapButton(androidDriver, bbcHindiScienceTechnology, false)
+        assertTrue(bbcHindiScienceTechnology?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo
+                headlineTitle,
+                headlineInfo
         )
 
-        scrollToElement(androidDriver, bbcNewsHindiPageObject.relatedTopics)
+        scrollToElement(androidDriver, relatedTopics)
 
         pressBack()
     }
@@ -286,30 +334,30 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 8, description = "checking the Science&Technology page")
     fun testLookAtPage() {
         startTest("LookAt", "Checking the Science&LookAt Page", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiLookAt, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiLookAt.isSelected)
+        tapButton(androidDriver, bbcHindiLookAt, false)
+        assertTrue(bbcHindiLookAt?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.playButton,
-                bbcNewsHindiPageObject.mediaItemCaption,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo
+                playButton,
+                mediaItemCaption,
+                headlineTitle,
+                headlineInfo
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.playButton, false)
+        tapButton(androidDriver, playButton, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.volumeButton,
-                bbcNewsHindiPageObject.fullScreenButton,
-                bbcNewsHindiPageObject.seekBar,
-                bbcNewsHindiPageObject.pauseButton
+                volumeButton,
+                fullScreenButton,
+                seekBar,
+                pauseButton
         )
 
         pressBack()
@@ -318,19 +366,19 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 9, description = "checking the Pictures  page")
     fun testPicturesPage() {
         startTest("Pictures", "Checking the Pictures Page", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiThePhotos, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiThePhotos.isSelected)
+        tapButton(androidDriver, bbcHindiThePhotos, false)
+        assertTrue(bbcHindiThePhotos?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.picturesTitle,
-                bbcNewsHindiPageObject.picturesSubtitle
+                picturesTitle,
+                picturesSubtitle
         )
 
         for (i in 0..6) {
@@ -343,19 +391,19 @@ class BBCNewsHindiSmokeTest {
     @Test(priority = 10, description = "checking the Social  page")
     fun testSocialPage() {
         startTest("Social", "Checking the Social Page", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiSocial, false)
-        assertTrue(bbcNewsHindiPageObject.bbcHindiSocial.isSelected)
+        tapButton(androidDriver, bbcHindiSocial, false)
+        assertTrue(bbcHindiSocial?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.mainItemLayoutName,
-                bbcNewsHindiPageObject.mainItemLayoutLastUpdated
+                mainItemLayoutName,
+                mainItemLayoutLastUpdated
         )
 
-        tapButton(androidDriver, bbcNewsHindiPageObject.article, false)
+        tapButton(androidDriver, article, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.headlineTitle,
-                bbcNewsHindiPageObject.headlineInfo
+                headlineTitle,
+                headlineInfo
         )
 
         pressBack()
@@ -366,14 +414,14 @@ class BBCNewsHindiSmokeTest {
     @Severity(SeverityLevel.CRITICAL)
     fun testMenuItems() {
         startTest("MoreOptions", "Checking the MoreOptions Menu", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcMoreOptions, false)
+        tapButton(androidDriver, bbcMoreOptions, false)
 
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.bbcHindiHelp,
-                //  bbcNewsHindiPageObject.bbcHindiInternalSettings,
-                bbcNewsHindiPageObject.bbcHindiSettings,
-                bbcNewsHindiPageObject.bbcHindiPleaseContact,
-                bbcNewsHindiPageObject.bbcHindiOtherBbcApplications)
+                bbcHindiHelp,
+                //  bbcHindiInternalSettings,
+                bbcHindiSettings,
+                bbcHindiPleaseContact,
+                bbcHindiOtherBbcApplications)
         pressBack()
     }
 
@@ -382,11 +430,11 @@ class BBCNewsHindiSmokeTest {
     @Severity(SeverityLevel.CRITICAL)
     fun testMoreSettingsOptions() {
         startTest("MoreOptions", "Checking the More Settings Options Menu", "Smoke")
-        tapButton(androidDriver, bbcNewsHindiPageObject.bbcHindiMoreSettings, false)
+        tapButton(androidDriver, bbcHindiMoreSettings, false)
 
         assertDisplayingElements(androidDriver,
-                // bbcNewsHindiPageObject.bbcHindiLocalNews,
-                bbcNewsHindiPageObject.bbcHindiTopics
+                // bbcHindiLocalNews,
+                bbcHindiTopics
         )
     }
 
@@ -395,17 +443,16 @@ class BBCNewsHindiSmokeTest {
     @Severity(SeverityLevel.CRITICAL)
     fun testMoreSettingsOptions_Topics() {
         startTest("MoreOptionsTopics", "Checking the More Settings Options Topics", "Smoke")
-        //  tapButton(androidDriver,bbcNewsHindiPageObject.bbcHindiTopicsCollapseGroup,false);
+        //  tapButton(androidDriver,BBCNewsHindiPageObject.bbcHindiTopicsCollapseGroup,false);
         assertDisplayingElements(androidDriver,
-                bbcNewsHindiPageObject.hindiHomepage,
-                bbcNewsHindiPageObject.hindiBharath,
-                bbcNewsHindiPageObject.hindiEntertainment,
-                bbcNewsHindiPageObject.hindiInternational,
-                bbcNewsHindiPageObject.hindiLookAt,
-                bbcNewsHindiPageObject.hindiPhotos,
-                bbcNewsHindiPageObject.hindiScience,
-                bbcNewsHindiPageObject.hindiPhotos,
-                bbcNewsHindiPageObject.hindiSocial)
+                hindiHomepage,
+                hindiBharath,
+                hindiEntertainment,
+                hindiInternational,
+                hindiLookAt,
+                hindiScience,
+                hindiPhotos,
+                hindiSocial)
     }
 
     @AfterMethod
