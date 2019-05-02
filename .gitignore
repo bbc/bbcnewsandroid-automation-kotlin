@@ -3,6 +3,8 @@ Screenshots
 test-output
 .idea/
 .apk
+.bin
+.lock
 bin/
 build/
 /*/build/
