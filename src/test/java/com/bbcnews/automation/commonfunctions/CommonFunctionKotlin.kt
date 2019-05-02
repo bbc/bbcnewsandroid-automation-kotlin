@@ -439,7 +439,7 @@ object CommonFunctionKotlin {
                 .moveTo(PointOption.point(endXAxis, yAxis)).release().perform()
     }
 
-    fun isElementSelected(element: MobileElement): Boolean {
+    fun isElementSelected(element: MobileElement?): Boolean {
         return if (element.isSelected) {
             test?.log(Status.INFO, "Element selected")
             true
@@ -449,9 +449,9 @@ object CommonFunctionKotlin {
         }
     }
 
-    fun enterText(element: MobileElement, searchKey: String) = element.sendKeys(searchKey)
+    fun enterText(element: MobileElement?, searchKey: String) = element.sendKeys(searchKey)
 
-    fun getText(element: MobileElement): String = element.text
+    fun getText(element: MobileElement?): String = element.text
 
     /**
      * Returns all png images from a directory in an array.

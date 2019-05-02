@@ -7,6 +7,19 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
+import com.bbcnews.automation.pageobjects.BasePageObject.cpsContent
+import com.bbcnews.automation.pageobjects.BasePageObject.internalSettings
+import com.bbcnews.automation.pageobjects.BasePageObject.menuButton
+import com.bbcnews.automation.pageobjects.BasePageObject.myNews
+import com.bbcnews.automation.pageobjects.BasePageObject.navigateBack
+import com.bbcnews.automation.pageobjects.BasePageObject.noThanksButton
+import com.bbcnews.automation.pageobjects.BasePageObject.okButton
+import com.bbcnews.automation.pageobjects.BasePageObject.popular
+import com.bbcnews.automation.pageobjects.BasePageObject.reloadButton
+import com.bbcnews.automation.pageobjects.BasePageObject.searchButton
+import com.bbcnews.automation.pageobjects.BasePageObject.topStories
+import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
+import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
@@ -43,10 +56,8 @@ class BBCNewsStatsTest {
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
     private lateinit var myNewsPageObject: MyNewsPageObject
-    //private lateinit var basePageObject: BasePageObject
     private lateinit var videoPageObject: VideoPageObjects
     private lateinit var popularPageObject: PopularPageObjects
-    private lateinit var basePageObjectModel: BasePageObject
 
     @BeforeTest
     @Throws(Exception::class)
@@ -105,8 +116,7 @@ class BBCNewsStatsTest {
         myNewsPageObject = MyNewsPageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
 
-        basePageObjectModel = BasePageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), BasePageObject)
 
         videoPageObject = VideoPageObjects()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
@@ -140,14 +150,14 @@ class BBCNewsStatsTest {
     @Throws(Exception::class)
     fun testOpenNewsApp() {
         try {
-            tapButton(androidDriver, basePageObjectModel.okButton, false)
-            tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
-            tapButton(androidDriver, basePageObjectModel.menuButton, false)
-            tapButton(androidDriver, basePageObjectModel.internalSettings, false)
-            tapButton(androidDriver, basePageObjectModel.cpsContent, false)
-            tapButton(androidDriver, basePageObjectModel.trevorTest, false)
-            tapButton(androidDriver, basePageObjectModel.navigate_back, false)
-            tapButton(androidDriver, basePageObjectModel.reloadButton, false)
+            tapButton(androidDriver, okButton, false)
+            tapButton(androidDriver, noThanksButton, false)
+            tapButton(androidDriver, menuButton, false)
+            tapButton(androidDriver, internalSettings, false)
+            tapButton(androidDriver, cpsContent, false)
+            tapButton(androidDriver, trevorTest, false)
+            tapButton(androidDriver, navigateBack, false)
+            tapButton(androidDriver, reloadButton, false)
             charlesProxy.startCharlesSession()
 
         } catch (e: Exception) {
@@ -161,11 +171,11 @@ class BBCNewsStatsTest {
     fun testCheckHomePage() {
         try {
             startTest("HomePage", "Checking the HomePage", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.topStories, false)
-            tapButton(androidDriver, basePageObjectModel.myNews, false)
-            tapButton(androidDriver, basePageObjectModel.popular, false)
-            tapButton(androidDriver, basePageObjectModel.video, false)
-            tapButton(androidDriver, basePageObjectModel.searchButton, false)
+            tapButton(androidDriver, topStories, false)
+            tapButton(androidDriver, myNews, false)
+            tapButton(androidDriver, popular, false)
+            tapButton(androidDriver, video, false)
+            tapButton(androidDriver, searchButton, false)
         } catch (e: Exception) {
             e.printStackTrace()
         }
