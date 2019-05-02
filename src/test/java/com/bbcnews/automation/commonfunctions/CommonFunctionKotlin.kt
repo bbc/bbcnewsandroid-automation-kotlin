@@ -440,7 +440,7 @@ object CommonFunctionKotlin {
     }
 
     fun isElementSelected(element: MobileElement?): Boolean {
-        return if (element.isSelected) {
+        return if (element?.isSelected!!) {
             test?.log(Status.INFO, "Element selected")
             true
         } else {
@@ -449,13 +449,12 @@ object CommonFunctionKotlin {
         }
     }
 
-    fun enterText(element: MobileElement?, searchKey: String) = element.sendKeys(searchKey)
+    fun enterText(element: MobileElement?, searchKey: String) = element?.sendKeys(searchKey)
 
-    fun getText(element: MobileElement?): String = element.text
+    fun getText(element: MobileElement?): String = element?.text!!
 
     /**
      * Returns all png images from a directory in an array.
-     *
      * @param directory                 the directory to start with
      * @param descendIntoSubDirectories should we include sub directories?
      * @return an ArrayList<String> containing all the files or nul if none are found..
@@ -510,7 +509,7 @@ object CommonFunctionKotlin {
     /**
      * Function to compare two images and display the difference
      */
-    fun compareImage(fileA: File, fileB: File): Float {
+    private fun compareImage(fileA: File, fileB: File): Float {
         var percentage = 0f
         try {
             // take buffer data from both image files //
@@ -609,7 +608,6 @@ object CommonFunctionKotlin {
                 File(screenshotFolder.toString() + File.separator + imageName + dateName + ".png")
         )
     }
-
 
     /**
      * Function to seek forward on the video/audio playing
@@ -744,23 +742,23 @@ object CommonFunctionKotlin {
      * @throws InterruptedException
      */
     @Throws(InterruptedException::class)
-    fun videoPlaybackSeeking(driver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
-        val startX = element.location.getX()
+    fun videoPlaybackSeeking(driver: AppiumDriver<MobileElement>, element: MobileElement?, d: Double) {
+        val startX = element?.location?.getX()
         System.out.println("startX :$startX")
 
-        val endX = element.size.getWidth()
+        val endX = element?.size?.getWidth()
         System.out.println("endX  :$endX")
 
-        val yAxis = element.location.getY()
+        val yAxis = element?.location?.getY()
         System.out.println("yAxis  :$yAxis")
 
-        val moveToXDirectionAt = (endX * d).toInt()
+        val moveToXDirectionAt = (endX?.times(d))?.toInt()
         System.out.println("Moving seek bar at $moveToXDirectionAt In X direction.")
         Thread.sleep(3000)
 
-        PlatformTouchAction(driver).press(PointOption.point(startX, yAxis))
+        PlatformTouchAction(driver).press(PointOption.point(startX!!, yAxis!!))
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
+                .moveTo(PointOption.point(moveToXDirectionAt!!, yAxis)).release().perform()
     }
 
 
@@ -769,14 +767,14 @@ object CommonFunctionKotlin {
      * @param, driverType, Element type
      * double the seeking position ex(.30) means 30% seek
      */
-    fun seeking(element: MobileElement, double: Double, seekingDirection: String) {
-        val elementWidth = element.size.getWidth()
-        val startX = element.location.getX()
-        val endX = (elementWidth * double).toInt()
+    fun seeking(element: MobileElement?, double: Double, seekingDirection: String) {
+        val elementWidth = element?.size?.getWidth()
+        val startX = element?.location?.getX()
+        val endX = (elementWidth?.times(double))?.toInt()
 
         when (seekingDirection) {
-            "forward" -> seekFromPointToPoint(element, startX, endX)
-            "backward" -> seekFromPointToPoint(element, elementWidth, endX)
+            "forward" -> seekFromPointToPoint(element!!, startX!!, endX!!)
+            "backward" -> seekFromPointToPoint(element!!, elementWidth!!, endX!!)
         }
     }
 
@@ -791,8 +789,8 @@ object CommonFunctionKotlin {
                 .perform()
     }
 
-    fun elementIsSelected(element: MobileElement): Boolean {
-        return if (element.isSelected) {
+    fun elementIsSelected(element: MobileElement?): Boolean {
+        return if (element?.isSelected!!) {
             test?.log(Status.INFO, "Element selected")
             true
         } else {

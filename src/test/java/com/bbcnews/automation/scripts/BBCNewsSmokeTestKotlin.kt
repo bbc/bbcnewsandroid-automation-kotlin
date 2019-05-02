@@ -30,6 +30,28 @@ import com.bbcnews.automation.pageobjects.BasePageObject.searchField
 import com.bbcnews.automation.pageobjects.BasePageObject.shareStory
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.video
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.addNewsButton
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.addTopics
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.localNewsDisplayed
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsStartButton
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsSummary
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsSummaryText
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitle
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitleText
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.showLess
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.showMore
+import com.bbcnews.automation.pageobjects.PopularPageObjects.mostRead
+import com.bbcnews.automation.pageobjects.PopularPageObjects.popularMostWatched
+import com.bbcnews.automation.pageobjects.VideoPageObjects.accessibilityPause
+import com.bbcnews.automation.pageobjects.VideoPageObjects.accessibilityPlay
+import com.bbcnews.automation.pageobjects.VideoPageObjects.bbcNewsChannel
+import com.bbcnews.automation.pageobjects.VideoPageObjects.liveMediaItemCaption
+import com.bbcnews.automation.pageobjects.VideoPageObjects.smpLiveIcon
+import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlaceholderPlayButton
+import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlayPauseButton
+import com.bbcnews.automation.pageobjects.VideoPageObjects.smpSeekBar
+import com.bbcnews.automation.pageobjects.VideoPageObjects.smpVolumeButton
+import com.bbcnews.automation.pageobjects.VideoPageObjects.transportControls
 import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import com.bbcnews.automation.testutils.TestUtility.screenshot
 import io.appium.java_client.MobileElement
@@ -64,12 +86,7 @@ class BBCNewsSmokeTestKotlin {
     private var appPath: String? = null
     private var appiumPort: String? = null
     private lateinit var file: File
-    private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
-    private lateinit var myNewsPageObject: MyNewsPageObject
-    private lateinit var videoPageObject: VideoPageObjects
-    private lateinit var popularPageObject: PopularPageObjects
-    private lateinit var myTopicsPageObject: MyTopicsPageObject
 
     @BeforeTest
     fun runTest() {
@@ -132,21 +149,17 @@ class BBCNewsSmokeTestKotlin {
     }
 
     private fun initialiseObjects() {
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
 
-        myNewsPageObject = MyNewsPageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyNewsPageObject)
 
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), BasePageObject)
 
-        videoPageObject = VideoPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), VideoPageObjects)
 
-        popularPageObject = PopularPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), PopularPageObjects)
 
-        myTopicsPageObject = MyTopicsPageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyTopicsPageObject)
 
         emptyFolder(screenshotPath)
 
@@ -221,9 +234,9 @@ class BBCNewsSmokeTestKotlin {
     fun testAllowLocation() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
         tapButton(androidDriver, myNews, false)
-        tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
-        tapButton(androidDriver, myNewsPageObject.allowLocation, false)
-        tapButton(androidDriver, myNewsPageObject.allowLocationPermission, false)
+        tapButton(androidDriver, myNewsStartButton, false)
+        tapButton(androidDriver, MyNewsPageObject.allowLocation, false)
+        tapButton(androidDriver, MyNewsPageObject.allowLocationPermission, false)
         navigateBack(androidDriver)
     }
 
@@ -234,8 +247,8 @@ class BBCNewsSmokeTestKotlin {
         startTest("PopularPage", "Checking the Popular", "Smoke")
         tapButton(androidDriver, popular, false)
         assertTrue(popular?.isSelected!!)
-        assertDisplayingElements(androidDriver, popularPageObject.mostRead)
-        assertEquals("Most Read", popularPageObject.mostRead.text, "Text Matched")
+        assertDisplayingElements(androidDriver, mostRead)
+        assertEquals("Most Read", mostRead?.text, "Text Matched")
     }
 
     @Test(priority = 5, description = "checking that most watched displayed in popular page")
@@ -243,8 +256,8 @@ class BBCNewsSmokeTestKotlin {
     @Severity(SeverityLevel.CRITICAL)
     fun testMostWatched() {
         startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
-        scrollToElement(androidDriver, popularPageObject.popularMostWatched)
-        assertEquals("Most Watched", popularPageObject.popularMostWatched.text, "Text Matched")
+        scrollToElement(androidDriver, popularMostWatched)
+        assertEquals("Most Watched", popularMostWatched?.text, "Text Matched")
     }
 
     @Test(priority = 6, description = "Test to check the Mynews page")
@@ -257,13 +270,13 @@ class BBCNewsSmokeTestKotlin {
         assertTrue(myNews?.isSelected!!)
 
         assertDisplayingElements(androidDriver,
-                myNewsPageObject.myNewsSummary,
-                myNewsPageObject.myNewsTitle,
-                myNewsPageObject.addNewsButton
+                myNewsSummary,
+                myNewsTitle,
+                addNewsButton
         )
 
-        assertEquals(myNewsPageObject.myNewsTitleText, myNewsPageObject.myNewsTitle.text, "Text matched")
-        assertEquals(myNewsPageObject.myNewsSummaryText, myNewsPageObject.myNewsSummary.text, "Text matched")
+        assertEquals(myNewsTitleText, myNewsTitle?.text, "Text matched")
+        assertEquals(myNewsSummaryText, myNewsSummary?.text, "Text matched")
     }
 
     /**
@@ -273,18 +286,18 @@ class BBCNewsSmokeTestKotlin {
     @Severity(SeverityLevel.CRITICAL)
     fun testAddingTopicsToMyNewsPage() {
         startTest("MyNews", "Adding topics to MyNews", "Smoke")
-        tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
-        tapButton(androidDriver, myNewsPageObject.addTopics, false)
+        tapButton(androidDriver, myNewsStartButton, false)
+        tapButton(androidDriver, addTopics, false)
 
-        assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
-        assertDisplayingElements(androidDriver, myNewsPageObject.localNewsDisplayed)
+        assertEquals("Manchester", localNewsDisplayed?.text)
+        assertDisplayingElements(androidDriver, localNewsDisplayed)
 
-        scrollToElement(androidDriver, myTopicsPageObject.addWalesTopicButton)
-        tapButton(androidDriver, myTopicsPageObject.addWalesTopicButton, false)
+        scrollToElement(androidDriver, MyTopicsPageObject.addWalesTopicButton)
+        tapButton(androidDriver, MyTopicsPageObject.addWalesTopicButton, false)
         textPresent(androidDriver, "Wales", "added to")
 
-        scrollToElement(androidDriver, myTopicsPageObject.addWorldTopicButton)
-        tapButton(androidDriver, myTopicsPageObject.addWorldTopicButton, false)
+        scrollToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
+        tapButton(androidDriver, MyTopicsPageObject.addWorldTopicButton, false)
     }
 
 
@@ -297,10 +310,10 @@ class BBCNewsSmokeTestKotlin {
     fun testCheckAddedTopicsUnderMyTopics() {
         try {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
-            tapButton(androidDriver, myNewsPageObject.myTopics, false)
+            tapButton(androidDriver, MyNewsPageObject.myTopics, false)
             assertDisplayingElements(androidDriver,
-                    myTopicsPageObject.walesTopic,
-                    myTopicsPageObject.worldTopic
+                    MyTopicsPageObject.walesTopic,
+                    MyTopicsPageObject.worldTopic
             )
             navigateBack(androidDriver)
         } catch (e: Exception) {
@@ -319,8 +332,8 @@ class BBCNewsSmokeTestKotlin {
 
         try {
             assertDisplayingElements(androidDriver,
-                    myTopicsPageObject.walesTopic,
-                    myTopicsPageObject.worldTopic
+                    MyTopicsPageObject.walesTopic,
+                    MyTopicsPageObject.worldTopic
             )
         } catch (e: StaleElementReferenceException) {
             // todo find a way to stop StaleElementReferenceException
@@ -335,14 +348,14 @@ class BBCNewsSmokeTestKotlin {
     fun testMyNewsRemoveTopics() {
         startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
         tapButton(androidDriver, myNews, false)
-        tapButton(androidDriver, myNewsPageObject.editMyNews, false)
+        tapButton(androidDriver, MyNewsPageObject.editMyNews, false)
 
         assertDisplayingElements(androidDriver,
-                myTopicsPageObject.walesTopic,
-                myTopicsPageObject.worldTopic
+                MyTopicsPageObject.walesTopic,
+                MyTopicsPageObject.worldTopic
         )
 
-        tapButton(androidDriver, myNewsPageObject.removeTopics, false)
+        tapButton(androidDriver, MyNewsPageObject.removeTopics, false)
         tapButton(androidDriver, BasePageObject.backButton, false)
     }
 
@@ -367,14 +380,14 @@ class BBCNewsSmokeTestKotlin {
             )
         }
 
-        tapButton(androidDriver, myNewsPageObject.showMore, false)
+        tapButton(androidDriver, showMore, false)
 
-        scrollToElement(androidDriver, myNewsPageObject.showLess)
-        System.out.println("\"Show less\" text= " + myNewsPageObject.showLess.text)
+        scrollToElement(androidDriver, showLess)
+        System.out.println("\"Show less\" text= " + showLess?.text)
 
-        tapButton(androidDriver, myNewsPageObject.showLess, false)
-        assertDisplayingElements(androidDriver, myNewsPageObject.showMore)
-        System.out.println("\"Show more\" text= " + myNewsPageObject.showMore.text)
+        tapButton(androidDriver, showLess, false)
+        assertDisplayingElements(androidDriver, showMore)
+        System.out.println("\"Show more\" text= " + showMore?.text)
     }
 
     /**
@@ -411,8 +424,8 @@ class BBCNewsSmokeTestKotlin {
         tapButton(androidDriver, video, false)
         assertTrue(video?.isSelected!!)
 
-        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
-        assertDisplayingElements(androidDriver, videoPageObject.liveMediaItemCaption)
+        tapButton(androidDriver, bbcNewsChannel, false)
+        assertDisplayingElements(androidDriver, liveMediaItemCaption)
         try {
             if (shareStory?.isDisplayed!!) {
                 verticalSwipe(androidDriver, "Up")
@@ -422,7 +435,7 @@ class BBCNewsSmokeTestKotlin {
         } catch (e: NoSuchElementException) {
         }
 
-        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
+        tapButton(androidDriver, smpPlaceholderPlayButton, false)
     }
 
     /**
@@ -434,23 +447,23 @@ class BBCNewsSmokeTestKotlin {
     fun testCheckLiveVideoSeeking() {
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
 
-        tapButton(androidDriver, videoPageObject.transportControls, false)
-        tapButton(androidDriver, videoPageObject.transportControls, false)
+        tapButton(androidDriver, transportControls, false)
+        tapButton(androidDriver, transportControls, false)
 
         assertDisplayingElements(androidDriver,
-                videoPageObject.smpLiveIcon,
-                videoPageObject.smpVolumeButton,
-                videoPageObject.smpSeekBar
+                smpLiveIcon,
+                smpVolumeButton,
+                smpSeekBar
         )
 
-        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
-        waitForScreenToLoad(androidDriver, videoPageObject.smpSeekBar, 3)
+        tapButton(androidDriver, bbcNewsChannel, false)
+        waitForScreenToLoad(androidDriver, smpSeekBar, 3)
 
-        videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
+        videoPlaybackSeeking(androidDriver, smpSeekBar, 0.30)
 
-        assertDisplayingElements(androidDriver, videoPageObject.accessibilityPause)
-        tapButton(androidDriver, videoPageObject.smpPlayPauseButton, false)
-        assertDisplayingElements(androidDriver, videoPageObject.accessibilityPlay)
+        assertDisplayingElements(androidDriver, accessibilityPause)
+        tapButton(androidDriver, smpPlayPauseButton, false)
+        assertDisplayingElements(androidDriver, accessibilityPlay)
 
         navigateBack(androidDriver)
     }

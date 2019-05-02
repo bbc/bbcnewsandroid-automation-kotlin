@@ -1,57 +1,53 @@
-package com.bbcnews.automation.pageobjects;
+package com.bbcnews.automation.pageobjects
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.MobileElement
+import io.appium.java_client.pagefactory.AndroidFindBy
 
-public class MyTopicsPageObject {
-
-    public MyTopicsPageObject() {
-
-    }
+object MyTopicsPageObject {
 
     @AndroidFindBy(accessibility = "Button: Add England to My News")
-    public MobileElement addEnglandTopicButton;
+    val addEnglandTopicButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: Add World to My News")
-    public MobileElement addWorldTopicButton;
+    val addWorldTopicButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: Add Wales to My News")
-    public MobileElement addWalesTopicButton;
+    val addWalesTopicButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: Add Africa to My News")
-    public MobileElement addAfricaTopicButton;
+    val addAfricaTopicButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: Add European Union to My News")
-    public MobileElement addEuTopicButton;
+    val addEuTopicButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: Add Mortgages to My News")
-    public MobileElement addMortgagesTopicButton;
+    val addMortgagesTopicButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: Add YouTube to My News")
-    public MobileElement addYouTubeTopicButton;
+    val addYouTubeTopicButton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Africa']")
-    public MobileElement africaTopic;
+    val africaTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='England']")
-    public MobileElement englandTopic;
+    val englandTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Wales']")
-    public MobileElement walesTopic;
+    val walesTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='World']")
-    public MobileElement worldTopic;
+    val worldTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='European Union']")
-    public MobileElement europeanTopic;
+    val europeanTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Mortgages']")
-    public MobileElement mortgagesTopic;
+    val mortgagesTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='YouTube']")
-    public MobileElement youTubeTopic;
+    val youTubeTopic: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Education']")
-    public MobileElement educationTopic;
+    val educationTopic: MobileElement? = null
 
 }

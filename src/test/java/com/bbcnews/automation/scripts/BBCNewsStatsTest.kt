@@ -53,11 +53,7 @@ class BBCNewsStatsTest {
     private val statsTestData = StatsTestData()
 
     private lateinit var file: File
-    private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
-    private lateinit var myNewsPageObject: MyNewsPageObject
-    private lateinit var videoPageObject: VideoPageObjects
-    private lateinit var popularPageObject: PopularPageObjects
 
     @BeforeTest
     @Throws(Exception::class)
@@ -111,18 +107,15 @@ class BBCNewsStatsTest {
     }
 
     private fun initialiseObjects() = try {
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
 
-        myNewsPageObject = MyNewsPageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyNewsPageObject)
 
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), BasePageObject)
 
-        videoPageObject = VideoPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), VideoPageObjects)
 
-        popularPageObject = PopularPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), PopularPageObjects)
 
         emptyFolder(screenshotPath)
 
