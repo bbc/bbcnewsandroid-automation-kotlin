@@ -176,7 +176,6 @@ public class BBCNewsHindiPageObject {
     })
     public MobileElement pauseButton;
 
-
     @AndroidFindAll({
             @AndroidBy(id = "uk.co.bbc.hindi.internal:id/title"),
             @AndroidBy(id = "uk.co.bbc.hindi:id/title")

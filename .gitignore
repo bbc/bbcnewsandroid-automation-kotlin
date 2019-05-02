@@ -3,9 +3,13 @@ Screenshots
 test-output
 .idea/
 .apk
+.bin
+.lock
 bin/
 build/
 /*/build/
+*/build/
 .DS_STORE
 /*/*.png
 .gradle
+*/out/test/

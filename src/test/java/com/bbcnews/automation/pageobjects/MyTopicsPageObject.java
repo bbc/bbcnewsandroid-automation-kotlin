@@ -5,57 +5,53 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 
 public class MyTopicsPageObject {
 
-
-    public MyTopicsPageObject()
-    {
+    public MyTopicsPageObject() {
 
     }
 
     @AndroidFindBy(accessibility = "Button: Add England to My News")
-    public MobileElement englandtopic;
+    public MobileElement addEnglandTopicButton;
 
     @AndroidFindBy(accessibility = "Button: Add World to My News")
-    public MobileElement worldtopic;
+    public MobileElement addWorldTopicButton;
 
     @AndroidFindBy(accessibility = "Button: Add Wales to My News")
-    public MobileElement walestopic;
+    public MobileElement addWalesTopicButton;
 
     @AndroidFindBy(accessibility = "Button: Add Africa to My News")
-    public MobileElement africatopic;
+    public MobileElement addAfricaTopicButton;
 
     @AndroidFindBy(accessibility = "Button: Add European Union to My News")
-    public MobileElement europeuniontopic;
+    public MobileElement addEuTopicButton;
 
     @AndroidFindBy(accessibility = "Button: Add Mortgages to My News")
-    public MobileElement mortgagestopic;
+    public MobileElement addMortgagesTopicButton;
 
     @AndroidFindBy(accessibility = "Button: Add YouTube to My News")
-    public MobileElement youtubetopic;
+    public MobileElement addYouTubeTopicButton;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Africa']")
-    public MobileElement Africatopic;
+    public MobileElement africaTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='England']")
-    public MobileElement Englandtopic;
+    public MobileElement englandTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Wales']")
-    public MobileElement Walestopic;
+    public MobileElement walesTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='World']")
-    public MobileElement Worldtopic;
+    public MobileElement worldTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='European Union']")
-    public MobileElement Europeantopic;
+    public MobileElement europeanTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Mortgages']")
-    public MobileElement Mortgagestopic;
+    public MobileElement mortgagesTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='YouTube']")
-    public MobileElement Youtubetopic;
+    public MobileElement youTubeTopic;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Education']")
-    public MobileElement educationtopic;
-
-
+    public MobileElement educationTopic;
 
 }

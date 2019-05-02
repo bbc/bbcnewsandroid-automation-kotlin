@@ -1,11 +1,11 @@
 package com.bbcnews.automation.scripts
 
+
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
+import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
-
-
-import com.bbcnews.automation.testutils.Testutility
+import com.bbcnews.automation.testutils.TestUtility
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
@@ -18,9 +18,13 @@ import org.openqa.selenium.ScreenOrientation
 import org.openqa.selenium.StaleElementReferenceException
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.PageFactory
-import org.testng.Assert
+import org.testng.Assert.assertEquals
+import org.testng.Assert.assertTrue
 import org.testng.ITestResult
-import org.testng.annotations.*
+import org.testng.annotations.AfterMethod
+import org.testng.annotations.AfterTest
+import org.testng.annotations.BeforeTest
+import org.testng.annotations.Test
 import java.io.File
 import java.io.IOException
 import java.net.URL
@@ -33,8 +37,8 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
+    private var testUtility = TestUtility()
     private lateinit var file: File
-    private var testutility = Testutility()
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
     private lateinit var myNewsPageObject: MyNewsPageObject
@@ -45,123 +49,93 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
     @BeforeTest
     fun runTest() {
+        readDeviceDetailsCommandPrompt()
+        setUp()
+        /**
+         *  since on Hive, sometimes device wifi might be turned off
+         */
+        checkConnection(androidDriver)
 
-        try {
-
-            readDeviceDetailsCommandPrompt()
-            setUP()
-            /**
-             *  checking the connection , since on Hive, sometime device wifi might be in turned OFF
-             */
-            checkConnection(androidDriver)
-            /**
-             *  setting the view mode to Portrait , since on Hive, sometime device might be in Landscape mode
-             */
-            val orientation = androidDriver.orientation
-            if (orientation == ScreenOrientation.LANDSCAPE) {
-                androidDriver.rotate(ScreenOrientation.PORTRAIT)
-            }
-            /**
-             *  Unlocking device
-             */
-            val locked = androidDriver.isDeviceLocked
-            if (locked) {
-                androidDriver.unlockDevice()
-            }
-            initialiseObjects()
-        } catch (e: Exception) {
-            e.printStackTrace()
+        /**
+         *  setting the view mode to Portrait , since on Hive, sometime device might be in Landscape mode
+         */
+        val orientation = androidDriver.orientation
+        if (orientation == ScreenOrientation.LANDSCAPE) {
+            androidDriver.rotate(ScreenOrientation.PORTRAIT)
         }
+        /**
+         *  Unlocking device
+         */
+        val locked = androidDriver.isDeviceLocked
+        if (locked) {
+            androidDriver.unlockDevice()
+        }
+        initialiseObjects()
     }
 
     /**
      *  gets the details of the device, app path , appium port which are passed through command prompt
      */
-
     private fun readDeviceDetailsCommandPrompt() {
-        try {
-
-            deviceid = System.getProperty("DeviceID")
-            deviceName = System.getProperty("DeviceName")
-            appPath = System.getProperty("AppPath")
-            appiumPort = System.getProperty("AppiumPort")
-            println("Passed The Device ID is $deviceid")
-            println("Passed The Device Name is $deviceName")
-            println("Passed The Appium port is $appiumPort")
-            println("Passed The Application path  is $appPath")
-        } catch (e: Exception) {
-            e.printStackTrace()
-
-        }
-
+        deviceid = System.getProperty("DeviceID")
+        deviceName = System.getProperty("DeviceName")
+        appPath = System.getProperty("AppPath")
+        appiumPort = System.getProperty("AppiumPort")
+        println("Passed The Device ID is $deviceid")
+        println("Passed The Device Name is $deviceName")
+        println("Passed The Appium port is $appiumPort")
+        println("Passed The Application path  is $appPath")
     }
 
     /**
-     *
      * setup the desired capabilities based on the parameter set
      */
-
-    private fun setUP() {
-        try {
-            //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-            val appiumurl = "http://127.0.0.1:$appiumPort/wd/hub"
-            println("Appium Server Address : - $appiumurl")
-            capabilities = DesiredCapabilities()
-            capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
-            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-            capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-            capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-            capabilities.setCapability("appiumversion", "1.8.1")
-            capabilities.setCapability("app", appPath)
-            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
-            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            capabilities.setCapability("--session-override", true)
-            androidDriver = AndroidDriver(URL(appiumurl), capabilities)
-        } catch (e: Exception) {
-        }
+    private fun setUp() {
+        //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
+        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
+        println("Appium Server Address : - $appiumUrl")
+        capabilities = DesiredCapabilities()
+        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
+        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
+        capabilities.setCapability("appiumversion", "1.8.1")
+        capabilities.setCapability("app", appPath)
+        capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
+        capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
+        capabilities.setCapability("--session-override", true)
+        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
     }
 
-    /**
-     *
-     * function to initialise the page objects for Home page, Video page, popular page
-     */
     private fun initialiseObjects() {
-        try {
-            homePageObject = HomePageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
+        homePageObject = HomePageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
 
-            myNewsPageObject = MyNewsPageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
+        myNewsPageObject = MyNewsPageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
 
-            basePageObjectModel = BasePageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
+        basePageObjectModel = BasePageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
 
-            videoPageObject = VideoPageObjects()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
+        videoPageObject = VideoPageObjects()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
 
-            popularPageObject = PopularPageObjects()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
+        popularPageObject = PopularPageObjects()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
 
-            myTopicsPageObject = MyTopicsPageObject()
-            PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
+        myTopicsPageObject = MyTopicsPageObject()
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
 
-            testutility.emptyFolder(screenshotPath)
+        testUtility.emptyFolder(screenshotPath)
 
-            // startReport("SmokeTest");
-            createrReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
-            //createrReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
+        // startReport("SmokeTest");
+        createAReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
+        //createAReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
 
-            androidDriver.context("NATIVE_APP")
-            file = File(screenshotPath)
-            val screenshot = file.absolutePath
-            println("The ScreenShot Path is $screenshot")
-
-
-        } catch (e: NullPointerException) {
-            e.printStackTrace()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        androidDriver.context("NATIVE_APP")
+        file = File(screenshotPath)
+        val screenshot = file.absolutePath
+        println("The ScreenShot Path is $screenshot")
     }
 
     /**
@@ -169,156 +143,105 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
     @Test(priority = 1, description = "Launching the app")
     fun testOpenNewsApp() {
+        tapButton(androidDriver, basePageObjectModel.okButton, false)
+        tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
+
         try {
-
-            tapButton(androidDriver, basePageObjectModel.okButton, false)
-            tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
-            try {
-                if (androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed) {
-                    androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).click()
-
-                }
-            } catch (e: org.openqa.selenium.NoSuchElementException) {
-            }
-
+            tapButton(androidDriver, basePageObjectModel.errorRetryButton, false)
         } catch (e: Exception) {
-            e.printStackTrace()
+            // if the retry button is not present then do nothing
         }
 
     }
 
     /**
-     * un-comment if you want to check the screenshot compare tests
+     * uncomment if you want to check the screenshot compare tests
      */
-
-//    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
-//    @Throws(IOException::class)
-//    fun testtakeScreenshotsofPages() {
-//        tapButton(androidDriver, basePageObjectModel.topStories, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "topStories")
-//        tapButton(androidDriver, basePageObjectModel.myNews, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "myNews")
-//        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "popular")
-//        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "video")
-//        tapButton(androidDriver, basePageObjectModel.menuButton, false)
-//        testutility.AshotScreenshot(androidDriver, "Before", "menu")
-//        navigateBack(androidDriver)
-//    }
-
-    /**
-     * after app launches, checks the top stories page and assertion
-     */
+    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
+    @Throws(IOException::class)
+    fun testTakeScreenshotsOfPages() {
+        tapButton(androidDriver, basePageObjectModel.topStories, false)
+        testUtility.screenshot(androidDriver, "Before", "topStories")
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
+        testUtility.screenshot(androidDriver, "Before", "myNews")
+        tapButton(androidDriver, basePageObjectModel.popular, false)
+        testUtility.screenshot(androidDriver, "Before", "popular")
+        tapButton(androidDriver, basePageObjectModel.video, false)
+        testUtility.screenshot(androidDriver, "Before", "video")
+        tapButton(androidDriver, basePageObjectModel.menuButton, false)
+        testUtility.screenshot(androidDriver, "Before", "menu")
+        navigateBack(androidDriver)
+    }
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
-        try {
-            androidDriver.runAppInBackground(Duration.ofSeconds(30))
-            startTest("HomePage", "Checking the HomePage", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.topStories, false)
-            Assert.assertTrue(basePageObjectModel.topStories.isSelected)
-            elementDisplayed(androidDriver, basePageObjectModel.itemLayoutName)
-            elementDisplayed(androidDriver, basePageObjectModel.itemLayoutHomeSection)
-            elementDisplayed(androidDriver, basePageObjectModel.itemLayoutLastUpdated)
-            elementDisplayed(androidDriver, basePageObjectModel.myNews)
-            elementDisplayed(androidDriver, basePageObjectModel.popular)
-            elementDisplayed(androidDriver, basePageObjectModel.video)
-            elementDisplayed(androidDriver, basePageObjectModel.menuButton)
-            elementDisplayed(androidDriver, basePageObjectModel.search)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
+        androidDriver.runAppInBackground(Duration.ofSeconds(30))
+        startTest("HomePage", "Checking the HomePage", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.topStories, false)
+        assertTrue(basePageObjectModel.topStories.isSelected)
+        assertDisplayingElements(androidDriver,
+                basePageObjectModel.itemLayoutName,
+                basePageObjectModel.item_layout_home_section,
+                basePageObjectModel.item_layout_last_updated,
+                basePageObjectModel.myNews,
+                basePageObjectModel.popular,
+                basePageObjectModel.video,
+                basePageObjectModel.menuButton,
+                basePageObjectModel.search
+        )
     }
 
-    /**
-     * checks the myNews page by allowing the location services
-     */
-
-    @Test(priority = 3, description = "Test to check the Mynews page")
+    @Test(priority = 3, description = "Test to check the MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testAllowLocation() {
-        try {
-            startTest("MyNews", "Checking the MyNews", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.myNews, false)//,file.getAbsolutePath());
-            tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            tapButton(androidDriver, myNewsPageObject.allow_location, false)
-            tapButton(androidDriver, myNewsPageObject.allowlocation_premission, false)
-            navigateBack(androidDriver)
-        } catch (e: AssertionError) {
-            e.printStackTrace()
-        }
-
+        startTest("MyNews", "Checking the MyNews", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
+        tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
+        tapButton(androidDriver, myNewsPageObject.allowLocation, false)
+        tapButton(androidDriver, myNewsPageObject.allowLocationPermission, false)
+        navigateBack(androidDriver)
     }
 
-
-    /**
-     * checks the popular page most read
-     */
-    @Test(priority = 4, description = "Test to check the  popular page")
+    @Test(priority = 4, description = "Test to check the popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testPopularPage() {
-        try {
-            startTest("PopularPage", "Checking the Popular", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.popular, false)//,file.getAbsolutePath());
-            Assert.assertTrue(basePageObjectModel.popular.isSelected)
-            elementDisplayed(androidDriver, popularPageObject.mostread)
-            Assert.assertEquals("Most Read", popularPageObject.mostread.text, "Text Matched")
-        } catch (e: AssertionError) {
-            e.printStackTrace()
-        }
-
+        startTest("PopularPage", "Checking the Popular", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.popular, false)
+        assertTrue(basePageObjectModel.popular.isSelected)
+        assertDisplayingElements(androidDriver, popularPageObject.mostRead)
+        assertEquals("Most Read", popularPageObject.mostRead.text, "Text Matched")
     }
-
-    /**
-     * checks the popular most watched
-     */
 
     @Test(priority = 5, description = "checking that most watched displayed in popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    fun testcheckMostWatched() {
-        try {
-            startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
-            scrolltoElement(androidDriver, popularPageObject.popularmostwatched)
-            Assert.assertEquals("Most Watched", popularPageObject.popularmostwatched.text, "Text Matched")
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-
+    fun testMostWatched() {
+        startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
+        scrollToElement(androidDriver, popularPageObject.popularMostWatched)
+        assertEquals("Most Watched", popularPageObject.popularMostWatched.text, "Text Matched")
     }
-
-
-    /**
-     * check the MyNews Page
-     *
-     */
 
     @Test(priority = 6, description = "Test to check the Mynews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testMyNewsPage() {
-        try {
-            startTest("MyNews", "Checking the MyNews", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.myNews, false)//,file.getAbsolutePath());
-            Assert.assertTrue(basePageObjectModel.myNews.isSelected)
-            elementDisplayed(androidDriver, myNewsPageObject.mynews_summary)
-            elementDisplayed(androidDriver, myNewsPageObject.mynewstitle)
-            elementDisplayed(androidDriver, myNewsPageObject.addnews_button)
-            Assert.assertEquals(myNewsPageObject.mynewstitle_text, myNewsPageObject.mynewstitle.text, "Text matched")
-            Assert.assertEquals(myNewsPageObject.mynewssummary_text, myNewsPageObject.mynews_summary.text, "Text matched")
-        } catch (e: AssertionError) {
-            e.printStackTrace()
-        }
+        startTest("MyNews", "Checking the MyNews", "Smoke")
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
 
+        assertTrue(basePageObjectModel.myNews.isSelected)
+
+        assertDisplayingElements(androidDriver,
+                myNewsPageObject.myNewsSummary,
+                myNewsPageObject.myNewsTitle,
+                myNewsPageObject.addNewsButton
+        )
+
+        assertEquals(myNewsPageObject.myNewsTitleText, myNewsPageObject.myNewsTitle.text, "Text matched")
+        assertEquals(myNewsPageObject.myNewsSummaryText, myNewsPageObject.myNewsSummary.text, "Text matched")
     }
 
     /**
@@ -326,133 +249,110 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
      */
     @Test(priority = 7, description = "Test to check the adding the topics to MyNews page")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
     fun testAddingTopicsToMyNewsPage() {
-        try {
-            startTest("MyNews", "Adding topics to MyNews", "Smoke")
-            tapButton(androidDriver, myNewsPageObject.mynews_startButton, false)
-            tapButton(androidDriver, myNewsPageObject.addtopics, false)
+        startTest("MyNews", "Adding topics to MyNews", "Smoke")
+        tapButton(androidDriver, myNewsPageObject.myNewsStartButton, false)
+        tapButton(androidDriver, myNewsPageObject.addTopics, false)
 
-            Assert.assertEquals("Manchester", myNewsPageObject.localnews_displayed.text)
-            elementDisplayed(androidDriver, myNewsPageObject.localnews_displayed)
+        assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
+        assertDisplayingElements(androidDriver, myNewsPageObject.localNewsDisplayed)
 
-            scrolltoElement(androidDriver, myTopicsPageObject.walestopic)
-            tapButton(androidDriver, myTopicsPageObject.walestopic, false)
-            textpresent(androidDriver, "Wales", "added to")
+        scrollToElement(androidDriver, myTopicsPageObject.addWalesTopicButton)
+        tapButton(androidDriver, myTopicsPageObject.addWalesTopicButton, false)
+        textPresent(androidDriver, "Wales", "added to")
 
-            scrolltoElement(androidDriver, myTopicsPageObject.worldtopic)
-            tapButton(androidDriver, myTopicsPageObject.worldtopic, false)
-
-
-        } catch (e: StaleElementReferenceException) {
-            e.printStackTrace()
-        }
-
+        scrollToElement(androidDriver, myTopicsPageObject.addWorldTopicButton)
+        tapButton(androidDriver, myTopicsPageObject.addWorldTopicButton, false)
     }
 
 
     /**
      * Checked the selected topics are getting displayed under Added Topics
      */
-
     @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
     @Story("MyTopics")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyTopics() {
         try {
             startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
-            tapButton(androidDriver, myNewsPageObject.mytopics, false)
-            elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
-            elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
+            tapButton(androidDriver, myNewsPageObject.myTopics, false)
+            assertDisplayingElements(androidDriver,
+                    myTopicsPageObject.walesTopic,
+                    myTopicsPageObject.worldTopic
+            )
             navigateBack(androidDriver)
         } catch (e: Exception) {
+
         }
     }
 
     /**
      * Checks for Added topics displayed under My News page
      */
-
     @Test(priority = 9, description = "Test to check whether added topics displayed under MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyNews() {
+        startTest("MyNews", "Checking added topics in My News", "Smoke")
+
         try {
-            startTest("MyNews", "Checking Added topics in MyNews", "Smoke")
-            elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
-            elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
-
-        } catch (e: Exception) {
+            assertDisplayingElements(androidDriver,
+                    myTopicsPageObject.walesTopic,
+                    myTopicsPageObject.worldTopic
+            )
+        } catch (e: StaleElementReferenceException) {
+            // todo find a way to stop StaleElementReferenceException
         }
-
     }
-
 
     /**
      * removing one of the topics(England) from MyNews-Added Topics
      */
-
     @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
     @Throws(Exception::class)
     fun testMyNewsRemoveTopics() {
-        try {
-            startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
-            tapButton(androidDriver, basePageObjectModel.myNews, false)
-            tapButton(androidDriver, myNewsPageObject.editMyNews, false)
-            try {
-                elementDisplayed(androidDriver, myTopicsPageObject.Walestopic)
-                elementDisplayed(androidDriver, myTopicsPageObject.Worldtopic)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
+        tapButton(androidDriver, basePageObjectModel.myNews, false)
+        tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 
-            tapButton(androidDriver, myNewsPageObject.removetopics, false)
-            tapButton(androidDriver, basePageObjectModel.backButton, false)
+        assertDisplayingElements(androidDriver,
+                myTopicsPageObject.walesTopic,
+                myTopicsPageObject.worldTopic
+        )
 
-        } catch (e: NullPointerException) {
-
-        }
-
+        tapButton(androidDriver, myNewsPageObject.removeTopics, false)
+        tapButton(androidDriver, basePageObjectModel.backButton, false)
     }
 
     /**
      * Checks the Articles from Topics page, Checks for More button and checks for Less button displayed
      */
-
-
     @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
-    @Throws(Exception::class)
     fun testCheckArticlesOfTopics() {
-        try {
-            startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
-            val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
-            val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
-            val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
-            val total = contentImages.size
-            System.out.println("The size of cards are$total")
+        startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
 
-//            for (cardimage in contentImages) {
-//                tapButton(androidDriver, cardimage, false)
-//                navigateBack(androidDriver)
-//            }
-            for (i in 0 until total) {
+        val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
+        val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
+        val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
 
-                elementDisplayed(androidDriver, contentCardTitle[i])
-                elementDisplayed(androidDriver, contentCardUpdated[i])
-            }
+        val total = contentImages.size
+        System.out.println("The number of cards is: $total")
 
-            tapButton(androidDriver, myNewsPageObject.showmore, false)
-
-            scrolltoElement(androidDriver, myNewsPageObject.showless)
-            System.out.println("The text of  are:- " + myNewsPageObject.showless.text)
-            tapButton(androidDriver, myNewsPageObject.showless, false)
-            elementDisplayed(androidDriver, myNewsPageObject.showmore)
-            System.out.println("The text of  are:- " + myNewsPageObject.showmore.text)
-
-
-        } catch (e: Exception) {
+        for (i in contentImages.indices) {
+            assertDisplayingElements(androidDriver,
+                    contentCardTitle[i],
+                    contentCardUpdated[i]
+            )
         }
 
+        tapButton(androidDriver, myNewsPageObject.showMore, false)
+
+        scrollToElement(androidDriver, myNewsPageObject.showLess)
+        System.out.println("\"Show less\" text= " + myNewsPageObject.showLess.text)
+
+        tapButton(androidDriver, myNewsPageObject.showLess, false)
+        assertDisplayingElements(androidDriver, myNewsPageObject.showMore)
+        System.out.println("\"Show more\" text= " + myNewsPageObject.showMore.text)
     }
 
     /**
@@ -464,42 +364,44 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Throws(Exception::class, AssertionError::class)
     fun testMenuPage() {
         startTest("Menu", "Checking the Menu Items", "Smoke")
-        tapButton(androidDriver, basePageObjectModel.menuButton, false)//,file.getAbsolutePath());
-        elementDisplayed(androidDriver, basePageObjectModel.appInfo)
-        elementDisplayed(androidDriver, basePageObjectModel.otherBbcApps)
-        elementDisplayed(androidDriver, basePageObjectModel.InternalSettings)
-        elementDisplayed(androidDriver, basePageObjectModel.settings)
+        tapButton(androidDriver, basePageObjectModel.menuButton, false)
+
+        assertDisplayingElements(androidDriver,
+                basePageObjectModel.appInfo,
+                basePageObjectModel.otherBbcApps,
+                basePageObjectModel.InternalSettings,
+                basePageObjectModel.settings
+        )
+
         navigateBack(androidDriver)
     }
 
     /**
      * check the live video on video page
      */
-
     @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
     fun testVideoPage() {
-        startTest("Videopgae", "Checking the Video", "Smoke")
+        startTest("VideoPage", "Checking the Video", "Smoke")
+
         tapButton(androidDriver, basePageObjectModel.video, false)
-        // AshotScreenshot(androidDriver,"After","VideoPage");
-        Assert.assertTrue(basePageObjectModel.video.isSelected)
-        // elementDisplayed(androidDriver, videoPageObject.livebbchannel);
-        tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)//,file.getAbsolutePath());
-        elementDisplayed(androidDriver, videoPageObject.live_media_item_caption)
+        assertTrue(basePageObjectModel.video.isSelected)
+
+        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
+        assertDisplayingElements(androidDriver, videoPageObject.liveMediaItemCaption)
         try {
             if (!basePageObjectModel.shareStory.isDisplayed) {
                 verticalSwipe(androidDriver, "Up")
-                elementDisplayed(androidDriver, basePageObjectModel.shareStory)
+
+                assertDisplayingElements(androidDriver, basePageObjectModel.shareStory)
             }
         } catch (e: NoSuchElementException) {
         }
 
-        tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
-
+        tapButton(androidDriver, videoPageObject.smpPlaceholderPlayButton, false)
     }
-
 
     /**
      * check the live video  seeking
@@ -507,23 +409,26 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
     @Test(priority = 14, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
-    @Throws(AssertionError::class, Exception::class)
     fun testCheckLiveVideoSeeking() {
-
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
 
-        tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        tapButton(androidDriver, videoPageObject.transportcontrol, false)
-        elementDisplayed(androidDriver, videoPageObject.smpliveicon)
-        elementDisplayed(androidDriver, videoPageObject.smp_volume_button)
-        elementDisplayed(androidDriver, videoPageObject.smp_seek_bar)
-        tapButton(androidDriver, videoPageObject.bbcnewsChannel, false)
-        tapButton(androidDriver, videoPageObject.smp_placeholder_play_button, false)
-        try {
-            videoplaybackseeking(androidDriver, videoPageObject.smp_seek_bar, 0.30)
-            isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_live_icon"))
-        } catch (e: Exception) {
-        }
+        tapButton(androidDriver, videoPageObject.transportControls, false)
+        tapButton(androidDriver, videoPageObject.transportControls, false)
+
+        assertDisplayingElements(androidDriver,
+                videoPageObject.smpLiveIcon,
+                videoPageObject.smpVolumeButton,
+                videoPageObject.smpSeekBar
+        )
+
+        tapButton(androidDriver, videoPageObject.bbcNewsChannel, false)
+        waitForScreenToLoad(androidDriver, videoPageObject.smpSeekBar, 3)
+
+        videoPlaybackSeeking(androidDriver, videoPageObject.smpSeekBar, 0.30)
+
+        assertDisplayingElements(androidDriver, videoPageObject.accessibilityPause)
+        tapButton(androidDriver, videoPageObject.smpPlayPauseButton, false)
+        assertDisplayingElements(androidDriver, videoPageObject.accessibilityPlay)
 
         navigateBack(androidDriver)
     }
@@ -537,11 +442,11 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             startTest("Search", "Checking for Search Topics", "Smoke")
             tapButton(androidDriver, basePageObjectModel.searchButton, false)
             enterText(basePageObjectModel.searchField, basePageObjectModel.searchText)
-            sleepmethod(1000)
-            Assert.assertEquals(basePageObjectModel.searchText, basePageObjectModel.searchKeyword.text, "Text Matched")
+            waitFor(1000)
+            assertEquals(basePageObjectModel.searchText, basePageObjectModel.searchKeyword.text, "Text Matched")
             tapButton(androidDriver, basePageObjectModel.searchKeyword, false)
             val title = getText(basePageObjectModel.headlineTitle)
-            Assert.assertEquals(basePageObjectModel.searchText, title)
+            assertEquals(basePageObjectModel.searchText, title)
             tapButton(androidDriver, basePageObjectModel.backButton, false)
             navigateBack(androidDriver)
         } catch (e: Exception) {
@@ -550,40 +455,45 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
 
     }
 
-    /**
-     * un-comment if you want to check the screenshot compare tests
-     */
-
-//    @Test(priority = 16, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
+//    /**
+//     * un-comment if you want to check the screenshot compare tests
+//     */
+//    @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
 //    @Throws(IOException::class)
-//    fun testtakescreenshotafter()
-//    {
+//    fun testTakeScreenshotAfter() {
+//        try {
+//            tapButton(androidDriver, basePageObjectModel.navigate_back, false)
+//        } catch (e: NoSuchElementException) {
+//            // Ignore if already on the main screen
+//            assertDisplayingElements(androidDriver, homePageObject.menuButton)
+//        }
+//
 //        tapButton(androidDriver, basePageObjectModel.topStories, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "topStories")
+//        testUtility.screenshot(androidDriver, "After", "topStories")
+//
 //        tapButton(androidDriver, basePageObjectModel.myNews, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "myNews")
+//        testUtility.screenshot(androidDriver, "After", "myNews")
+//
 //        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "popular")
+//        testUtility.screenshot(androidDriver, "After", "popular")
+//
 //        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "video")
+//        testUtility.screenshot(androidDriver, "After", "video")
+//
 //        tapButton(androidDriver, basePageObjectModel.menuButton, false)
-//        testutility.AshotScreenshot(androidDriver, "After", "menu")
+//        testUtility.screenshot(androidDriver, "After", "menu")
+//
 //        navigateBack(androidDriver)
 //    }
 //
-//
-
-    /**
-     * un-comment if you want to check the screenshot compare tests
-     */
-
+//    /**
+//     * un-comment if you want to check the screenshot compare tests
+//     */
 //    @Test(priority = 17, description = "Compares the images")
 //    @Throws(IOException::class)
-//    fun testcomparetheimages()
-//    {
-//        startTest("CompraeImage", "Compares the HomePage", "Smoke")
-//         testutility.comparetwoimages()
-//
+//    fun testCompareImages() {
+//        startTest("CompareImages", "Compares the HomePage", "Smoke")
+//        testUtility.compareTwoImages()
 //    }
 
 
@@ -596,17 +506,15 @@ class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
             getTestResult(androidDriver, result)
         } catch (e: IOException) {
         }
-
     }
 
     @AfterTest
     fun tearDown() {
         publishReport()
-        testutility.emptyFolder("./Screenshots/Before")
-        testutility.emptyFolder("./Screenshots/After")
+        testUtility.emptyFolder("./Screenshots/Before")
+        testUtility.emptyFolder("./Screenshots/After")
         androidDriver.closeApp()
         androidDriver.removeApp("bbc.mobile.news.uk.internal")
         androidDriver.quit()
-
     }
 }

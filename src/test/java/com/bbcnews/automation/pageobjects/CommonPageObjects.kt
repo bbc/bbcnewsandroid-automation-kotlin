@@ -5,24 +5,21 @@ import io.appium.java_client.MobileElement
 import io.appium.java_client.pagefactory.AndroidBy
 import io.appium.java_client.pagefactory.AndroidFindAll
 import io.appium.java_client.pagefactory.AndroidFindBy
-import org.openqa.selenium.support.FindBy
 
-class CommonPageObjects
-{
+class CommonPageObjects {
 
     internal var appiumDriver: AppiumDriver<MobileElement>? = null
 
-    fun CommonPageObjects()
-    {
+    fun commonPageObjects() {
 
     }
 
     @AndroidFindBy(accessibility = "Navigate up")
-    var navigate_back: MobileElement? = null
+    var navigateBack: MobileElement? = null
 
     //@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1' and @text='OK']")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
-    var okbutton: MobileElement? = null
+    var okButton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='GO TO SETTINGS']")
     var settingsButton: MobileElement? = null
@@ -32,13 +29,13 @@ class CommonPageObjects
 
     // @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button2' and @text='NO, THANKS.']")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='NO, THANKS.']")
-    var nothanksbutton: MobileElement? = null
+    var noThanksButton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Top Stories']")
-    var topstories: MobileElement? = null
+    var topStories: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='My News']")
-    var mynews: MobileElement? = null
+    var myNews: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Popular']")
     var popular: MobileElement? = null
@@ -47,190 +44,186 @@ class CommonPageObjects
     var video: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Search")
-    var searchbutton: MobileElement? = null
+    var searchButton: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Share story")
-    var sharestory: MobileElement? = null
-
+    var shareStory: MobileElement? = null
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"), AndroidBy(accessibility = "Search"))
     var search: MobileElement? = null
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutName")
-    var item_layout_name: MobileElement? = null
+    var itemLayoutName: MobileElement? = null
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated")
-    var item_layout_last_updated: MobileElement? = null
+    var itemLayoutLastUpdated: MobileElement? = null
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection")
-    var item_layout_home_section: MobileElement? = null
+    var itemLayoutHomeSection: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
-    var menubutton: MobileElement? = null
+    var menuButton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Settings']")
     var settings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='App info']")
-    var Appinfo: MobileElement? = null
+    var appInfo: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Other BBC apps']")
-    var OtherBBCapps: MobileElement? = null
+    var otherBbcApps: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Internal Settings']")
-    var InternalSettings: MobileElement? = null
+    var internalSettings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Search topics and articles']")
-    var searchfield: MobileElement? = null
+    var searchField: MobileElement? = null
 
     // @AndroidFindBy(xpath="//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/chip_item') and @index='0']")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Brexit' and @index='0']")
-    var searchkeyword: MobileElement? = null
+    var searchKeyword: MobileElement? = null
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/title")
-    var headlinetitle: MobileElement? = null
+    var headlineTitle: MobileElement? = null
 
     //  @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/heading")
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/heading') and @index='0']")
     //@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/content_card_ordered_badge') and @text='1']")
-    var searchheading: MobileElement? = null
+    var searchHeading: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='2']")
-    var searchheading2: MobileElement? = null
+    var searchHeading2: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='4']")
-    var searchheading4: MobileElement? = null
+    var searchHeading4: MobileElement? = null
 
     @AndroidFindBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='1']")
-    var searchsuggest1: MobileElement? = null
-    var searchsuggest1_text = "India"
+    var searchSuggest1: MobileElement? = null
+    var searchSuggest1Text = "India"
 
     @AndroidFindBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='2']")
-    var searchsuggest2: MobileElement? = null
-    var searchsuggest2_text = "India-Pakistan independence"
+    var searchSuggest2: MobileElement? = null
+    var searchSuggest2Text = "India-Pakistan independence"
 
     @AndroidFindBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='3']")
-    var searchsuggest3: MobileElement? = null
-    var searchsuggest3_text = "Rape in India"
+    var searchSuggest3: MobileElement? = null
+
+    var searchSuggest3Text = "Rape in India"
 
     @AndroidFindBy(accessibility = "Cancel search")
     var cancelSearch: MobileElement? = null
 
-    var SubDirectory = "Screenshots"
+    var subDirectory = "Screenshots"
 
-    var ScreenshotPaths: String? = null
+    var screenshotPaths: String? = null
 
-    var searchtext = "Brexit"
-
+    var searchText = "Brexit"
 
     //BBC News Hindi Common Page Objects
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='होम पेज']")
-    var bbcHindi_homepage: MobileElement? = null
+    var bbcHindiHomepage: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='भारत']")
-    var bbcHindi_india: MobileElement? = null
+    var bbcHindiIndia: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='अंतरराष्ट्रीय']")
-    var bbcHindi_international: MobileElement? = null
+    var bbcHindiInternational: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मनोरंजन']")
-    var bbcHindi_entertainment: MobileElement? = null
+    var bbcHindiEntertainment: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='खेल']")
-    var bbcHindi_sports: MobileElement? = null
+    var bbcHindiSports: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='रेडियो']")
-    var bbcHindi_radio: MobileElement? = null
+    var bbcHindiRadio: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='विज्ञान-टेक्नॉलॉजी']")
-    var bbcHindi_sciencetechnology: MobileElement? = null
+    var bbcHindiScienceTechnology: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='देखिए']")
-    var bbcHindi_lookat: MobileElement? = null
+    var bbcHindiLookAt: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='तस्वीरें']")
-    var bbcHindi_thephotos: MobileElement? = null
+    var bbcHindiThePhotos: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सोशल']")
-    var bbcHindi_social: MobileElement? = null
+    var bbcHindiSocial: MobileElement? = null
 
     @AndroidFindBy(accessibility = "More options")
-    var bbc_moreoptions: MobileElement? = null
+    var bbcMoreOptions: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सेटिंग्स']")
-    var bbcHindi_settings: MobileElement? = null
+    var bbcHindiSettings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मदद']")
-    var bbcHindi_help: MobileElement? = null
+    var bbcHindiHelp: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='संपर्क करें']")
-    var bbcHindi_pleasecontact: MobileElement? = null
+    var bbcHindipleasecontact: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='बीबीसी के दूसरे ऐप्स']")
-    var bbcHindi_OtherBBCapplications: MobileElement? = null
+    var bbcHindiOtherBbcApplications: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Internal Settings']")
-    var bbcHindi_Internalsettings: MobileElement? = null
+    var bbcHindiInternalSettings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@index='0']/android.view.ViewGroup[@index='0']/android.widget.ImageButton[@index='0']")
-    var bbcHindi_Moresettings: MobileElement? = null
+    var bbcHindiMoreSettings: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='स्थानीय समाचार']")
-    var bbcHindi_localnews: MobileElement? = null
+    var bbcHindiLocalNews: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='टॉपिक्स']")
-    var bbcHindi_topics: MobileElement? = null
+    var bbcHindiTopics: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: टॉपिक्स , collapse group")
-    var bbcHindi_topics_collapsegroup: MobileElement? = null
+    var bbcHindiTopicsCollapseGroup: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: स्थानीय समाचार , collapse group")
-    var bbcHindi_localnews_collapsegroup: MobileElement? = null
+    var bbcHindiLocalNewsCollapseGroup: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: होम पेज ")
-    var hindihomepage: MobileElement? = null
+    var hindiHomepage: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: भारत ")
-    var hindibharath: MobileElement? = null
+    var hindiBharath: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: अंतरराष्ट्रीय ")
-    var hindiinternatonal: MobileElement? = null
+    var hindiInternatonal: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: मनोरंजन ")
-    var hindienrairnment: MobileElement? = null
+    var hindiEntertainment: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: खेल ")
-    var hindisports: MobileElement? = null
+    var hindiSports: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: विज्ञान-टेक्नॉलॉजी ")
-    var hindiscience: MobileElement? = null
+    var hindiScience: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: सोशल ")
-    var hindisocial: MobileElement? = null
+    var hindiSocial: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: देखिए ")
-    var hindilookat: MobileElement? = null
+    var hindiLookAt: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Button: तस्वीरें ")
-    var hindiphotos: MobileElement? = null
+    var hindiPhotos: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.Button[@index=1]")
-    var bbcHindi_okbutton: MobileElement? = null
+    var bbcHindiOkButton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='UK Politics added to My News']")
     //   @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/snackbar_text")
-    var alert_text: MobileElement? = null
+    var alertText: MobileElement? = null
 
     //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/snackbar_action")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='UNDO' and @index='1']")
-    var undo_button: MobileElement? = null
+    var undoButton: MobileElement? = null
 
-    var alert_text_uk = "UK Politics added to My News"
+    var alertTextUk = "UK Politics added to My News"
 
-    var alert_text_business = "Business added to My News"
-
-
-
+    var alertTextBusiness = "Business added to My News"
 
 }
