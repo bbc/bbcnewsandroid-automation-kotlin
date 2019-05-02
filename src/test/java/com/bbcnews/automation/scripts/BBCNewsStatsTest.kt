@@ -8,7 +8,7 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.testutils.TestUtility
+import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
@@ -36,9 +36,8 @@ class BBCNewsStatsTest {
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
-    private var testUtility = TestUtility()
-    private var charlesProxy = CharlesProxy()
-    private var statsTestData = StatsTestData()
+    private val charlesProxy = CharlesProxy()
+    private val statsTestData = StatsTestData()
 
     private lateinit var file: File
     private lateinit var homePageObject: HomePageObject
@@ -116,7 +115,7 @@ class BBCNewsStatsTest {
         popularPageObject = PopularPageObjects()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
 
-        testUtility.emptyFolder(screenshotPath)
+        emptyFolder(screenshotPath)
 
         createAReportHive("Regression", deviceName.toString(), deviceId.toString())
 

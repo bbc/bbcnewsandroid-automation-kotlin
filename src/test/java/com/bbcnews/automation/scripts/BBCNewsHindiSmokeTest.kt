@@ -14,7 +14,7 @@ import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject
 import com.bbcnews.automation.pageobjects.HomePageObject
-import com.bbcnews.automation.testutils.TestUtility
+import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
@@ -43,7 +43,6 @@ class BBCNewsHindiSmokeTest {
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
-    private var testutility = TestUtility()
 
     private lateinit var file: File
     private lateinit var androidDriver: AndroidDriver<MobileElement>
@@ -95,7 +94,7 @@ class BBCNewsHindiSmokeTest {
         bbcNewsHindiPageObject = BBCNewsHindiPageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), bbcNewsHindiPageObject)
 
-        testutility.emptyFolder(screenshotPath)
+        emptyFolder(screenshotPath)
 
         createAReportHive("Regression", deviceName.toString(), deviceid.toString())
 

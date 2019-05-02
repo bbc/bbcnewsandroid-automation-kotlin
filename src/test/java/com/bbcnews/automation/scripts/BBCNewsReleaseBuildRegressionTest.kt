@@ -25,7 +25,7 @@ import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
-import com.bbcnews.automation.testutils.TestUtility
+import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.StartsActivity
@@ -52,7 +52,6 @@ import java.util.*
 class BBCNewsReleaseBuildRegressionTest {
 
     private var capabilities = DesiredCapabilities()
-    private var testutility = TestUtility()
     private var deviceid: String? = null
     private var deviceName: String? = null
     private var appPath: String? = null
@@ -130,7 +129,7 @@ class BBCNewsReleaseBuildRegressionTest {
         myTopicsPageObject = MyTopicsPageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
 
-        testutility.emptyFolder(screenshotPath)
+        emptyFolder(screenshotPath)
 
         createAReportHive("Regression", deviceName.toString(), deviceid.toString())
 

@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.imageio.ImageIO
 
-class TestUtility {
+object TestUtility {
     /**
      * Function to create a folder with the project path
      * @param, Directory path

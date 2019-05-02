@@ -18,7 +18,8 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitForScreen
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
-import com.bbcnews.automation.testutils.TestUtility
+import com.bbcnews.automation.testutils.TestUtility.emptyFolder
+import com.bbcnews.automation.testutils.TestUtility.screenshot
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator
@@ -50,7 +51,6 @@ class BBCNewsSmokeTestKotlin {
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
-    private var testUtility = TestUtility()
     private lateinit var file: File
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
@@ -139,7 +139,7 @@ class BBCNewsSmokeTestKotlin {
         myTopicsPageObject = MyTopicsPageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), myTopicsPageObject)
 
-        testUtility.emptyFolder(screenshotPath)
+        emptyFolder(screenshotPath)
 
         // startReport("SmokeTest");
         createAReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
@@ -174,15 +174,15 @@ class BBCNewsSmokeTestKotlin {
     @Throws(IOException::class)
     fun testTakeScreenshotsOfPages() {
         tapButton(androidDriver, basePageObjectModel.topStories, false)
-        testUtility.screenshot(androidDriver, "Before", "topStories")
+        screenshot(androidDriver, "Before", "topStories")
         tapButton(androidDriver, basePageObjectModel.myNews, false)
-        testUtility.screenshot(androidDriver, "Before", "myNews")
+        screenshot(androidDriver, "Before", "myNews")
         tapButton(androidDriver, basePageObjectModel.popular, false)
-        testUtility.screenshot(androidDriver, "Before", "popular")
+        screenshot(androidDriver, "Before", "popular")
         tapButton(androidDriver, basePageObjectModel.video, false)
-        testUtility.screenshot(androidDriver, "Before", "video")
+        screenshot(androidDriver, "Before", "video")
         tapButton(androidDriver, basePageObjectModel.menuButton, false)
-        testUtility.screenshot(androidDriver, "Before", "menu")
+        screenshot(androidDriver, "Before", "menu")
         navigateBack(androidDriver)
     }
 
@@ -482,19 +482,19 @@ class BBCNewsSmokeTestKotlin {
 //        }
 //
 //        tapButton(androidDriver, basePageObjectModel.topStories, false)
-//        testUtility.screenshot(androidDriver, "After", "topStories")
+//        screenshot(androidDriver, "After", "topStories")
 //
 //        tapButton(androidDriver, basePageObjectModel.myNews, false)
-//        testUtility.screenshot(androidDriver, "After", "myNews")
+//        screenshot(androidDriver, "After", "myNews")
 //
 //        tapButton(androidDriver, basePageObjectModel.popular, false)
-//        testUtility.screenshot(androidDriver, "After", "popular")
+//        screenshot(androidDriver, "After", "popular")
 //
 //        tapButton(androidDriver, basePageObjectModel.video, false)
-//        testUtility.screenshot(androidDriver, "After", "video")
+//        screenshot(androidDriver, "After", "video")
 //
 //        tapButton(androidDriver, basePageObjectModel.menuButton, false)
-//        testUtility.screenshot(androidDriver, "After", "menu")
+//        screenshot(androidDriver, "After", "menu")
 //
 //        navigateBack(androidDriver)
 //    }
@@ -506,7 +506,7 @@ class BBCNewsSmokeTestKotlin {
 //    @Throws(IOException::class)
 //    fun testCompareImages() {
 //        startTest("CompareImages", "Compares the HomePage", "Smoke")
-//        testUtility.compareTwoImages()
+//        compareTwoImages()
 //    }
 
 
@@ -524,8 +524,8 @@ class BBCNewsSmokeTestKotlin {
     @AfterTest
     fun tearDown() {
         publishReport()
-        testUtility.emptyFolder("./Screenshots/Before")
-        testUtility.emptyFolder("./Screenshots/After")
+        emptyFolder("./Screenshots/Before")
+        emptyFolder("./Screenshots/After")
         androidDriver.closeApp()
         androidDriver.removeApp("bbc.mobile.news.uk.internal")
         androidDriver.quit()
