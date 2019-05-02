@@ -1,7 +1,20 @@
 package com.bbcnews.automation.scripts
 
-
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.navigateBack
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.textPresent
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.verticalSwipe
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.videoPlaybackSeeking
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitFor
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitForScreenToLoad
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
@@ -30,7 +43,7 @@ import java.io.IOException
 import java.net.URL
 import java.time.Duration
 
-class BBCNewsSmokeTestKotlin : CommonFunctionKotlin() {
+class BBCNewsSmokeTestKotlin {
 
     private var capabilities = DesiredCapabilities()
     private var deviceid: String? = null

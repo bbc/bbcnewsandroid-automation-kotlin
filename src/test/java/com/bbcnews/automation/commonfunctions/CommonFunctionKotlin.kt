@@ -1,6 +1,5 @@
 package com.bbcnews.automation.commonfunctions
 
-
 import com.aventstack.extentreports.ExtentReports
 import com.aventstack.extentreports.ExtentTest
 import com.aventstack.extentreports.Status
@@ -38,8 +37,7 @@ import java.time.Duration
 import java.util.*
 import javax.imageio.ImageIO
 
-
-open class CommonFunctionKotlin {
+object CommonFunctionKotlin {
 
     private lateinit var extent: ExtentReports
     private lateinit var htmlReporter: ExtentHtmlReporter
@@ -82,12 +80,12 @@ open class CommonFunctionKotlin {
         htmlReporter.config().timeStampFormat = "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
     }
 
-    open fun startTest(testName: String, testDescription: String, category: String) {
+    fun startTest(testName: String, testDescription: String, category: String) {
         test = extent.createTest(testName, testDescription)
         test?.assignCategory(category)
     }
 
-    open fun publishReport() = extent.flush()
+    fun publishReport() = extent.flush()
 
     /**
      * Appium Android default method
@@ -142,7 +140,7 @@ open class CommonFunctionKotlin {
      * @param, driver, element and seconds to wait for page to load
      */
 
-    open fun waitForScreenToLoad(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
+    fun waitForScreenToLoad(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
         val wait = WebDriverWait(driver, seconds.toLong())
         wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
     }
@@ -185,7 +183,7 @@ open class CommonFunctionKotlin {
      * Function to create a folder with the project path
      * @param, Directory path
      */
-    open fun extentResultFolder(path: String): String? {
+    fun extentResultFolder(path: String): String? {
         try {
             // Create one directory
             val success = File(path).mkdirs()
@@ -224,7 +222,7 @@ open class CommonFunctionKotlin {
      * @param, driverType
      */
 
-    open fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingdirection: String) {
+    fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingdirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
         val width = dimension.getWidth()
