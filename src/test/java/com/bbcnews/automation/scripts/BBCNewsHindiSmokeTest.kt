@@ -87,9 +87,7 @@ class BBCNewsHindiSmokeTest {
     }
 
     private fun launchBbcNews() {
-        val homePageObject = HomePageObject()
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
 
         bbcNewsHindiPageObject = BBCNewsHindiPageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), bbcNewsHindiPageObject)

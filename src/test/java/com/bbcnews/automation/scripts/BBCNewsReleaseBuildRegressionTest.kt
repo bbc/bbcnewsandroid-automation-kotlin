@@ -25,6 +25,17 @@ import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
+import com.bbcnews.automation.pageobjects.HomePageObject.checkBackLater
+import com.bbcnews.automation.pageobjects.HomePageObject.educationTopics
+import com.bbcnews.automation.pageobjects.HomePageObject.familyEducationTopic
+import com.bbcnews.automation.pageobjects.HomePageObject.newsStreamProgress
+import com.bbcnews.automation.pageobjects.HomePageObject.promoCounter
+import com.bbcnews.automation.pageobjects.HomePageObject.technologyTopic
+import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayButton
+import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayPromoSummary
+import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayTitle
+import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayWatch
+import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayWatchNext
 import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -111,7 +122,6 @@ class BBCNewsReleaseBuildRegressionTest {
 
 
     private fun initialiseObjects() {
-        homePageObject = HomePageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
 
         myNewsPageObject = MyNewsPageObject()
@@ -173,22 +183,22 @@ class BBCNewsReleaseBuildRegressionTest {
     fun testVideoOfTheDayDisplayed() {
         startTest("VideoOfTheDay", "Scroll to a Video of the day", "HomePage")
         waitFor(1000)
-        scrollToElement(androidDriver, homePageObject.videoOfTheDayWatch)
+        scrollToElement(androidDriver, videoOfTheDayWatch)
 
         assertDisplayingElements(androidDriver,
-                homePageObject.videoOfTheDayWatchNext,
-                homePageObject.promoCounter,
-                homePageObject.videoOfTheDayPromoSummary,
-                homePageObject.videoOfTheDayTitle
+                videoOfTheDayWatchNext,
+                promoCounter,
+                videoOfTheDayPromoSummary,
+                videoOfTheDayTitle
         )
 
-        assertEquals("Videos of the day", homePageObject.videoOfTheDayTitle.text)
-        assertEquals("WATCH", homePageObject.videoOfTheDayWatchNext.text)
-        assertEquals("7", homePageObject.promoCounter.text)
-        assertEquals("Swipe through the latest news videos", homePageObject.videoOfTheDayPromoSummary.text)
+        assertEquals("Videos of the day", videoOfTheDayTitle?.text)
+        assertEquals("WATCH", videoOfTheDayWatchNext?.text)
+        assertEquals("7", promoCounter?.text)
+        assertEquals("Swipe through the latest news videos", videoOfTheDayPromoSummary?.text)
 
-        tapButton(androidDriver, homePageObject.videoOfTheDayButton, false)
-        scrollToEndOfStories(androidDriver, homePageObject.newsStreamProgress, videoPageObject.videosOfTheDayRelease, homePageObject.checkBackLater)
+        tapButton(androidDriver, videoOfTheDayButton, false)
+        scrollToEndOfStories(androidDriver, newsStreamProgress, videoPageObject.videosOfTheDayRelease, checkBackLater)
         pressBack()
     }
 
@@ -197,16 +207,16 @@ class BBCNewsReleaseBuildRegressionTest {
         startTest("Scrolling to topics", "Scroll to a Topics on Home Page", "HomePage")
 
         //scrolls to Reality Check topics on Top Stories page
-        scrollToElement(androidDriver, homePageObject.educationTopics)
-        tapButton(androidDriver, homePageObject.educationTopics, false)
+        scrollToElement(androidDriver, educationTopics)
+        tapButton(androidDriver, educationTopics, false)
 
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
         }
 
-        assertDisplayingElements(androidDriver, homePageObject.familyEducationTopic)
-        System.out.println("Topics is :-" + homePageObject.familyEducationTopic.text)
+        assertDisplayingElements(androidDriver, familyEducationTopic)
+        System.out.println("Topics is :-" + familyEducationTopic?.text)
 
         for (i in 0 until basePageObject.topicsPageElementsRelease.size) {
             isElementPresent(androidDriver, By.id(basePageObject.topicsPageElementsRelease[i]))
@@ -217,18 +227,18 @@ class BBCNewsReleaseBuildRegressionTest {
         tapButton(androidDriver, basePageObject.backButton, false)
 
         //scrolls to health topics on Top Stories page
-        scrollToElement(androidDriver, homePageObject.technologyTopic)
-        tapButton(androidDriver, homePageObject.technologyTopic, false)
+        scrollToElement(androidDriver, technologyTopic)
+        tapButton(androidDriver, technologyTopic, false)
 
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
         }
 
-        System.out.println("The Topic is " + homePageObject.technologyTopic.text)
+        System.out.println("The Topic is: " + technologyTopic?.text)
 
-        assertDisplayingElements(androidDriver, homePageObject.technologyTopic)
-        System.out.println("Topics is :-" + homePageObject.technologyTopic.text)
+        assertDisplayingElements(androidDriver, technologyTopic)
+        System.out.println("Topics is :-" + technologyTopic?.text)
 
         for (i in 0 until basePageObject.topicsPageElementsRelease.size) {
             isElementPresent(androidDriver, By.id(basePageObject.topicsPageElementsRelease[i]))
@@ -247,8 +257,8 @@ class BBCNewsReleaseBuildRegressionTest {
         tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 
         assertDisplayingElements(androidDriver,
-                homePageObject.technologyTopic,
-                homePageObject.familyEducationTopic
+                technologyTopic,
+                familyEducationTopic
         )
 
         tapButton(androidDriver, myNewsPageObject.removeTopics, false)
@@ -773,8 +783,8 @@ class BBCNewsReleaseBuildRegressionTest {
         androidDriver.connection = state
         //        waitForScreenToLoad(androidDriver,basePageObject.topStories,10);
         //        tapButton(androidDriver,basePageObject.topStories,false);
-        //        scrollToElement(androidDriver, homePageObject.videoOfTheDayWatch);
-        //        tapButton(androidDriver, homePageObject.videoOfTheDayButton, false);
+        //        scrollToElement(androidDriver, videoOfTheDayWatch);
+        //        tapButton(androidDriver, videoOfTheDayButton, false);
         //        Assert.assertEquals("You're not connected to the internet.", myNewsPageObject.snackbar.getText(), "Text Matched");
     }
 

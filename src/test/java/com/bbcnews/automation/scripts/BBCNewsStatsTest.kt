@@ -100,7 +100,6 @@ class BBCNewsStatsTest {
     }
 
     private fun initialiseObjects() = try {
-        homePageObject = HomePageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
 
         myNewsPageObject = MyNewsPageObject()

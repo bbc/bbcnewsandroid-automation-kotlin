@@ -121,7 +121,6 @@ class BBCNewsSmokeTestKotlin {
     }
 
     private fun initialiseObjects() {
-        homePageObject = HomePageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
 
         myNewsPageObject = MyNewsPageObject()

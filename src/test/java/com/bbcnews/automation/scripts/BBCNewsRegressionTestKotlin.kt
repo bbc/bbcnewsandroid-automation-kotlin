@@ -24,6 +24,8 @@ import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.*
+import com.bbcnews.automation.pageobjects.HomePageObject.educationTopics
+import com.bbcnews.automation.pageobjects.HomePageObject.technologyTopic
 import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -36,7 +38,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.ScreenOrientation
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.support.PageFactory
-import org.testng.Assert
 import org.testng.Assert.*
 import org.testng.ITestResult
 import org.testng.annotations.AfterMethod
@@ -47,6 +48,7 @@ import java.io.File
 import java.lang.System.getProperty
 import java.net.URL
 import java.time.Duration
+import com.bbcnews.automation.pageobjects.HomePageObject.familyEducationTopic as familyEducationTopic1
 
 class BBCNewsRegressionTestKotlin {
 
@@ -57,7 +59,6 @@ class BBCNewsRegressionTestKotlin {
     private var appPath: String? = null
 
     private lateinit var file: File
-    private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
     private lateinit var myNewsPageObject: MyNewsPageObject
     private lateinit var basePageObject: BasePageObject
@@ -68,7 +69,7 @@ class BBCNewsRegressionTestKotlin {
     @BeforeTest
     fun runTest() {
         readDeviceDetailsCommandPrompt()
-        setUP()
+        setUp()
         checkConnection(androidDriver)
         /**
          *  setting the view mode to Portrait , since on Hive sometime device might be in Landscape mode
@@ -92,10 +93,10 @@ class BBCNewsRegressionTestKotlin {
         println("Passed The Application path  is $appPath")
     }
 
-    private fun setUP() {
+    private fun setUp() {
         //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-        val appiumurl = "http://127.0.0.1:$appiumPort/wd/hub"
-        println("Appium Server Address : - $appiumurl")
+        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
+        println("Appium Server Address : - $appiumUrl")
         capabilities = DesiredCapabilities()
         capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
@@ -107,12 +108,11 @@ class BBCNewsRegressionTestKotlin {
         capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
         capabilities.setCapability("--session-override", true)
         capabilities.setCapability("ignoreUnimportantViews", true)
-        androidDriver = AndroidDriver(URL(appiumurl), capabilities)
+        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
     }
 
     private fun initialiseObjects() {
-        homePageObject = HomePageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
+        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
 
         myNewsPageObject = MyNewsPageObject()
         PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
@@ -175,17 +175,17 @@ class BBCNewsRegressionTestKotlin {
 //    fun testVideoOfTheDayDisplayed() {
 //            startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
 //            sleepmethod(1000)
-//            scrolltoElement(androidDriver, homePageObject.videoOfTheDayWatch)
-//            elementDisplayed(androidDriver, homePageObject.videoOfTheDayWatchNext)
-//            elementDisplayed(androidDriver, homePageObject.promoCounter)
-//            elementDisplayed(androidDriver, homePageObject.videoOfTheDayPromoSummary)
-//            elementDisplayed(androidDriver, homePageObject.videoOfTheDayTitle)
-//            Assert.assertEquals("Videos of the day", homePageObject.videoOfTheDayTitle.getText())
-//            Assert.assertEquals("WATCH", homePageObject.videoOfTheDayWatchNext.getText())
-//            Assert.assertEquals("7", homePageObject.promoCounter.getText())
-//            Assert.assertEquals("Swipe through the latest news videos", homePageObject.videoOfTheDayPromoSummary.getText())
-//            tapButton(androidDriver, homePageObject.videoOfTheDayButton, false)
-//            scrolltoEndofStories(androidDriver, homePageObject.newsStreamProgress, videoPageObject.videsofthedayRelease, homePageObject.checkBackLater)
+//            scrolltoElement(androidDriver, videoOfTheDayWatch)
+//            elementDisplayed(androidDriver, videoOfTheDayWatchNext)
+//            elementDisplayed(androidDriver, promoCounter)
+//            elementDisplayed(androidDriver, videoOfTheDayPromoSummary)
+//            elementDisplayed(androidDriver, videoOfTheDayTitle)
+//            Assert.assertEquals("Videos of the day", videoOfTheDayTitle.getText())
+//            Assert.assertEquals("WATCH", videoOfTheDayWatchNext.getText())
+//            Assert.assertEquals("7", promoCounter.getText())
+//            Assert.assertEquals("Swipe through the latest news videos", videoOfTheDayPromoSummary.getText())
+//            tapButton(androidDriver, videoOfTheDayButton, false)
+//            scrolltoEndofStories(androidDriver, newsStreamProgress, videoPageObject.videsofthedayRelease, checkBackLater)
 //            pressBack()
 //    }
 
@@ -194,14 +194,14 @@ class BBCNewsRegressionTestKotlin {
         startTest("Scrolling to topics", "Scroll to a Topics on Home Page", "HomePage")
 
         //scrolls to Reality Check topics on Top Stories page
-        scrollToElement(androidDriver, homePageObject.educationTopics)
-        tapButton(androidDriver, homePageObject.educationTopics, false)
+        scrollToElement(androidDriver, educationTopics)
+        tapButton(androidDriver, educationTopics!!, false)
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
         }
-        elementDisplayed(androidDriver, homePageObject.familyEducationTopic)
-        System.out.println("Topics is :-" + homePageObject.familyEducationTopic.text)
+        elementDisplayed(androidDriver, familyEducationTopic1)
+        System.out.println("Topics is :-" + familyEducationTopic1?.text)
 
         for (i in 0 until basePageObject.topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
@@ -213,18 +213,20 @@ class BBCNewsRegressionTestKotlin {
 
 
         //scrolls to health topics on Top Stories page
-        scrollToElement(androidDriver, homePageObject.technologyTopic)
-        tapButton(androidDriver, homePageObject.technologyTopic, false)
+        scrollToElement(androidDriver, technologyTopic)
+        tapButton(androidDriver, technologyTopic, false)
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
         }
-        System.out.println("The Topic is " + homePageObject.technologyTopic.text)
-        elementDisplayed(androidDriver, homePageObject.technologyTopic)
-        System.out.println("Topics is :-" + homePageObject.technologyTopic.text)
+        System.out.println("The Topic is " + technologyTopic?.text)
+        elementDisplayed(androidDriver, technologyTopic)
+        System.out.println("Topics is :-" + technologyTopic?.text)
+
         for (i in 0 until basePageObject.topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(basePageObject.topicsPageElements[i]))
         }
+
         tapButton(androidDriver, myNewsPageObject.myNewsAddTopics, false)
         textPresent(androidDriver, "Technology", "added to")
         elementDisplayed(androidDriver, myNewsPageObject.manageYourTopics)
@@ -239,8 +241,8 @@ class BBCNewsRegressionTestKotlin {
 //            tapButton(androidDriver, myNewsPageObject.editMyNews, false)
 //
 //            assertDisplayingElements(androidDriver,
-//                    homePageObject.technologyTopic,
-//                    homePageObject.familyEducationTopic
+//                    technologyTopic,
+//                    familyEducationTopic
 //            )
 //
 //            tapButton(androidDriver, myNewsPageObject.removetopics, false)
@@ -303,7 +305,7 @@ class BBCNewsRegressionTestKotlin {
         startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
         tapButton(androidDriver, myNewsPageObject.addTopics, false)
 
-        Assert.assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
+        assertEquals("Manchester", myNewsPageObject.localNewsDisplayed.text)
         elementDisplayed(androidDriver, myNewsPageObject.localNewsDisplayed)
 
         scrollToElement(androidDriver, myTopicsPageObject.addEnglandTopicButton)
@@ -499,7 +501,7 @@ class BBCNewsRegressionTestKotlin {
         val searchRelatedHeadingText2 = getText(basePageObject.searchHeading2)
         assertEquals(searchRelatedHeadingText2, "More Topics", "matched")
 
-        //Assert.assertEquals(basePageObject.searchHeading4.getText(),"My Topics","matched");
+        //assertEquals(basePageObject.searchHeading4.getText(),"My Topics","matched");
         tapButton(androidDriver, basePageObject.backButton, false)
 
     }
@@ -761,7 +763,7 @@ class BBCNewsRegressionTestKotlin {
 
         assertNotEquals("Rape in India", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='5']/android.widget.TextView[@index='1']")).text, "Test Didn't Matched")
         assertEquals("Rape in India", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='1']/android.widget.TextView[@index='1']")).text, "Test Matched")
-        // Assert.assertEquals("European Union",androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='2']/android.widget.TextView[@index='1']")).getText(), "Test Matched");
+        // assertEquals("European Union",androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='2']/android.widget.TextView[@index='1']")).getText(), "Test Matched");
         assertEquals("YouTube", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='5']/android.widget.TextView[@index='1']")).text, "Test Matched")
         tapButton(androidDriver, myNewsPageObject.removeTopics, false)
         tapButton(androidDriver, myNewsPageObject.removeTopics, false)
@@ -777,9 +779,9 @@ class BBCNewsRegressionTestKotlin {
         androidDriver.connection = state
 //        waitForScreenToLoad(androidDriver,basePageObject.topStories,10);
 //        tapButton(androidDriver,basePageObject.topStories,false);
-//        scrollToElement(androidDriver, homePageObject.videoOfTheDayWatch);
-//        tapButton(androidDriver, homePageObject.videoOfTheDayButton, false);
-//        Assert.assertEquals("You're not connected to the internet.", myNewsPageObject.snackbar.getText(), "Text Matched");
+//        scrollToElement(androidDriver, videoOfTheDayWatch);
+//        tapButton(androidDriver, videoOfTheDayButton, false);
+//        assertEquals("You're not connected to the internet.", myNewsPageObject.snackbar.getText(), "Text Matched");
     }
 
     @Test(priority = 37, description = "Test to play a  video, while device offline")
@@ -854,8 +856,8 @@ class BBCNewsRegressionTestKotlin {
 //    fun testCheckOnlineScenario() {
 //        startTest("VideOfTheDay - Online", "Checking apps offline scenario", "Offline")
 //        tapButton(androidDriver, basePageObject.topStories, false)
-//        scrollToElement(androidDriver, homePageObject.videoOfTheDayWatch)
-//        tapButton(androidDriver, homePageObject.videoOfTheDayButton, false)
+//        scrollToElement(androidDriver, videoOfTheDayWatch)
+//        tapButton(androidDriver, videoOfTheDayButton, false)
 //        //extenttestReport.isElementPresent(androidDriver,By.id("bbc.mobile.news.uk:id/snackbar_text"));
 //        pressBack()
 //    }

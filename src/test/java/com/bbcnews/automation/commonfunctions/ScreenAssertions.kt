@@ -6,7 +6,7 @@ import io.appium.java_client.android.AndroidDriver
 
 object ScreenAssertions {
 
-    fun assertDisplayingElements(driver: AndroidDriver<MobileElement>, vararg elements: MobileElement) {
+    fun assertDisplayingElements(driver: AndroidDriver<MobileElement>, vararg elements: MobileElement?) {
         for (element in elements) {
             elementDisplayed(driver, element)
         }

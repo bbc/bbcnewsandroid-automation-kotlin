@@ -35,6 +35,7 @@ import java.nio.file.Paths
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.util.*
+import java.util.Arrays.equals
 import javax.imageio.ImageIO
 
 object CommonFunctionKotlin {
@@ -105,12 +106,12 @@ object CommonFunctionKotlin {
      * boolean to take screenshot ( true = takes screenshot and attached to testReport, fail= wont take screenshot)
      * Screenshot path
      */
-    fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, takeScreenshot: Boolean) {
+    fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
         waitForScreenToLoad(appiumDriver, element, 3)
-        element.click()
+        element?.click()
         Thread.sleep(800)
         if (takeScreenshot) {
-            val screenShotPath = getScreenshot(appiumDriver, element.text)
+            val screenShotPath = getScreenshot(appiumDriver, element?.text)
             println("Taken screenshot path is $screenShotPath")
             test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenShotPath))
 
@@ -156,7 +157,7 @@ object CommonFunctionKotlin {
      * @param, drivertype, screenshot path, screenshot name
      * attaches the screenshot to the test report
      */
-    private fun getScreenshot(appiumDriver: AppiumDriver<MobileElement>, screenshotName: String): String {
+    private fun getScreenshot(appiumDriver: AppiumDriver<MobileElement>, screenshotName: String?): String {
         try {
             val dateName = SimpleDateFormat("dd-M-yyyy hh:mm").format(Date())
             val takeScreenshot = appiumDriver as TakesScreenshot
@@ -204,10 +205,10 @@ object CommonFunctionKotlin {
      *
      * @param, driverType, element to be scrolled, screenshot
      */
-    fun scrollToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
+    fun scrollToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
         for (i in 0..20) {
             try {
-                element.isDisplayed
+                element?.isDisplayed
                 break
             } catch (e: Exception) {
                 verticalSwipe(appiumDriver, "Down")
@@ -294,7 +295,6 @@ object CommonFunctionKotlin {
         }
     }
 
-
     /**
      * Function to check whether an element is displayed , return true if present else fail
      * If true, then the element text will be attached the report name. If element text not present, it uses the
@@ -302,12 +302,12 @@ object CommonFunctionKotlin {
      *
      * @param, drivertype, element name
      */
-    fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
+    fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
         try {
             waitForScreenToLoad(appiumDriver, element, 3)
-            assertTrue(element.isDisplayed)
+            assertTrue(element?.isDisplayed!!)
             if (element.isDisplayed) {
-                if (element.text.isEmpty()) {
+                if (element.text?.isEmpty()!!) {
                     test?.log(Status.PASS, element.getAttribute("contentDescription") + "  Displayed")
                 } else {
                     test?.log(Status.PASS, element.text + "  Displayed")
@@ -389,22 +389,22 @@ object CommonFunctionKotlin {
      * Function to scroll on TopStories - Videos and Stories carousel
      * @param, driverType, element and path for screenshot to be taken
      */
-    fun scrollToEndOfStories(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement,
-                             elements: Array<String>, element2: MobileElement) {
+    fun scrollToEndOfStories(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?,
+                             elements: Array<String>, element2: MobileElement?) {
         // val flag = false
         for (i in 0..20) {
             try {
                 waitForScreenToLoad(appiumDriver, element, 5)
                 Thread.sleep(800)
-                val elementTitle = element.text
+                val elementTitle = element?.text
                 test?.log(Status.INFO, elementTitle)
                 for (j in elements.indices) {
                     isElementPresent(appiumDriver, By.id(elements[j]))
                     test?.log(Status.PASS, elements[j])
                 }
                 Thread.sleep(800)
-                element2.isDisplayed
-                //element.click();
+                element2?.isDisplayed
+                //element?.click();
                 break
             } catch (e: Exception) {
 
@@ -576,8 +576,8 @@ object CommonFunctionKotlin {
                 data2 = grab2.pixels as IntArray?
             }
 
-            println("Pixels equal: " + java.util.Arrays.equals(data1, data2))
-            test?.log(Status.INFO, "Pixels equal: " + java.util.Arrays.equals(data1, data2))
+            println("Pixels equal: " + equals(data1, data2))
+            test?.log(Status.INFO, "Pixels equal: " + equals(data1, data2))
 
         } catch (e1: InterruptedException) {
             e1.printStackTrace()
@@ -661,8 +661,8 @@ object CommonFunctionKotlin {
                 .findElements(By.id("bbc.mobile.news.uk.internal:id/text"))
 
         for (element in elements) {
-            //System.out.println("Topics After  Re-Ordering :- "+element.getText());
-            test?.log(Status.INFO, text + element.text)
+            //System.out.println("Topics After  Re-Ordering :- "+element?.getText());
+            test?.log(Status.INFO, text + element?.text)
         }
     }
 
@@ -806,7 +806,7 @@ object CommonFunctionKotlin {
 
         System.out.println("Element count: " + elements.size)
         System.out.println("Element text: \n")
-        for (element in elements) System.out.println(element.text + "\n")
+        for (element in elements) System.out.println(element?.text + "\n")
     }
 
 //    /**
