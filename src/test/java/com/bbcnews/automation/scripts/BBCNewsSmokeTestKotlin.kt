@@ -69,10 +69,7 @@ import org.openqa.selenium.support.PageFactory
 import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
 import org.testng.ITestResult
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.AfterTest
-import org.testng.annotations.BeforeTest
-import org.testng.annotations.Test
+import org.testng.annotations.*
 import java.io.File
 import java.io.IOException
 import java.net.URL
@@ -190,8 +187,9 @@ class BBCNewsSmokeTestKotlin {
     }
 
     /**
-     * uncomment if you want to check the screenshot compare tests
+     * un-ignore if you want to check the screenshot compare tests
      */
+    @Ignore
     @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
     @Throws(IOException::class)
     fun testTakeScreenshotsOfPages() {

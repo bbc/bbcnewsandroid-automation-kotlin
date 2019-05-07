@@ -60,7 +60,6 @@ object CommonFunctionKotlin {
         println("reportFolder is $reportFolder")
         Thread.sleep(4000)
 
-        //htmlReporter = new ExtentHtmlReporter(reportFolder+File.separator+reportName+device_name+dateName+".html");
         htmlReporter = ExtentHtmlReporter("$reportFolder$reportName$deviceName.html")
         extent = ExtentReports()
         extent.attachReporter(htmlReporter)
