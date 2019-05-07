@@ -2,11 +2,13 @@ package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.navigateBack
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.screenshot
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
@@ -52,8 +54,6 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlayPauseButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpSeekBar
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpVolumeButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.transportControls
-import com.bbcnews.automation.testutils.TestUtility.emptyFolder
-import com.bbcnews.automation.testutils.TestUtility.screenshot
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator

@@ -1,6 +1,7 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
@@ -21,7 +22,6 @@ import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator

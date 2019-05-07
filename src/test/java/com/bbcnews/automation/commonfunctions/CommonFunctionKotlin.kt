@@ -9,7 +9,6 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter
 import com.aventstack.extentreports.reporter.configuration.ChartLocation
 import com.aventstack.extentreports.reporter.configuration.Theme
 import com.bbcnews.automation.commonfunctions.FilePaths.resultsFilePath
-import com.bbcnews.automation.testutils.PlatformTouchAction
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -140,7 +139,6 @@ object CommonFunctionKotlin {
      * Function to wait until the screen is fully loaded
      * @param, driver, element and seconds to wait for page to load
      */
-
     fun waitForScreenToLoad(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
         val wait = WebDriverWait(driver, seconds.toLong())
         wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
@@ -154,7 +152,7 @@ object CommonFunctionKotlin {
 //    }
 
     /**
-     * @param, drivertype, screenshot path, screenshot name
+     * @param, driver type, screenshot path, screenshot name
      * attaches the screenshot to the test report
      */
     private fun getScreenshot(appiumDriver: AppiumDriver<MobileElement>, screenshotName: String?): String {
@@ -177,7 +175,6 @@ object CommonFunctionKotlin {
             println("Exception While Taking screenshot" + e.message)
             return e.message.toString()
         }
-
     }
 
     /**
@@ -195,10 +192,8 @@ object CommonFunctionKotlin {
         } catch (e: Exception) {
             System.err.println("Error: " + e.message)
         }
-
         return path
     }
-
 
     /**
      * Function to scroll to an element, if the list if very big
@@ -222,7 +217,6 @@ object CommonFunctionKotlin {
      * StartY and EndY are the two main parameters to swipe vertically
      * @param, driverType
      */
-
     fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingdirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
@@ -255,7 +249,6 @@ object CommonFunctionKotlin {
      * @param d
      * @throws InterruptedException
      */
-
     fun livevideoseeking(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
         val startX = element.location.getX()
         val endX = element.size.width
@@ -270,7 +263,6 @@ object CommonFunctionKotlin {
                 .perform()
     }
 
-
     /**
     Function to enter the text into a textfeld
     @param, driverType, element and string that's need to be entered
@@ -278,7 +270,6 @@ object CommonFunctionKotlin {
     fun entersearchtext(element: MobileElement, searchkey: String) {
         element.sendKeys(searchkey)
     }
-
 
     /**
      * Function to check whether an Element is present or not
@@ -345,7 +336,6 @@ object CommonFunctionKotlin {
 
     }
 
-
     /**
      * function to create a ExtentReport
      * @reportName
@@ -384,7 +374,6 @@ object CommonFunctionKotlin {
         htmlReporter.config().timeStampFormat = "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
     }
 
-
     /**
      * Function to scroll on TopStories - Videos and Stories carousel
      * @param, driverType, element and path for screenshot to be taken
@@ -407,11 +396,8 @@ object CommonFunctionKotlin {
                 //element?.click();
                 break
             } catch (e: Exception) {
-
                 horizontalSwipe(appiumDriver)
-
             }
-
         }
     }
 
@@ -478,7 +464,6 @@ object CommonFunctionKotlin {
         else null!!
     }
 
-
     /**
      * Function which compares the two images by pixels and by dimension
      *
@@ -504,7 +489,6 @@ object CommonFunctionKotlin {
             i++
         }
     }
-
 
     /**
      * Function to compare two images and display the difference
@@ -543,7 +527,6 @@ object CommonFunctionKotlin {
         return percentage
     }
 
-
     /**
      * Function to compare the images by pixel
      * @param expected
@@ -581,9 +564,7 @@ object CommonFunctionKotlin {
         } catch (e1: InterruptedException) {
             e1.printStackTrace()
         }
-
     }
-
 
     @Throws(IOException::class)
     fun screenshot(driver: AndroidDriver<MobileElement>, folder: String, imageName: String) {
@@ -664,7 +645,6 @@ object CommonFunctionKotlin {
         }
     }
 
-
     @Throws(InterruptedException::class, IOException::class)
     fun comapreStatsData(csv: String, statsData: Array<String>) {
         var br: BufferedReader? = null
@@ -710,7 +690,6 @@ object CommonFunctionKotlin {
         }
     }
 
-
     /**
      * function to check whether WiFi Connection enabled or not.
      * If not, enables the WiFi Connection
@@ -726,9 +705,6 @@ object CommonFunctionKotlin {
         if (!state.isWiFiEnabled) androidDriver.connection = state
     }
 
-    /**
-     *
-     */
     fun textPresent(appiumDriver: AppiumDriver<MobileElement>, text: String, text1: String) {
         val textPresent = appiumDriver.findElement(By.xpath("//android.widget.TextView[@text='$text $text1 My News']"))
         test?.log(Status.PASS, "Element Present" + textPresent.text)
@@ -760,7 +736,6 @@ object CommonFunctionKotlin {
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                 .moveTo(PointOption.point(moveToXDirectionAt!!, yAxis)).release().perform()
     }
-
 
     /**
      * Function to seek forward on the video/audio playing
@@ -805,6 +780,23 @@ object CommonFunctionKotlin {
         System.out.println("Element count: " + elements.size)
         System.out.println("Element text: \n")
         for (element in elements) System.out.println(element?.text + "\n")
+    }
+
+    /**
+     * Function to empty the  result and screenshot folder
+     * @param
+     * folder name
+     */
+    fun emptyFolder(filepath: String) {
+        val file = File(filepath)
+        val myFiles: Array<String>?
+        if (file.isDirectory) {
+            myFiles = file.list()
+            for (i in myFiles!!.indices) {
+                val myFile = File(file, myFiles[i])
+                myFile.delete()
+            }
+        }
     }
 
 //    /**

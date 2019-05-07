@@ -3,6 +3,7 @@ package com.bbcnews.automation.scripts
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
@@ -64,7 +65,6 @@ import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedTopics
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.seekBar
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.volumeButton
 import com.bbcnews.automation.pageobjects.HomePageObject
-import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.pagefactory.AppiumFieldDecorator

@@ -5,6 +5,7 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDragDrop
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementIsSelected
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
@@ -131,7 +132,6 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.videoArticleSearch
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPage
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageText
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoWallElements
-import com.bbcnews.automation.testutils.TestUtility.emptyFolder
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.StartsActivity

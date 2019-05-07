@@ -24,7 +24,6 @@ class CharlesProxy {
             runTime.exec("charles -config ./charles/charlesproxy.config &")
             System.out.println("Starting Charles ")
         } catch (e: IOException) {
-
         }
     }
 
@@ -33,7 +32,6 @@ class CharlesProxy {
             runTime.exec("killall charles")
             System.out.println("Stopping Charles ")
         } catch (e: IOException) {
-
         }
     }
 
@@ -55,7 +53,6 @@ class CharlesProxy {
         } catch (e: IOException) {
         } catch (e: InterruptedException) {
         }
-
     }
 
     @Throws(InterruptedException::class)
@@ -70,13 +67,11 @@ class CharlesProxy {
     @Throws(InterruptedException::class)
     fun downloadCharlesSession(filename: String) {
         try {
-
             runTime.exec("curl -o " + files.canonicalFile + File.separator + filename + " -x http://localhost:8888 http://control.charles/session/download")
             System.out.println("Downloading Charles Session")
             Thread.sleep(3000)
         } catch (e: IOException) {
         }
-
     }
 
     fun startCharlesSession() {
@@ -86,7 +81,6 @@ class CharlesProxy {
             Thread.sleep(2000)
         } catch (e: Exception) {
         }
-
     }
 
     fun stopCharlesSession() {
@@ -98,5 +92,4 @@ class CharlesProxy {
         } catch (e: Exception) {
         }
     }
-
 }
