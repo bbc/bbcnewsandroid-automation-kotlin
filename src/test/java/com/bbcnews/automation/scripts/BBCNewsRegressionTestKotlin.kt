@@ -1,11 +1,9 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDragDrop
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementIsSelected
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
@@ -21,10 +19,8 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.textPresent
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.verticalSwipe
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitFor
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitForScreenToLoad
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
-import com.bbcnews.automation.pageobjects.*
 import com.bbcnews.automation.pageobjects.BasePageObject.appInfo
 import com.bbcnews.automation.pageobjects.BasePageObject.article
 import com.bbcnews.automation.pageobjects.BasePageObject.articleDetailPageLinks
@@ -132,105 +128,34 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.videoArticleSearch
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPage
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageText
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoWallElements
+import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
+import com.bbcnews.automation.testutils.TestSetup.setActivity
+import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.StartsActivity
 import io.appium.java_client.android.connection.ConnectionStateBuilder
-import io.appium.java_client.pagefactory.AppiumFieldDecorator
-import io.appium.java_client.remote.MobileCapabilityType
 import io.qameta.allure.Story
 import org.openqa.selenium.By
 import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.remote.DesiredCapabilities
-import org.openqa.selenium.support.PageFactory
 import org.testng.Assert.*
 import org.testng.ITestResult
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-import java.io.File
-import java.lang.System.getProperty
-import java.net.URL
 import java.time.Duration
 import com.bbcnews.automation.pageobjects.HomePageObject.familyEducationTopic as familyEducationTopic1
 
 class BBCNewsRegressionTestKotlin {
 
-    private var deviceName: String? = null
-    private var appiumPort: String? = null
-    private var deviceid: String? = null
-    private var appPath: String? = null
-
-    private lateinit var file: File
     private lateinit var androidDriver: AndroidDriver<MobileElement>
 
     @BeforeTest
     fun runTest() {
         readDeviceDetailsCommandPrompt()
-        setUp()
-        checkConnection(androidDriver)
-        /**
-         *  setting the view mode to Portrait , since on Hive sometime device might be in Landscape mode
-         */
-        val orientation = androidDriver.orientation
-        if (orientation == ScreenOrientation.LANDSCAPE) {
-            androidDriver.rotate(ScreenOrientation.PORTRAIT)
-        }
-        initialiseObjects()
-    }
-
-    private fun readDeviceDetailsCommandPrompt() {
-        deviceid = getProperty("DeviceID")
-        deviceName = getProperty("DeviceName")
-        appPath = getProperty("AppPath")
-        appiumPort = getProperty("AppiumPort")
-
-        println("Passed The Device ID is $deviceid")
-        println("Passed The Device Name is $deviceName")
-        println("Passed The Appium port is $appiumPort")
-        println("Passed The Application path  is $appPath")
-    }
-
-    private fun setUp() {
-        //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
-        println("Appium Server Address : - $appiumUrl")
-        val capabilities = DesiredCapabilities()
-        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-        capabilities.setCapability("appiumversion", "1.8.1")
-        capabilities.setCapability("app", appPath)
-        capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
-        capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-        capabilities.setCapability("--session-override", true)
-        capabilities.setCapability("ignoreUnimportantViews", true)
-        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
-    }
-
-    private fun initialiseObjects() {
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyNewsPageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), BasePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), VideoPageObjects)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), PopularPageObjects)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyTopicsPageObject)
-
-        emptyFolder(screenshotPath)
-
-        createAReportHive("Regression", deviceName.toString(), deviceid.toString())
-
-        androidDriver.context("NATIVE_APP")
-        file = File(screenshotPath)
-        val screenshot = file.absolutePath
-        println("The ScreenShot Path is $screenshot")
+        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
+        setUpTest("Regression")
     }
 
     @Test(priority = 1, description = "Launching the app")
@@ -260,28 +185,6 @@ class BBCNewsRegressionTestKotlin {
                 menuButton
         )
     }
-
-    /**
-     * commented out as VideoOfTheDay isn't displayed  on Home page
-     */
-
-//    @Test(priority = 3, description = "Test to check Video of the day displayed and swipe through all the videos")
-//    fun testVideoOfTheDayDisplayed() {
-//            startTest("VideoOftheDay", "Scroll to a Video of the day", "HomePage")
-//            sleepmethod(1000)
-//            scrolltoElement(androidDriver, videoOfTheDayWatch)
-//            elementDisplayed(androidDriver, videoOfTheDayWatchNext)
-//            elementDisplayed(androidDriver, promoCounter)
-//            elementDisplayed(androidDriver, videoOfTheDayPromoSummary)
-//            elementDisplayed(androidDriver, videoOfTheDayTitle)
-//            Assert.assertEquals("Videos of the day", videoOfTheDayTitle.getText())
-//            Assert.assertEquals("WATCH", videoOfTheDayWatchNext.getText())
-//            Assert.assertEquals("7", promoCounter.getText())
-//            Assert.assertEquals("Swipe through the latest news videos", videoOfTheDayPromoSummary.getText())
-//            tapButton(androidDriver, videoOfTheDayButton, false)
-//            scrolltoEndofStories(androidDriver, newsStreamProgress, videsofthedayRelease, checkBackLater)
-//            pressBack()
-//    }
 
     @Test(priority = 3, description = "Test to scroll to a topic on home page and select a particular topic and add to MyNews")
     fun testToCheckTopicsTopStores() {
@@ -942,19 +845,6 @@ class BBCNewsRegressionTestKotlin {
         pressBack()
         tapButton(androidDriver, backButton, false)
     }
-
-    /**
-     * commented out as Video of the day isn't displayed
-     */
-//    @Test(priority = 42, description = "Test to check the offline scenario of the app")
-//    fun testCheckOnlineScenario() {
-//        startTest("VideOfTheDay - Online", "Checking apps offline scenario", "Offline")
-//        tapButton(androidDriver, topStories, false)
-//        scrollToElement(androidDriver, videoOfTheDayWatch)
-//        tapButton(androidDriver, videoOfTheDayButton, false)
-//        //extenttestReport.isElementPresent(androidDriver,By.id("bbc.mobile.news.uk:id/snackbar_text"));
-//        pressBack()
-//    }
 
     @AfterMethod
     fun getResult(result: ITestResult) {

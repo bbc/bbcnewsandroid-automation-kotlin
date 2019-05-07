@@ -1,19 +1,15 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.verticalSwipe
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
-import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.article
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiEntertainment
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiHelp
@@ -64,18 +60,15 @@ import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedArticles
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedTopics
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.seekBar
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.volumeButton
-import com.bbcnews.automation.pageobjects.HomePageObject
+import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
+import com.bbcnews.automation.testutils.TestSetup.setActivity
+import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
-import io.appium.java_client.pagefactory.AppiumFieldDecorator
-import io.appium.java_client.remote.MobileCapabilityType
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
 import org.openqa.selenium.By
-import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.remote.DesiredCapabilities
-import org.openqa.selenium.support.PageFactory
 import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
 import org.testng.ITestResult
@@ -84,75 +77,17 @@ import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 import java.io.File
-import java.net.URL
 
 class BBCNewsHindiSmokeTest {
 
-    private var capabilities = DesiredCapabilities()
-    private var deviceid: String? = null
-    private var deviceName: String? = null
-    private var appPath: String? = null
-    private var appiumPort: String? = null
-
-    private lateinit var file: File
     private lateinit var androidDriver: AndroidDriver<MobileElement>
 
     @BeforeTest
     fun runTest() {
         readDeviceDetailsCommandPrompt()
-        setUp()
+        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
         checkConnection(androidDriver)
-        launchBbcNews()
-    }
-
-    private fun readDeviceDetailsCommandPrompt() {
-        deviceid = System.getProperty("DeviceID")
-        deviceName = System.getProperty("DeviceName")
-        appPath = System.getProperty("AppPath")
-        appiumPort = System.getProperty("appiumPort")
-        System.out.println("Passed The Device ID is $deviceid")
-        System.out.println("Passed The Device Name is $deviceName")
-        System.out.println("Passed The Appium port is $appiumPort")
-        System.out.println("Passed The Application path  is $appPath")
-    }
-
-    private fun setUp() {
-        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
-
-        System.out.println("Appium Server Address : - $appiumUrl")
-        capabilities = DesiredCapabilities()
-        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-        capabilities.setCapability("appiumversion", "1.8.1")
-        capabilities.setCapability("app", appPath)
-        capabilities.setCapability("appPackage", "uk.co.bbc.hindi.internal")
-        capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-        capabilities.setCapability(MobileCapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, true)
-        capabilities.setCapability("autoAcceptAlerts", true)
-        capabilities.setCapability("--session-override", true)
-        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
-    }
-
-    private fun launchBbcNews() {
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), BBCNewsHindiPageObject)
-
-        emptyFolder(screenshotPath)
-
-        createAReportHive("Regression", deviceName.toString(), deviceid.toString())
-
-        androidDriver.context("NATIVE_APP")
-        file = File(screenshotPath)
-        val screenshot = file.absolutePath
-        System.out.println("The ScreenShot Path is $screenshot")
-
-        val orientation = androidDriver.orientation
-        if (orientation == ScreenOrientation.LANDSCAPE) {
-            androidDriver.rotate(ScreenOrientation.PORTRAIT)
-        }
+        setUpTest("Regression")
     }
 
     @Test(priority = 1, description = "launching the app ")
@@ -189,7 +124,6 @@ class BBCNewsHindiSmokeTest {
                 headlineAuthorName,
                 headlineAuthorTitle
         )
-
         pressBack()
     }
 

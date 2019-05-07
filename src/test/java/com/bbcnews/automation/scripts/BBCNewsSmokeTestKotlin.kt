@@ -1,7 +1,6 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.compareTwoImages
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
@@ -17,9 +16,8 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.verticalSwipe
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.videoPlaybackSeeking
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitFor
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitForScreenToLoad
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
-import com.bbcnews.automation.pageobjects.*
+import com.bbcnews.automation.pageobjects.BasePageObject
 import com.bbcnews.automation.pageobjects.BasePageObject.headlineTitle
 import com.bbcnews.automation.pageobjects.BasePageObject.itemLayoutHomeSection
 import com.bbcnews.automation.pageobjects.BasePageObject.itemLayoutLastUpdated
@@ -32,6 +30,7 @@ import com.bbcnews.automation.pageobjects.BasePageObject.searchField
 import com.bbcnews.automation.pageobjects.BasePageObject.shareStory
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.video
+import com.bbcnews.automation.pageobjects.MyNewsPageObject
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.addNewsButton
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.addTopics
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.localNewsDisplayed
@@ -42,6 +41,7 @@ import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitle
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitleText
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.showLess
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.showMore
+import com.bbcnews.automation.pageobjects.MyTopicsPageObject
 import com.bbcnews.automation.pageobjects.PopularPageObjects.mostRead
 import com.bbcnews.automation.pageobjects.PopularPageObjects.popularMostWatched
 import com.bbcnews.automation.pageobjects.VideoPageObjects.accessibilityPause
@@ -54,120 +54,33 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlayPauseButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpSeekBar
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpVolumeButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.transportControls
+import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
+import com.bbcnews.automation.testutils.TestSetup.setActivity
+import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
-import io.appium.java_client.pagefactory.AppiumFieldDecorator
-import io.appium.java_client.remote.MobileCapabilityType
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
 import org.openqa.selenium.By
-import org.openqa.selenium.ScreenOrientation
 import org.openqa.selenium.StaleElementReferenceException
-import org.openqa.selenium.remote.DesiredCapabilities
-import org.openqa.selenium.support.PageFactory
 import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
 import org.testng.ITestResult
 import org.testng.annotations.*
-import java.io.File
 import java.io.IOException
-import java.net.URL
 import java.time.Duration
 
 class BBCNewsSmokeTestKotlin {
 
-    private var capabilities = DesiredCapabilities()
-    private var deviceid: String? = null
-    private var deviceName: String? = null
-    private var appPath: String? = null
-    private var appiumPort: String? = null
-    private lateinit var file: File
     private lateinit var androidDriver: AndroidDriver<MobileElement>
+    private val topLevelActivity = "bbc.mobile.news.v3.app.TopLevelActivity"
 
     @BeforeTest
     fun runTest() {
         readDeviceDetailsCommandPrompt()
-        setUp()
-        /**
-         *  since on Hive, sometimes device wifi might be turned off
-         */
-        checkConnection(androidDriver)
-
-        /**
-         *  setting the view mode to Portrait , since on Hive, sometime device might be in Landscape mode
-         */
-        val orientation = androidDriver.orientation
-        if (orientation == ScreenOrientation.LANDSCAPE) {
-            androidDriver.rotate(ScreenOrientation.PORTRAIT)
-        }
-        /**
-         *  Unlocking device
-         */
-        val locked = androidDriver.isDeviceLocked
-        if (locked) {
-            androidDriver.unlockDevice()
-        }
-        initialiseObjects()
-    }
-
-    /**
-     *  gets the details of the device, app path , appium port which are passed through command prompt
-     */
-    private fun readDeviceDetailsCommandPrompt() {
-        deviceid = System.getProperty("DeviceID")
-        deviceName = System.getProperty("DeviceName")
-        appPath = System.getProperty("AppPath")
-        appiumPort = System.getProperty("AppiumPort")
-        println("Passed The Device ID is $deviceid")
-        println("Passed The Device Name is $deviceName")
-        println("Passed The Appium port is $appiumPort")
-        println("Passed The Application path  is $appPath")
-    }
-
-    /**
-     * setup the desired capabilities based on the parameter set
-     */
-    private fun setUp() {
-        //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
-        println("Appium Server Address : - $appiumUrl")
-        capabilities = DesiredCapabilities()
-        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-        capabilities.setCapability("appiumversion", "1.8.1")
-        capabilities.setCapability("app", appPath)
-        capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
-        capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-        capabilities.setCapability("--session-override", true)
-        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
-    }
-
-    private fun initialiseObjects() {
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyNewsPageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), BasePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), VideoPageObjects)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), PopularPageObjects)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyTopicsPageObject)
-
-        emptyFolder(screenshotPath)
-
-        // startReport("SmokeTest");
-        createAReportHive("SmokeTest", deviceName.toString(), deviceid.toString())
-        //createAReportHive("SmokeTest", Deviceos_Name, Device_Name, Device_id)
-
-        androidDriver.context("NATIVE_APP")
-        file = File(screenshotPath)
-        val screenshot = file.absolutePath
-        println("The ScreenShot Path is $screenshot")
+        setActivity(topLevelActivity)
+        setUpTest("SmokeTest")
     }
 
     /**
@@ -183,7 +96,6 @@ class BBCNewsSmokeTestKotlin {
         } catch (e: Exception) {
             // if the retry button is not present then do nothing
         }
-
     }
 
     /**
@@ -297,7 +209,6 @@ class BBCNewsSmokeTestKotlin {
         scrollToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
         tapButton(androidDriver, MyTopicsPageObject.addWorldTopicButton, false)
     }
-
 
     /**
      * Checked the selected topics are getting displayed under Added Topics
@@ -488,46 +399,48 @@ class BBCNewsSmokeTestKotlin {
 
     }
 
-//    /**
-//     * un-comment if you want to check the screenshot compare tests
-//     */
-//    @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
-//    @Throws(IOException::class)
-//    fun testTakeScreenshotAfter() {
-//        try {
-//            tapButton(androidDriver, BasePageObject.navigateBack, false)
-//        } catch (e: NoSuchElementException) {
-//            // Ignore if already on the main screen
-//            assertDisplayingElements(androidDriver, homePageObject.menuButton)
-//        }
-//
-//        tapButton(androidDriver, BasePageObject.topStories, false)
-//        screenshot(androidDriver, "After", "topStories")
-//
-//        tapButton(androidDriver, BasePageObject.myNews, false)
-//        screenshot(androidDriver, "After", "myNews")
-//
-//        tapButton(androidDriver, BasePageObject.popular, false)
-//        screenshot(androidDriver, "After", "popular")
-//
-//        tapButton(androidDriver, BasePageObject.video, false)
-//        screenshot(androidDriver, "After", "video")
-//
-//        tapButton(androidDriver, BasePageObject.menuButton, false)
-//        screenshot(androidDriver, "After", "menu")
-//
-//        navigateBack(androidDriver)
-//    }
-//
-//    /**
-//     * un-comment if you want to check the screenshot compare tests
-//     */
-//    @Test(priority = 17, description = "Compares the images")
-//    @Throws(IOException::class)
-//    fun testCompareImages() {
-//        startTest("CompareImages", "Compares the HomePage", "Smoke")
-//        compareTwoImages()
-//    }
+    /**
+     * un-ignore if you want to check the screenshot compare tests
+     */
+    @Ignore
+    @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
+    @Throws(IOException::class)
+    fun testTakeScreenshotAfter() {
+        try {
+            tapButton(androidDriver, BasePageObject.navigateBack, false)
+        } catch (e: NoSuchElementException) {
+            // Ignore if already on the main screen
+            assertDisplayingElements(androidDriver, menuButton)
+        }
+
+        tapButton(androidDriver, topStories, false)
+        screenshot(androidDriver, "After", "topStories")
+
+        tapButton(androidDriver, myNews, false)
+        screenshot(androidDriver, "After", "myNews")
+
+        tapButton(androidDriver, popular, false)
+        screenshot(androidDriver, "After", "popular")
+
+        tapButton(androidDriver, video, false)
+        screenshot(androidDriver, "After", "video")
+
+        tapButton(androidDriver, menuButton, false)
+        screenshot(androidDriver, "After", "menu")
+
+        navigateBack(androidDriver)
+    }
+
+    /**
+     * un-ignore if you want to check the screenshot compare tests
+     */
+    @Ignore
+    @Test(priority = 17, description = "Compares the images")
+    @Throws(IOException::class)
+    fun testCompareImages() {
+        startTest("CompareImages", "Compares the HomePage", "Smoke")
+        compareTwoImages()
+    }
 
 
     /**

@@ -1,11 +1,8 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDragDrop
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementIsSelected
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
@@ -22,10 +19,8 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.textPresent
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.verticalSwipe
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitFor
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitForScreenToLoad
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
-import com.bbcnews.automation.pageobjects.*
 import com.bbcnews.automation.pageobjects.BasePageObject.appInfo
 import com.bbcnews.automation.pageobjects.BasePageObject.article
 import com.bbcnews.automation.pageobjects.BasePageObject.articleDetailPageLinksRelease
@@ -82,6 +77,7 @@ import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayPromoSumma
 import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayTitle
 import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayWatch
 import com.bbcnews.automation.pageobjects.HomePageObject.videoOfTheDayWatchNext
+import com.bbcnews.automation.pageobjects.MyNewsPageObject
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.addNewsButton
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.addTopics
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.allowLocation
@@ -96,6 +92,7 @@ import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitle
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitleText
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myTopicEmptyView
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myTopics
+import com.bbcnews.automation.pageobjects.MyTopicsPageObject
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject.addAfricaTopicButton
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject.addEnglandTopicButton
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject.addEuTopicButton
@@ -135,111 +132,34 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageReleas
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageText
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoWallElementsRelease
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videosOfTheDayRelease
+import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
+import com.bbcnews.automation.testutils.TestSetup.setActivity
+import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.StartsActivity
 import io.appium.java_client.android.connection.ConnectionStateBuilder
-import io.appium.java_client.pagefactory.AppiumFieldDecorator
-import io.appium.java_client.remote.AndroidMobileCapabilityType
-import io.appium.java_client.remote.MobileCapabilityType
 import io.qameta.allure.Story
 import org.openqa.selenium.By
 import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.remote.DesiredCapabilities
-import org.openqa.selenium.support.PageFactory
 import org.testng.Assert.*
 import org.testng.ITestResult
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-import java.io.File
-import java.net.URL
 import java.time.Duration
 import java.util.*
 
 class BBCNewsReleaseBuildRegressionTest {
-
-    private var capabilities = DesiredCapabilities()
-    private var deviceid: String? = null
-    private var deviceName: String? = null
-    private var appPath: String? = null
-    private var appiumPort: String? = null
 
     private lateinit var androidDriver: AndroidDriver<MobileElement>
 
     @BeforeTest
     private fun runTest() {
         readDeviceDetailsCommandPrompt()
-        setUp()
-        checkConnection(androidDriver)
-        initialiseObjects()
-    }
-
-    private fun readDeviceDetailsCommandPrompt() {
-        //  Deviceos_Name = System.getProperty("DeviceOS");
-        // deviceosName = getProperty("DeviceOS")
-        deviceid = System.getProperty("DeviceID")
-        deviceName = System.getProperty("DeviceName")
-        appPath = System.getProperty("AppPath")
-        appiumPort = System.getProperty("AppiumPort")
-        // println("Passed The Device OS is $deviceosName")
-        println("Passed The Device ID is $deviceid")
-        println("Passed The Device Name is $deviceName")
-        println("Passed The Appium port is $appiumPort")
-        println("Passed The Application path  is $appPath")
-    }
-
-    private fun setUp() {
-        //commented out to start appium server, as this taken care by hive, to run locally un-comment below line of code
-        //appiumStart.startAppium(Integer.parseInt(Appium_Port));
-        //  AppiumManager.startAppium(Integer.parseInt(Appium_Port));
-        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
-
-        System.out.println("Appium Server Address : - $appiumUrl")
-        capabilities = DesiredCapabilities()
-        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-        capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-        capabilities.setCapability("appiumversion", "1.8.1")
-        capabilities.setCapability("app", appPath)
-        capabilities.setCapability("appPackage", "bbc.mobile.news.uk")
-        capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-        capabilities.setCapability("autoAcceptAlerts", true)
-        capabilities.setCapability("--session-override", true)
-        capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true)
-        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
-    }
-
-
-    private fun initialiseObjects() {
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), HomePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyNewsPageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), BasePageObject)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), VideoPageObjects)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), PopularPageObjects)
-
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), MyTopicsPageObject)
-
-        emptyFolder(screenshotPath)
-
-        createAReportHive("Regression", deviceName.toString(), deviceid.toString())
-
-        androidDriver.context("NATIVE_APP")
-
-        val screenshotPath = File(screenshotPath).absolutePath
-        System.out.println("The ScreenShot Path is $screenshotPath")
-
-        val orientation = androidDriver.orientation
-        if (orientation != ScreenOrientation.LANDSCAPE) {
-        } else {
-            androidDriver.rotate(ScreenOrientation.PORTRAIT)
-        }
+        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
+        setUpTest("Regression")
     }
 
     @Test(priority = 1, description = "Launching the app")
@@ -391,7 +311,6 @@ class BBCNewsReleaseBuildRegressionTest {
         assertEquals(MyNewsPageObject.myTopicEmptyViewText, myTopicEmptyView?.text, "Text Mesaaged")
     }
 
-
     // @Test(dependsOnMethods = {"testAddingTopicsPage"})
     @Test(priority = 9, description = "Test to add Topics under MyNews")
     fun testAddingTopicsToMyNewsPage() {
@@ -430,7 +349,6 @@ class BBCNewsReleaseBuildRegressionTest {
         elementDisplayed(androidDriver, mortgagesTopic)
         elementDisplayed(androidDriver, youTubeTopic)
     }
-
 
     @Test(priority = 11, description = "Test to display the Ordering of the Topics")
     fun testCheckOrderingOfTopicsAdded() {
