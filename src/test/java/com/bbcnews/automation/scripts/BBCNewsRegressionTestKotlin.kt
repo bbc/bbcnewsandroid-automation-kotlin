@@ -4,11 +4,9 @@ import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDispla
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDragDrop
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementIsSelected
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.isElementPresent
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.isElementSelected
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.readRecyclerView
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.seeking
@@ -127,35 +125,21 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.videoArticleSearch
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPage
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageText
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoWallElements
-import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
-import com.bbcnews.automation.testutils.TestSetup.setActivity
-import com.bbcnews.automation.testutils.TestSetup.setUpTest
-import io.appium.java_client.MobileElement
-import io.appium.java_client.android.AndroidDriver
+import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.appium.java_client.android.StartsActivity
 import io.appium.java_client.android.connection.ConnectionStateBuilder
 import io.qameta.allure.Story
 import org.openqa.selenium.By
 import org.openqa.selenium.ScreenOrientation
 import org.testng.Assert.*
-import org.testng.ITestResult
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.AfterTest
-import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 import java.time.Duration
 import com.bbcnews.automation.pageobjects.HomePageObject.familyEducationTopic as familyEducationTopic1
 
-class BBCNewsRegressionTestKotlin {
-
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
-
-    @BeforeTest
-    fun runTest() {
-        readDeviceDetailsCommandPrompt()
-        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
-        setUpTest("Regression")
-    }
+class BBCNewsRegressionTestKotlin : TestCase(
+        "bbc.mobile.news.v3.app.TopLevelActivity",
+        "Regression"
+) {
 
     @Test(priority = 1, description = "Launching the app")
     fun testOpenNewsApp() {
@@ -843,18 +827,5 @@ class BBCNewsRegressionTestKotlin {
 
         pressBack()
         tapButton(androidDriver, backButton, false)
-    }
-
-    @AfterMethod
-    fun getResult(result: ITestResult) {
-        getTestResult(androidDriver, result)
-    }
-
-    @AfterTest
-    fun tearDown() {
-        publishReport()
-        androidDriver.closeApp()
-        androidDriver.removeApp("bbc.mobile.news.uk.internal")
-        androidDriver.quit()
     }
 }

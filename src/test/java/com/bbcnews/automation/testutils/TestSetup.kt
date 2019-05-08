@@ -17,8 +17,8 @@ import java.net.URL
 
 object TestSetup {
 
+    lateinit var androidDriver: AndroidDriver<MobileElement>
     private var capabilities = DesiredCapabilities()
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
     private var deviceid: String? = null
     private var deviceName: String? = null
     private var appPath: String? = null

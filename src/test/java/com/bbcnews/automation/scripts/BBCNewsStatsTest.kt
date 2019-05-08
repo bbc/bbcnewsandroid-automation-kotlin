@@ -1,7 +1,5 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
 import com.bbcnews.automation.pageobjects.BasePageObject.cpsContent
@@ -19,35 +17,20 @@ import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.pageobjects.StatsTestData
 import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
-import com.bbcnews.automation.testutils.TestSetup.setActivity
-import com.bbcnews.automation.testutils.TestSetup.setUpTest
-import io.appium.java_client.MobileElement
-import io.appium.java_client.android.AndroidDriver
+import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
-import org.testng.ITestResult
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.AfterTest
-import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 import java.io.IOException
 
-class BBCNewsStatsTest {
+class BBCNewsStatsTest : TestCase(
+        "bbc.mobile.news.v3.app.TopLevelActivity",
+        "Regression"
+) {
 
     private val charlesProxy = CharlesProxy()
     private val statsTestData = StatsTestData()
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
-
-    @BeforeTest
-    @Throws(Exception::class)
-    fun runTest() {
-        readDeviceDetailsCommandPrompt()
-        charlesProxy.startCharles()
-        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
-        setUpTest("Regression")
-    }
 
     @Test(priority = 1, description = "launching the app and start the Charles ")
     @Story("Home")
@@ -190,21 +173,6 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-    }
-
-    @AfterMethod
-    fun getResult(result: ITestResult) {
-        try {
-            getTestResult(androidDriver, result)
-        } catch (e: IOException) {
-        }
-    }
-
-    @AfterTest
-    fun tearDown() {
-        publishReport()
-        androidDriver.closeApp()
-        androidDriver.quit()
     }
 
 }

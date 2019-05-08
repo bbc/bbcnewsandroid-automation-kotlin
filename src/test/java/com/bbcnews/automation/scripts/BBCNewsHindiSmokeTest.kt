@@ -1,9 +1,6 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
@@ -60,34 +57,18 @@ import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedArticles
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedTopics
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.seekBar
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.volumeButton
-import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
-import com.bbcnews.automation.testutils.TestSetup.setActivity
-import com.bbcnews.automation.testutils.TestSetup.setUpTest
-import io.appium.java_client.MobileElement
-import io.appium.java_client.android.AndroidDriver
+import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
 import org.openqa.selenium.By
 import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
-import org.testng.ITestResult
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.AfterTest
-import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 
-class BBCNewsHindiSmokeTest {
-
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
-
-    @BeforeTest
-    fun runTest() {
-        readDeviceDetailsCommandPrompt()
-        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
-        checkConnection(androidDriver)
-        setUpTest("Regression")
-    }
+class BBCNewsHindiSmokeTest : TestCase(
+        "bbc.mobile.news.v3.app.TopLevelActivity",
+        "Regression") {
 
     @Test(priority = 1, description = "launching the app ")
     @Story("Home")
@@ -386,18 +367,6 @@ class BBCNewsHindiSmokeTest {
                 hindiScience,
                 hindiPhotos,
                 hindiSocial)
-    }
-
-    @AfterMethod
-    fun getResult(result: ITestResult) {
-        getTestResult(androidDriver, result)
-    }
-
-    @AfterTest
-    fun tearDown() {
-        publishReport()
-        androidDriver.closeApp()
-        androidDriver.quit()
     }
 
 }
