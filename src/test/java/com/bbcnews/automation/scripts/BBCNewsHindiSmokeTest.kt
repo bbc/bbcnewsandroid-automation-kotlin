@@ -66,7 +66,7 @@ import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
 import org.testng.annotations.Test
 
-class BBCNewsHindiSmokeTest : TestCase(
+class BBCNewsHindiSmokeTest : BbcTestCase(
         "bbc.mobile.news.v3.app.TopLevelActivity",
         "Regression") {
 

@@ -14,7 +14,7 @@ import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import java.io.IOException
 
-open class TestCase(
+open class BbcTestCase(
         private val activity: String,
         private val testType: String
 ) {

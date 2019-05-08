@@ -136,7 +136,7 @@ import org.testng.annotations.Test
 import java.time.Duration
 import com.bbcnews.automation.pageobjects.HomePageObject.familyEducationTopic as familyEducationTopic1
 
-class BBCNewsRegressionTestKotlin : TestCase(
+class BBCNewsRegressionTestKotlin : BbcTestCase(
         "bbc.mobile.news.v3.app.TopLevelActivity",
         "Regression"
 ) {

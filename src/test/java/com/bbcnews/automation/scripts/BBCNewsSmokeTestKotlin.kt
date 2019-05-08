@@ -64,7 +64,7 @@ import org.testng.annotations.Test
 import java.io.IOException
 import java.time.Duration
 
-class BBCNewsSmokeTestKotlin : TestCase(
+class BBCNewsSmokeTestKotlin : BbcTestCase(
         "bbc.mobile.news.v3.app.TopLevelActivity",
         "SmokeTest"
 ) {
@@ -203,17 +203,13 @@ class BBCNewsSmokeTestKotlin : TestCase(
     @Story("MyTopics")
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckAddedTopicsUnderMyTopics() {
-        try {
-            startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
-            tapButton(androidDriver, MyNewsPageObject.myTopics, false)
-            assertDisplayingElements(androidDriver,
-                    MyTopicsPageObject.walesTopic,
-                    MyTopicsPageObject.worldTopic
-            )
-            navigateBack(androidDriver)
-        } catch (e: Exception) {
-
-        }
+        startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
+        tapButton(androidDriver, MyNewsPageObject.myTopics, false)
+        assertDisplayingElements(androidDriver,
+                MyTopicsPageObject.walesTopic,
+                MyTopicsPageObject.worldTopic
+        )
+        navigateBack(androidDriver)
     }
 
     /**

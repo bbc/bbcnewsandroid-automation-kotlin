@@ -1,7 +1,17 @@
 package com.bbcnews.automation.scripts.journeys
 
-class MyNewsJourney {
+import com.bbcnews.automation.scripts.BbcTestCase
+import org.junit.Test
 
+class MyNewsJourney: BbcTestCase(
+        "bbc.mobile.news.v3.app.TopLevelActivity",
+        "User Journey") {
+
+
+    @Test
+    fun `user can add items to My News`() {
+
+    }
     // Scenario 2: user can add items to MyNews
     // (Can we launch appium in states???)
 

@@ -335,7 +335,6 @@ object CommonFunctionKotlin {
      */
     @Throws(Exception::class)
     fun createAReportHive(reportName: String, deviceName: String, deviceId: String) {
-
         val curDate = Date()
         println(curDate.toString())
 

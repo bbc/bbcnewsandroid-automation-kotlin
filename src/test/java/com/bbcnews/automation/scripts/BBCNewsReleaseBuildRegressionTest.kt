@@ -141,7 +141,7 @@ import org.testng.annotations.Test
 import java.time.Duration
 import java.util.*
 
-class BBCNewsReleaseBuildRegressionTest : TestCase(
+class BBCNewsReleaseBuildRegressionTest : BbcTestCase(
         "bbc.mobile.news.v3.app.TopLevelActivity",
         "Regression"
 ) {
