@@ -64,7 +64,7 @@ import org.testng.annotations.Test
 import java.io.IOException
 import java.time.Duration
 
-class BBCNewsSmokeTestKotlin : BbcTestCase(
+class BBCNewsSmokeTest : BbcTestCase(
         "bbc.mobile.news.v3.app.TopLevelActivity",
         "SmokeTest"
 ) {
