@@ -410,7 +410,6 @@ class BBCNewsReleaseBuildRegressionTest {
         tapButton(androidDriver, backButton, false)
     }
 
-
     @Test(priority = 15, description = "Test to re-arrange topics from top to bottom")
     @Throws(Exception::class)
     fun testCheckReOrderingOfTopicsAdded() {
@@ -587,7 +586,6 @@ class BBCNewsReleaseBuildRegressionTest {
         tapButton(androidDriver, backButton, false)
         tapButton(androidDriver, cancelSearch, false)
     }
-
 
     @Test(priority = 25, description = "Test to search for an particular article")
     fun testSearchArticle() {

@@ -1,6 +1,5 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDragDrop
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementIsSelected

@@ -76,7 +76,6 @@ import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-import java.io.File
 
 class BBCNewsHindiSmokeTest {
 

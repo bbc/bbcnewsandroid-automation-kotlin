@@ -3,7 +3,7 @@ package com.bbcnews.automation.testutils
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.extentResultFolder
 import java.io.File
 import java.io.IOException
-import java.lang.Runtime.*
+import java.lang.Runtime.getRuntime
 
 class CharlesProxy {
 
@@ -47,7 +47,7 @@ class CharlesProxy {
 
     fun convertToCSV(fromFileName: String, toFileName: String) {
         try {
-            runTime.exec("charles convert " + files.canonicalFile + File.separator + fromFileName + " " + files.getCanonicalFile() + File.separator + toFileName + "")
+            runTime.exec("charles convert " + files.canonicalFile + File.separator + fromFileName + " " + files.canonicalFile + File.separator + toFileName + "")
             Thread.sleep(3000)
             System.out.println("Converting Charles Session")
         } catch (e: IOException) {

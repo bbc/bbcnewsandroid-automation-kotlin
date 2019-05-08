@@ -18,10 +18,10 @@ import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.pageobjects.StatsTestData
+import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
 import com.bbcnews.automation.testutils.TestSetup.setActivity
 import com.bbcnews.automation.testutils.TestSetup.setUpTest
-import com.bbcnews.automation.testutils.CharlesProxy
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.qameta.allure.Severity
@@ -32,7 +32,6 @@ import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-import java.io.File
 import java.io.IOException
 
 class BBCNewsStatsTest {
@@ -86,7 +85,6 @@ class BBCNewsStatsTest {
             e.printStackTrace()
         }
     }
-
 
     @Test(priority = 3, description = "Test to stop the charles recording ")
     @Throws(Exception::class)
@@ -156,7 +154,6 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     @Test(priority = 9, description = "Test to check the Popular Page downloaded stats")

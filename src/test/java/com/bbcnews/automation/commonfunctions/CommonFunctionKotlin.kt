@@ -143,15 +143,8 @@ object CommonFunctionKotlin {
         wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
     }
 
-//    open fun waitForScreenToLoads(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
-//
-//        val wait = WebDriverWait(driver, seconds.toLong())
-//        wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
-//
-//    }
-
     /**
-     * @param, driver type, screenshot path, screenshot name
+     * @param, appiumDriver, screenshot path, screenshot name
      * attaches the screenshot to the test report
      */
     private fun getScreenshot(appiumDriver: AppiumDriver<MobileElement>, screenshotName: String?): String {
@@ -180,7 +173,7 @@ object CommonFunctionKotlin {
      * Function to create a folder with the project path
      * @param, Directory path
      */
-    fun extentResultFolder(path: String): String? {
+     fun extentResultFolder(path: String): String? {
         try {
             // Create one directory
             val success = File(path).mkdirs()
@@ -212,11 +205,11 @@ object CommonFunctionKotlin {
 
     /**
      * Function to seek vertical on the app.
-     * Startx remains constant
-     * StartY and EndY are the two main parameters to swipe vertically
-     * @param, driverType
+     * startX remains constant
+     * startY and EndY are the two main parameters to swipe vertically
+     * @param, driver
      */
-    fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingdirection: String) {
+    fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
         val width = dimension.getWidth()
@@ -228,11 +221,11 @@ object CommonFunctionKotlin {
 //        action.press(PointOption.point(startX, startY))
 //                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 //                .moveTo(PointOption.point(startX, endY)).release().perform()
-        if (swipingdirection == "Down") {
+        if (swipingDirection == "Down") {
             PlatformTouchAction(driver).press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(startX, endY)).release().perform()
-        } else if (swipingdirection == "Up") {
+        } else if (swipingDirection == "Up") {
             PlatformTouchAction(driver).press(PointOption.point(startX, endY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(startX, startY)).release().perform()
