@@ -1,138 +1,52 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
-import com.bbcnews.automation.pageobjects.*
+import com.bbcnews.automation.pageobjects.BasePageObject.cpsContent
+import com.bbcnews.automation.pageobjects.BasePageObject.internalSettings
+import com.bbcnews.automation.pageobjects.BasePageObject.menuButton
+import com.bbcnews.automation.pageobjects.BasePageObject.myNews
+import com.bbcnews.automation.pageobjects.BasePageObject.navigateBack
+import com.bbcnews.automation.pageobjects.BasePageObject.noThanksButton
+import com.bbcnews.automation.pageobjects.BasePageObject.okButton
+import com.bbcnews.automation.pageobjects.BasePageObject.popular
+import com.bbcnews.automation.pageobjects.BasePageObject.reloadButton
+import com.bbcnews.automation.pageobjects.BasePageObject.searchButton
+import com.bbcnews.automation.pageobjects.BasePageObject.topStories
+import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
+import com.bbcnews.automation.pageobjects.BasePageObject.video
+import com.bbcnews.automation.pageobjects.StatsTestData
 import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.testutils.TestUtility
+import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
+import com.bbcnews.automation.testutils.TestSetup.setActivity
+import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
-import io.appium.java_client.pagefactory.AppiumFieldDecorator
-import io.appium.java_client.remote.MobileCapabilityType
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
-import org.openqa.selenium.ScreenOrientation
-import org.openqa.selenium.remote.DesiredCapabilities
-import org.openqa.selenium.support.PageFactory
 import org.testng.ITestResult
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-import java.io.File
 import java.io.IOException
-import java.net.URL
 
 class BBCNewsStatsTest {
 
-    private var capabilities = DesiredCapabilities()
-    private var deviceOsName: String? = null
-    private var deviceId: String? = null
-    private var deviceName: String? = null
-    private var appPath: String? = null
-    private var appiumPort: String? = null
-    private var testUtility = TestUtility()
-    private var charlesProxy = CharlesProxy()
-    private var statsTestData = StatsTestData()
-
-    private lateinit var file: File
-    private lateinit var homePageObject: HomePageObject
+    private val charlesProxy = CharlesProxy()
+    private val statsTestData = StatsTestData()
     private lateinit var androidDriver: AndroidDriver<MobileElement>
-    private lateinit var myNewsPageObject: MyNewsPageObject
-    private lateinit var videoPageObject: VideoPageObjects
-    private lateinit var popularPageObject: PopularPageObjects
-    private lateinit var basePageObjectModel: BasePageObject
 
     @BeforeTest
     @Throws(Exception::class)
     fun runTest() {
-        try {
-            readDeviceDetailsCommandPrompt()
-            charlesProxy.startCharles()
-            setUp()
-            initialiseObjects()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun readDeviceDetailsCommandPrompt() {
-        try {
-            deviceOsName = System.getProperty("DeviceOS")
-            deviceId = System.getProperty("DeviceID")
-            deviceName = System.getProperty("DeviceName")
-            appPath = System.getProperty("AppPath")
-            appiumPort = System.getProperty("AppiumPort")
-            println("Passed The Device OS is $deviceOsName")
-            println("Passed The Device ID is $deviceId")
-            println("Passed The Device Name is $deviceName")
-            println("Passed The Appium port is $appiumPort")
-            println("Passed The Application path  is $appPath")
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
-    private fun setUp() {
-        try {
-            //  appiumStart.startAppium(Integer.parseInt(Appium_Port));
-            val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
-            println("Appium Server Address : - $appiumUrl")
-            capabilities = DesiredCapabilities()
-            capabilities.setCapability(MobileCapabilityType.UDID, deviceId)
-            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
-            capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
-            capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
-            capabilities.setCapability("appiumversion", "1.8.1")
-            capabilities.setCapability("app", appPath)
-            capabilities.setCapability("appPackage", "bbc.mobile.news.uk.internal")
-            capabilities.setCapability("appActivity", "bbc.mobile.news.v3.app.TopLevelActivity")
-            capabilities.setCapability("--session-override", true)
-            capabilities.setCapability("ignoreUnimportantViews", true)
-            androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
-        } catch (e: Exception) {
-        }
-    }
-
-    private fun initialiseObjects() = try {
-        homePageObject = HomePageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), homePageObject)
-
-        myNewsPageObject = MyNewsPageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), myNewsPageObject)
-
-        basePageObjectModel = BasePageObject()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), basePageObjectModel)
-
-        videoPageObject = VideoPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), videoPageObject)
-
-        popularPageObject = PopularPageObjects()
-        PageFactory.initElements(AppiumFieldDecorator(androidDriver), popularPageObject)
-
-        testUtility.emptyFolder(screenshotPath)
-
-        createAReportHive("Regression", deviceName.toString(), deviceId.toString())
-
-        androidDriver.context("NATIVE_APP")
-        file = File(screenshotPath)
-        val screenshot = file.absolutePath
-        println("The ScreenShot Path is $screenshot")
-
-        val orientation = androidDriver.orientation
-        if (orientation != ScreenOrientation.LANDSCAPE) {
-            androidDriver.rotate(ScreenOrientation.PORTRAIT)
-        } else {
-        }
-    } catch (e: NullPointerException) {
-        e.printStackTrace()
-    } catch (e: Exception) {
-        e.printStackTrace()
+        readDeviceDetailsCommandPrompt()
+        charlesProxy.startCharles()
+        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
+        setUpTest("Regression")
     }
 
     @Test(priority = 1, description = "launching the app and start the Charles ")
@@ -141,14 +55,14 @@ class BBCNewsStatsTest {
     @Throws(Exception::class)
     fun testOpenNewsApp() {
         try {
-            tapButton(androidDriver, basePageObjectModel.okButton, false)
-            tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
-            tapButton(androidDriver, basePageObjectModel.menuButton, false)
-            tapButton(androidDriver, basePageObjectModel.internalSettings, false)
-            tapButton(androidDriver, basePageObjectModel.cpsContent, false)
-            tapButton(androidDriver, basePageObjectModel.trevorTest, false)
-            tapButton(androidDriver, basePageObjectModel.navigate_back, false)
-            tapButton(androidDriver, basePageObjectModel.reloadButton, false)
+            tapButton(androidDriver, okButton, false)
+            tapButton(androidDriver, noThanksButton, false)
+            tapButton(androidDriver, menuButton, false)
+            tapButton(androidDriver, internalSettings, false)
+            tapButton(androidDriver, cpsContent, false)
+            tapButton(androidDriver, trevorTest, false)
+            tapButton(androidDriver, navigateBack, false)
+            tapButton(androidDriver, reloadButton, false)
             charlesProxy.startCharlesSession()
 
         } catch (e: Exception) {
@@ -162,11 +76,11 @@ class BBCNewsStatsTest {
     fun testCheckHomePage() {
         try {
             startTest("HomePage", "Checking the HomePage", "Smoke")
-            tapButton(androidDriver, basePageObjectModel.topStories, false)
-            tapButton(androidDriver, basePageObjectModel.myNews, false)
-            tapButton(androidDriver, basePageObjectModel.popular, false)
-            tapButton(androidDriver, basePageObjectModel.video, false)
-            tapButton(androidDriver, basePageObjectModel.searchButton, false)
+            tapButton(androidDriver, topStories, false)
+            tapButton(androidDriver, myNews, false)
+            tapButton(androidDriver, popular, false)
+            tapButton(androidDriver, video, false)
+            tapButton(androidDriver, searchButton, false)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -228,7 +142,6 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     @Test(priority = 8, description = "Test to check the MyNews Page downloaded stats")
@@ -295,5 +208,3 @@ class BBCNewsStatsTest {
     }
 
 }
-
-
