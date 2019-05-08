@@ -1,9 +1,13 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
+import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.testutils.TestUtility
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -20,7 +24,6 @@ import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
-
 import java.io.File
 import java.io.IOException
 import java.net.URL
@@ -33,7 +36,6 @@ class BBCNewsStatsTest {
     private var deviceName: String? = null
     private var appPath: String? = null
     private var appiumPort: String? = null
-    private var commonFunctionKotlin = CommonFunctionKotlin()
     private var testUtility = TestUtility()
     private var charlesProxy = CharlesProxy()
     private var statsTestData = StatsTestData()
@@ -42,11 +44,9 @@ class BBCNewsStatsTest {
     private lateinit var homePageObject: HomePageObject
     private lateinit var androidDriver: AndroidDriver<MobileElement>
     private lateinit var myNewsPageObject: MyNewsPageObject
-    //private lateinit var basePageObject: BasePageObject
     private lateinit var videoPageObject: VideoPageObjects
     private lateinit var popularPageObject: PopularPageObjects
     private lateinit var basePageObjectModel: BasePageObject
-
 
     @BeforeTest
     @Throws(Exception::class)
@@ -117,7 +117,7 @@ class BBCNewsStatsTest {
 
         testUtility.emptyFolder(screenshotPath)
 
-        commonFunctionKotlin.createAReportHive("Regression", deviceName.toString(), deviceId.toString())
+        createAReportHive("Regression", deviceName.toString(), deviceId.toString())
 
         androidDriver.context("NATIVE_APP")
         file = File(screenshotPath)
@@ -141,15 +141,15 @@ class BBCNewsStatsTest {
     @Throws(Exception::class)
     fun testOpenNewsApp() {
         try {
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.okButton, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.menuButton, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.internalSettings, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.cpsContent, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.trevorTest, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.navigate_back, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.reloadButton, false)
-            charlesProxy.startcharlesSession()
+            tapButton(androidDriver, basePageObjectModel.okButton, false)
+            tapButton(androidDriver, basePageObjectModel.noThanksButton, false)
+            tapButton(androidDriver, basePageObjectModel.menuButton, false)
+            tapButton(androidDriver, basePageObjectModel.internalSettings, false)
+            tapButton(androidDriver, basePageObjectModel.cpsContent, false)
+            tapButton(androidDriver, basePageObjectModel.trevorTest, false)
+            tapButton(androidDriver, basePageObjectModel.navigate_back, false)
+            tapButton(androidDriver, basePageObjectModel.reloadButton, false)
+            charlesProxy.startCharlesSession()
 
         } catch (e: Exception) {
             e.printStackTrace()
@@ -161,17 +161,16 @@ class BBCNewsStatsTest {
     @Severity(SeverityLevel.CRITICAL)
     fun testCheckHomePage() {
         try {
-            commonFunctionKotlin.startTest("HomePage", "Checking the HomePage", "Smoke")
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.topStories, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.myNews, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.popular, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.video, false)
-            commonFunctionKotlin.tapButton(androidDriver, basePageObjectModel.searchButton, false)
+            startTest("HomePage", "Checking the HomePage", "Smoke")
+            tapButton(androidDriver, basePageObjectModel.topStories, false)
+            tapButton(androidDriver, basePageObjectModel.myNews, false)
+            tapButton(androidDriver, basePageObjectModel.popular, false)
+            tapButton(androidDriver, basePageObjectModel.video, false)
+            tapButton(androidDriver, basePageObjectModel.searchButton, false)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
-
 
     @Test(priority = 3, description = "Test to stop the charles recording ")
     @Throws(Exception::class)
@@ -199,7 +198,7 @@ class BBCNewsStatsTest {
     @Throws(Exception::class)
     fun testConvertCharlesSessionToCSV() {
         try {
-            charlesProxy.converttoCSV()
+            charlesProxy.convertToCSV()
             Thread.sleep(2000)
             charlesProxy.stopCharles()
         } catch (e: AssertionError) {
@@ -209,7 +208,7 @@ class BBCNewsStatsTest {
 
     @Test(priority = 6, description = "Test to check the compared the downloaded stats")
     fun testBBVNewsBasicStats() {
-        commonFunctionKotlin.startTest("BasicStats", "Test to check the compared the downloaded stats", "Stat's")
+        startTest("BasicStats", "Test to check the compared the downloaded stats", "Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.bbcNewsBasicStats)
         } catch (e: InterruptedException) {
@@ -219,10 +218,9 @@ class BBCNewsStatsTest {
         }
     }
 
-
     @Test(priority = 7, description = "Test to check the TopStores Page downloaded stats")
     fun testCheckTopStoresStats() {
-        commonFunctionKotlin.startTest("TopStores", "Test to check the TopStores Page downloaded stats", "TopStoriesStat's")
+        startTest("TopStores", "Test to check the TopStores Page downloaded stats", "TopStoriesStat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.topStories)
         } catch (e: InterruptedException) {
@@ -235,7 +233,7 @@ class BBCNewsStatsTest {
 
     @Test(priority = 8, description = "Test to check the MyNews Page downloaded stats")
     fun testCheckMyNewsStats() {
-        commonFunctionKotlin.startTest("MyNews", "Test to check the MyNews Page downloaded stats", "MyNews Stat's")
+        startTest("MyNews", "Test to check the MyNews Page downloaded stats", "MyNews Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.myNews)
         } catch (e: InterruptedException) {
@@ -243,12 +241,11 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     @Test(priority = 9, description = "Test to check the Popular Page downloaded stats")
     fun testCheckPopularPageStats() {
-        commonFunctionKotlin.startTest("Popular", "Test to check the Popular Page downloaded stats", "Popular Stat's")
+        startTest("Popular", "Test to check the Popular Page downloaded stats", "Popular Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.popularPage)
         } catch (e: InterruptedException) {
@@ -256,12 +253,11 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     @Test(priority = 10, description = "Test to check the Video Page downloaded stats")
     fun testCheckVideoPageStats() {
-        commonFunctionKotlin.startTest("Video", "Test to check the Video Page downloaded stats", "Video Stat's")
+        startTest("Video", "Test to check the Video Page downloaded stats", "Video Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.videoPage)
         } catch (e: InterruptedException) {
@@ -269,12 +265,11 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     @Test(priority = 11, description = "Test to check the Search Page downloaded stats")
     fun testCheckPopularStats() {
-        commonFunctionKotlin.startTest("Search", "Test to check the Search Page downloaded stats", "Search Stat's")
+        startTest("Search", "Test to check the Search Page downloaded stats", "Search Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.searchStats)
         } catch (e: InterruptedException) {
@@ -282,21 +277,19 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-
     }
 
     @AfterMethod
     fun getResult(result: ITestResult) {
         try {
-            commonFunctionKotlin.getTestResult(androidDriver, result)
+            getTestResult(androidDriver, result)
         } catch (e: IOException) {
         }
-
     }
 
     @AfterTest
     fun tearDown() {
-        commonFunctionKotlin.publishReport()
+        publishReport()
         androidDriver.closeApp()
         androidDriver.quit()
     }

@@ -1,7 +1,6 @@
 package com.bbcnews.automation.testutils
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin
-import org.testng.Assert.assertEquals
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.extentResultFolder
 import java.io.*
 
 class CharlesProxy {
@@ -13,11 +12,9 @@ class CharlesProxy {
     var startCharles = "Charles -config"
     var stopCharles = "killall Charles"
 
-    var rt = Runtime.getRuntime()
+    var rt: Runtime = Runtime.getRuntime()
 
-    private var commonFunctionKotlin = CommonFunctionKotlin()
-
-    var charlesFolder = commonFunctionKotlin.extentResultFolder("CharlesFolder")
+    var charlesFolder = extentResultFolder("CharlesFolder")
     var files = File(charlesFolder)
 
 
@@ -44,7 +41,7 @@ class CharlesProxy {
 
     }
 
-    fun converttoCSV() {
+    fun convertToCSV() {
         try {
            rt.exec("charles convert session.chls session.csv")
             Thread.sleep(2000)
@@ -54,9 +51,9 @@ class CharlesProxy {
 
     }
 
-    fun ConverttoCSV(Fromfilename: String, Tofilname: String) {
+    fun convertToCSV(fromFileName: String, toFileName: String) {
         try {
-           rt.exec("charles convert " + files.getCanonicalFile() + File.separator + Fromfilename + " " + files.getCanonicalFile() + File.separator + Tofilname + "")
+           rt.exec("charles convert " + files.canonicalFile + File.separator + fromFileName + " " + files.canonicalFile + File.separator + toFileName + "")
             Thread.sleep(3000)
             System.out.println("Converting Charles Session")
         } catch (e: IOException) {
@@ -77,7 +74,7 @@ class CharlesProxy {
 
 
     @Throws(InterruptedException::class)
-    fun DownloadCharlesSession(filename: String) {
+    fun downloadCharlesSession(filename: String) {
         try {
 
              rt.exec("curl -o " + files.getCanonicalFile() + File.separator + filename + " -x http://localhost:8888 http://control.charles/session/download")
@@ -88,7 +85,7 @@ class CharlesProxy {
 
     }
 
-    fun startcharlesSession() {
+    fun startCharlesSession() {
         try {
            rt.exec("curl -v -x http://localhost:8888 http://control.charles/recording/start")
             System.out.println("Starting Charles Session")
@@ -108,8 +105,5 @@ class CharlesProxy {
         }
 
     }
-
-
-
 
 }

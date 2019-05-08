@@ -39,7 +39,7 @@ import java.util.*
 import javax.imageio.ImageIO
 
 
-open class CommonFunctionKotlin {
+object CommonFunctionKotlin {
 
     private lateinit var extent: ExtentReports
     private lateinit var htmlReporter: ExtentHtmlReporter
@@ -82,12 +82,12 @@ open class CommonFunctionKotlin {
         htmlReporter.config().timeStampFormat = "EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'"
     }
 
-    open fun startTest(testName: String, testDescription: String, category: String) {
+    fun startTest(testName: String, testDescription: String, category: String) {
         test = extent.createTest(testName, testDescription)
         test?.assignCategory(category)
     }
 
-    open fun publishReport() = extent.flush()
+    fun publishReport() = extent.flush()
 
     /**
      * Appium Android default method
@@ -142,20 +142,13 @@ open class CommonFunctionKotlin {
      * @param, driver, element and seconds to wait for page to load
      */
 
-    open fun waitForScreenToLoad(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
+    fun waitForScreenToLoad(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
         val wait = WebDriverWait(driver, seconds.toLong())
         wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
     }
 
-//    open fun waitForScreenToLoads(driver: AppiumDriver<MobileElement>, element: MobileElement?, seconds: Int) {
-//
-//        val wait = WebDriverWait(driver, seconds.toLong())
-//        wait.until<WebElement>(ExpectedConditions.visibilityOf(element))
-//
-//    }
-
     /**
-     * @param, drivertype, screenshot path, screenshot name
+     * @param, appiumDriver, screenshot path, screenshot name
      * attaches the screenshot to the test report
      */
     private fun getScreenshot(appiumDriver: AppiumDriver<MobileElement>, screenshotName: String): String {
@@ -185,7 +178,7 @@ open class CommonFunctionKotlin {
      * Function to create a folder with the project path
      * @param, Directory path
      */
-    open fun extentResultFolder(path: String): String? {
+     fun extentResultFolder(path: String): String? {
         try {
             // Create one directory
             val success = File(path).mkdirs()
@@ -219,12 +212,11 @@ open class CommonFunctionKotlin {
 
     /**
      * Function to seek vertical on the app.
-     * Startx remains constant
-     * StartY and EndY are the two main parameters to swipe vertically
-     * @param, driverType
+     * startX remains constant
+     * startY and EndY are the two main parameters to swipe vertically
+     * @param, driver
      */
-
-    open fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingdirection: String) {
+    fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
         val width = dimension.getWidth()
@@ -236,11 +228,11 @@ open class CommonFunctionKotlin {
 //        action.press(PointOption.point(startX, startY))
 //                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 //                .moveTo(PointOption.point(startX, endY)).release().perform()
-        if (swipingdirection == "Down") {
+        if (swipingDirection == "Down") {
             PlatformTouchAction(driver).press(PointOption.point(startX, startY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(startX, endY)).release().perform()
-        } else if (swipingdirection == "Up") {
+        } else if (swipingDirection == "Up") {
             PlatformTouchAction(driver).press(PointOption.point(startX, endY))
                     .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
                     .moveTo(PointOption.point(startX, startY)).release().perform()
@@ -256,7 +248,6 @@ open class CommonFunctionKotlin {
      * @param d
      * @throws InterruptedException
      */
-
     fun livevideoseeking(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
         val startX = element.location.getX()
         val endX = element.size.width
@@ -270,7 +261,6 @@ open class CommonFunctionKotlin {
                 .release()
                 .perform()
     }
-
 
     /**
     Function to enter the text into a textfeld
