@@ -70,7 +70,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
      * launches the app and ignores the pop up message
      */
     @Test(priority = 1, description = "Launching the app")
-    fun testOpenNewsApp() {
+    fun smokeTestOpenNewsApp() {
         tapButton(androidDriver, BasePageObject.okButton, false)
         tapButton(androidDriver, BasePageObject.noThanksButton, false)
 
@@ -87,7 +87,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Ignore
     @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
     @Throws(IOException::class)
-    fun testTakeScreenshotsOfPages() {
+    fun smokeTestTakeScreenshotsOfPages() {
         tapButton(androidDriver, topStories, false)
         screenshot(androidDriver, "Before", "topStories")
         tapButton(androidDriver, myNews, false)
@@ -104,7 +104,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
-    fun testCheckHomePage() {
+    fun smokeTestCheckHomePage() {
         androidDriver.runAppInBackground(Duration.ofSeconds(30))
         startTest("HomePage", "Checking the HomePage", "Smoke")
         tapButton(androidDriver, topStories, false)
@@ -124,7 +124,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 3, description = "Test to check the MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
-    fun testAllowLocation() {
+    fun smokeTestAllowLocation() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
         tapButton(androidDriver, myNews, false)
         tapButton(androidDriver, myNewsStartButton, false)
@@ -136,7 +136,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 4, description = "Test to check the popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    fun testPopularPage() {
+    fun smokeTestPopularPage() {
         startTest("PopularPage", "Checking the Popular", "Smoke")
         tapButton(androidDriver, popular, false)
         assertTrue(popular?.isSelected!!)
@@ -147,7 +147,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 5, description = "checking that most watched displayed in popular page")
     @Story("Popular")
     @Severity(SeverityLevel.CRITICAL)
-    fun testMostWatched() {
+    fun smokeTestMostWatched() {
         startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
         scrollToElement(androidDriver, popularMostWatched)
         assertEquals("Most Watched", popularMostWatched?.text, "Text Matched")
@@ -156,7 +156,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 6, description = "Test to check the Mynews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
-    fun testMyNewsPage() {
+    fun smokeTestMyNewsPage() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
         tapButton(androidDriver, myNews, false)
 
@@ -177,7 +177,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
      */
     @Test(priority = 7, description = "Test to check the adding the topics to MyNews page")
     @Severity(SeverityLevel.CRITICAL)
-    fun testAddingTopicsToMyNewsPage() {
+    fun smokeTestAddingTopicsToMyNewsPage() {
         startTest("MyNews", "Adding topics to MyNews", "Smoke")
         tapButton(androidDriver, myNewsStartButton, false)
         tapButton(androidDriver, addTopics, false)
@@ -199,7 +199,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
     @Story("MyTopics")
     @Severity(SeverityLevel.CRITICAL)
-    fun testCheckAddedTopicsUnderMyTopics() {
+    fun smokeTestCheckAddedTopicsUnderMyTopics() {
         startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
         tapButton(androidDriver, MyNewsPageObject.myTopics, false)
         assertDisplayingElements(androidDriver,
@@ -215,7 +215,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 9, description = "Test to check whether added topics displayed under MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
-    fun testCheckAddedTopicsUnderMyNews() {
+    fun smokeTestCheckAddedTopicsUnderMyNews() {
         startTest("MyNews", "Checking added topics in My News", "Smoke")
 
         try {
@@ -233,7 +233,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
      */
     @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
     @Throws(Exception::class)
-    fun testMyNewsRemoveTopics() {
+    fun smokeTestMyNewsRemoveTopics() {
         startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
         tapButton(androidDriver, myNews, false)
         tapButton(androidDriver, MyNewsPageObject.editMyNews, false)
@@ -251,7 +251,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
      * Checks the Articles from Topics page, Checks for More button and checks for Less button displayed
      */
     @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
-    fun testCheckArticlesOfTopics() {
+    fun smokeTestCheckArticlesOfTopics() {
         startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
 
         val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
@@ -285,7 +285,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Story("Menu")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
-    fun testMenuPage() {
+    fun smokeTestMenuPage() {
         startTest("Menu", "Checking the Menu Items", "Smoke")
         tapButton(androidDriver, menuButton, false)
 
@@ -306,7 +306,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class, AssertionError::class)
-    fun testVideoPage() {
+    fun smokeTestVideoPage() {
         startTest("VideoPage", "Checking the Video", "Smoke")
 
         tapButton(androidDriver, video, false)
@@ -332,7 +332,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 14, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
-    fun testCheckLiveVideoSeeking() {
+    fun smokeTestCheckLiveVideoSeeking() {
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
 
         tapButton(androidDriver, transportControls, false)
@@ -360,7 +360,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
      * check to search for a topic
      */
     @Test(priority = 15, description = "Test to check for search results")
-    fun testSearchStories() {
+    fun smokeTestSearchStories() {
         try {
             startTest("Search", "Checking for Search Topics", "Smoke")
             tapButton(androidDriver, BasePageObject.searchButton, false)
@@ -384,7 +384,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Ignore
     @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
     @Throws(IOException::class)
-    fun testTakeScreenshotAfter() {
+    fun smokeTestTakeScreenshotAfter() {
         try {
             tapButton(androidDriver, BasePageObject.navigateBack, false)
         } catch (e: NoSuchElementException) {
@@ -416,7 +416,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Ignore
     @Test(priority = 17, description = "Compares the images")
     @Throws(IOException::class)
-    fun testCompareImages() {
+    fun smokeTestCompareImages() {
         startTest("CompareImages", "Compares the HomePage", "Smoke")
         compareTwoImages()
     }

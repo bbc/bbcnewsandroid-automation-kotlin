@@ -33,7 +33,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
     @Throws(Exception::class)
-    fun testOpenNewsApp() {
+    fun statsTestOpenNewsApp() {
         try {
             tapButton(androidDriver, okButton, false)
             tapButton(androidDriver, noThanksButton, false)
@@ -53,7 +53,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     @Test(priority = 2, description = "Test to navigate around app for generate stats")
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
-    fun testCheckHomePage() {
+    fun statsTestCheckHomePage() {
         try {
             startTest("HomePage", "Checking the HomePage", "Smoke")
             tapButton(androidDriver, topStories, false)
@@ -68,7 +68,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
 
     @Test(priority = 3, description = "Test to stop the charles recording ")
     @Throws(Exception::class)
-    fun testStopCharlesRecord() {
+    fun statsTestStopCharlesRecord() {
         try {
             charlesProxy.stopCharlesSession()
             Thread.sleep(2000)
@@ -79,7 +79,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
 
     @Test(priority = 4, description = "Test to download the charles recording session")
     @Throws(Exception::class)
-    fun testDownloadCharlesRecord() {
+    fun statsTestDownloadCharlesRecord() {
         try {
             charlesProxy.downloadCharlesSession()
             Thread.sleep(2000)
@@ -90,7 +90,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
 
     @Test(priority = 5, description = "Test to convert the charles session to CSV format")
     @Throws(Exception::class)
-    fun testConvertCharlesSessionToCSV() {
+    fun statsTestConvertCharlesSessionToCSV() {
         try {
             charlesProxy.convertToCSV()
             Thread.sleep(2000)
@@ -101,7 +101,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     }
 
     @Test(priority = 6, description = "Test to check the compared the downloaded stats")
-    fun testBBVNewsBasicStats() {
+    fun statsTestBBVNewsBasicStats() {
         startTest("BasicStats", "Test to check the compared the downloaded stats", "Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.bbcNewsBasicStats)
@@ -113,7 +113,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     }
 
     @Test(priority = 7, description = "Test to check the TopStores Page downloaded stats")
-    fun testCheckTopStoresStats() {
+    fun statsTestCheckTopStoresStats() {
         startTest("TopStores", "Test to check the TopStores Page downloaded stats", "TopStoriesStat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.topStories)
@@ -125,7 +125,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     }
 
     @Test(priority = 8, description = "Test to check the MyNews Page downloaded stats")
-    fun testCheckMyNewsStats() {
+    fun statsTestCheckMyNewsStats() {
         startTest("MyNews", "Test to check the MyNews Page downloaded stats", "MyNews Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.myNews)
@@ -137,7 +137,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     }
 
     @Test(priority = 9, description = "Test to check the Popular Page downloaded stats")
-    fun testCheckPopularPageStats() {
+    fun statsTestCheckPopularPageStats() {
         startTest("Popular", "Test to check the Popular Page downloaded stats", "Popular Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.popularPage)
@@ -149,7 +149,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     }
 
     @Test(priority = 10, description = "Test to check the Video Page downloaded stats")
-    fun testCheckVideoPageStats() {
+    fun statsTestCheckVideoPageStats() {
         startTest("Video", "Test to check the Video Page downloaded stats", "Video Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.videoPage)
@@ -161,7 +161,7 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     }
 
     @Test(priority = 11, description = "Test to check the Search Page downloaded stats")
-    fun testCheckPopularStats() {
+    fun statsTestCheckPopularStats() {
         startTest("Search", "Test to check the Search Page downloaded stats", "Search Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.searchStats)
