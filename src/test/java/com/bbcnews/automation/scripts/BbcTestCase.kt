@@ -8,6 +8,7 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.publishReport
 import com.bbcnews.automation.pageobjects.BasePageObject.errorRetryButton
 import com.bbcnews.automation.pageobjects.BasePageObject.noThanksButton
 import com.bbcnews.automation.pageobjects.BasePageObject.okButton
+import com.bbcnews.automation.pageobjects.BasePageObject.yesbutton
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import com.bbcnews.automation.testutils.TestSetup.printDeviceDetailsFromCommandPrompt
 import com.bbcnews.automation.testutils.TestSetup.setActivity

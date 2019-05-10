@@ -12,8 +12,17 @@ object BasePageObject {
     @AndroidFindBy(accessibility = "Navigate up")
     val navigateBack: MobileElement? = null
 
-    @AndroidFindBy(id = "android:id/button1")
+    @AndroidFindAll(
+            AndroidBy(id = "android:id/button1"),
+            AndroidBy(xpath = "//android.widget.Button[@text='OK' and @index='1']")
+    )
     val okButton: MobileElement? = null
+
+    @AndroidFindAll(
+            AndroidBy(id = "android:id/button1"),
+            AndroidBy(xpath = "//android.widget.Button[@text='YES.' and @index='1']")
+    )
+    val yesbutton: MobileElement? = null
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='GO TO SETTINGS']")
     val settingsButton: MobileElement? = null
@@ -42,20 +51,43 @@ object BasePageObject {
     @AndroidFindBy(accessibility = "Share story")
     val shareStory: MobileElement? = null
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"), AndroidBy(id = "bbc.mobile.news.uk:id/action_search"), AndroidBy(accessibility = "Search"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/action_search"),
+            AndroidBy(accessibility = "Search")
+    )
     val search: MobileElement? = null
 
-    val topicsPageElements = arrayOf("bbc.mobile.news.uk.internal:id/item_image", "bbc.mobile.news.uk.internal:id/item_layout_name", "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated", "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection")
+    val topicsPageElements = arrayOf(
+            "bbc.mobile.news.uk.internal:id/item_image",
+            "bbc.mobile.news.uk.internal:id/item_layout_name",
+            "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated",
+            "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection"
+    )
 
-    val topicsPageElementsRelease = arrayOf("bbc.mobile.news.uk:id/item_image", "bbc.mobile.news.uk:id/item_layout_name", "bbc.mobile.news.uk:id/itemLayoutLastUpdated", "bbc.mobile.news.uk:id/itemLayoutHomeSection")
+    val topicsPageElementsRelease = arrayOf(
+            "bbc.mobile.news.uk:id/item_image",
+            "bbc.mobile.news.uk:id/item_layout_name",
+            "bbc.mobile.news.uk:id/itemLayoutLastUpdated",
+            "bbc.mobile.news.uk:id/itemLayoutHomeSection"
+    )
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name"), AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_name"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/item_layout_name"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/item_layout_name")
+    )
     val itemLayoutName: MobileElement? = null
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated"), AndroidBy(id = "bbc.mobile.news.uk:id/itemLayoutLastUpdated"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/itemLayoutLastUpdated")
+    )
     val itemLayoutLastUpdated: MobileElement? = null
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection"), AndroidBy(id = "bbc.mobile.news.uk:id/itemLayoutHomeSection"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/itemLayoutHomeSection")
+    )
     val itemLayoutHomeSection: MobileElement? = null
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
