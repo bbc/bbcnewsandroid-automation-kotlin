@@ -64,10 +64,7 @@ import org.testng.annotations.Test
 import java.io.IOException
 import java.time.Duration
 
-class BBCNewsSmokeTest : BbcTestCase(
-        "bbc.mobile.news.v3.app.TopLevelActivity",
-        "SmokeTest"
-) {
+class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
     /**
      * launches the app and ignores the pop up message

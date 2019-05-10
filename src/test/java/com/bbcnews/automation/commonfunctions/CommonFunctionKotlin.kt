@@ -173,7 +173,7 @@ object CommonFunctionKotlin {
      * Function to create a folder with the project path
      * @param, Directory path
      */
-     fun extentResultFolder(path: String): String? {
+    fun extentResultFolder(path: String): String? {
         try {
             // Create one directory
             val success = File(path).mkdirs()
@@ -778,14 +778,16 @@ object CommonFunctionKotlin {
      * @param
      * folder name
      */
-    fun emptyFolder(filepath: String) {
-        val file = File(filepath)
-        val myFiles: Array<String>?
-        if (file.isDirectory) {
-            myFiles = file.list()
-            for (i in myFiles!!.indices) {
-                val myFile = File(file, myFiles[i])
-                myFile.delete()
+    fun emptyFolders(vararg filepaths: String) {
+        for (filepath in filepaths) {
+            val file = File(filepath)
+            val myFiles: Array<String>?
+            if (file.isDirectory) {
+                myFiles = file.list()
+                for (i in myFiles!!.indices) {
+                    val myFile = File(file, myFiles[i])
+                    myFile.delete()
+                }
             }
         }
     }

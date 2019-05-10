@@ -136,10 +136,7 @@ import org.testng.annotations.Test
 import java.time.Duration
 import com.bbcnews.automation.pageobjects.HomePageObject.familyEducationTopic as familyEducationTopic1
 
-class BBCNewsRegressionTest : BbcTestCase(
-        "bbc.mobile.news.v3.app.TopLevelActivity",
-        "Regression"
-) {
+class BBCNewsRegressionTest : BbcTestCase("Regression") {
 
     @Test(priority = 1, description = "Launching the app")
     fun testOpenNewsApp() {

@@ -2,7 +2,7 @@ package com.bbcnews.automation.testutils
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolders
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 import io.appium.java_client.MobileElement
@@ -53,7 +53,7 @@ object TestSetup {
         rotateToPortrait()
         unlockDevice()
         checkConnection(androidDriver)
-        emptyFolder(screenshotPath)
+        emptyFolders(screenshotPath)
         createAReportHive(reportName, deviceName.toString(), deviceid.toString())
 
         androidDriver.context("NATIVE_APP")

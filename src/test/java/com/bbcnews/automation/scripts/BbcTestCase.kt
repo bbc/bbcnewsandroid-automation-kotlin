@@ -1,7 +1,7 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
+import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolders
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
 import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
@@ -14,17 +14,19 @@ import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import java.io.IOException
 
-open class BbcTestCase(
-        private val activity: String,
-        private val testType: String
-) {
+open class BbcTestCase(private val description: String) {
+
+    private val mainActivity = "bbc.mobile.news.v3.app.TopLevelActivity"
+    private val beforeScreenshots = "./Screenshots/Before"
+    private val afterScreenshots = "./Screenshots/After"
+    private val bbcNewsApp = "bbc.mobile.news.uk.internal"
 
     @BeforeTest
     fun runTest() {
         readDeviceDetailsCommandPrompt()
-        setActivity(activity)
+        setActivity(mainActivity)
         checkConnection(androidDriver)
-        setUpTest(testType)
+        setUpTest(description)
     }
 
     @AfterMethod
@@ -38,10 +40,9 @@ open class BbcTestCase(
     @AfterTest
     fun tearDown() {
         publishReport()
-        emptyFolder("./Screenshots/Before")
-        emptyFolder("./Screenshots/After")
+        emptyFolders(beforeScreenshots, afterScreenshots)
         androidDriver.closeApp()
-        androidDriver.removeApp("bbc.mobile.news.uk.internal")
+        androidDriver.removeApp(bbcNewsApp)
         androidDriver.quit()
     }
 

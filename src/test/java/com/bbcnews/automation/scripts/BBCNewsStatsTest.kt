@@ -24,10 +24,7 @@ import io.qameta.allure.Story
 import org.testng.annotations.Test
 import java.io.IOException
 
-class BBCNewsStatsTest : BbcTestCase(
-        "bbc.mobile.news.v3.app.TopLevelActivity",
-        "Regression"
-) {
+class BBCNewsStatsTest : BbcTestCase("Regression") {
 
     private val charlesProxy = CharlesProxy()
     private val statsTestData = StatsTestData()

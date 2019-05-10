@@ -2,15 +2,13 @@ package com.bbcnews.automation.scripts
 
 import org.junit.Test
 
-class JourneyTests : BbcTestCase(
-        "bbc.mobile.news.v3.app.TopLevelActivity",
-        "User Journey") {
+class JourneyTests : BbcTestCase("User Journey") {
 
     // ToDo implement journey tests
     // (Can we launch appium in states???)
 
     @Test
-    fun `user can add items to My News`() {
+    fun `user adding items to My News `() {
 //     Tap on an index header (e.g. London)
 //     Tap (+) to add to MyNews
 //     Tap pencil (now appeared) to edit MyNews

@@ -66,9 +66,7 @@ import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
 import org.testng.annotations.Test
 
-class BBCNewsHindiSmokeTest : BbcTestCase(
-        "bbc.mobile.news.v3.app.TopLevelActivity",
-        "Regression") {
+class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
 
     @Test(priority = 1, description = "launching the app ")
     @Story("Home")
@@ -81,7 +79,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
-    fun testCheckHomePage() {
+    fun testCheckHindiHomePage() {
         startTest("HomePage", "Checking the HomePage", "Smoke")
         tapButton(androidDriver, bbcHindiHomepage, false)
         assertTrue(bbcHindiHomepage?.isSelected!!)
@@ -134,7 +132,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 3, description = "checking the international page")
-    fun testInternationalPage() {
+    fun testHindiInternationalPage() {
         startTest("InternationalPage", "Checking the InternationalPage", "Smoke")
         tapButton(androidDriver, bbcHindiInternational, false)
         assertTrue(bbcHindiInternational?.isSelected!!)
@@ -155,7 +153,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 4, description = "checking the Entertainment page")
-    fun testEntertainmentPage() {
+    fun testHindiEntertainmentPage() {
         startTest("EntertainmentPage", "Checking the EntertainmentPage", "Smoke")
         tapButton(androidDriver, bbcHindiEntertainment, false)
         assertTrue(bbcHindiEntertainment?.isSelected!!)
@@ -179,7 +177,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 5, description = "checking the Sports page")
-    fun testSportsPage() {
+    fun testHindiSportsPage() {
         startTest("Sports", "Checking the Sports", "Smoke")
         tapButton(androidDriver, bbcHindiSports, false)
         assertTrue(bbcHindiSports?.isSelected!!)
@@ -205,7 +203,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 6, description = "checking the Radio page")
-    fun testRadioPage() {
+    fun testHindiRadioPage() {
         startTest("Radio", "Checking the Radio", "Smoke")
         tapButton(androidDriver, bbcHindiRadio, false)
         assertTrue(bbcHindiRadio?.isSelected!!)
@@ -223,7 +221,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 7, description = "checking the Science&Technology page")
-    fun testScienceTechnologyPage() {
+    fun testHindiScienceTechnologyPage() {
         startTest("Science&Technology", "Checking the Science&Technology", "Smoke")
         tapButton(androidDriver, bbcHindiScienceTechnology, false)
         assertTrue(bbcHindiScienceTechnology?.isSelected!!)
@@ -246,7 +244,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 8, description = "checking the Science&Technology page")
-    fun testLookAtPage() {
+    fun testHindiLookAtPage() {
         startTest("LookAt", "Checking the Science&LookAt Page", "Smoke")
         tapButton(androidDriver, bbcHindiLookAt, false)
         assertTrue(bbcHindiLookAt?.isSelected!!)
@@ -278,7 +276,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 9, description = "checking the Pictures  page")
-    fun testPicturesPage() {
+    fun testHindiPicturesPage() {
         startTest("Pictures", "Checking the Pictures Page", "Smoke")
         tapButton(androidDriver, bbcHindiThePhotos, false)
         assertTrue(bbcHindiThePhotos?.isSelected!!)
@@ -303,7 +301,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     }
 
     @Test(priority = 10, description = "checking the Social  page")
-    fun testSocialPage() {
+    fun testHindiSocialPage() {
         startTest("Social", "Checking the Social Page", "Smoke")
         tapButton(androidDriver, bbcHindiSocial, false)
         assertTrue(bbcHindiSocial?.isSelected!!)
@@ -326,7 +324,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     @Test(priority = 11, description = "Checking the MoreOptions Menu")
     @Story("MoreOptions")
     @Severity(SeverityLevel.CRITICAL)
-    fun testMenuItems() {
+    fun testHindiMenuItems() {
         startTest("MoreOptions", "Checking the MoreOptions Menu", "Smoke")
         tapButton(androidDriver, bbcMoreOptions, false)
 
@@ -342,7 +340,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     @Test(priority = 12, description = "Checking the More Settings Options Menu")
     @Story("MoreOptions")
     @Severity(SeverityLevel.CRITICAL)
-    fun testMoreSettingsOptions() {
+    fun testHindiMoreSettingsOptions() {
         startTest("MoreOptions", "Checking the More Settings Options Menu", "Smoke")
         tapButton(androidDriver, bbcHindiMoreSettings, false)
 
@@ -355,7 +353,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase(
     @Test(priority = 13, description = "Checking the More Settings Options Topics")
     @Story("MoreOptions-Topics")
     @Severity(SeverityLevel.CRITICAL)
-    fun testMoreSettingsOptions_Topics() {
+    fun testHindiMoreSettingsOptionsTopics() {
         startTest("MoreOptionsTopics", "Checking the More Settings Options Topics", "Smoke")
         //  tapButton(androidDriver,BBCNewsHindiPageObject.bbcHindiTopicsCollapseGroup,false);
         assertDisplayingElements(androidDriver,
