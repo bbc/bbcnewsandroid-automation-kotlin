@@ -1,13 +1,18 @@
 package com.bbcnews.automation.scripts
 
+import com.bbcnews.automation.commonfunctions.AppiumViewActions
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.checkConnection
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.emptyFolders
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.getTestResult
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.publishReport
+import com.bbcnews.automation.pageobjects.BasePageObject.errorRetryButton
+import com.bbcnews.automation.pageobjects.BasePageObject.noThanksButton
+import com.bbcnews.automation.pageobjects.BasePageObject.okButton
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import com.bbcnews.automation.testutils.TestSetup.printDeviceDetailsFromCommandPrompt
 import com.bbcnews.automation.testutils.TestSetup.setActivity
 import com.bbcnews.automation.testutils.TestSetup.setUpTest
+import io.appium.java_client.MobileElement
 import org.testng.ITestResult
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
@@ -27,6 +32,7 @@ open class BbcTestCase(private val description: String) {
         setActivity(mainActivity)
         checkConnection(androidDriver)
         setUpTest(description)
+        dismissDialogs()
     }
 
     @AfterMethod
@@ -44,6 +50,18 @@ open class BbcTestCase(private val description: String) {
         androidDriver.closeApp()
         androidDriver.removeApp(bbcNewsApp)
         androidDriver.quit()
+    }
+
+    private fun dismissDialogs() = dismissDialogs(okButton, noThanksButton, errorRetryButton)
+
+    private fun dismissDialogs(vararg dialogs: MobileElement?) {
+        for (dialog in dialogs) {
+            try {
+                AppiumViewActions.selectView(dialog)
+            } catch (e: Exception) {
+                // Do nothing if the dialog is not present
+            }
+        }
     }
 
 }

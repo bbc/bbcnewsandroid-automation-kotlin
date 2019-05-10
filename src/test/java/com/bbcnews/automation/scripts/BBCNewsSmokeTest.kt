@@ -66,25 +66,6 @@ import java.time.Duration
 
 class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
-    /**
-     * launches the app and ignores the pop up message
-     */
-    @Test(priority = 1, description = "Launching the app")
-    fun smokeTestOpenNewsApp() {
-        selectView(BasePageObject.okButton)
-        selectView(BasePageObject.noThanksButton)
-
-        try {
-            selectView(BasePageObject.errorRetryButton)
-        } catch (e: Exception) {
-            // if the retry button is not present then do nothing
-        }
-    }
-
-    /**
-     * un-ignore if you want to check the screenshot compare tests
-     */
-    @Ignore
     @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
     @Throws(IOException::class)
     fun smokeTestTakeScreenshotsOfPages() {
