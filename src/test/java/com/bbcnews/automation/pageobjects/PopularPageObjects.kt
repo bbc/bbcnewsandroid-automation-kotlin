@@ -8,43 +8,43 @@ import io.appium.java_client.pagefactory.AndroidFindBy
 object PopularPageObjects {
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
-    val okButton: MobileElement? = null
+    lateinit var okButton: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='NO, THANKS.']")
-    val noThanksButton: MobileElement? = null
+    lateinit var noThanksButton: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Popular']")
-    val popular: MobileElement? = null
+    lateinit var popular: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Read']")
-    val mostRead: MobileElement? = null
+    lateinit var mostRead: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Watched' and @index='0']")
-    val popularMostWatched: MobileElement? = null
+    lateinit var popularMostWatched: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/content_card_ordered_badge') and @text='1']")
-    val popularArticle: MobileElement? = null
+    lateinit var popularArticle: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/imageItemCaption"), AndroidBy(id = "bbc.mobile.news.uk:id/imageItemCaption"))
-    val imageItemCaption: MobileElement? = null
+    lateinit var imageItemCaption: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/imageItemBadge"), AndroidBy(id = "bbc.mobile.news.uk:id/imageItemBadge"))
-    val imageItemBadge: MobileElement? = null
+    lateinit var imageItemBadge: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/headlineTitle"), AndroidBy(id = "bbc.mobile.news.uk:id/headlineTitle"))
-    val headlineTitle: MobileElement? = null
+    lateinit var headlineTitle: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/headlineAuthorName"), AndroidBy(id = "bbc.mobile.news.uk:id/headlineAuthorName"))
-    val headlineAuthorName: MobileElement? = null
+    lateinit var headlineAuthorName: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/headlineAuthorTitle"), AndroidBy(id = "bbc.mobile.news.uk:id/headlineAuthorTitle"))
-    val headlineAuthorTitle: MobileElement? = null
+    lateinit var headlineAuthorTitle: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/headlineInfo"), AndroidBy(id = "bbc.mobile.news.uk:id/headlineInfo"))
-    val headlineInfo: MobileElement? = null
+    lateinit var headlineInfo: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/videoTitleHeadline"), AndroidBy(id = "bbc.mobile.news.uk:id/videoTitleHeadline"))
-    val headlineLink: MobileElement? = null
+    lateinit var headlineLink: MobileElement
 
     val mostReadPopularLinks = arrayOf(
             //"bbc.mobile.news.uk.internal:id/imageItemBadge",
@@ -61,28 +61,28 @@ object PopularPageObjects {
             "bbc.mobile.news.uk:id/image_item")
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='1' and @index='1']")
-    val mostReadArticle: MobileElement? = null
+    lateinit var mostReadArticle: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Popular']")
-    val mostPopular: MobileElement? = null
+    lateinit var mostPopular: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='3']/android.widget.TextView[@text='1' and @index='1']")
-    val mostWatchedArticle: MobileElement? = null
+    lateinit var mostWatchedArticle: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/videoTitleHeadline"), AndroidBy(id = "bbc.mobile.news.uk:id/videoTitleHeadline"))
-    val videoTitleHeadline: MobileElement? = null
+    lateinit var videoTitleHeadline: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/videoTitleTimestamp"), AndroidBy(id = "bbc.mobile.news.uk:id/videoTitleTimestamp"))
-    val videoTitleTimestamp: MobileElement? = null
+    lateinit var videoTitleTimestamp: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/videoTitleTopic"), AndroidBy(id = "bbc.mobile.news.uk:id/videoTitleTopic"))
-    val videoTitleTopic: MobileElement? = null
+    lateinit var videoTitleTopic: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/videoSummary"), AndroidBy(id = "bbc.mobile.news.uk:id/videoSummary"))
-    val videoSummary: MobileElement? = null
+    lateinit var videoSummary: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Popular']")
-    val mostPopularText: MobileElement? = null
+    lateinit var mostPopularText: MobileElement
 
     val popularVideoElements = arrayOf("bbc.mobile.news.uk.internal:id/smpPauseButton",
             // "bbc.mobile.news.uk.internal:id/videoTitleHeadline",
@@ -91,36 +91,36 @@ object PopularPageObjects {
     val popularVideoElementsRelease = arrayOf("bbc.mobile.news.uk:id/smpPauseButton", "bbc.mobile.news.uk:id/videoTitleHeadline", "bbc.mobile.news.uk:id/videoTitleTimestamp", "bbc.mobile.news.uk:id/videoTitleTopic", "bbc.mobile.news.uk:id/videoSummary")
 
     @AndroidFindBy(xpath = "//android.support.v7.widget.RecyclerView[@index='0']/android.widget.FrameLayout[@index='3']/android.widget.RelativeLayout[@index='0']/android.widget.FrameLayout[@index=0]/android.widget.TextView[@text='2' and index='1']")
-    val mostWatchedVideoArticle: MobileElement? = null
+    lateinit var mostWatchedVideoArticle: MobileElement
 
     @AndroidFindBy(xpath = "//*[@content-desc='Media length' or @text='2']")
-    val mostWatchedArticleVideo: MobileElement? = null
+    lateinit var mostWatchedArticleVideo: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='2']")
-    val itemLayoutName: MobileElement? = null
+    lateinit var itemLayoutName: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='0']/android.widget.TextView[@index='1']")
-    val itemLayoutPosition: MobileElement? = null
+    lateinit var itemLayoutPosition: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='0']")
-    val itemLayoutLastUpdated: MobileElement? = null
+    lateinit var itemLayoutLastUpdated: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@index='0']/android.widget.TextView[@index='2']")
-    val itemLayoutHomeSection: MobileElement? = null
+    lateinit var itemLayoutHomeSection: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Egypt tightens control over internet use']")
-    val relatedStoriesArticle: MobileElement? = null
+    lateinit var relatedStoriesArticle: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='5']/android.view.ViewGroup[@index='0']/android.widget.TextView[@index='1']")
-    val contentCardTitle: MobileElement? = null
+    lateinit var contentCardTitle: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='5']/android.view.ViewGroup[@index='0']/android.widget.TextView[@index='2']")
-    val contentCardInfo: MobileElement? = null
+    lateinit var contentCardInfo: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='5']/android.view.ViewGroup[@index='0']/android.widget.TextView[@index='3']")
-    val contentCardLink: MobileElement? = null
+    lateinit var contentCardLink: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Egypt']")
-    val relatedTopicsArticle: MobileElement? = null
+    lateinit var relatedTopicsArticle: MobileElement
 
 }

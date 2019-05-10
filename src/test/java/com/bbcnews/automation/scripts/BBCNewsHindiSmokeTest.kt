@@ -57,7 +57,6 @@ import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedArticles
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedTopics
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.seekBar
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.volumeButton
-import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
@@ -72,8 +71,8 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
     fun testOpenNewsApp() {
-        assertEquals("ओके", bbcHindiOkButton?.text, "Text Matched")
-        assertEquals("बीबीसी न्यूज़ आपको नोटिफ़िकेशंस भेजना चाहता है. आप कभी भी सेटिंग्स में जाकर बदलाव कर सकते हैं.", bbcHindiMessage?.text)
+        assertEquals("ओके", bbcHindiOkButton.text, "Text Matched")
+        assertEquals("बीबीसी न्यूज़ आपको नोटिफ़िकेशंस भेजना चाहता है. आप कभी भी सेटिंग्स में जाकर बदलाव कर सकते हैं.", bbcHindiMessage.text)
         selectView(bbcHindiOkButton)
         selectView(noThanksButton)
     }
@@ -82,7 +81,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testCheckHindiHomePage() {
         startTest("HomePage", "Checking the HomePage", "Smoke")
         selectView(bbcHindiHomepage)
-        assertTrue(bbcHindiHomepage?.isSelected!!)
+        assertTrue(bbcHindiHomepage.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
@@ -90,7 +89,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         )
 
         selectView(article)
-        if (frontPage?.isDisplayed!!) {
+        if (frontPage.isDisplayed) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
         }
@@ -109,7 +108,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testIndiaPage() {
         startTest("IndiaPage", "Checking the IndiaPage", "Smoke")
         selectView(bbcHindiIndia)
-        assertTrue(bbcHindiIndia?.isSelected!!)
+        assertTrue(bbcHindiIndia.isSelected)
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
                 mainItemLayoutLastUpdated
@@ -135,7 +134,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiInternationalPage() {
         startTest("InternationalPage", "Checking the InternationalPage", "Smoke")
         selectView(bbcHindiInternational)
-        assertTrue(bbcHindiInternational?.isSelected!!)
+        assertTrue(bbcHindiInternational.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
@@ -156,7 +155,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiEntertainmentPage() {
         startTest("EntertainmentPage", "Checking the EntertainmentPage", "Smoke")
         selectView(bbcHindiEntertainment)
-        assertTrue(bbcHindiEntertainment?.isSelected!!)
+        assertTrue(bbcHindiEntertainment.isSelected)
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
                 mainItemLayoutLastUpdated
@@ -180,7 +179,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiSportsPage() {
         startTest("Sports", "Checking the Sports", "Smoke")
         selectView(bbcHindiSports)
-        assertTrue(bbcHindiSports?.isSelected!!)
+        assertTrue(bbcHindiSports.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
@@ -206,25 +205,25 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiRadioPage() {
         startTest("Radio", "Checking the Radio", "Smoke")
         selectView(bbcHindiRadio)
-        assertTrue(bbcHindiRadio?.isSelected!!)
+        assertTrue(bbcHindiRadio.isSelected)
 
         elementDisplayed(androidDriver, headlineTitle)
-        assertEquals("सुनिए", headlineTitle?.text)
+        assertEquals("सुनिए", headlineTitle.text)
         elementDisplayed(androidDriver, headlineInfo)
-        assertEquals("12 अप्रै 2018", headlineInfo?.text)
+        assertEquals("12 अप्रै 2018", headlineInfo.text)
 
         elementDisplayed(androidDriver, radioPageText)
-        assertEquals("नमस्कार भारत  (06.30IST - 07.00IST)", radioPageText?.text)
+        assertEquals("नमस्कार भारत  (06.30IST - 07.00IST)", radioPageText.text)
 
         elementDisplayed(androidDriver, radioPageTextDaily)
-        assertEquals("दिनभर (19.30IST - 20.00IST)", radioPageTextDaily?.text)
+        assertEquals("दिनभर (19.30IST - 20.00IST)", radioPageTextDaily.text)
     }
 
     @Test(priority = 7, description = "checking the Science&Technology page")
     fun testHindiScienceTechnologyPage() {
         startTest("Science&Technology", "Checking the Science&Technology", "Smoke")
         selectView(bbcHindiScienceTechnology)
-        assertTrue(bbcHindiScienceTechnology?.isSelected!!)
+        assertTrue(bbcHindiScienceTechnology.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
@@ -247,7 +246,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiLookAtPage() {
         startTest("LookAt", "Checking the Science&LookAt Page", "Smoke")
         selectView(bbcHindiLookAt)
-        assertTrue(bbcHindiLookAt?.isSelected!!)
+        assertTrue(bbcHindiLookAt.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
@@ -279,7 +278,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiPicturesPage() {
         startTest("Pictures", "Checking the Pictures Page", "Smoke")
         selectView(bbcHindiThePhotos)
-        assertTrue(bbcHindiThePhotos?.isSelected!!)
+        assertTrue(bbcHindiThePhotos.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,
@@ -304,7 +303,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiSocialPage() {
         startTest("Social", "Checking the Social Page", "Smoke")
         selectView(bbcHindiSocial)
-        assertTrue(bbcHindiSocial?.isSelected!!)
+        assertTrue(bbcHindiSocial.isSelected)
 
         assertDisplayingElements(androidDriver,
                 mainItemLayoutName,

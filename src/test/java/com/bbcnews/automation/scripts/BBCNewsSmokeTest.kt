@@ -51,7 +51,6 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlayPauseButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpSeekBar
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpVolumeButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.transportControls
-import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
@@ -89,7 +88,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         androidDriver.runAppInBackground(Duration.ofSeconds(30))
         startTest("HomePage", "Checking the HomePage", "Smoke")
         selectView(topStories)
-        assertTrue(topStories?.isSelected!!)
+        assertTrue(topStories.isSelected)
         assertDisplayingElements(androidDriver,
                 itemLayoutName,
                 itemLayoutHomeSection,
@@ -120,9 +119,9 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun smokeTestPopularPage() {
         startTest("PopularPage", "Checking the Popular", "Smoke")
         selectView(popular)
-        assertTrue(popular?.isSelected!!)
+        assertTrue(popular.isSelected)
         assertDisplayingElements(androidDriver, mostRead)
-        assertEquals("Most Read", mostRead?.text, "Text Matched")
+        assertEquals("Most Read", mostRead.text, "Text Matched")
     }
 
     @Test(priority = 5, description = "checking that most watched displayed in popular page")
@@ -131,7 +130,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun smokeTestMostWatched() {
         startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
         scrollToElement(androidDriver, popularMostWatched)
-        assertEquals("Most Watched", popularMostWatched?.text, "Text Matched")
+        assertEquals("Most Watched", popularMostWatched.text, "Text Matched")
     }
 
     @Test(priority = 6, description = "Test to check the Mynews page")
@@ -141,7 +140,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         startTest("MyNews", "Checking the MyNews", "Smoke")
         selectView(myNews)
 
-        assertTrue(myNews?.isSelected!!)
+        assertTrue(myNews.isSelected)
 
         assertDisplayingElements(androidDriver,
                 myNewsSummary,
@@ -149,8 +148,8 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
                 addNewsButton
         )
 
-        assertEquals(myNewsTitleText, myNewsTitle?.text, "Text matched")
-        assertEquals(myNewsSummaryText, myNewsSummary?.text, "Text matched")
+        assertEquals(myNewsTitleText, myNewsTitle.text, "Text matched")
+        assertEquals(myNewsSummaryText, myNewsSummary.text, "Text matched")
     }
 
     /**
@@ -163,7 +162,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(myNewsStartButton)
         selectView(addTopics)
 
-        assertEquals("Manchester", localNewsDisplayed?.text)
+        assertEquals("Manchester", localNewsDisplayed.text)
         assertDisplayingElements(androidDriver, localNewsDisplayed)
 
         scrollToElement(androidDriver, MyTopicsPageObject.addWalesTopicButton)
@@ -252,11 +251,11 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(showMore)
 
         scrollToElement(androidDriver, showLess)
-        System.out.println("\"Show less\" text= " + showLess?.text)
+        System.out.println("\"Show less\" text= " + showLess.text)
 
         selectView(showLess)
         assertDisplayingElements(androidDriver, showMore)
-        System.out.println("\"Show more\" text= " + showMore?.text)
+        System.out.println("\"Show more\" text= " + showMore.text)
     }
 
     /**
@@ -291,12 +290,12 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         startTest("VideoPage", "Checking the Video", "Smoke")
 
         selectView(video)
-        assertTrue(video?.isSelected!!)
+        assertTrue(video.isSelected)
 
         selectView(bbcNewsChannel)
         assertDisplayingElements(androidDriver, liveMediaItemCaption)
         try {
-            if (shareStory?.isDisplayed!!) {
+            if (shareStory.isDisplayed) {
                 verticalSwipe(androidDriver, "Up")
 
                 assertDisplayingElements(androidDriver, shareStory)
@@ -347,7 +346,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
             selectView(BasePageObject.searchButton)
             enterText(searchField, BasePageObject.searchText)
             waitFor(1000)
-            assertEquals(BasePageObject.searchText, BasePageObject.searchKeyword?.text, "Text Matched")
+            assertEquals(BasePageObject.searchText, BasePageObject.searchKeyword.text, "Text Matched")
             selectView(BasePageObject.searchKeyword)
             val title = getText(headlineTitle)
             assertEquals(BasePageObject.searchText, title)

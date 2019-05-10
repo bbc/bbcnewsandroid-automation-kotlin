@@ -1,24 +1,23 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.AppiumViewActions
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.checkConnection
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.emptyFolders
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.getTestResult
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.publishReport
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.pageobjects.BasePageObject.errorRetryButton
 import com.bbcnews.automation.pageobjects.BasePageObject.noThanksButton
 import com.bbcnews.automation.pageobjects.BasePageObject.okButton
-import com.bbcnews.automation.pageobjects.BasePageObject.yesbutton
-import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import com.bbcnews.automation.testutils.TestSetup.printDeviceDetailsFromCommandPrompt
 import com.bbcnews.automation.testutils.TestSetup.setActivity
 import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import io.appium.java_client.MobileElement
+import io.appium.java_client.android.AndroidDriver
 import org.testng.ITestResult
 import org.testng.annotations.AfterMethod
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import java.io.IOException
+import java.lang.Thread.sleep
 
 open class BbcTestCase(private val description: String) {
 
@@ -26,12 +25,12 @@ open class BbcTestCase(private val description: String) {
     private val beforeScreenshots = "./Screenshots/Before"
     private val afterScreenshots = "./Screenshots/After"
     private val bbcNewsApp = "bbc.mobile.news.uk.internal"
+    lateinit var androidDriver: AndroidDriver<MobileElement>
 
     @BeforeTest
     fun runTest() {
         printDeviceDetailsFromCommandPrompt()
         setActivity(mainActivity)
-        checkConnection(androidDriver)
         setUpTest(description)
         dismissDialogs()
     }
@@ -53,12 +52,23 @@ open class BbcTestCase(private val description: String) {
         androidDriver.quit()
     }
 
-    private fun dismissDialogs() = dismissDialogs(noThanksButton, okButton, errorRetryButton)
+    private fun dismissDialogs() {
+        dismissDialogs(noThanksButton, okButton, errorRetryButton)
+    }
+
+    private fun select(vararg dialogs: MobileElement?) {
+        sleep(100)
+        try {
+            for (dialog in dialogs) selectView(dialog)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     private fun dismissDialogs(vararg dialogs: MobileElement?) {
         for (dialog in dialogs) {
             try {
-                AppiumViewActions.selectView(dialog)
+                selectView(dialog)
             } catch (e: Exception) {
                 // Do nothing if the dialog is not present
             }

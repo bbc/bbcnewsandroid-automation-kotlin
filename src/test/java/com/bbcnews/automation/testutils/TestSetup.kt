@@ -3,7 +3,6 @@ package com.bbcnews.automation.testutils
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.checkConnection
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.createAReportHive
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.emptyFolders
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 import io.appium.java_client.MobileElement

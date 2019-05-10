@@ -130,7 +130,6 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageReleas
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoDetailPageText
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videoWallElementsRelease
 import com.bbcnews.automation.pageobjects.VideoPageObjects.videosOfTheDayRelease
-import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.appium.java_client.android.StartsActivity
 import io.appium.java_client.android.connection.ConnectionStateBuilder
 import io.qameta.allure.Story
@@ -148,7 +147,7 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         selectView(okButton)
         selectView(noThanksButton)
 
-        if (errorRetryButton?.isDisplayed!!) {
+        if (errorRetryButton.isDisplayed) {
             selectView(errorRetryButton)
         }
     }
@@ -178,10 +177,10 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
                 videoOfTheDayTitle
         )
 
-        assertEquals("Videos of the day", videoOfTheDayTitle?.text)
-        assertEquals("WATCH", videoOfTheDayWatchNext?.text)
-        assertEquals("7", promoCounter?.text)
-        assertEquals("Swipe through the latest news videos", videoOfTheDayPromoSummary?.text)
+        assertEquals("Videos of the day", videoOfTheDayTitle.text)
+        assertEquals("WATCH", videoOfTheDayWatchNext.text)
+        assertEquals("7", promoCounter.text)
+        assertEquals("Swipe through the latest news videos", videoOfTheDayPromoSummary.text)
 
         selectView(videoOfTheDayButton)
         scrollToEndOfStories(androidDriver, newsStreamProgress, videosOfTheDayRelease, checkBackLater)
@@ -202,7 +201,7 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         }
 
         assertDisplayingElements(androidDriver, familyEducationTopic)
-        System.out.println("Topics is :-" + familyEducationTopic?.text)
+        System.out.println("Topics is :-" + familyEducationTopic.text)
 
         for (i in 0 until topicsPageElementsRelease.size) {
             isElementPresent(androidDriver, By.id(topicsPageElementsRelease[i]))
@@ -221,10 +220,10 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
             verticalSwipe(androidDriver, "Up")
         }
 
-        System.out.println("The Topic is: " + technologyTopic?.text)
+        System.out.println("The Topic is: " + technologyTopic.text)
 
         assertDisplayingElements(androidDriver, technologyTopic)
-        System.out.println("Topics is :-" + technologyTopic?.text)
+        System.out.println("Topics is :-" + technologyTopic.text)
 
         for (i in 0 until topicsPageElementsRelease.size) {
             isElementPresent(androidDriver, By.id(topicsPageElementsRelease[i]))
@@ -273,8 +272,8 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         elementDisplayed(androidDriver, myNewsSummary)
         elementDisplayed(androidDriver, myNewsTitle)
         elementDisplayed(androidDriver, addNewsButton)
-        assertEquals(myNewsTitleText, myNewsTitle?.text, "Text Mesaaged")
-        assertEquals(myNewsSummaryText, myNewsSummary?.text, "Text Mesaaged")
+        assertEquals(myNewsTitleText, myNewsTitle.text, "Text Mesaaged")
+        assertEquals(myNewsSummaryText, myNewsSummary.text, "Text Mesaaged")
     }
 
     // @Test(dependsOnMethods = {"testMyNews"})
@@ -289,7 +288,7 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         elementDisplayed(androidDriver, localNews)
         selectView(myTopics)//,file.getAbsolutePath());
         elementIsSelected(myTopics)
-        assertEquals(MyNewsPageObject.myTopicEmptyViewText, myTopicEmptyView?.text, "Text Mesaaged")
+        assertEquals(MyNewsPageObject.myTopicEmptyViewText, myTopicEmptyView.text, "Text Mesaaged")
     }
 
     // @Test(dependsOnMethods = {"testAddingTopicsPage"})
@@ -298,7 +297,7 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
         selectView(addTopics)
 
-        assertEquals("London", localNewsDisplayed?.text)
+        assertEquals("London", localNewsDisplayed.text)
         elementDisplayed(androidDriver, localNewsDisplayed)
 
         scrollToElement(androidDriver, addEnglandTopicButton)
@@ -507,10 +506,10 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
     fun testSelectSearchResult() {
         startTest("Navigate to Topic Detail Page", "Test to search for a Topic and navigate to topic page", "Search")
         selectView(searchButton)
-        searchField?.clear()
+        searchField.clear()
         enterText(searchField, searchText)
         waitFor(700)
-        assertEquals(searchText, searchKeyword?.text, "Text Matched")
+        assertEquals(searchText, searchKeyword.text, "Text Matched")
         selectView(searchKeyword)
         val title = getText(headlineTitle)
         assertEquals(searchText, title)
@@ -523,13 +522,13 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
     fun testSearchTopic() {
         startTest("Search and Adding Topic to Mynews", "Test Checking an Topic and adding to MyNews", "Search")
         selectView(searchButton)
-        searchField?.clear()
+        searchField.clear()
         enterText(searchField, "India")
         waitFor(700)
         selectView(article)
 
-        assertEquals("The women who fought to ban alcohol", articleLayoutName?.text)
-        assertEquals("4th Jan", articleLastUpdated?.text)
+        assertEquals("The women who fought to ban alcohol", articleLayoutName.text)
+        assertEquals("4th Jan", articleLastUpdated.text)
         selectView(MyNewsPageObject.myNewsAddTopics)
     }
 
@@ -555,7 +554,7 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         scrollToElement(androidDriver, articleItemWithItemBadge)
         selectView(articleItemWithItemBadge)
         elementDisplayed(androidDriver, articleImageBadge)
-        assertEquals("EPA", articleImageBadge?.text, "Text Matched")
+        assertEquals("EPA", articleImageBadge.text, "Text Matched")
         var i = 0
         while (i < articleDetailPageLinksRelease.size && i < articleItemWithImageBadge.size) {
             isElementPresent(androidDriver, By.id(articleDetailPageLinksRelease[i]))
@@ -612,14 +611,14 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         startTest("Seeking Video Forward", "Test to search ana play a on-demand video", "OnDemandVideo")
         selectView(accessibilityPlay)
         seeking(smpSeekBar, .50, "forward")
-        elapsedTimeForward = smpElapsedTime?.text
+        elapsedTimeForward = smpElapsedTime.text
     }
 
     @Test(priority = 28, description = "Test to seek forward videoplayback")
     fun testSeekVideoBack() {
         startTest("Seeking Video Backward", "Test to search ana play a on-demand video", "OnDemandVideo")
         seeking(smpSeekBar, .30, "backward")
-        elapsedTimeBackward = smpElapsedTime?.text
+        elapsedTimeBackward = smpElapsedTime.text
         assertNotEquals(elapsedTimeForward, elapsedTimeBackward)
     }
 
@@ -632,7 +631,7 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         for (i in 0 until mostReadPopularLinksRelease.size) {
             isElementPresent(androidDriver, By.id(mostReadPopularLinksRelease[i]))
         }
-        if (shareStory?.isDisplayed!!) {
+        if (shareStory.isDisplayed) {
             verticalSwipe(androidDriver, "Up")
         }
         selectView(navigateBack)
@@ -677,8 +676,8 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
         selectView(topStoriesVideo)
         selectView(accessibilityPlay)
         // androidDriver.findElementByAccessibilityId("Play").click();
-        transportControls?.click()
-        transportControls?.click()
+        transportControls.click()
+        transportControls.click()
         for (i in 0 until popularVideoElementsRelease.size) {
             isElementPresent(androidDriver, By.id(popularVideoElementsRelease[i]))
         }
@@ -688,10 +687,10 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 33, description = "App Backgrounding")
     fun testAppBackground() {
         startTest("App Background ", "Test to check backgrouding the app and reopen and checking same page opens", "App Background")
-        popular?.click()
+        popular.click()
         androidDriver.runAppInBackground(Duration.ofSeconds(30))
         (androidDriver as StartsActivity).currentActivity()
-        assertTrue(popular?.isSelected!!)
+        assertTrue(popular.isSelected)
     }
 
     @Test(priority = 34, description = "Test to check the Popular page and also to check Most Read Displayed")
@@ -724,9 +723,9 @@ class BBCNewsReleaseBuildRegressionTest : BbcTestCase("Regression") {
     fun testMostWatchedArticle() {
         startTest("Checking Most Watched Article ", "Checking Most Watched", "Popular")
         scrollToElement(androidDriver, mostWatchedArticleVideo)
-        System.out.println("The Element selected is  :- " + mostWatchedArticleVideo?.text)
-        mostWatchedArticleVideo?.click()
-        if (mostPopular?.isDisplayed!!) {
+        System.out.println("The Element selected is  :- " + mostWatchedArticleVideo.text)
+        mostWatchedArticleVideo.click()
+        if (mostPopular.isDisplayed) {
             verticalSwipe(androidDriver, "Up")
         }
         for (i in 0 until videoWallElementsRelease.size) {

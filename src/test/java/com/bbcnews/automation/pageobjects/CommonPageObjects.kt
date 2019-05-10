@@ -10,217 +10,213 @@ object CommonPageObjects {
 
     internal val appiumDriver: AppiumDriver<MobileElement>? = null
 
-    fun commonPageObjects() {
-
-    }
-
     @AndroidFindBy(accessibility = "Navigate up")
-    val navigateBack: MobileElement? = null
+    lateinit var navigateBack: MobileElement
 
     //@AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1' and @text='OK']")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
-    val okButton: MobileElement? = null
+    lateinit var okButton: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='GO TO SETTINGS']")
-    val settingsButton: MobileElement? = null
+    lateinit var settingsButton: MobileElement
 
     @AndroidFindBy(accessibility = "Back")
-    val backButton: MobileElement? = null
+    lateinit var backButton: MobileElement
 
     // @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button2' and @text='NO, THANKS.']")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='NO, THANKS.']")
-    val noThanksButton: MobileElement? = null
+    lateinit var noThanksButton: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Top Stories']")
-    val topStories: MobileElement? = null
+    lateinit var topStories: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='My News']")
-    val myNews: MobileElement? = null
+    lateinit var myNews: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Popular']")
-    val popular: MobileElement? = null
+    lateinit var popular: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Video']")
-    val video: MobileElement? = null
+    lateinit var video: MobileElement
 
     @AndroidFindBy(accessibility = "Search")
-    val searchButton: MobileElement? = null
+    lateinit var searchButton: MobileElement
 
     @AndroidFindBy(accessibility = "Share story")
-    val shareStory: MobileElement? = null
+    lateinit var shareStory: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"), AndroidBy(accessibility = "Search"))
-    val search: MobileElement? = null
+    lateinit var search: MobileElement
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutName")
-    val itemLayoutName: MobileElement? = null
+    lateinit var itemLayoutName: MobileElement
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated")
-    val itemLayoutLastUpdated: MobileElement? = null
+    lateinit var itemLayoutLastUpdated: MobileElement
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection")
-    val itemLayoutHomeSection: MobileElement? = null
+    lateinit var itemLayoutHomeSection: MobileElement
 
     @AndroidFindBy(accessibility = "Show navigation menu drawer")
-    val menuButton: MobileElement? = null
+    lateinit var menuButton: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Settings']")
-    val settings: MobileElement? = null
+    lateinit var settings: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='App info']")
-    val appInfo: MobileElement? = null
+    lateinit var appInfo: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Other BBC apps']")
-    val otherBbcApps: MobileElement? = null
+    lateinit var otherBbcApps: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.CheckedTextView[@text='Internal Settings']")
-    val internalSettings: MobileElement? = null
+    lateinit var internalSettings: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Search topics and articles']")
-    val searchField: MobileElement? = null
+    lateinit var searchField: MobileElement
 
     // @AndroidFindBy(xpath="//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/chip_item') and @index='0']")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Brexit' and @index='0']")
-    val searchKeyword: MobileElement? = null
+    lateinit var searchKeyword: MobileElement
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/title")
-    val headlineTitle: MobileElement? = null
+    lateinit var headlineTitle: MobileElement
 
     //  @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/heading")
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/heading') and @index='0']")
     //@AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/content_card_ordered_badge') and @text='1']")
-    val searchHeading: MobileElement? = null
+    lateinit var searchHeading: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='2']")
-    val searchHeading2: MobileElement? = null
+    lateinit var searchHeading2: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='bbc.mobile.news.uk.internal:id/heading' and @index='4']")
-    val searchHeading4: MobileElement? = null
+    lateinit var searchHeading4: MobileElement
 
     @AndroidFindBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='1']")
-    val searchSuggest1: MobileElement? = null
+    lateinit var searchSuggest1: MobileElement
     val searchSuggest1Text = "India"
 
     @AndroidFindBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='2']")
-    val searchSuggest2: MobileElement? = null
+    lateinit var searchSuggest2: MobileElement
     val searchSuggest2Text = "India-Pakistan independence"
 
     @AndroidFindBy(xpath = "//bbc.mobile.news.uk.internal:id/chip_item[@index='3']")
-    val searchSuggest3: MobileElement? = null
+    lateinit var searchSuggest3: MobileElement
 
     val searchSuggest3Text = "Rape in India"
 
     @AndroidFindBy(accessibility = "Cancel search")
-    val cancelSearch: MobileElement? = null
+    lateinit var cancelSearch: MobileElement
 
     val subDirectory = "Screenshots"
 
-    val screenshotPaths: String? = null
+    lateinit var screenshotPaths: String
 
     val searchText = "Brexit"
 
     //BBC News Hindi Common Page Objects
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='होम पेज']")
-    val bbcHindiHomepage: MobileElement? = null
+    lateinit var bbcHindiHomepage: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='भारत']")
-    val bbcHindiIndia: MobileElement? = null
+    lateinit var bbcHindiIndia: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='अंतरराष्ट्रीय']")
-    val bbcHindiInternational: MobileElement? = null
+    lateinit var bbcHindiInternational: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मनोरंजन']")
-    val bbcHindiEntertainment: MobileElement? = null
+    lateinit var bbcHindiEntertainment: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='खेल']")
-    val bbcHindiSports: MobileElement? = null
+    lateinit var bbcHindiSports: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='रेडियो']")
-    val bbcHindiRadio: MobileElement? = null
+    lateinit var bbcHindiRadio: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='विज्ञान-टेक्नॉलॉजी']")
-    val bbcHindiScienceTechnology: MobileElement? = null
+    lateinit var bbcHindiScienceTechnology: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='देखिए']")
-    val bbcHindiLookAt: MobileElement? = null
+    lateinit var bbcHindiLookAt: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='तस्वीरें']")
-    val bbcHindiThePhotos: MobileElement? = null
+    lateinit var bbcHindiThePhotos: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सोशल']")
-    val bbcHindiSocial: MobileElement? = null
+    lateinit var bbcHindiSocial: MobileElement
 
     @AndroidFindBy(accessibility = "More options")
-    val bbcMoreOptions: MobileElement? = null
+    lateinit var bbcMoreOptions: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='सेटिंग्स']")
-    val bbcHindiSettings: MobileElement? = null
+    lateinit var bbcHindiSettings: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='मदद']")
-    val bbcHindiHelp: MobileElement? = null
+    lateinit var bbcHindiHelp: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='संपर्क करें']")
-    val bbcHindipleasecontact: MobileElement? = null
+    lateinit var bbcHindipleasecontact: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='बीबीसी के दूसरे ऐप्स']")
-    val bbcHindiOtherBbcApplications: MobileElement? = null
+    lateinit var bbcHindiOtherBbcApplications: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Internal Settings']")
-    val bbcHindiInternalSettings: MobileElement? = null
+    lateinit var bbcHindiInternalSettings: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@index='0']/android.view.ViewGroup[@index='0']/android.widget.ImageButton[@index='0']")
-    val bbcHindiMoreSettings: MobileElement? = null
+    lateinit var bbcHindiMoreSettings: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='स्थानीय समाचार']")
-    val bbcHindiLocalNews: MobileElement? = null
+    lateinit var bbcHindiLocalNews: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='टॉपिक्स']")
-    val bbcHindiTopics: MobileElement? = null
+    lateinit var bbcHindiTopics: MobileElement
 
     @AndroidFindBy(accessibility = "Button: टॉपिक्स , collapse group")
-    val bbcHindiTopicsCollapseGroup: MobileElement? = null
+    lateinit var bbcHindiTopicsCollapseGroup: MobileElement
 
     @AndroidFindBy(accessibility = "Button: स्थानीय समाचार , collapse group")
-    val bbcHindiLocalNewsCollapseGroup: MobileElement? = null
+    lateinit var bbcHindiLocalNewsCollapseGroup: MobileElement
 
     @AndroidFindBy(accessibility = "Button: होम पेज ")
-    val hindiHomepage: MobileElement? = null
+    lateinit var hindiHomepage: MobileElement
 
     @AndroidFindBy(accessibility = "Button: भारत ")
-    val hindiBharath: MobileElement? = null
+    lateinit var hindiBharath: MobileElement
 
     @AndroidFindBy(accessibility = "Button: अंतरराष्ट्रीय ")
-    val hindiInternatonal: MobileElement? = null
+    lateinit var hindiInternatonal: MobileElement
 
     @AndroidFindBy(accessibility = "Button: मनोरंजन ")
-    val hindiEntertainment: MobileElement? = null
+    lateinit var hindiEntertainment: MobileElement
 
     @AndroidFindBy(accessibility = "Button: खेल ")
-    val hindiSports: MobileElement? = null
+    lateinit var hindiSports: MobileElement
 
     @AndroidFindBy(accessibility = "Button: विज्ञान-टेक्नॉलॉजी ")
-    val hindiScience: MobileElement? = null
+    lateinit var hindiScience: MobileElement
 
     @AndroidFindBy(accessibility = "Button: सोशल ")
-    val hindiSocial: MobileElement? = null
+    lateinit var hindiSocial: MobileElement
 
     @AndroidFindBy(accessibility = "Button: देखिए ")
-    val hindiLookAt: MobileElement? = null
+    lateinit var hindiLookAt: MobileElement
 
     @AndroidFindBy(accessibility = "Button: तस्वीरें ")
-    val hindiPhotos: MobileElement? = null
+    lateinit var hindiPhotos: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.Button[@index=1]")
-    val bbcHindiOkButton: MobileElement? = null
+    lateinit var bbcHindiOkButton: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='UK Politics added to My News']")
     //   @AndroidFindBy(id="bbc.mobile.news.uk.internal:id/snackbar_text")
-    val alertText: MobileElement? = null
+    lateinit var alertText: MobileElement
 
     //@AndroidFindBy(id="bbc.mobile.news.uk.internal:id/snackbar_action")
     @AndroidFindBy(xpath = "//android.widget.Button[@text='UNDO' and @index='1']")
-    val undoButton: MobileElement? = null
+    lateinit var undoButton: MobileElement
 
     val alertTextUk = "UK Politics added to My News"
 
