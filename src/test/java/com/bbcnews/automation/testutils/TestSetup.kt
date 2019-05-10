@@ -1,8 +1,9 @@
 package com.bbcnews.automation.testutils
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolders
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.checkConnection
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.createAReportHive
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.emptyFolders
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
 import com.bbcnews.automation.pageobjects.*
 import io.appium.java_client.MobileElement
@@ -65,15 +66,15 @@ object TestSetup {
     /**
      *  gets the details of the device, app path , appium port which are passed through command prompt
      */
-    fun readDeviceDetailsCommandPrompt() {
+    fun printDeviceDetailsFromCommandPrompt() {
         deviceid = System.getProperty("DeviceID")
         deviceName = System.getProperty("DeviceName")
         appPath = System.getProperty("AppPath")
         appiumPort = System.getProperty("AppiumPort")
-        println("Passed The Device ID is $deviceid")
-        println("Passed The Device Name is $deviceName")
-        println("Passed The Appium port is $appiumPort")
-        println("Passed The Application path  is $appPath")
+        println("The Device ID is: $deviceid")
+        println("The Device Name is: $deviceName")
+        println("The Appium port is: $appiumPort")
+        println("The Application path is: $appPath")
     }
 
     private fun rotateToPortrait() {
@@ -103,6 +104,17 @@ object TestSetup {
 
         for (pageObject in pageObjects)
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), pageObject)
+    }
+
+    private fun ignoreDialogs() {
+        selectView(BasePageObject.okButton)
+        selectView(BasePageObject.noThanksButton)
+
+        try {
+            selectView(BasePageObject.errorRetryButton)
+        } catch (e: Exception) {
+            // if the retry button is not present then do nothing
+        }
     }
 
 }

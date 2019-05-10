@@ -1,11 +1,11 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolders
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.checkConnection
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.emptyFolders
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.getTestResult
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.publishReport
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
-import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
+import com.bbcnews.automation.testutils.TestSetup.printDeviceDetailsFromCommandPrompt
 import com.bbcnews.automation.testutils.TestSetup.setActivity
 import com.bbcnews.automation.testutils.TestSetup.setUpTest
 import org.testng.ITestResult
@@ -23,7 +23,7 @@ open class BbcTestCase(private val description: String) {
 
     @BeforeTest
     fun runTest() {
-        readDeviceDetailsCommandPrompt()
+        printDeviceDetailsFromCommandPrompt()
         setActivity(mainActivity)
         checkConnection(androidDriver)
         setUpTest(description)

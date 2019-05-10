@@ -1,21 +1,21 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDragDrop
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementIsSelected
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.enterText
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getText
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.isElementPresent
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.isElementSelected
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.readRecyclerView
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.scrollToElement
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.seeking
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.textPresent
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.verticalSwipe
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitFor
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.waitForScreenToLoad
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.elementDisplayed
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.elementDragDrop
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.elementIsSelected
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.enterText
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.getText
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.isElementPresent
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.isElementSelected
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.readRecyclerView
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.scrollToElement
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.seeking
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.textPresent
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.verticalSwipe
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitFor
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitForScreenToLoad
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BasePageObject.appInfo
@@ -140,8 +140,8 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
 
     @Test(priority = 1, description = "Launching the app")
     fun testOpenNewsApp() {
-        tapButton(androidDriver, okButton, false)
-        tapButton(androidDriver, noThanksButton, false)
+        selectView(okButton)
+        selectView(noThanksButton)
 
         if (isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/error_retry")))
         //    !androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/error_retry")).isDisplayed)
@@ -172,7 +172,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
 
         //scrolls to Reality Check topics on Top Stories page
         scrollToElement(androidDriver, educationTopics)
-        tapButton(androidDriver, educationTopics!!, false)
+        selectView(educationTopics!!)
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
@@ -183,15 +183,15 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         for (i in 0 until topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(topicsPageElements[i]))
         }
-        tapButton(androidDriver, myNewsAddTopics, false)
+        selectView(myNewsAddTopics)
         textPresent(androidDriver, "Family & Education", "added to")
         elementDisplayed(androidDriver, manageYourTopics)
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
 
 
         //scrolls to health topics on Top Stories page
         scrollToElement(androidDriver, technologyTopic)
-        tapButton(androidDriver, technologyTopic, false)
+        selectView(technologyTopic)
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
             verticalSwipe(androidDriver, "Up")
@@ -204,30 +204,30 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
             isElementPresent(androidDriver, By.id(topicsPageElements[i]))
         }
 
-        tapButton(androidDriver, myNewsAddTopics, false)
+        selectView(myNewsAddTopics)
         textPresent(androidDriver, "Technology", "added to")
         elementDisplayed(androidDriver, manageYourTopics)
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
     }
 
 //    @Test(priority = 4, description = "Test To Check the topics added from top stories are displayed under MyNews")
 //    fun testMyNewsTopStoriesTopics() {
 //        try {
 //            startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
-//            tapButton(androidDriver, myNews, false)
-//            tapButton(androidDriver, editMyNews, false)
+//            selectView(myNews)
+//            selectView(editMyNews)
 //
 //            assertDisplayingElements(androidDriver,
 //                    technologyTopic,
 //                    familyEducationTopic
 //            )
 //
-//            tapButton(androidDriver, removetopics, false)
+//            selectView(removetopics)
 //            // textPresent(androidDriver, "Family & Education", "removed from")
-//            tapButton(androidDriver, removetopics, false)
+//            selectView(removetopics)
 //            // textPresent(androidDriver, "Technology", "removed from")
 //            // pressBack()
-//            tapButton(androidDriver, backButton, false)
+//            selectView(backButton)
 //        } catch (e: StaleElementReferenceException) {
 //            // todo: remove this!!! failing without it
 //        }
@@ -237,17 +237,17 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Story("MyNews")
     fun testAllowLocation() {
         startTest("Allowing Location Service ", "Checking whether Location service works ", "MyNews")
-        tapButton(androidDriver, myNews, false)//,file.getAbsolutePath());
-        tapButton(androidDriver, myNewsStartButton, false)
-        tapButton(androidDriver, allowLocation, false)
-        tapButton(androidDriver, allowLocationPermission, false)
+        selectView(myNews)//,file.getAbsolutePath());
+        selectView(myNewsStartButton)
+        selectView(allowLocation)
+        selectView(allowLocationPermission)
         pressBack()
     }
 
     @Test(priority = 6, description = "Test to check MyNews page and asserting whether all links displayed")
     fun testMyNews() {
         startTest("Checking Elements on MyNews Page", "Test to check MyNews page", "MyNews")
-        tapButton(androidDriver, myNews, false)
+        selectView(myNews)
         assertDisplayingElements(androidDriver,
                 myNewsSummary,
                 myNewsTitle,
@@ -261,7 +261,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 7, description = "Test to check on My News Add Topic screen and asserting all links are displayed")
     fun testAddingTopicsPage() {
         startTest("Checking Elements on Edit Mynews Page", "Test to check Edit MyNews page", "MyNews")
-        tapButton(androidDriver, myNewsStartButton, false)
+        selectView(myNewsStartButton)
         elementIsSelected(addTopics)
 
         assertDisplayingElements(androidDriver,
@@ -271,7 +271,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
                 localNews
         )
 
-        tapButton(androidDriver, myTopics, false)//,file.getAbsolutePath());
+        selectView(myTopics)//,file.getAbsolutePath());
         elementIsSelected(myTopics)
         assertEquals(myTopicEmptyViewText, myTopicEmptyView?.text, "Text Mesaaged")
     }
@@ -280,34 +280,34 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 8, description = "Test to add Topics under MyNews")
     fun testAddingTopicsToMyNewsPage() {
         startTest("Adding Topics ", "Test to check added Topics to MyNews page", "MyNews")
-        tapButton(androidDriver, addTopics, false)
+        selectView(addTopics)
 
         assertEquals("Manchester", localNewsDisplayed?.text)
         elementDisplayed(androidDriver, localNewsDisplayed)
 
         scrollToElement(androidDriver, addEnglandTopicButton)
-        tapButton(androidDriver, addEnglandTopicButton, false)
+        selectView(addEnglandTopicButton)
         // textPresent(androidDriver, "England", "added to")
 
         scrollToElement(androidDriver, addAfricaTopicButton)
-        tapButton(androidDriver, addAfricaTopicButton, false)
+        selectView(addAfricaTopicButton)
 
         scrollToElement(androidDriver, addEuTopicButton)
-        tapButton(androidDriver, addEuTopicButton, false)
+        selectView(addEuTopicButton)
 
         scrollToElement(androidDriver, addMortgagesTopicButton)
-        tapButton(androidDriver, addMortgagesTopicButton, false)
+        selectView(addMortgagesTopicButton)
         //  textPresent(androidDriver, "Mortgages", "added to")
 
         scrollToElement(androidDriver, addYouTubeTopicButton)
-        tapButton(androidDriver, addYouTubeTopicButton, false)
+        selectView(addYouTubeTopicButton)
         //  textPresent(androidDriver, "YouTube", "added to")
     }
 
     @Test(priority = 9, description = "Test to check whether selected topics are displayed under Added Topics in MyNews")
     fun testCheckAddedTopics() {
         startTest("My Topics page", "Test to check added Topics MyNews page", "MyNews")
-        tapButton(androidDriver, myTopics, false)
+        selectView(myTopics)
 
         assertDisplayingElements(androidDriver,
                 englandTopic,
@@ -342,17 +342,17 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
                 africaTopic
         )
 
-        tapButton(androidDriver, africaTopic, false)
+        selectView(africaTopic)
         for (i in 0 until topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(topicsPageElements[i]))
         }
         pressBack()
-        tapButton(androidDriver, europeanTopic, false)
+        selectView(europeanTopic)
         for (i in 0 until topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(topicsPageElements[i]))
         }
         pressBack()
-        tapButton(androidDriver, englandTopic, false)
+        selectView(englandTopic)
         for (i in 0 until topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(topicsPageElements[i]))
         }
@@ -363,7 +363,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 12, description = "Test to re-arrange topics from top to bottom")
     fun testCheckReOrderingOfTopicsAdded() {
         startTest("Re Arrange Topics from Top-to-Bottom", "Test to re-arrange topics from top to bottom", "MyNews")
-        tapButton(androidDriver, editMyNews, false)
+        selectView(editMyNews)
 
         val england = androidDriver.findElementsById("bbc.mobile.news.uk.internal:id/grab_handle")[0]
         val youTubeTopic = androidDriver.findElementsById("bbc.mobile.news.uk.internal:id/grab_handle")[4]
@@ -385,7 +385,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 13, description = "Test to check whether the Menu Options are displayed")
     fun testCheckMenuItems() {
         startTest("Checking the MenuItems", "Checking Menu Items ", "Menu")
-        tapButton(androidDriver, menuButton, false)
+        selectView(menuButton)
 
         assertDisplayingElements(androidDriver,
                 settings,
@@ -399,25 +399,25 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 14, description = "Test to play a Live video from Video page and asserting on whether playback controls are displayed")
     fun testVideoPage() {
         startTest("Playing a Live Video", "Checking the Video Page", "Live Video")
-        tapButton(androidDriver, video, false)
-        tapButton(androidDriver, bbcNewsChannel, false)
+        selectView(video)
+        selectView(bbcNewsChannel)
 
         assertDisplayingElements(androidDriver,
                 liveMediaItemCaption,
                 navigateBack,
                 shareStory
         )
-        tapButton(androidDriver, accessibilityPlay, false)
+        selectView(accessibilityPlay)
         waitFor(1400)
-        tapButton(androidDriver, smpFullScreenButton, false)
+        selectView(smpFullScreenButton)
         waitFor(1400)
 
         if (isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smp_play_button"))) {
-            tapButton(androidDriver, playButton, false)
+            selectView(playButton)
         }
 
-        tapButton(androidDriver, transportControls, false)
-        tapButton(androidDriver, transportControls, false)
+        selectView(transportControls)
+        selectView(transportControls)
 
         assertDisplayingElements(androidDriver,
                 smpPauseButton,
@@ -432,8 +432,8 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     fun playingLandscape() {
         startTest("Checking Live Video in Landscape", "Checking the Video in Landscape Mode", "Live Video")
         androidDriver.rotate(ScreenOrientation.LANDSCAPE)
-        tapButton(androidDriver, transportControls, false)
-        tapButton(androidDriver, transportControls, false)
+        selectView(transportControls)
+        selectView(transportControls)
 
         assertDisplayingElements(androidDriver,
                 smpPauseButton,
@@ -450,14 +450,14 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         startTest("Checking Live Video Scrubbing", "Checking the Live Video in Portrait Mode and seeking", "Live Video")
         seeking(smpSeekBar, .30, "forward")
         isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/smpSeekBar"))
-        tapButton(androidDriver, smpExitFullScreenButton, false)
+        selectView(smpExitFullScreenButton)
         pressBack()
     }
 
     @Test(priority = 17, description = "Test to check for search results")
     fun testSearchStories() {
         startTest("Search for an Topics", "Checking Search Topics", "Search")
-        tapButton(androidDriver, searchButton, false)
+        selectView(searchButton)
         enterText(searchField, "India")
         waitFor(2000)
 
@@ -470,7 +470,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         val searchRelatedHeadingText = getText(searchHeading2)
         assertEquals(searchRelatedHeadingText, "Articles related to \"India\"")
 
-        tapButton(androidDriver, cancelSearch, false)
+        selectView(cancelSearch)
         val searchTopicsText1 = getText(searchHeading)
         assertEquals(searchTopicsText1, "In The News Now", "matched")
 
@@ -479,45 +479,45 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         assertEquals(searchRelatedHeadingText2, "More Topics", "matched")
 
         //assertEquals(searchHeading4.getText(),"My Topics","matched");
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
 
     }
 
     @Test(priority = 18, description = "Test to search for a Topic and navigate to topic page")
     fun testSelectSearchResult() {
         startTest("Navigate to Topic Detail Page", "Test to search for a Topic and navigate to topic page", "Search")
-        tapButton(androidDriver, searchButton, false)
+        selectView(searchButton)
         searchField?.clear()
         enterText(searchField, searchText)
         waitFor(700)
         assertEquals(searchText, searchKeyword?.text, "Text Matched")
-        tapButton(androidDriver, searchKeyword, false)
+        selectView(searchKeyword)
 
         assertEquals(searchText, getText(headlineTitle))
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
         pressBack()
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
     }
 
     @Test(priority = 19, description = "Test Checking an Topic and adding to MyNews")
     fun testSearchTopic() {
         startTest("Search and Adding Topic to Mynews", "Test Checking an Topic and adding to MyNews", "Search")
-        tapButton(androidDriver, searchButton, false)
+        selectView(searchButton)
         // searchField.clear()
         enterText(searchField, "India")
         waitFor(700)
-        tapButton(androidDriver, article, false)
+        selectView(article)
 
         assertEquals(articleLayoutName?.text, articleLayoutName?.text, "Text Matched")
         assertEquals(articleLastUpdated?.text, articleLastUpdated?.text, "Test Matched")
-        tapButton(androidDriver, myNewsAddTopics, false)
+        selectView(myNewsAddTopics)
     }
 
     @Test(priority = 20, description = "Test Checking an Article page without an Item Image Badge")
     fun testArticleItemWithoutItemBadge() {
         startTest("Article without ItemImage Badge", "Test Checking an Article page without an Item Image Badge", "Search")
         scrollToElement(androidDriver, articleItemWithoutItemBadge)
-        tapButton(androidDriver, articleItemWithoutItemBadge, false)
+        selectView(articleItemWithoutItemBadge)
 
         var i = 0
         while (i < articleDetailPageLinks.size && i < articleItemWithImageBadge.size) {
@@ -532,7 +532,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     fun testArticleItemWithItemBadge() {
         startTest("Article with ItemImage Badge", "Checking an Article page without an Item Image Badge", "Search")
         scrollToElement(androidDriver, articleItemWithItemBadge)
-        tapButton(androidDriver, articleItemWithItemBadge, false)
+        selectView(articleItemWithItemBadge)
         assertDisplayingElements(androidDriver, articleImageBadge)
         assertEquals("EPA", articleImageBadge?.text, "Text Matched")
 
@@ -544,18 +544,18 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         }
 
         pressBack()
-        tapButton(androidDriver, backButton, false)
-        tapButton(androidDriver, cancelSearch, false)
+        selectView(backButton)
+        selectView(cancelSearch)
     }
 
     @Test(priority = 22, description = "Test to search for an particular article")
     fun testSearchArticle() {
         startTest("Searching a Particular article", "Test to search for an particular article", "Search")
-        tapButton(androidDriver, searchButton, false)
+        selectView(searchButton)
         // searchField.clear();
         enterText(searchField, "A rape victim's two-year wait for justice")
         //androidDriver.hideKeyboard();
-        tapButton(androidDriver, articleSearch, false)
+        selectView(articleSearch)
         waitFor(500)
 
         var i = 0
@@ -564,14 +564,14 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
             assertEquals(articlePageDetail[i], androidDriver.findElement(By.id(articlePageDetailElements[i])).text, "Test matched")
             i++
         }
-        tapButton(androidDriver, navigateBack, false)
-        tapButton(androidDriver, backButton, false)
+        selectView(navigateBack)
+        selectView(backButton)
     }
 
     @Test(priority = 23, description = "Test to search for an particular video article")
     fun testOnDemandVideoPlayback() {
         startTest("Playing a Particular OnDemand Video", "Test to search ana play a on-demand video", "OnDemandVideo")
-        tapButton(androidDriver, search, false)
+        selectView(search)
         enterText(searchField, "egypt court imposes jail")
         waitForScreenToLoad(androidDriver, videoArticleSearch, 3)
 
@@ -583,7 +583,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         val videoTitle = videoArticleSearch?.text
         //val videolastupdated = androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated")).text
 
-        tapButton(androidDriver, videoArticleSearch, false)
+        selectView(videoArticleSearch)
         assertEquals(videoTitle, androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headlineTitle")).text)
         assertEquals("31 Dec 2018", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/headlineInfo")).text)
 
@@ -599,7 +599,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 24, description = "Test to seek forward videoplayback")
     fun testSeekingVideoForward() {
         startTest("Seeking Video Forward", "Test to search ana play a on-demand video", "OnDemandVideo")
-        tapButton(androidDriver, accessibilityPlay, false)
+        selectView(accessibilityPlay)
         seeking(smpSeekBar, .50, "forward")
         elapsedTimeForward = smpElapsedTime?.text
     }
@@ -617,14 +617,14 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         startTest("Checking for Related Story Article", "Test to check Related Stories of an Article", "Related Stories/Topics")
         scrollToElement(androidDriver, relatedStoriesArticle)
         elementDisplayed(androidDriver, relatedStories)
-        tapButton(androidDriver, relatedStoriesArticle, false)
+        selectView(relatedStoriesArticle)
         for (i in 0 until mostReadPopularLinks.size) {
             isElementPresent(androidDriver, By.id(mostReadPopularLinks[i]))
         }
         if (shareStory?.isDisplayed!!) {
             verticalSwipe(androidDriver, "Up")
         }
-        tapButton(androidDriver, navigateBack, false)
+        selectView(navigateBack)
     }
 
     @Test(priority = 27, description = "Test to check Related Topics of an Article")
@@ -632,33 +632,33 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         startTest("Checking for Related Topic Article", "Test to check Related Topics of an Article", "Related Stories/Topics")
         scrollToElement(androidDriver, relatedTopicsArticle)
         elementDisplayed(androidDriver, relatedTopics)
-        tapButton(androidDriver, relatedTopicsArticle, false)
+        selectView(relatedTopicsArticle)
         assertEquals("Egypt", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/title")).text)
         assertEquals("Add topic", androidDriver.findElement(By.id("bbc.mobile.news.uk.internal:id/menu_follow")).getAttribute("contentDescription"))
         for (i in 0 until topicsPageElements.size) {
             isElementPresent(androidDriver, By.id(topicsPageElements[i]))
         }
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
         pressBack()
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
     }
 
     @Test(priority = 28, description = "Test to check the T&C , PrivacyPolicy from Menu options")
     fun testCheckTermsPrivacyPolicy() {
         startTest("Checking T&C Privacy Policy", "Checking T&C and privacy Policy", "Menu")
-        tapButton(androidDriver, menuButton, false)
-        tapButton(androidDriver, menuAppInfo, false)
-        tapButton(androidDriver, termsConditions, false)
+        selectView(menuButton)
+        selectView(menuAppInfo)
+        selectView(termsConditions)
         pressBack()
-        tapButton(androidDriver, privacyPolicy, false)
+        selectView(privacyPolicy)
         pressBack()
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
     }
 
     @Test(priority = 29, description = "Playing a video from Video page")
     fun testTopStoriesVideo() {
         startTest("Playing a OnDemand Video", "Test to play a video from Video page", "OnDemandVideo")
-        tapButton(androidDriver, video, false)
+        selectView(video)
         //commented out as Top Stories link isn't displayed
         //elementDisplayed(androidDriver, topStories)
 //        scrollToElement(androidDriver, topStoriesVideo)
@@ -667,8 +667,8 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
 //        elementDisplayed(androidDriver, topStoriesVideoContentCardLink)
 //        elementDisplayed(androidDriver, topStoriesVideoContentCardInfo)
 
-        tapButton(androidDriver, topStoriesVideo, false)
-        tapButton(androidDriver, accessibilityPlay, false)
+        selectView(topStoriesVideo)
+        selectView(accessibilityPlay)
         // androidDriver.findElementByAccessibilityId("Play").click();
         transportControls?.click()
         transportControls?.click()
@@ -691,7 +691,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 31, description = "Test to check the Popular page and also to check Most Read Displayed")
     fun testPopularPage() {
         startTest("Checking PopularPage", "Checking Popular Page", "Popular")
-        tapButton(androidDriver, popular, false)
+        selectView(popular)
         elementDisplayed(androidDriver, mostRead)
     }
 
@@ -699,7 +699,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     fun testMostReadPopular() {
         startTest("Checking Article from Most Read Section", "Checking Most Read Popular", "Popular")
         elementDisplayed(androidDriver, mostRead)
-        tapButton(androidDriver, mostReadArticle, false)
+        selectView(mostReadArticle)
     }
 
 
@@ -729,8 +729,8 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     @Test(priority = 35, description = "Test re-arrange topics from bottom to top")
     fun testArrangeTopicsFromBottomToTop() {
         startTest("Re Arrange Topics from Bottom-to-Top", "Test re-arrange topics from bottom to top", "MyNews")
-        tapButton(androidDriver, myNews, false)
-        tapButton(androidDriver, editMyNews, false)
+        selectView(myNews)
+        selectView(editMyNews)
 
         val india = androidDriver.findElementsById("bbc.mobile.news.uk.internal:id/grab_handle")[5]
         val europe = androidDriver.findElementsById("bbc.mobile.news.uk.internal:id/grab_handle")[0]
@@ -742,8 +742,8 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         assertEquals("Rape in India", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='1']/android.widget.TextView[@index='1']")).text, "Test Matched")
         // assertEquals("European Union",androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='2']/android.widget.TextView[@index='1']")).getText(), "Test Matched");
         assertEquals("YouTube", androidDriver.findElement(By.xpath("//android.support.v7.widget.RecyclerView[@index='1']/android.widget.RelativeLayout[@index='5']/android.widget.TextView[@index='1']")).text, "Test Matched")
-        tapButton(androidDriver, removeTopics, false)
-        tapButton(androidDriver, removeTopics, false)
+        selectView(removeTopics)
+        selectView(removeTopics)
         pressBack()
     }
 
@@ -757,19 +757,19 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
 //        waitForScreenToLoad(androidDriver,topStories,10);
 //        tapButton(androidDriver,topStories,false);
 //        scrollToElement(androidDriver, videoOfTheDayWatch);
-//        tapButton(androidDriver, videoOfTheDayButton, false);
+//        selectView(videoOfTheDayButton);
 //        assertEquals("You're not connected to the internet.", snackbar.getText(), "Text Matched");
     }
 
     @Test(priority = 37, description = "Test to play a  video, while device offline")
     fun testPlayingVideoOffline() {
         startTest("VideoPlayback-Offline", "Checking the Video while device offline", "Offline")
-        tapButton(androidDriver, video, false)
-        tapButton(androidDriver, bbcNewsChannel, false)
+        selectView(video)
+        selectView(bbcNewsChannel)
         elementDisplayed(androidDriver, liveMediaItemCaption)
         elementDisplayed(androidDriver, navigateBack)
         elementDisplayed(androidDriver, shareStory)
-        tapButton(androidDriver, accessibilityPlay, false)
+        selectView(accessibilityPlay)
         elementDisplayed(androidDriver, smpErrorMessage)
         elementDisplayed(androidDriver, smpErrorOkButton)
         elementDisplayed(androidDriver, smpRetryButton)
@@ -781,25 +781,25 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         waitFor(1000)
         assertTrue(state.isWiFiEnabled)
         pressBack()
-        tapButton(androidDriver, myNews, false)
-        tapButton(androidDriver, popular, false)
+        selectView(myNews)
+        selectView(popular)
     }
 
     @Test(priority = 38, description = "Test to play a  video, while device online")
     fun testPlayingVideoOnLine() {
         startTest("VideoPlayback-Online", "Checking the Video while device Online", "Offline")
-        tapButton(androidDriver, video, false)
-        tapButton(androidDriver, bbcNewsChannel, false)
-        tapButton(androidDriver, accessibilityPlay, false)
-        tapButton(androidDriver, navigateBack, false)
+        selectView(video)
+        selectView(bbcNewsChannel)
+        selectView(accessibilityPlay)
+        selectView(navigateBack)
     }
 
     @Test(priority = 39, description = "Test to select An Article from the England Topics under MyNews ")
     fun testSelectArticleTopic() {
         startTest("Selecting a Article from Africa Topics", "Test to select An Article from the Africa Topics under MyNews", "MyNews")
-        tapButton(androidDriver, myNews, false)
-        tapButton(androidDriver, englandTopic, false)
-        tapButton(androidDriver, topicArticle, false)
+        selectView(myNews)
+        selectView(englandTopic)
+        selectView(topicArticle)
         assertDisplayingElements(androidDriver, englandTopic)
         pressBack()
     }
@@ -808,14 +808,14 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
     fun testSelectVideoArticleTopic() {
         startTest("Select a Video Article from Africa Topic", "Test to select An Video Article from the Africa Topics under MyNews", "MyNews")
         scrollToElement(androidDriver, myNewsRecyclerView)
-        tapButton(androidDriver, topicVideoArticle, false)
+        selectView(topicVideoArticle)
         assertDisplayingElements(androidDriver, englandTopic)
 
         for (i in 0 until videoWallElements.size) {
             isElementPresent(androidDriver, By.id(videoWallElements[i]))
         }
 
-        tapButton(androidDriver, accessibilityPlay, false)
+        selectView(accessibilityPlay)
         waitFor(1300)
 
         for (i in 0 until playbackControls.size) {
@@ -823,6 +823,6 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         }
 
         pressBack()
-        tapButton(androidDriver, backButton, false)
+        selectView(backButton)
     }
 }

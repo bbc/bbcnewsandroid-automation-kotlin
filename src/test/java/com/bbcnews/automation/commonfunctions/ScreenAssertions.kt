@@ -1,6 +1,6 @@
 package com.bbcnews.automation.commonfunctions
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.elementDisplayed
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.elementDisplayed
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 

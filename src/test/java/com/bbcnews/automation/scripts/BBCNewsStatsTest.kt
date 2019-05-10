@@ -1,7 +1,7 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
 import com.bbcnews.automation.pageobjects.BasePageObject.cpsContent
 import com.bbcnews.automation.pageobjects.BasePageObject.internalSettings
 import com.bbcnews.automation.pageobjects.BasePageObject.menuButton
@@ -17,7 +17,6 @@ import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.pageobjects.StatsTestData
 import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
@@ -35,14 +34,14 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     @Throws(Exception::class)
     fun statsTestOpenNewsApp() {
         try {
-            tapButton(androidDriver, okButton, false)
-            tapButton(androidDriver, noThanksButton, false)
-            tapButton(androidDriver, menuButton, false)
-            tapButton(androidDriver, internalSettings, false)
-            tapButton(androidDriver, cpsContent, false)
-            tapButton(androidDriver, trevorTest, false)
-            tapButton(androidDriver, navigateBack, false)
-            tapButton(androidDriver, reloadButton, false)
+            selectView(okButton)
+            selectView(noThanksButton)
+            selectView(menuButton)
+            selectView(internalSettings)
+            selectView(cpsContent)
+            selectView(trevorTest)
+            selectView(navigateBack)
+            selectView(reloadButton)
             charlesProxy.startCharlesSession()
 
         } catch (e: Exception) {
@@ -56,11 +55,11 @@ class BBCNewsStatsTest : BbcTestCase("Regression") {
     fun statsTestCheckHomePage() {
         try {
             startTest("HomePage", "Checking the HomePage", "Smoke")
-            tapButton(androidDriver, topStories, false)
-            tapButton(androidDriver, myNews, false)
-            tapButton(androidDriver, popular, false)
-            tapButton(androidDriver, video, false)
-            tapButton(androidDriver, searchButton, false)
+            selectView(topStories)
+            selectView(myNews)
+            selectView(popular)
+            selectView(video)
+            selectView(searchButton)
         } catch (e: Exception) {
             e.printStackTrace()
         }

@@ -37,7 +37,7 @@ import java.util.*
 import java.util.Arrays.equals
 import javax.imageio.ImageIO
 
-object CommonFunctionKotlin {
+object AppiumViewActions {
 
     private lateinit var extent: ExtentReports
     private lateinit var htmlReporter: ExtentHtmlReporter
@@ -97,6 +97,8 @@ object CommonFunctionKotlin {
         androidDriver.pressKey(KeyEvent(AndroidKey.BACK))
     }
 
+    fun selectView(view: MobileElement?) = tapButton(androidDriver, view, false)
+
     /**
      * Function on click on any button or link on the app
      *
@@ -104,7 +106,7 @@ object CommonFunctionKotlin {
      * boolean to take screenshot ( true = takes screenshot and attached to testReport, fail= wont take screenshot)
      * Screenshot path
      */
-    fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
+    private fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
         waitForScreenToLoad(appiumDriver, element, 3)
         element?.click()
         Thread.sleep(800)
@@ -118,20 +120,6 @@ object CommonFunctionKotlin {
 
     fun appbackground(androidDriver: AndroidDriver<MobileElement>, duration: Long) {
         androidDriver.runAppInBackground(Duration.ofMillis(duration))
-    }
-
-    fun tapButtons(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
-        waitForScreenToLoad(appiumDriver, element, 3)
-        element?.click()
-        Thread.sleep(2000)
-
-        when {
-            takeScreenshot -> {
-                val screenshotPath = getScreenshot(appiumDriver, element?.text.toString())
-                println("Path for screenshot is $screenshotPath")
-                test?.log(Status.INFO, "Screenshot attached:-" + test?.addScreenCaptureFromPath(screenshotPath))
-            }
-        }
     }
 
     /**
@@ -241,7 +229,7 @@ object CommonFunctionKotlin {
      * @param d
      * @throws InterruptedException
      */
-    fun livevideoseeking(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
+    fun seekLiveVideo(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
         val startX = element.location.getX()
         val endX = element.size.width
         val yAxis = element.location.getY()
@@ -256,11 +244,11 @@ object CommonFunctionKotlin {
     }
 
     /**
-    Function to enter the text into a textfeld
-    @param, driverType, element and string that's need to be entered
+    Function to enter the text into a text field
+    @param, driverType, element, and string to be entered
      */
-    fun entersearchtext(element: MobileElement, searchkey: String) {
-        element.sendKeys(searchkey)
+    fun enterSearchText(element: MobileElement, searchKey: String) {
+        element.sendKeys(searchKey)
     }
 
     /**
@@ -778,12 +766,12 @@ object CommonFunctionKotlin {
      * @param
      * folder name
      */
-    fun emptyFolders(vararg filepaths: String) {
-        for (filepath in filepaths) {
+    fun emptyFolders(vararg filePaths: String) {
+        for (filepath in filePaths) {
             val file = File(filepath)
-            val myFiles: Array<String>?
+
             if (file.isDirectory) {
-                myFiles = file.list()
+                val myFiles = file.list()
                 for (i in myFiles!!.indices) {
                     val myFile = File(file, myFiles[i])
                     myFile.delete()
@@ -791,22 +779,5 @@ object CommonFunctionKotlin {
             }
         }
     }
-
-//    /**
-//     *
-//     * @param locator
-//     * @return
-//     */
-//
-//    fun elementFoundAndClicked(locator: By): ExpectedCondition<Boolean> {
-//        return object : ExpectedCondition<Boolean> {
-//            @Override
-//            fun apply(driver: appiumDriver): Boolean {
-//                val el = driver.findElement(locator)
-//                el.click()
-//                return true
-//            }
-//        }
-//    }
 
 }
