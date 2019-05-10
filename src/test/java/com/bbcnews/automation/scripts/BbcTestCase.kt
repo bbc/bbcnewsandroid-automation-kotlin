@@ -52,7 +52,7 @@ open class BbcTestCase(private val description: String) {
         androidDriver.quit()
     }
 
-    private fun dismissDialogs() = dismissDialogs(okButton, noThanksButton, errorRetryButton)
+    private fun dismissDialogs() = dismissDialogs(noThanksButton, okButton, errorRetryButton)
 
     private fun dismissDialogs(vararg dialogs: MobileElement?) {
         for (dialog in dialogs) {

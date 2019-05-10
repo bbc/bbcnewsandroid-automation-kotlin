@@ -106,15 +106,4 @@ object TestSetup {
             PageFactory.initElements(AppiumFieldDecorator(androidDriver), pageObject)
     }
 
-    private fun ignoreDialogs() {
-        selectView(BasePageObject.okButton)
-        selectView(BasePageObject.noThanksButton)
-
-        try {
-            selectView(BasePageObject.errorRetryButton)
-        } catch (e: Exception) {
-            // if the retry button is not present then do nothing
-        }
-    }
-
 }
