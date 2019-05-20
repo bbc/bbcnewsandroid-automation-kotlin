@@ -70,10 +70,10 @@ object TestSetup {
         deviceName = System.getProperty("DeviceName")
         appPath = System.getProperty("AppPath")
         appiumPort = System.getProperty("AppiumPort")
-        println("The Device ID is: $deviceid")
-        println("The Device Name is: $deviceName")
+        println("The device ID is: $deviceid")
+        println("The device name is: $deviceName")
         println("The Appium port is: $appiumPort")
-        println("The Application path is: $appPath")
+        println("The application path is: $appPath")
     }
 
     private fun rotateToPortrait() {
