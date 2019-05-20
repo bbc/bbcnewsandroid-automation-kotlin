@@ -4,7 +4,9 @@ test-output
 .idea/
 .apk
 .bin
+*.bin
 .lock
+*.lock
 bin/
 build/
 /*/build/
@@ -12,4 +14,5 @@ build/
 .DS_STORE
 /*/*.png
 .gradle
+.gradle/
 */out/test/
