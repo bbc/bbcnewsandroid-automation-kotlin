@@ -47,7 +47,4 @@ object MyTopicsPageObject {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='YouTube']")
     lateinit var youTubeTopic: MobileElement
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Education']")
-    lateinit var educationTopic: MobileElement
-
 }

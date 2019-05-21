@@ -48,10 +48,10 @@ object CommonPageObjects {
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"), AndroidBy(accessibility = "Search"))
     lateinit var search: MobileElement
 
-    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutName")
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemTitle")
     lateinit var itemLayoutName: MobileElement
 
-    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutLastUpdated")
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/contentInfo")
     lateinit var itemLayoutLastUpdated: MobileElement
 
     @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/itemLayoutHomeSection")

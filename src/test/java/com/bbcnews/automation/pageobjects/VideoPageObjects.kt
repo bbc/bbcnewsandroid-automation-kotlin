@@ -13,9 +13,6 @@ object VideoPageObjects {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='BBC News Channel']")
     lateinit var bbcNewsChannel: MobileElement
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/content_card_title"), AndroidBy(id = "bbc.mobile.news.uk:id/content_card_title"))
-    lateinit var liveBbcChannel: MobileElement
-
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/media_item_caption"), AndroidBy(id = "bbc.mobile.news.uk:id/media_item_caption"))
     lateinit var liveMediaItemCaption: MobileElement
 
@@ -43,33 +40,27 @@ object VideoPageObjects {
     @AndroidFindBy(accessibility = "exit fullscreen")
     lateinit var smpExitFullScreenButton: MobileElement
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_seek_bar"), AndroidBy(id = "bbc.mobile.news.uk:id/smp_seek_bar"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_seek_bar"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/smp_seek_bar"))
     lateinit var smpSeekBar: MobileElement
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_live_icon"), AndroidBy(accessibility = "live content"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_live_icon"),
+            AndroidBy(accessibility = "live content"))
     lateinit var smpLiveIcon: MobileElement
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_playout_window_inset"), AndroidBy(id = "bbc.mobile.news.uk:id/smp_playout_window_inset"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_playout_window_inset"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/smp_playout_window_inset"))
     lateinit var transportControls: MobileElement
 
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_play_button"), AndroidBy(id = "bbc.mobile.news.uk:id/smp_play_button"))
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_play_button"),
+            AndroidBy(id = "bbc.mobile.news.uk:id/smp_play_button"))
     lateinit var playButton: MobileElement
 
-    val videosOfTheDay = arrayOf("bbc.mobile.news.uk.internal:id/newstream_duration", "bbc.mobile.news.uk.internal:id/newstream_title", "bbc.mobile.news.uk.internal:id/newstream_summary")
-
     val videosOfTheDayRelease = arrayOf("bbc.mobile.news.uk.internal:id/newstream_duration", "bbc.mobile.news.uk.internal:id/newstream_title", "bbc.mobile.news.uk.internal:id/newstream_summary", "bbc.mobile.news.uk:id/teaser_media_info_icon")
-
-    @AndroidFindBy(accessibility = "play video content")
-    lateinit var videoOfTheDayPlay: MobileElement
-
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_duration"), AndroidBy(id = "bbc.mobile.news.uk:id/newstream_duration"))
-    lateinit var videoOfTheDayDuration: MobileElement
-
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_title"), AndroidBy(id = "bbc.mobile.news.uk:id/newstream_title"))
-    lateinit var videoOfTheDayTitle: MobileElement
-
-    @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/newstream_summary"), AndroidBy(id = "bbc.mobile.news.uk:id/newstream_summary"))
-    lateinit var videoOfTheDaySummary: MobileElement
 
     val videoDetailPage = arrayOf("bbc.mobile.news.uk.internal:id/media_item_caption", "bbc.mobile.news.uk.internal:id/headline_title", "bbc.mobile.news.uk.internal:id/headline_info", "bbc.mobile.news.uk.internal:id/headline_link")
 
@@ -80,35 +71,38 @@ object VideoPageObjects {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Amal Fathy: Egypt court imposes jail term over harassment video' and @index='1']")
     lateinit var videoArticleSearch: MobileElement
 
-    val playbackControls = arrayOf("bbc.mobile.news.uk.internal:id/smp_pause_button", "bbc.mobile.news.uk.internal:id/smp_seek_bar", "bbc.mobile.news.uk.internal:id/smp_fullscreen_button", "bbc.mobile.news.uk.internal:id/smp_duration", "bbc.mobile.news.uk.internal:id/smp_elapsed")
+    val playbackControls = arrayOf(
+            "bbc.mobile.news.uk.internal:id/smp_pause_button",
+            "bbc.mobile.news.uk.internal:id/smp_seek_bar",
+            "bbc.mobile.news.uk.internal:id/smp_fullscreen_button",
+            "bbc.mobile.news.uk.internal:id/smp_duration",
+            "bbc.mobile.news.uk.internal:id/smp_elapsed"
+    )
 
-    val playbackControlsRelease = arrayOf("bbc.mobile.news.uk:id/smp_pause_button", "bbc.mobile.news.uk:id/smp_seek_bar", "bbc.mobile.news.uk:id/smp_fullscreen_button", "bbc.mobile.news.uk:id/smp_duration", "bbc.mobile.news.uk:id/smp_elapsed")
+    val playbackControlsRelease = arrayOf(
+            "bbc.mobile.news.uk:id/smp_pause_button",
+            "bbc.mobile.news.uk:id/smp_seek_bar",
+            "bbc.mobile.news.uk:id/smp_fullscreen_button",
+            "bbc.mobile.news.uk:id/smp_duration",
+            "bbc.mobile.news.uk:id/smp_elapsed"
+    )
 
-    val videoWallElements = arrayOf("bbc.mobile.news.uk.internal:id/smp_placeholder_play_button",
-            // "bbc.mobile.news.uk.internal:id/videoTitleHeadline",
-            "bbc.mobile.news.uk.internal:id/videoTitleTimestamp", "bbc.mobile.news.uk.internal:id/videoTitleTopic", "bbc.mobile.news.uk.internal:id/videoSummary")
+    val videoWallElements = arrayOf(
+            "bbc.mobile.news.uk.internal:id/smp_placeholder_play_button",
+            "bbc.mobile.news.uk.internal:id/videoTitleTimestamp",
+            "bbc.mobile.news.uk.internal:id/videoTitleTopic",
+            "bbc.mobile.news.uk.internal:id/videoSummary"
+    )
 
-    val videoWallElementsRelease = arrayOf("bbc.mobile.news.uk:id/smp_placeholder_play_button",
-            // "bbc.mobile.news.uk.internal:id/videoTitleHeadline",
-            "bbc.mobile.news.uk:id/videoTitleTimestamp", "bbc.mobile.news.uk:id/videoTitleTopic", "bbc.mobile.news.uk:id/videoSummary")
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Top Stories']")
-    lateinit var topStories: MobileElement
+    val videoWallElementsRelease = arrayOf(
+            "bbc.mobile.news.uk:id/smp_placeholder_play_button",
+            "bbc.mobile.news.uk:id/videoTitleTimestamp",
+            "bbc.mobile.news.uk:id/videoTitleTopic",
+            "bbc.mobile.news.uk:id/videoSummary"
+    )
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='3']")
     lateinit var topStoriesVideo: MobileElement
-
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.view.ViewGroup[@index='0']/android.widget.LinearLayout[@index='1']/android.widget.TextView[@index='1']")
-    lateinit var topStoriesVideoPlayTime: MobileElement
-
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.view.ViewGroup[@index='0']/android.widget.TextView[@index='2']")
-    lateinit var topStoriesVideoContentCardTitle: MobileElement
-
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.view.ViewGroup[@index='0']/android.widget.TextView[@index='3']")
-    lateinit var topStoriesVideoContentCardInfo: MobileElement
-
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@index='1']/android.view.ViewGroup[@index='0']/android.widget.TextView[@index='4']")
-    lateinit var topStoriesVideoContentCardLink: MobileElement
 
     @AndroidFindAll(AndroidBy(id = "bbc.mobile.news.uk.internal:id/smp_elapsed"), AndroidBy(id = "bbc.mobile.news.uk:id/smp_elapsed"))
     lateinit var smpElapsedTime: MobileElement

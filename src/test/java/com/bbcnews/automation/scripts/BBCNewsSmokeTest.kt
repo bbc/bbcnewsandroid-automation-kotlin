@@ -14,11 +14,11 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.videoPlaybackSee
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitFor
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitForScreenToLoad
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
+import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertOnHomePage
 import com.bbcnews.automation.pageobjects.BasePageObject
+import com.bbcnews.automation.pageobjects.BasePageObject.contentInfo
 import com.bbcnews.automation.pageobjects.BasePageObject.headlineTitle
-import com.bbcnews.automation.pageobjects.BasePageObject.itemLayoutHomeSection
-import com.bbcnews.automation.pageobjects.BasePageObject.itemLayoutLastUpdated
-import com.bbcnews.automation.pageobjects.BasePageObject.itemLayoutName
+import com.bbcnews.automation.pageobjects.BasePageObject.itemTitle
 import com.bbcnews.automation.pageobjects.BasePageObject.menuButton
 import com.bbcnews.automation.pageobjects.BasePageObject.myNews
 import com.bbcnews.automation.pageobjects.BasePageObject.popular
@@ -51,6 +51,7 @@ import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlayPauseButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpSeekBar
 import com.bbcnews.automation.pageobjects.VideoPageObjects.smpVolumeButton
 import com.bbcnews.automation.pageobjects.VideoPageObjects.transportControls
+import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
@@ -58,6 +59,7 @@ import org.openqa.selenium.By
 import org.openqa.selenium.StaleElementReferenceException
 import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
+import org.testng.annotations.BeforeTest
 import org.testng.annotations.Ignore
 import org.testng.annotations.Test
 import java.io.IOException
@@ -65,34 +67,38 @@ import java.time.Duration
 
 class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
-    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
-    @Throws(IOException::class)
-    fun smokeTestTakeScreenshotsOfPages() {
-        selectView(topStories)
-        screenshot(androidDriver, "Before", "topStories")
-        selectView(myNews)
-        screenshot(androidDriver, "Before", "myNews")
-        selectView(popular)
-        screenshot(androidDriver, "Before", "popular")
-        selectView(video)
-        screenshot(androidDriver, "Before", "video")
-        selectView(menuButton)
-        screenshot(androidDriver, "Before", "menu")
-        navigateBack(androidDriver)
+    @BeforeTest
+    fun beforeEachTest() {
+        setUp()
     }
+
+//    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
+//    @Throws(IOException::class)
+//    fun smokeTestTakeScreenshotsOfPages() {
+//        selectView(androidDriver, topStories)
+//        screenshot(androidDriver, "Before", "topStories")
+//        selectView(androidDriver, myNews)
+//        screenshot(androidDriver, "Before", "myNews")
+//        selectView(androidDriver, popular)
+//        screenshot(androidDriver, "Before", "popular")
+//        selectView(androidDriver, video)
+//        screenshot(androidDriver, "Before", "video")
+//        selectView(androidDriver, menuButton)
+//        screenshot(androidDriver, "Before", "menu")
+//        navigateBack(androidDriver)
+//    }
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestCheckHomePage() {
-        androidDriver.runAppInBackground(Duration.ofSeconds(30))
+        androidDriver.runAppInBackground(Duration.ofSeconds(5))
         startTest("HomePage", "Checking the HomePage", "Smoke")
-        selectView(topStories)
+        selectView(androidDriver, topStories)
         assertTrue(topStories.isSelected)
         assertDisplayingElements(androidDriver,
-                itemLayoutName,
-                itemLayoutHomeSection,
-                itemLayoutLastUpdated,
+                itemTitle,
+                contentInfo,
                 myNews,
                 popular,
                 video,
@@ -106,10 +112,10 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestAllowLocation() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
-        selectView(myNews)
-        selectView(myNewsStartButton)
-        selectView(MyNewsPageObject.allowLocation)
-        selectView(MyNewsPageObject.allowLocationPermission)
+        selectView(androidDriver, myNews)
+        selectView(androidDriver, myNewsStartButton)
+        selectView(androidDriver, MyNewsPageObject.allowLocation)
+        selectView(androidDriver, MyNewsPageObject.allowLocationPermission)
         navigateBack(androidDriver)
     }
 
@@ -118,7 +124,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestPopularPage() {
         startTest("PopularPage", "Checking the Popular", "Smoke")
-        selectView(popular)
+        selectView(androidDriver, popular)
         assertTrue(popular.isSelected)
         assertDisplayingElements(androidDriver, mostRead)
         assertEquals("Most Read", mostRead.text, "Text Matched")
@@ -138,7 +144,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestMyNewsPage() {
         startTest("MyNews", "Checking the MyNews", "Smoke")
-        selectView(myNews)
+        selectView(androidDriver, myNews)
 
         assertTrue(myNews.isSelected)
 
@@ -154,34 +160,37 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
     /**
      * Adding the topics to MyNews
+     * This test is super flaky because the topics aren't always returned??
+     * Only happens on Appium.. I think it's something to do with the proxy
      */
+    @Ignore
     @Test(priority = 7, description = "Test to check the adding the topics to MyNews page")
-    @Severity(SeverityLevel.CRITICAL)
     fun smokeTestAddingTopicsToMyNewsPage() {
         startTest("MyNews", "Adding topics to MyNews", "Smoke")
-        selectView(myNewsStartButton)
-        selectView(addTopics)
+        selectView(androidDriver, myNewsStartButton)
+        selectView(androidDriver, addTopics)
 
-        assertEquals("Manchester", localNewsDisplayed.text)
+        assertEquals("UK", localNewsDisplayed.text)
         assertDisplayingElements(androidDriver, localNewsDisplayed)
 
         scrollToElement(androidDriver, MyTopicsPageObject.addWalesTopicButton)
-        selectView(MyTopicsPageObject.addWalesTopicButton)
+        selectView(androidDriver, MyTopicsPageObject.addWalesTopicButton)
         textPresent(androidDriver, "Wales", "added to")
 
         scrollToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
-        selectView(MyTopicsPageObject.addWorldTopicButton)
+        selectView(androidDriver, MyTopicsPageObject.addWorldTopicButton)
     }
 
     /**
      * Checked the selected topics are getting displayed under Added Topics
+     * Todo This test won't pass if the topics don't get added!!!
      */
     @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
+    @Ignore // This test won't pass if the topics don't get added!!!
     @Story("MyTopics")
-    @Severity(SeverityLevel.CRITICAL)
     fun smokeTestCheckAddedTopicsUnderMyTopics() {
         startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
-        selectView(MyNewsPageObject.myTopics)
+        selectView(androidDriver, MyNewsPageObject.myTopics)
         assertDisplayingElements(androidDriver,
                 MyTopicsPageObject.walesTopic,
                 MyTopicsPageObject.worldTopic
@@ -215,16 +224,16 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Throws(Exception::class)
     fun smokeTestMyNewsRemoveTopics() {
         startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
-        selectView(myNews)
-        selectView(MyNewsPageObject.editMyNews)
+        selectView(androidDriver, myNews)
+        selectView(androidDriver, MyNewsPageObject.editMyNews)
 
         assertDisplayingElements(androidDriver,
                 MyTopicsPageObject.walesTopic,
                 MyTopicsPageObject.worldTopic
         )
 
-        selectView(MyNewsPageObject.removeTopics)
-        selectView(BasePageObject.backButton)
+        selectView(androidDriver, MyNewsPageObject.removeTopics)
+        selectView(androidDriver, BasePageObject.backButton)
     }
 
     /**
@@ -248,12 +257,12 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
             )
         }
 
-        selectView(showMore)
+        selectView(androidDriver, showMore)
 
         scrollToElement(androidDriver, showLess)
         System.out.println("\"Show less\" text= " + showLess.text)
 
-        selectView(showLess)
+        selectView(androidDriver, showLess)
         assertDisplayingElements(androidDriver, showMore)
         System.out.println("\"Show more\" text= " + showMore.text)
     }
@@ -267,7 +276,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Throws(Exception::class, AssertionError::class)
     fun smokeTestMenuPage() {
         startTest("Menu", "Checking the Menu Items", "Smoke")
-        selectView(menuButton)
+        selectView(androidDriver, menuButton)
 
         assertDisplayingElements(androidDriver,
                 BasePageObject.appInfo,
@@ -280,43 +289,37 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     }
 
     /**
-     * check the live video on video page
+     * check the live video on video page - Flaky!
      */
     @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
     @Story("VideoPage")
-    @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class, AssertionError::class)
+    @Ignore
     fun smokeTestVideoPage() {
         startTest("VideoPage", "Checking the Video", "Smoke")
 
-        selectView(video)
+        selectView(androidDriver, video)
         assertTrue(video.isSelected)
 
-        selectView(bbcNewsChannel)
+        selectView(androidDriver, bbcNewsChannel)
         assertDisplayingElements(androidDriver, liveMediaItemCaption)
-        try {
-            if (shareStory.isDisplayed) {
-                verticalSwipe(androidDriver, "Up")
 
-                assertDisplayingElements(androidDriver, shareStory)
-            }
-        } catch (e: NoSuchElementException) {
-        }
+        if (shareStory.isDisplayed) verticalSwipe(androidDriver, "Up")
 
-        selectView(smpPlaceholderPlayButton)
+        selectView(androidDriver, smpPlaceholderPlayButton)
     }
 
     /**
-     * check the live video  seeking
+     * check the live video seeking - VERY FLAKY!
      */
+    @Ignore
     @Test(priority = 14, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
     @Story("VideoPage")
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestCheckLiveVideoSeeking() {
         startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
 
-        selectView(transportControls)
-        selectView(transportControls)
+        selectView(androidDriver, transportControls)
+        selectView(androidDriver, transportControls)
 
         assertDisplayingElements(androidDriver,
                 smpLiveIcon,
@@ -324,13 +327,13 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
                 smpSeekBar
         )
 
-        selectView(bbcNewsChannel)
+        selectView(androidDriver, bbcNewsChannel)
         waitForScreenToLoad(androidDriver, smpSeekBar, 3)
 
         videoPlaybackSeeking(androidDriver, smpSeekBar, 0.30)
 
         assertDisplayingElements(androidDriver, accessibilityPause)
-        selectView(smpPlayPauseButton)
+        selectView(androidDriver, smpPlayPauseButton)
         assertDisplayingElements(androidDriver, accessibilityPlay)
 
         navigateBack(androidDriver)
@@ -341,21 +344,19 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
      */
     @Test(priority = 15, description = "Test to check for search results")
     fun smokeTestSearchStories() {
-        try {
-            startTest("Search", "Checking for Search Topics", "Smoke")
-            selectView(BasePageObject.searchButton)
-            enterText(searchField, BasePageObject.searchText)
-            waitFor(1000)
-            assertEquals(BasePageObject.searchText, BasePageObject.searchKeyword.text, "Text Matched")
-            selectView(BasePageObject.searchKeyword)
-            val title = getText(headlineTitle)
-            assertEquals(BasePageObject.searchText, title)
-            selectView(BasePageObject.backButton)
-            navigateBack(androidDriver)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        startTest("Search", "Checking for Search Topics", "Smoke")
+        assertOnHomePage()
 
+        selectView(androidDriver, topStories)
+        selectView(androidDriver, search)
+        enterText(searchField, BasePageObject.searchText)
+        waitFor(2)
+        assertEquals(BasePageObject.searchText, BasePageObject.searchKeyword.text, "Text Matched")
+        selectView(androidDriver, BasePageObject.searchKeyword)
+        val title = getText(headlineTitle)
+        assertEquals(BasePageObject.searchText, title)
+        selectView(androidDriver, BasePageObject.backButton)
+        navigateBack(androidDriver)
     }
 
     /**
@@ -365,26 +366,21 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
     @Throws(IOException::class)
     fun smokeTestTakeScreenshotAfter() {
-        try {
-            selectView(BasePageObject.navigateBack)
-        } catch (e: NoSuchElementException) {
-            // Ignore if already on the main screen
-            assertDisplayingElements(androidDriver, menuButton)
-        }
+        assertOnHomePage()
 
-        selectView(topStories)
+        selectView(androidDriver, topStories)
         screenshot(androidDriver, "After", "topStories")
 
-        selectView(myNews)
+        selectView(androidDriver, myNews)
         screenshot(androidDriver, "After", "myNews")
 
-        selectView(popular)
+        selectView(androidDriver, popular)
         screenshot(androidDriver, "After", "popular")
 
-        selectView(video)
+        selectView(androidDriver, video)
         screenshot(androidDriver, "After", "video")
 
-        selectView(menuButton)
+        selectView(androidDriver, menuButton)
         screenshot(androidDriver, "After", "menu")
 
         navigateBack(androidDriver)

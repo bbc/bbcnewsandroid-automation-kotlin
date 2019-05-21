@@ -70,7 +70,6 @@ repositories {
         }
 
         if (!project.hasProperty('suiteFile')) {
-
             suiteFile = '/BBCNewsSmokeTest.xml'
         }
 

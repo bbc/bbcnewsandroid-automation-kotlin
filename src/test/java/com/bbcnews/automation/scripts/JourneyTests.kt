@@ -1,8 +1,18 @@
 package com.bbcnews.automation.scripts
 
+import com.bbcnews.automation.testutils.TestSetup
+import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import org.junit.Test
+import org.testng.annotations.BeforeTest
 
 class JourneyTests : BbcTestCase("User Journey") {
+
+
+    @BeforeTest
+    fun beforeEachTest() {
+        setUp()
+        androidDriver = TestSetup.setAndroidDriver()
+    }
 
     // ToDo implement journey tests
     // (Can we launch appium in states???)

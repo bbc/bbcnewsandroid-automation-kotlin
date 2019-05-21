@@ -9,6 +9,10 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter
 import com.aventstack.extentreports.reporter.configuration.ChartLocation
 import com.aventstack.extentreports.reporter.configuration.Theme
 import com.bbcnews.automation.commonfunctions.FilePaths.resultsFilePath
+import com.bbcnews.automation.pageobjects.BasePageObject
+import com.bbcnews.automation.testutils.TestSetup.deviceId
+import com.bbcnews.automation.testutils.TestSetup.deviceName
+import com.bbcnews.automation.testutils.TestSetup.deviceOsName
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -25,6 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.testng.Assert.*
 import org.testng.ITestResult
+import org.testng.ITestResult.*
 import ru.yandex.qatools.ashot.AShot
 import java.awt.Toolkit
 import java.awt.image.PixelGrabber
@@ -39,38 +44,30 @@ import javax.imageio.ImageIO
 
 object AppiumViewActions {
 
-    private lateinit var extent: ExtentReports
-    private lateinit var htmlReporter: ExtentHtmlReporter
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
+    private var extent = ExtentReports()
+    private val reportFolder = extentResultFolder(resultsFilePath)
 
     var test: ExtentTest? = null
 
     fun startReport(reportName: String) {
-        val deviceOsName = System.getProperty("DeviceOS")
-        val deviceId = System.getProperty("DeviceID")
-        val deviceName = System.getProperty("DeviceName")
-
         val curDate = Date()
         println(curDate.toString())
 
         println("resultsFilePath is $resultsFilePath")
-        Thread.sleep(4000)
+        Thread.sleep(2000)
 
-        val reportFolder = extentResultFolder(resultsFilePath)
-        println("reportFolder is $reportFolder")
-        Thread.sleep(4000)
+        println("Report folder is $reportFolder")
+        Thread.sleep(2000)
 
-        htmlReporter = ExtentHtmlReporter("$reportFolder$reportName$deviceName.html")
-        extent = ExtentReports()
+        val htmlReporter = ExtentHtmlReporter("$reportFolder$reportName$deviceName.html")
+
         extent.attachReporter(htmlReporter)
-
-        htmlReporter.setAppendExisting(true)
-
         extent.setSystemInfo("Device ID", deviceId)
         extent.setSystemInfo("Firmware version", deviceOsName)
         extent.setSystemInfo("Device Name ", deviceName)
-        extent.setSystemInfo("Run Started on", curDate.toString())
+        extent.setSystemInfo("Run started on", curDate.toString())
 
+        htmlReporter.setAppendExisting(true)
         htmlReporter.config().chartVisibilityOnOpen = true
         htmlReporter.config().documentTitle = "BBC News Android Report "
         htmlReporter.config().reportName = "Test Report"
@@ -97,7 +94,20 @@ object AppiumViewActions {
         androidDriver.pressKey(KeyEvent(AndroidKey.BACK))
     }
 
-    fun selectView(view: MobileElement?) = tapButton(androidDriver, view, false)
+    fun selectView(androidDriver: AndroidDriver<MobileElement>, view: MobileElement?) =
+            tapButton(androidDriver, view, false)
+
+    fun dismissDialogs(androidDriver: AndroidDriver<MobileElement>, numberOfTries: Int) {
+        (0..numberOfTries).forEach { _ -> dismissDialog(androidDriver) }
+    }
+
+    private fun dismissDialog(androidDriver: AndroidDriver<MobileElement>) {
+        val dialogOnScreen = isElementPresent(androidDriver, By.ById("android:id/button1"))
+
+        when {
+            dialogOnScreen -> tapButton(androidDriver, BasePageObject.dialog_yes, false)
+        }
+    }
 
     /**
      * Function on click on any button or link on the app
@@ -108,13 +118,19 @@ object AppiumViewActions {
      */
     private fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
         waitForScreenToLoad(appiumDriver, element, 3)
-        element?.click()
+
+        try {
+            element?.click()
+        } catch (e: java.lang.Exception) {
+            return e.printStackTrace()
+            fail()
+        }
+
         Thread.sleep(800)
         if (takeScreenshot) {
             val screenShotPath = getScreenshot(appiumDriver, element?.text)
             println("Taken screenshot path is $screenShotPath")
             test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenShotPath))
-
         }
     }
 
@@ -143,16 +159,16 @@ object AppiumViewActions {
             val file = File(extentResultFolder("Screenshots").toString())
             val destination = file.absolutePath + File.separator + screenshotName + "_" + dateName + ".png"
 
-            println("the ScreenShot  Folder is :- " + file.absolutePath)
-            println("Screenshot path name:------$destination")
+            println("The screenshot folder is: " + file.absolutePath)
+            println("Screenshot path: $destination")
 
             FileUtils.copyFile(source, File(destination))
 
-            println("ScreenShot Taken")
+            println("ScreenShot taken")
             return destination
 
         } catch (e: Exception) {
-            println("Exception While Taking screenshot" + e.message)
+            println("Exception while taking screenshot " + e.message)
             return e.message.toString()
         }
     }
@@ -181,7 +197,7 @@ object AppiumViewActions {
      * @param, driverType, element to be scrolled, screenshot
      */
     fun scrollToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
-        for (i in 0..20) {
+        for (i in 0..10) {
             try {
                 element?.isDisplayed
                 break
@@ -271,23 +287,12 @@ object AppiumViewActions {
      * If true, then the element text will be attached the report name. If element text not present, it uses the
      * element attribute
      *
-     * @param, drivertype, element name
+     * @param, driver type, element name
      */
-    fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
+    fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
         try {
-            waitForScreenToLoad(appiumDriver, element, 3)
-            assertTrue(element?.isDisplayed!!)
-            if (element.isDisplayed) {
-                if (element.text?.isEmpty()!!) {
-                    test?.log(Status.PASS, element.getAttribute("contentDescription") + "  Displayed")
-                } else {
-                    test?.log(Status.PASS, element.text + "  Displayed")
-                }
-
-            } else {
-                test?.log(Status.FAIL, element.text + "  is not Displayed")
-            }
-
+            waitForScreenToLoad(appiumDriver, element, 2)
+            checkIfDisplayingElement(element)
         } catch (e: AssertionError) {
             e.printStackTrace()
             println("Element $element not found")
@@ -295,10 +300,28 @@ object AppiumViewActions {
         }
     }
 
+    private fun checkIfDisplayingElement(element: MobileElement) {
+        assertTrue(element.isDisplayed)
+//
+//        if (element.isDisplayed) {
+//            if (element.text.isEmpty()) {
+//                test?.log(Status.PASS, element.getAttribute("contentDescription") + "  displayed")
+//            } else {
+//                test?.log(Status.PASS, element.text + "  displayed")
+//            }
+//
+//        } else {
+//            test?.log(Status.FAIL, element.text + "  is not displayed")
+//        }
+    }
+
+
     fun getTestResult(appiumDriver: AppiumDriver<MobileElement>, result: ITestResult) {
-        when {
-            result.status == ITestResult.FAILURE -> {
-                test?.fail(MarkupHelper.createLabel(result.name + " Test Case is FAILED", ExtentColor.RED))
+        when (result.status) {
+            SUCCESS -> test?.pass(MarkupHelper.createLabel(result.name + " Test Case is PASSED", ExtentColor.GREEN))
+
+            FAILURE -> {
+                test?.fail(MarkupHelper.createLabel(result.name + " Test case is FAILED", ExtentColor.RED))
                 test?.fail(result.throwable)
                 try {
                     val screenshotPath = getScreenshot(appiumDriver, result.name)
@@ -307,9 +330,8 @@ object AppiumViewActions {
                     e.printStackTrace()
                 }
             }
-            result.status == ITestResult.SUCCESS -> test?.pass(MarkupHelper.createLabel(result.name + " Test Case is PASSED", ExtentColor.GREEN))
-            result.status == ITestResult.SKIP -> {
-                test?.skip(MarkupHelper.createLabel(result.name + " Test Case is SKIPPED", ExtentColor.YELLOW))
+            SKIP -> {
+                test?.skip(MarkupHelper.createLabel(result.name + " Test case is SKIPPED", ExtentColor.YELLOW))
                 test?.skip(result.throwable)
             }
         }
@@ -337,7 +359,7 @@ object AppiumViewActions {
         val file = File(resultsPaths)
         println("the Result path Folder is :- " + file.absolutePath)
 
-        htmlReporter = ExtentHtmlReporter(file.absolutePath + File.separator + reportName + ".html")//"_"+deviceName+"_"+deviceOS+ ".html");
+        val htmlReporter = ExtentHtmlReporter(file.absolutePath + File.separator + reportName + ".html")//"_"+deviceName+"_"+deviceOS+ ".html");
         extent = ExtentReports()
         extent.attachReporter(htmlReporter)
         htmlReporter.setAppendExisting(false)
@@ -642,14 +664,14 @@ object AppiumViewActions {
                 println("Stat's URL " + country[0])
                 for (i in statUrl.indices) {
 
-//                    System.out.println("The New Generated Stats " + staturl[i]);
+//                    System.out.println("The New Generated Stats " + statUrl[i]);
                     for (j in statsData.indices) {
                         if (statUrl[i].equals(statsData[j], ignoreCase = true)) {
 
                             assertEquals(statUrl[i], statsData[j], "Stat's Matched")
                             val matchedStats = statUrl[i]
                             println("The New Generated Stats $matchedStats")
-//                            list.add(staturl[i].toString()))
+//                            list.add(statUrl[i].toString()))
                         }
                     }
                 }
@@ -721,24 +743,24 @@ object AppiumViewActions {
      * @param, driverType, Element type
      * double the seeking position ex(.30) means 30% seek
      */
-    fun seeking(element: MobileElement?, double: Double, seekingDirection: String) {
+    fun seeking(androidDriver: AndroidDriver<MobileElement>, element: MobileElement?, double: Double, seekingDirection: String) {
         val elementWidth = element?.size?.getWidth()
         val startX = element?.location?.getX()
         val endX = (elementWidth?.times(double))?.toInt()
 
         when (seekingDirection) {
-            "forward" -> seekFromPointToPoint(element!!, startX!!, endX!!)
-            "backward" -> seekFromPointToPoint(element!!, elementWidth!!, endX!!)
+            "forward" -> seekFromPointToPoint(androidDriver, element, startX!!, endX!!)
+            "backward" -> seekFromPointToPoint(androidDriver, element!!, elementWidth!!, endX!!)
         }
     }
 
-    private fun seekFromPointToPoint(element: MobileElement, xStart: Int, xFinish: Int) {
-        val yAxis = element.location.getY()
+    private fun seekFromPointToPoint(androidDriver: AndroidDriver<MobileElement>, element: MobileElement?, xStart: Int, xFinish: Int) {
+        val yAxis = element?.location?.getY()
 
         PlatformTouchAction(androidDriver)
-                .press(PointOption.point(xStart, yAxis))
+                .press(yAxis?.let { PointOption.point(xStart, it) })
                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(xFinish, yAxis))
+                .moveTo(yAxis?.let { PointOption.point(xFinish, it) })
                 .release()
                 .perform()
     }
