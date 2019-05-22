@@ -65,7 +65,7 @@ First you'll need to start appium. By typing appium -p portnumber (to run on a s
 ./gradlew test -DAppiumPort="Appium portNumber " -DDeviceID="DeviceID" -DDeviceName="DeviceName" -DAppPath="AppPath" -PSmokeTest
 
 **Note:**  
-Change the device ID, OS version, device Name  to the devices connected in your system , pass the Appiumport, pass the AppPath location in you system i before you run it .
+Change the device ID, OS version, device Name  to the devices connected in your system , pass the Appium port, pass the AppPath location in you system i before you run it .
 
 # Report
 After execution a ExtentReport will be created under Result folder with TestName

@@ -9,15 +9,19 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter
 import com.aventstack.extentreports.reporter.configuration.ChartLocation
 import com.aventstack.extentreports.reporter.configuration.Theme
 import com.bbcnews.automation.commonfunctions.FilePaths.resultsFilePath
+import com.bbcnews.automation.pageobjects.BasePageObject
+import com.bbcnews.automation.testutils.TestSetup.deviceId
+import com.bbcnews.automation.testutils.TestSetup.deviceName
+import com.bbcnews.automation.testutils.TestSetup.deviceOsName
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.connection.ConnectionStateBuilder
 import io.appium.java_client.android.nativekey.AndroidKey
 import io.appium.java_client.android.nativekey.KeyEvent
-import io.appium.java_client.touch.WaitOptions
+import io.appium.java_client.touch.WaitOptions.waitOptions
 import io.appium.java_client.touch.offset.ElementOption
-import io.appium.java_client.touch.offset.PointOption
+import io.appium.java_client.touch.offset.PointOption.point
 import org.apache.commons.io.FileUtils
 import org.openqa.selenium.*
 import org.openqa.selenium.NoSuchElementException
@@ -25,6 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.testng.Assert.*
 import org.testng.ITestResult
+import org.testng.ITestResult.*
 import ru.yandex.qatools.ashot.AShot
 import java.awt.Toolkit
 import java.awt.image.PixelGrabber
@@ -32,45 +37,37 @@ import java.io.*
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
-import java.time.Duration
+import java.time.Duration.ofMillis
 import java.util.*
 import java.util.Arrays.equals
 import javax.imageio.ImageIO
 
-object CommonFunctionKotlin {
+object AppiumViewActions {
 
-    private lateinit var extent: ExtentReports
-    private lateinit var htmlReporter: ExtentHtmlReporter
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
+    private var extent = ExtentReports()
+    private val reportFolder = extentResultFolder(resultsFilePath)
 
     var test: ExtentTest? = null
 
     fun startReport(reportName: String) {
-        val deviceOsName = System.getProperty("DeviceOS")
-        val deviceId = System.getProperty("DeviceID")
-        val deviceName = System.getProperty("DeviceName")
-
         val curDate = Date()
         println(curDate.toString())
 
         println("resultsFilePath is $resultsFilePath")
-        Thread.sleep(4000)
+        Thread.sleep(2000)
 
-        val reportFolder = extentResultFolder(resultsFilePath)
-        println("reportFolder is $reportFolder")
-        Thread.sleep(4000)
+        println("Report folder is $reportFolder")
+        Thread.sleep(2000)
 
-        htmlReporter = ExtentHtmlReporter("$reportFolder$reportName$deviceName.html")
-        extent = ExtentReports()
+        val htmlReporter = ExtentHtmlReporter("$reportFolder$reportName$deviceName.html")
+
         extent.attachReporter(htmlReporter)
-
-        htmlReporter.setAppendExisting(true)
-
         extent.setSystemInfo("Device ID", deviceId)
         extent.setSystemInfo("Firmware version", deviceOsName)
         extent.setSystemInfo("Device Name ", deviceName)
-        extent.setSystemInfo("Run Started on", curDate.toString())
+        extent.setSystemInfo("Run started on", curDate.toString())
 
+        htmlReporter.setAppendExisting(true)
         htmlReporter.config().chartVisibilityOnOpen = true
         htmlReporter.config().documentTitle = "BBC News Android Report "
         htmlReporter.config().reportName = "Test Report"
@@ -97,6 +94,21 @@ object CommonFunctionKotlin {
         androidDriver.pressKey(KeyEvent(AndroidKey.BACK))
     }
 
+    fun selectView(androidDriver: AndroidDriver<MobileElement>, view: MobileElement?) =
+            tapButton(androidDriver, view, false)
+
+    fun dismissDialogs(androidDriver: AndroidDriver<MobileElement>, numberOfTries: Int) {
+        (0..numberOfTries).forEach { _ -> dismissDialog(androidDriver) }
+    }
+
+    private fun dismissDialog(androidDriver: AndroidDriver<MobileElement>) {
+        val dialogOnScreen = isElementPresent(androidDriver, By.ById("android:id/button1"))
+
+        when {
+            dialogOnScreen -> tapButton(androidDriver, BasePageObject.dialog_yes, false)
+        }
+    }
+
     /**
      * Function on click on any button or link on the app
      *
@@ -104,34 +116,21 @@ object CommonFunctionKotlin {
      * boolean to take screenshot ( true = takes screenshot and attached to testReport, fail= wont take screenshot)
      * Screenshot path
      */
-    fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
+    private fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
         waitForScreenToLoad(appiumDriver, element, 3)
+
         element?.click()
+
         Thread.sleep(800)
         if (takeScreenshot) {
             val screenShotPath = getScreenshot(appiumDriver, element?.text)
             println("Taken screenshot path is $screenShotPath")
             test?.log(Status.INFO, "Screenshot Attached:-" + test?.addScreenCaptureFromPath(screenShotPath))
-
         }
     }
 
     fun appbackground(androidDriver: AndroidDriver<MobileElement>, duration: Long) {
-        androidDriver.runAppInBackground(Duration.ofMillis(duration))
-    }
-
-    fun tapButtons(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
-        waitForScreenToLoad(appiumDriver, element, 3)
-        element?.click()
-        Thread.sleep(2000)
-
-        when {
-            takeScreenshot -> {
-                val screenshotPath = getScreenshot(appiumDriver, element?.text.toString())
-                println("Path for screenshot is $screenshotPath")
-                test?.log(Status.INFO, "Screenshot attached:-" + test?.addScreenCaptureFromPath(screenshotPath))
-            }
-        }
+        androidDriver.runAppInBackground(ofMillis(duration))
     }
 
     /**
@@ -155,16 +154,16 @@ object CommonFunctionKotlin {
             val file = File(extentResultFolder("Screenshots").toString())
             val destination = file.absolutePath + File.separator + screenshotName + "_" + dateName + ".png"
 
-            println("the ScreenShot  Folder is :- " + file.absolutePath)
-            println("Screenshot path name:------$destination")
+            println("The screenshot folder is: " + file.absolutePath)
+            println("Screenshot path: $destination")
 
             FileUtils.copyFile(source, File(destination))
 
-            println("ScreenShot Taken")
+            println("ScreenShot taken")
             return destination
 
         } catch (e: Exception) {
-            println("Exception While Taking screenshot" + e.message)
+            println("Exception while taking screenshot " + e.message)
             return e.message.toString()
         }
     }
@@ -173,7 +172,7 @@ object CommonFunctionKotlin {
      * Function to create a folder with the project path
      * @param, Directory path
      */
-     fun extentResultFolder(path: String): String? {
+    fun extentResultFolder(path: String): String? {
         try {
             // Create one directory
             val success = File(path).mkdirs()
@@ -187,49 +186,30 @@ object CommonFunctionKotlin {
         return path
     }
 
-    /**
-     * Function to scroll to an element, if the list if very big
-     *
-     * @param, driverType, element to be scrolled, screenshot
-     */
-    fun scrollToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
-        for (i in 0..20) {
-            try {
-                element?.isDisplayed
-                break
-            } catch (e: Exception) {
-                verticalSwipe(appiumDriver, "Down")
-            }
-        }
-    }
-
-    /**
-     * Function to seek vertical on the app.
-     * startX remains constant
-     * startY and EndY are the two main parameters to swipe vertically
-     * @param, driver
-     */
     fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
-        val width = dimension.getWidth()
-        val startX = width / 2
-        val startY = (height * 0.75).toInt()
-        val endY = (height * 0.35).toInt()
+        val highPoint = (height * 0.75).toInt()
+        val lowPoint = (height * 0.35).toInt()
 
-//        val action = TouchAction(performsTouchActions = driver)
-//        action.press(PointOption.point(startX, startY))
-//                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-//                .moveTo(PointOption.point(startX, endY)).release().perform()
-        if (swipingDirection == "Down") {
-            PlatformTouchAction(driver).press(PointOption.point(startX, startY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(startX, endY)).release().perform()
-        } else if (swipingDirection == "Up") {
-            PlatformTouchAction(driver).press(PointOption.point(startX, endY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(startX, startY)).release().perform()
+        // Remember swiping is the opposite direction to scrolling, so you swipe down to scroll up
+        when (swipingDirection) {
+            "Down" -> swipeVerticallyFromTo(driver, highPoint, lowPoint)
+            "Up" -> swipeVerticallyFromTo(driver, lowPoint, highPoint)
         }
+    }
+
+    private fun swipeVerticallyFromTo(driver: AppiumDriver<MobileElement>, fromYPosition: Int, toYPosition: Int) {
+        val screenSize = driver.manage().window().size
+        val width = screenSize.getWidth()
+        val middleOfScreen = width / 2
+
+        PlatformTouchAction(driver)
+                .press(point(middleOfScreen, fromYPosition))
+                .waitAction(waitOptions(ofMillis(100)))
+                .moveTo(point(middleOfScreen, toYPosition))
+                .release()
+                .perform()
     }
 
     fun waitFor(seconds: Long) = Thread.sleep(seconds)
@@ -241,26 +221,26 @@ object CommonFunctionKotlin {
      * @param d
      * @throws InterruptedException
      */
-    fun livevideoseeking(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
+    fun seekLiveVideo(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement, d: Double) {
         val startX = element.location.getX()
         val endX = element.size.width
         val yAxis = element.location.getY()
         val moveToXDirectionAt = (endX * d).toInt()
 
         PlatformTouchAction(appiumDriver)
-                .press(PointOption.point(startX, yAxis))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(moveToXDirectionAt, yAxis))
+                .press(point(startX, yAxis))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(moveToXDirectionAt, yAxis))
                 .release()
                 .perform()
     }
 
     /**
-    Function to enter the text into a textfeld
-    @param, driverType, element and string that's need to be entered
+    Function to enter the text into a text field
+    @param, driverType, element, and string to be entered
      */
-    fun entersearchtext(element: MobileElement, searchkey: String) {
-        element.sendKeys(searchkey)
+    fun enterSearchText(element: MobileElement, searchKey: String) {
+        element.sendKeys(searchKey)
     }
 
     /**
@@ -283,23 +263,12 @@ object CommonFunctionKotlin {
      * If true, then the element text will be attached the report name. If element text not present, it uses the
      * element attribute
      *
-     * @param, drivertype, element name
+     * @param, driver type, element name
      */
-    fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
+    fun elementDisplayed(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
         try {
-            waitForScreenToLoad(appiumDriver, element, 3)
-            assertTrue(element?.isDisplayed!!)
-            if (element.isDisplayed) {
-                if (element.text?.isEmpty()!!) {
-                    test?.log(Status.PASS, element.getAttribute("contentDescription") + "  Displayed")
-                } else {
-                    test?.log(Status.PASS, element.text + "  Displayed")
-                }
-
-            } else {
-                test?.log(Status.FAIL, element.text + "  is not Displayed")
-            }
-
+            waitForScreenToLoad(appiumDriver, element, 2)
+            checkIfDisplayingElement(element)
         } catch (e: AssertionError) {
             e.printStackTrace()
             println("Element $element not found")
@@ -307,10 +276,14 @@ object CommonFunctionKotlin {
         }
     }
 
+    fun checkIfDisplayingElement(element: MobileElement) = assertTrue(element.isDisplayed)
+
     fun getTestResult(appiumDriver: AppiumDriver<MobileElement>, result: ITestResult) {
-        when {
-            result.status == ITestResult.FAILURE -> {
-                test?.fail(MarkupHelper.createLabel(result.name + " Test Case is FAILED", ExtentColor.RED))
+        when (result.status) {
+            SUCCESS -> test?.pass(MarkupHelper.createLabel(result.name + " Test Case is PASSED", ExtentColor.GREEN))
+
+            FAILURE -> {
+                test?.fail(MarkupHelper.createLabel(result.name + " Test case is FAILED", ExtentColor.RED))
                 test?.fail(result.throwable)
                 try {
                     val screenshotPath = getScreenshot(appiumDriver, result.name)
@@ -319,9 +292,8 @@ object CommonFunctionKotlin {
                     e.printStackTrace()
                 }
             }
-            result.status == ITestResult.SUCCESS -> test?.pass(MarkupHelper.createLabel(result.name + " Test Case is PASSED", ExtentColor.GREEN))
-            result.status == ITestResult.SKIP -> {
-                test?.skip(MarkupHelper.createLabel(result.name + " Test Case is SKIPPED", ExtentColor.YELLOW))
+            SKIP -> {
+                test?.skip(MarkupHelper.createLabel(result.name + " Test case is SKIPPED", ExtentColor.YELLOW))
                 test?.skip(result.throwable)
             }
         }
@@ -335,7 +307,6 @@ object CommonFunctionKotlin {
      */
     @Throws(Exception::class)
     fun createAReportHive(reportName: String, deviceName: String, deviceId: String) {
-
         val curDate = Date()
         println(curDate.toString())
 
@@ -350,7 +321,7 @@ object CommonFunctionKotlin {
         val file = File(resultsPaths)
         println("the Result path Folder is :- " + file.absolutePath)
 
-        htmlReporter = ExtentHtmlReporter(file.absolutePath + File.separator + reportName + ".html")//"_"+deviceName+"_"+deviceOS+ ".html");
+        val htmlReporter = ExtentHtmlReporter(file.absolutePath + File.separator + reportName + ".html")//"_"+deviceName+"_"+deviceOS+ ".html");
         extent = ExtentReports()
         extent.attachReporter(htmlReporter)
         htmlReporter.setAppendExisting(false)
@@ -412,9 +383,9 @@ object CommonFunctionKotlin {
 //                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 //                 .moveTo(PointOption.point(endXAxis, YAxis)).release().perform()
 
-        PlatformTouchAction(driver).press(PointOption.point(startXAxis, yAxis))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(endXAxis, yAxis)).release().perform()
+        PlatformTouchAction(driver).press(point(startXAxis, yAxis))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(endXAxis, yAxis)).release().perform()
     }
 
     fun isElementSelected(element: MobileElement?): Boolean {
@@ -603,14 +574,14 @@ object CommonFunctionKotlin {
         Thread.sleep(3000)
 
         if (seekingtype.equals("forward", ignoreCase = true)) {
-            PlatformTouchAction(driver).press(PointOption.point(startX, yAxis))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
+            PlatformTouchAction(driver).press(point(startX, yAxis))
+                    .waitAction(waitOptions(ofMillis(1000)))
+                    .moveTo(point(moveToXDirectionAt, yAxis)).release().perform()
 
         } else if (seekingtype.equals("backward", ignoreCase = true)) {
-            PlatformTouchAction(driver).press(PointOption.point(endX, yAxis))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
+            PlatformTouchAction(driver).press(point(endX, yAxis))
+                    .waitAction(waitOptions(ofMillis(1000)))
+                    .moveTo(point(moveToXDirectionAt, yAxis)).release().perform()
         }
     }
 
@@ -655,14 +626,14 @@ object CommonFunctionKotlin {
                 println("Stat's URL " + country[0])
                 for (i in statUrl.indices) {
 
-//                    System.out.println("The New Generated Stats " + staturl[i]);
+//                    System.out.println("The New Generated Stats " + statUrl[i]);
                     for (j in statsData.indices) {
                         if (statUrl[i].equals(statsData[j], ignoreCase = true)) {
 
                             assertEquals(statUrl[i], statsData[j], "Stat's Matched")
                             val matchedStats = statUrl[i]
                             println("The New Generated Stats $matchedStats")
-//                            list.add(staturl[i].toString()))
+//                            list.add(statUrl[i].toString()))
                         }
                     }
                 }
@@ -724,9 +695,9 @@ object CommonFunctionKotlin {
         System.out.println("Moving seek bar at $moveToXDirectionAt In X direction.")
         Thread.sleep(3000)
 
-        PlatformTouchAction(driver).press(PointOption.point(startX!!, yAxis!!))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(moveToXDirectionAt!!, yAxis)).release().perform()
+        PlatformTouchAction(driver).press(point(startX!!, yAxis!!))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(moveToXDirectionAt!!, yAxis)).release().perform()
     }
 
     /**
@@ -734,24 +705,24 @@ object CommonFunctionKotlin {
      * @param, driverType, Element type
      * double the seeking position ex(.30) means 30% seek
      */
-    fun seeking(element: MobileElement?, double: Double, seekingDirection: String) {
+    fun seeking(androidDriver: AndroidDriver<MobileElement>, element: MobileElement?, double: Double, seekingDirection: String) {
         val elementWidth = element?.size?.getWidth()
         val startX = element?.location?.getX()
         val endX = (elementWidth?.times(double))?.toInt()
 
         when (seekingDirection) {
-            "forward" -> seekFromPointToPoint(element!!, startX!!, endX!!)
-            "backward" -> seekFromPointToPoint(element!!, elementWidth!!, endX!!)
+            "forward" -> seekFromPointToPoint(androidDriver, element, startX!!, endX!!)
+            "backward" -> seekFromPointToPoint(androidDriver, element!!, elementWidth!!, endX!!)
         }
     }
 
-    private fun seekFromPointToPoint(element: MobileElement, xStart: Int, xFinish: Int) {
-        val yAxis = element.location.getY()
+    private fun seekFromPointToPoint(androidDriver: AndroidDriver<MobileElement>, element: MobileElement?, xStart: Int, xFinish: Int) {
+        val yAxis = element?.location?.getY()
 
         PlatformTouchAction(androidDriver)
-                .press(PointOption.point(xStart, yAxis))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(xFinish, yAxis))
+                .press(yAxis?.let { point(xStart, it) })
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(yAxis?.let { point(xFinish, it) })
                 .release()
                 .perform()
     }
@@ -779,33 +750,18 @@ object CommonFunctionKotlin {
      * @param
      * folder name
      */
-    fun emptyFolder(filepath: String) {
-        val file = File(filepath)
-        val myFiles: Array<String>?
-        if (file.isDirectory) {
-            myFiles = file.list()
-            for (i in myFiles!!.indices) {
-                val myFile = File(file, myFiles[i])
-                myFile.delete()
+    fun emptyFolders(vararg filePaths: String) {
+        for (filepath in filePaths) {
+            val file = File(filepath)
+
+            if (file.isDirectory) {
+                val myFiles = file.list()
+                for (i in myFiles!!.indices) {
+                    val myFile = File(file, myFiles[i])
+                    myFile.delete()
+                }
             }
         }
     }
-
-//    /**
-//     *
-//     * @param locator
-//     * @return
-//     */
-//
-//    fun elementFoundAndClicked(locator: By): ExpectedCondition<Boolean> {
-//        return object : ExpectedCondition<Boolean> {
-//            @Override
-//            fun apply(driver: appiumDriver): Boolean {
-//                val el = driver.findElement(locator)
-//                el.click()
-//                return true
-//            }
-//        }
-//    }
 
 }

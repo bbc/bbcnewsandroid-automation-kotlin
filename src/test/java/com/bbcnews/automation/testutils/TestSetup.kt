@@ -1,9 +1,6 @@
 package com.bbcnews.automation.testutils
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.checkConnection
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.createAReportHive
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.emptyFolder
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
+import com.bbcnews.automation.commonfunctions.FilePaths
 import com.bbcnews.automation.pageobjects.*
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -17,24 +14,19 @@ import java.net.URL
 
 object TestSetup {
 
-    private var capabilities = DesiredCapabilities()
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
-    private var deviceid: String? = null
-    private var deviceName: String? = null
-    private var appPath: String? = null
-    private var appiumPort: String? = null
+    lateinit var androidDriver: AndroidDriver<MobileElement>
+    var capabilities = DesiredCapabilities()
+    val deviceId: String = System.getProperty("DeviceID")
+    val deviceName: String = System.getProperty("DeviceName")
+    val deviceOsName = System.getProperty("DeviceOS")
+    private val appPath: String = System.getProperty("AppPath")
+    private val appiumPort: String = System.getProperty("AppiumPort")
+    private val appiumUrl: String = "http://127.0.0.1:$appiumPort/wd/hub"
+    private val screenshotPath: String = File(FilePaths.screenshotPath).absolutePath
 
-    /**
-     * setup the desired capabilities based on the parameter set
-     */
     fun setActivity(appPackage: String) {
-        //commented out to start appium server, as this taken care by hive, to run locally un-comment below line of code
-        //  appiumStart.startAppium(Integer.parseInt(Appium_Port))
-
-        val appiumUrl = "http://127.0.0.1:$appiumPort/wd/hub"
-        println("Appium Server Address : - $appiumUrl")
         capabilities = DesiredCapabilities()
-        capabilities.setCapability(MobileCapabilityType.UDID, deviceid)
+        capabilities.setCapability(MobileCapabilityType.UDID, deviceId)
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "bbcnews")
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2")
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android")
@@ -44,39 +36,22 @@ object TestSetup {
         capabilities.setCapability("appActivity", appPackage)
         capabilities.setCapability("--session-override", true)
         capabilities.setCapability("autoAcceptAlerts", true)
-
-        androidDriver = AndroidDriver(URL(appiumUrl), capabilities)
     }
 
-    fun setUpTest(reportName: String) {
-        initialisePageObjects()
-        rotateToPortrait()
-        unlockDevice()
-        checkConnection(androidDriver)
-        emptyFolder(screenshotPath)
-        createAReportHive(reportName, deviceName.toString(), deviceid.toString())
+    fun setAndroidDriver(): AndroidDriver<MobileElement> = AndroidDriver(URL(appiumUrl), capabilities)
 
-        androidDriver.context("NATIVE_APP")
+    fun printDeviceDetailsFromCommandPrompt() = println(
+            "Test details: \n" +
+                    "Device ID: $deviceId \n" +
+                    "Device name: $deviceName \n" +
+                    "Device OS Version: $deviceOsName \n" +
+                    "Appium port: $appiumPort \n" +
+                    "Appium Server Address: - $appiumUrl \n" +
+                    "Application path: $appPath \n" +
+                    "Screenshot folder path: $screenshotPath"
+    )
 
-        val screenshotPath = File(screenshotPath).absolutePath
-        println("The screenshot path is: $screenshotPath")
-    }
-
-    /**
-     *  gets the details of the device, app path , appium port which are passed through command prompt
-     */
-    fun readDeviceDetailsCommandPrompt() {
-        deviceid = System.getProperty("DeviceID")
-        deviceName = System.getProperty("DeviceName")
-        appPath = System.getProperty("AppPath")
-        appiumPort = System.getProperty("AppiumPort")
-        println("Passed The Device ID is $deviceid")
-        println("Passed The Device Name is $deviceName")
-        println("Passed The Appium port is $appiumPort")
-        println("Passed The Application path  is $appPath")
-    }
-
-    private fun rotateToPortrait() {
+    fun rotateToPortrait(androidDriver: AndroidDriver<MobileElement>) {
         val orientation = androidDriver.orientation
         if (orientation != ScreenOrientation.LANDSCAPE) {
         } else {
@@ -84,12 +59,12 @@ object TestSetup {
         }
     }
 
-    private fun unlockDevice() {
+    fun unlockDevice(androidDriver: AndroidDriver<MobileElement>) {
         val locked = androidDriver.isDeviceLocked
         if (locked) androidDriver.unlockDevice()
     }
 
-    private fun initialisePageObjects() {
+    fun initialisePageObjects(androidDriver: AndroidDriver<MobileElement>) {
         val pageObjects = arrayOf(
                 HomePageObject,
                 MyNewsPageObject,

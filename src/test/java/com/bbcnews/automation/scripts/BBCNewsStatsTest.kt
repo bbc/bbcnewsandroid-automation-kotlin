@@ -1,86 +1,45 @@
 package com.bbcnews.automation.scripts
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.getTestResult
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.publishReport
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.startTest
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.tapButton
-import com.bbcnews.automation.pageobjects.BasePageObject.cpsContent
-import com.bbcnews.automation.pageobjects.BasePageObject.internalSettings
-import com.bbcnews.automation.pageobjects.BasePageObject.menuButton
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
 import com.bbcnews.automation.pageobjects.BasePageObject.myNews
-import com.bbcnews.automation.pageobjects.BasePageObject.navigateBack
-import com.bbcnews.automation.pageobjects.BasePageObject.noThanksButton
-import com.bbcnews.automation.pageobjects.BasePageObject.okButton
 import com.bbcnews.automation.pageobjects.BasePageObject.popular
-import com.bbcnews.automation.pageobjects.BasePageObject.reloadButton
 import com.bbcnews.automation.pageobjects.BasePageObject.searchButton
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
-import com.bbcnews.automation.pageobjects.BasePageObject.trevorTest
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.pageobjects.StatsTestData
 import com.bbcnews.automation.testutils.CharlesProxy
-import com.bbcnews.automation.testutils.TestSetup.readDeviceDetailsCommandPrompt
-import com.bbcnews.automation.testutils.TestSetup.setActivity
-import com.bbcnews.automation.testutils.TestSetup.setUpTest
-import io.appium.java_client.MobileElement
-import io.appium.java_client.android.AndroidDriver
+import com.bbcnews.automation.testutils.TestSetup
+import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
-import org.testng.ITestResult
-import org.testng.annotations.AfterMethod
-import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeTest
 import org.testng.annotations.Test
 import java.io.IOException
 
-class BBCNewsStatsTest {
+class BBCNewsStatsTest : BbcTestCase("Regression") {
 
     private val charlesProxy = CharlesProxy()
     private val statsTestData = StatsTestData()
-    private lateinit var androidDriver: AndroidDriver<MobileElement>
 
     @BeforeTest
-    @Throws(Exception::class)
-    fun runTest() {
-        readDeviceDetailsCommandPrompt()
-        charlesProxy.startCharles()
-        setActivity("bbc.mobile.news.v3.app.TopLevelActivity")
-        setUpTest("Regression")
-    }
-
-    @Test(priority = 1, description = "launching the app and start the Charles ")
-    @Story("Home")
-    @Severity(SeverityLevel.CRITICAL)
-    @Throws(Exception::class)
-    fun testOpenNewsApp() {
-        try {
-            tapButton(androidDriver, okButton, false)
-            tapButton(androidDriver, noThanksButton, false)
-            tapButton(androidDriver, menuButton, false)
-            tapButton(androidDriver, internalSettings, false)
-            tapButton(androidDriver, cpsContent, false)
-            tapButton(androidDriver, trevorTest, false)
-            tapButton(androidDriver, navigateBack, false)
-            tapButton(androidDriver, reloadButton, false)
-            charlesProxy.startCharlesSession()
-
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+    fun beforeEachTest() {
+        setUp()
+        androidDriver = TestSetup.setAndroidDriver()
     }
 
     @Test(priority = 2, description = "Test to navigate around app for generate stats")
     @Story("Home")
     @Severity(SeverityLevel.CRITICAL)
-    fun testCheckHomePage() {
+    fun statsTestCheckHomePage() {
         try {
             startTest("HomePage", "Checking the HomePage", "Smoke")
-            tapButton(androidDriver, topStories, false)
-            tapButton(androidDriver, myNews, false)
-            tapButton(androidDriver, popular, false)
-            tapButton(androidDriver, video, false)
-            tapButton(androidDriver, searchButton, false)
+            selectView(androidDriver, topStories)
+            selectView(androidDriver, myNews)
+            selectView(androidDriver, popular)
+            selectView(androidDriver, video)
+            selectView(androidDriver, searchButton)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -88,7 +47,7 @@ class BBCNewsStatsTest {
 
     @Test(priority = 3, description = "Test to stop the charles recording ")
     @Throws(Exception::class)
-    fun testStopCharlesRecord() {
+    fun statsTestStopCharlesRecord() {
         try {
             charlesProxy.stopCharlesSession()
             Thread.sleep(2000)
@@ -99,7 +58,7 @@ class BBCNewsStatsTest {
 
     @Test(priority = 4, description = "Test to download the charles recording session")
     @Throws(Exception::class)
-    fun testDownloadCharlesRecord() {
+    fun statsTestDownloadCharlesRecord() {
         try {
             charlesProxy.downloadCharlesSession()
             Thread.sleep(2000)
@@ -110,7 +69,7 @@ class BBCNewsStatsTest {
 
     @Test(priority = 5, description = "Test to convert the charles session to CSV format")
     @Throws(Exception::class)
-    fun testConvertCharlesSessionToCSV() {
+    fun statsTestConvertCharlesSessionToCSV() {
         try {
             charlesProxy.convertToCSV()
             Thread.sleep(2000)
@@ -121,7 +80,7 @@ class BBCNewsStatsTest {
     }
 
     @Test(priority = 6, description = "Test to check the compared the downloaded stats")
-    fun testBBVNewsBasicStats() {
+    fun statsTestBBVNewsBasicStats() {
         startTest("BasicStats", "Test to check the compared the downloaded stats", "Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.bbcNewsBasicStats)
@@ -133,7 +92,7 @@ class BBCNewsStatsTest {
     }
 
     @Test(priority = 7, description = "Test to check the TopStores Page downloaded stats")
-    fun testCheckTopStoresStats() {
+    fun statsTestCheckTopStoresStats() {
         startTest("TopStores", "Test to check the TopStores Page downloaded stats", "TopStoriesStat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.topStories)
@@ -145,7 +104,7 @@ class BBCNewsStatsTest {
     }
 
     @Test(priority = 8, description = "Test to check the MyNews Page downloaded stats")
-    fun testCheckMyNewsStats() {
+    fun statsTestCheckMyNewsStats() {
         startTest("MyNews", "Test to check the MyNews Page downloaded stats", "MyNews Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.myNews)
@@ -157,7 +116,7 @@ class BBCNewsStatsTest {
     }
 
     @Test(priority = 9, description = "Test to check the Popular Page downloaded stats")
-    fun testCheckPopularPageStats() {
+    fun statsTestCheckPopularPageStats() {
         startTest("Popular", "Test to check the Popular Page downloaded stats", "Popular Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.popularPage)
@@ -169,7 +128,7 @@ class BBCNewsStatsTest {
     }
 
     @Test(priority = 10, description = "Test to check the Video Page downloaded stats")
-    fun testCheckVideoPageStats() {
+    fun statsTestCheckVideoPageStats() {
         startTest("Video", "Test to check the Video Page downloaded stats", "Video Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.videoPage)
@@ -181,7 +140,7 @@ class BBCNewsStatsTest {
     }
 
     @Test(priority = 11, description = "Test to check the Search Page downloaded stats")
-    fun testCheckPopularStats() {
+    fun statsTestCheckPopularStats() {
         startTest("Search", "Test to check the Search Page downloaded stats", "Search Stat's")
         try {
             statsTestData.compareStatsData(statsTestData.csvFile, statsTestData.searchStats)
@@ -190,21 +149,6 @@ class BBCNewsStatsTest {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-    }
-
-    @AfterMethod
-    fun getResult(result: ITestResult) {
-        try {
-            getTestResult(androidDriver, result)
-        } catch (e: IOException) {
-        }
-    }
-
-    @AfterTest
-    fun tearDown() {
-        publishReport()
-        androidDriver.closeApp()
-        androidDriver.quit()
     }
 
 }

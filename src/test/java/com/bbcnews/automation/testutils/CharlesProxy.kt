@@ -1,6 +1,6 @@
 package com.bbcnews.automation.testutils
 
-import com.bbcnews.automation.commonfunctions.CommonFunctionKotlin.extentResultFolder
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.extentResultFolder
 import java.io.File
 import java.io.IOException
 import java.lang.Runtime.getRuntime
