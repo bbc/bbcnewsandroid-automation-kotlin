@@ -19,9 +19,9 @@ import io.appium.java_client.android.AndroidDriver
 import io.appium.java_client.android.connection.ConnectionStateBuilder
 import io.appium.java_client.android.nativekey.AndroidKey
 import io.appium.java_client.android.nativekey.KeyEvent
-import io.appium.java_client.touch.WaitOptions
+import io.appium.java_client.touch.WaitOptions.waitOptions
 import io.appium.java_client.touch.offset.ElementOption
-import io.appium.java_client.touch.offset.PointOption
+import io.appium.java_client.touch.offset.PointOption.point
 import org.apache.commons.io.FileUtils
 import org.openqa.selenium.*
 import org.openqa.selenium.NoSuchElementException
@@ -37,7 +37,7 @@ import java.io.*
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
-import java.time.Duration
+import java.time.Duration.ofMillis
 import java.util.*
 import java.util.Arrays.equals
 import javax.imageio.ImageIO
@@ -119,12 +119,7 @@ object AppiumViewActions {
     private fun tapButton(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?, takeScreenshot: Boolean) {
         waitForScreenToLoad(appiumDriver, element, 3)
 
-        try {
-            element?.click()
-        } catch (e: java.lang.Exception) {
-            return e.printStackTrace()
-            fail()
-        }
+        element?.click()
 
         Thread.sleep(800)
         if (takeScreenshot) {
@@ -135,7 +130,7 @@ object AppiumViewActions {
     }
 
     fun appbackground(androidDriver: AndroidDriver<MobileElement>, duration: Long) {
-        androidDriver.runAppInBackground(Duration.ofMillis(duration))
+        androidDriver.runAppInBackground(ofMillis(duration))
     }
 
     /**
@@ -191,49 +186,30 @@ object AppiumViewActions {
         return path
     }
 
-    /**
-     * Function to scroll to an element, if the list if very big
-     *
-     * @param, driverType, element to be scrolled, screenshot
-     */
-    fun scrollToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?) {
-        for (i in 0..10) {
-            try {
-                element?.isDisplayed
-                break
-            } catch (e: Exception) {
-                verticalSwipe(appiumDriver, "Down")
-            }
-        }
-    }
-
-    /**
-     * Function to seek vertical on the app.
-     * startX remains constant
-     * startY and EndY are the two main parameters to swipe vertically
-     * @param, driver
-     */
     fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
-        val width = dimension.getWidth()
-        val startX = width / 2
-        val startY = (height * 0.75).toInt()
-        val endY = (height * 0.35).toInt()
+        val highPoint = (height * 0.75).toInt()
+        val lowPoint = (height * 0.35).toInt()
 
-//        val action = TouchAction(performsTouchActions = driver)
-//        action.press(PointOption.point(startX, startY))
-//                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-//                .moveTo(PointOption.point(startX, endY)).release().perform()
-        if (swipingDirection == "Down") {
-            PlatformTouchAction(driver).press(PointOption.point(startX, startY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(startX, endY)).release().perform()
-        } else if (swipingDirection == "Up") {
-            PlatformTouchAction(driver).press(PointOption.point(startX, endY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(startX, startY)).release().perform()
+        // Remember swiping is the opposite direction to scrolling, so you swipe down to scroll up
+        when (swipingDirection) {
+            "Down" -> swipeVerticallyFromTo(driver, highPoint, lowPoint)
+            "Up" -> swipeVerticallyFromTo(driver, lowPoint, highPoint)
         }
+    }
+
+    private fun swipeVerticallyFromTo(driver: AppiumDriver<MobileElement>, fromYPosition: Int, toYPosition: Int) {
+        val screenSize = driver.manage().window().size
+        val width = screenSize.getWidth()
+        val middleOfScreen = width / 2
+
+        PlatformTouchAction(driver)
+                .press(point(middleOfScreen, fromYPosition))
+                .waitAction(waitOptions(ofMillis(100)))
+                .moveTo(point(middleOfScreen, toYPosition))
+                .release()
+                .perform()
     }
 
     fun waitFor(seconds: Long) = Thread.sleep(seconds)
@@ -252,9 +228,9 @@ object AppiumViewActions {
         val moveToXDirectionAt = (endX * d).toInt()
 
         PlatformTouchAction(appiumDriver)
-                .press(PointOption.point(startX, yAxis))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(moveToXDirectionAt, yAxis))
+                .press(point(startX, yAxis))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(moveToXDirectionAt, yAxis))
                 .release()
                 .perform()
     }
@@ -300,21 +276,7 @@ object AppiumViewActions {
         }
     }
 
-    private fun checkIfDisplayingElement(element: MobileElement) {
-        assertTrue(element.isDisplayed)
-//
-//        if (element.isDisplayed) {
-//            if (element.text.isEmpty()) {
-//                test?.log(Status.PASS, element.getAttribute("contentDescription") + "  displayed")
-//            } else {
-//                test?.log(Status.PASS, element.text + "  displayed")
-//            }
-//
-//        } else {
-//            test?.log(Status.FAIL, element.text + "  is not displayed")
-//        }
-    }
-
+    fun checkIfDisplayingElement(element: MobileElement) = assertTrue(element.isDisplayed)
 
     fun getTestResult(appiumDriver: AppiumDriver<MobileElement>, result: ITestResult) {
         when (result.status) {
@@ -421,9 +383,9 @@ object AppiumViewActions {
 //                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
 //                 .moveTo(PointOption.point(endXAxis, YAxis)).release().perform()
 
-        PlatformTouchAction(driver).press(PointOption.point(startXAxis, yAxis))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(endXAxis, yAxis)).release().perform()
+        PlatformTouchAction(driver).press(point(startXAxis, yAxis))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(endXAxis, yAxis)).release().perform()
     }
 
     fun isElementSelected(element: MobileElement?): Boolean {
@@ -612,14 +574,14 @@ object AppiumViewActions {
         Thread.sleep(3000)
 
         if (seekingtype.equals("forward", ignoreCase = true)) {
-            PlatformTouchAction(driver).press(PointOption.point(startX, yAxis))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
+            PlatformTouchAction(driver).press(point(startX, yAxis))
+                    .waitAction(waitOptions(ofMillis(1000)))
+                    .moveTo(point(moveToXDirectionAt, yAxis)).release().perform()
 
         } else if (seekingtype.equals("backward", ignoreCase = true)) {
-            PlatformTouchAction(driver).press(PointOption.point(endX, yAxis))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                    .moveTo(PointOption.point(moveToXDirectionAt, yAxis)).release().perform()
+            PlatformTouchAction(driver).press(point(endX, yAxis))
+                    .waitAction(waitOptions(ofMillis(1000)))
+                    .moveTo(point(moveToXDirectionAt, yAxis)).release().perform()
         }
     }
 
@@ -733,9 +695,9 @@ object AppiumViewActions {
         System.out.println("Moving seek bar at $moveToXDirectionAt In X direction.")
         Thread.sleep(3000)
 
-        PlatformTouchAction(driver).press(PointOption.point(startX!!, yAxis!!))
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(PointOption.point(moveToXDirectionAt!!, yAxis)).release().perform()
+        PlatformTouchAction(driver).press(point(startX!!, yAxis!!))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(moveToXDirectionAt!!, yAxis)).release().perform()
     }
 
     /**
@@ -758,9 +720,9 @@ object AppiumViewActions {
         val yAxis = element?.location?.getY()
 
         PlatformTouchAction(androidDriver)
-                .press(yAxis?.let { PointOption.point(xStart, it) })
-                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-                .moveTo(yAxis?.let { PointOption.point(xFinish, it) })
+                .press(yAxis?.let { point(xStart, it) })
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(yAxis?.let { point(xFinish, it) })
                 .release()
                 .perform()
     }

@@ -1,11 +1,11 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.elementDisplayed
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.scrollToElement
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.verticalSwipe
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
+import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
+import com.bbcnews.automation.commonfunctions.ScreenActions.generalScrollUp
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.article
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiEntertainment
@@ -79,19 +79,17 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiHomepage)
         assertTrue(bbcHindiHomepage.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
         if (frontPage.isDisplayed) {
             System.out.println("Scrolling up")
-            verticalSwipe(androidDriver, "Up")
+            generalScrollUp(androidDriver)
         }
 
-        assertDisplayingElements(androidDriver,
-                imageItemBadge,
+        assertDisplayingElements(imageItemBadge,
                 headlineTitle,
                 headlineInfo,
                 headlineAuthorName,
@@ -105,24 +103,22 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         startTest("IndiaPage", "Checking the IndiaPage", "Smoke")
         selectView(androidDriver, bbcHindiIndia)
         assertTrue(bbcHindiIndia.isSelected)
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                imageItemBadge,
+        assertDisplayingElements(imageItemBadge,
                 headlineTitle,
                 headlineInfo,
                 headlineAuthorName,
                 headlineAuthorTitle
         )
 
-        scrollToElement(androidDriver, relatedTopics)
+        scrollDownToElement(androidDriver, relatedTopics)
 
-        assertDisplayingElements(androidDriver, relatedArticles)
+        assertDisplayingElements(relatedArticles)
         pressBack()
     }
 
@@ -132,15 +128,13 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiInternational)
         assertTrue(bbcHindiInternational.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                headlineTitle,
+        assertDisplayingElements(headlineTitle,
                 headlineInfo
         )
 
@@ -152,21 +146,19 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         startTest("EntertainmentPage", "Checking the EntertainmentPage", "Smoke")
         selectView(androidDriver, bbcHindiEntertainment)
         assertTrue(bbcHindiEntertainment.isSelected)
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
+        assertDisplayingElements(headlineTitle,
                 //imageItemBadge,
-                headlineTitle,
                 headlineInfo
         )
 
-        scrollToElement(androidDriver, relatedTopics)
-        assertDisplayingElements(androidDriver, relatedArticles)
+        scrollDownToElement(androidDriver, relatedTopics)
+        assertDisplayingElements(relatedArticles)
 
         pressBack()
     }
@@ -177,22 +169,20 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiSports)
         assertTrue(bbcHindiSports.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                imageItemBadge,
+        assertDisplayingElements(imageItemBadge,
                 headlineTitle,
                 headlineInfo,
                 imageItemCaption
         )
 
-        scrollToElement(androidDriver, relatedTopics)
-        assertDisplayingElements(androidDriver, relatedArticles)
+        scrollDownToElement(androidDriver, relatedTopics)
+        assertDisplayingElements(relatedArticles)
 
         pressBack()
     }
@@ -221,19 +211,17 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiScienceTechnology)
         assertTrue(bbcHindiScienceTechnology.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                headlineTitle,
+        assertDisplayingElements(headlineTitle,
                 headlineInfo
         )
 
-        scrollToElement(androidDriver, relatedTopics)
+        scrollDownToElement(androidDriver, relatedTopics)
 
         pressBack()
     }
@@ -244,15 +232,13 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiLookAt)
         assertTrue(bbcHindiLookAt.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                playButton,
+        assertDisplayingElements(playButton,
                 mediaItemCaption,
                 headlineTitle,
                 headlineInfo
@@ -260,8 +246,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
 
         selectView(androidDriver, playButton)
 
-        assertDisplayingElements(androidDriver,
-                volumeButton,
+        assertDisplayingElements(volumeButton,
                 fullScreenButton,
                 seekBar,
                 pauseButton
@@ -276,15 +261,13 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiThePhotos)
         assertTrue(bbcHindiThePhotos.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                picturesTitle,
+        assertDisplayingElements(picturesTitle,
                 picturesSubtitle
         )
 
@@ -301,15 +284,13 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, bbcHindiSocial)
         assertTrue(bbcHindiSocial.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                mainItemLayoutName,
+        assertDisplayingElements(mainItemLayoutName,
                 mainItemLayoutLastUpdated
         )
 
         selectView(androidDriver, article)
 
-        assertDisplayingElements(androidDriver,
-                headlineTitle,
+        assertDisplayingElements(headlineTitle,
                 headlineInfo
         )
 
@@ -323,10 +304,9 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         startTest("MoreOptions", "Checking the MoreOptions Menu", "Smoke")
         selectView(androidDriver, bbcMoreOptions)
 
-        assertDisplayingElements(androidDriver,
-                bbcHindiHelp,
-                //  bbcHindiInternalSettings,
+        assertDisplayingElements(bbcHindiHelp,
                 bbcHindiSettings,
+                //  bbcHindiInternalSettings,
                 bbcHindiPleaseContact,
                 bbcHindiOtherBbcApplications)
         pressBack()
@@ -339,9 +319,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         startTest("MoreOptions", "Checking the More Settings Options Menu", "Smoke")
         selectView(androidDriver, bbcHindiMoreSettings)
 
-        assertDisplayingElements(androidDriver,
-                // bbcHindiLocalNews,
-                bbcHindiTopics
+        assertDisplayingElements(bbcHindiTopics
         )
     }
 
@@ -351,8 +329,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
     fun testHindiMoreSettingsOptionsTopics() {
         startTest("MoreOptionsTopics", "Checking the More Settings Options Topics", "Smoke")
         //  tapButton(androidDriver,BBCNewsHindiPageObject.bbcHindiTopicsCollapseGroup,false);
-        assertDisplayingElements(androidDriver,
-                hindiHomepage,
+        assertDisplayingElements(hindiHomepage,
                 hindiBharath,
                 hindiEntertainment,
                 hindiInternational,

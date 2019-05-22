@@ -1,30 +1,20 @@
 package com.bbcnews.automation.scripts
 
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.compareTwoImages
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.enterText
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.getText
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.navigateBack
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.screenshot
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.scrollToElement
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.textPresent
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.verticalSwipe
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.videoPlaybackSeeking
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitFor
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitForScreenToLoad
+import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
-import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertOnHomePage
 import com.bbcnews.automation.pageobjects.BasePageObject
 import com.bbcnews.automation.pageobjects.BasePageObject.contentInfo
-import com.bbcnews.automation.pageobjects.BasePageObject.headlineTitle
 import com.bbcnews.automation.pageobjects.BasePageObject.itemTitle
 import com.bbcnews.automation.pageobjects.BasePageObject.menuButton
 import com.bbcnews.automation.pageobjects.BasePageObject.myNews
 import com.bbcnews.automation.pageobjects.BasePageObject.popular
 import com.bbcnews.automation.pageobjects.BasePageObject.search
-import com.bbcnews.automation.pageobjects.BasePageObject.searchField
-import com.bbcnews.automation.pageobjects.BasePageObject.shareStory
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.pageobjects.MyNewsPageObject
@@ -36,27 +26,12 @@ import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsSummary
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsSummaryText
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitle
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitleText
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.showLess
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.showMore
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject
 import com.bbcnews.automation.pageobjects.PopularPageObjects.mostRead
-import com.bbcnews.automation.pageobjects.PopularPageObjects.popularMostWatched
-import com.bbcnews.automation.pageobjects.VideoPageObjects.accessibilityPause
-import com.bbcnews.automation.pageobjects.VideoPageObjects.accessibilityPlay
-import com.bbcnews.automation.pageobjects.VideoPageObjects.bbcNewsChannel
-import com.bbcnews.automation.pageobjects.VideoPageObjects.liveMediaItemCaption
-import com.bbcnews.automation.pageobjects.VideoPageObjects.smpLiveIcon
-import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlaceholderPlayButton
-import com.bbcnews.automation.pageobjects.VideoPageObjects.smpPlayPauseButton
-import com.bbcnews.automation.pageobjects.VideoPageObjects.smpSeekBar
-import com.bbcnews.automation.pageobjects.VideoPageObjects.smpVolumeButton
-import com.bbcnews.automation.pageobjects.VideoPageObjects.transportControls
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
-import org.openqa.selenium.By
-import org.openqa.selenium.StaleElementReferenceException
 import org.testng.Assert.assertEquals
 import org.testng.Assert.assertTrue
 import org.testng.annotations.BeforeTest
@@ -96,8 +71,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         startTest("HomePage", "Checking the HomePage", "Smoke")
         selectView(androidDriver, topStories)
         assertTrue(topStories.isSelected)
-        assertDisplayingElements(androidDriver,
-                itemTitle,
+        assertDisplayingElements(itemTitle,
                 contentInfo,
                 myNews,
                 popular,
@@ -126,20 +100,11 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         startTest("PopularPage", "Checking the Popular", "Smoke")
         selectView(androidDriver, popular)
         assertTrue(popular.isSelected)
-        assertDisplayingElements(androidDriver, mostRead)
+        assertDisplayingElements(mostRead)
         assertEquals("Most Read", mostRead.text, "Text Matched")
     }
 
-    @Test(priority = 5, description = "checking that most watched displayed in popular page")
-    @Story("Popular")
-    @Severity(SeverityLevel.CRITICAL)
-    fun smokeTestMostWatched() {
-        startTest("PopularPage", "Checking most watched displayed the Popular", "Smoke")
-        scrollToElement(androidDriver, popularMostWatched)
-        assertEquals("Most Watched", popularMostWatched.text, "Text Matched")
-    }
-
-    @Test(priority = 6, description = "Test to check the Mynews page")
+    @Test(priority = 6, description = "Test to check the MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestMyNewsPage() {
@@ -148,8 +113,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
         assertTrue(myNews.isSelected)
 
-        assertDisplayingElements(androidDriver,
-                myNewsSummary,
+        assertDisplayingElements(myNewsSummary,
                 myNewsTitle,
                 addNewsButton
         )
@@ -171,13 +135,13 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(androidDriver, addTopics)
 
         assertEquals("UK", localNewsDisplayed.text)
-        assertDisplayingElements(androidDriver, localNewsDisplayed)
+        assertDisplayingElements(localNewsDisplayed)
 
-        scrollToElement(androidDriver, MyTopicsPageObject.addWalesTopicButton)
+        scrollDownToElement(androidDriver, MyTopicsPageObject.addWalesTopicButton)
         selectView(androidDriver, MyTopicsPageObject.addWalesTopicButton)
         textPresent(androidDriver, "Wales", "added to")
 
-        scrollToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
+        scrollDownToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
         selectView(androidDriver, MyTopicsPageObject.addWorldTopicButton)
     }
 
@@ -191,80 +155,10 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun smokeTestCheckAddedTopicsUnderMyTopics() {
         startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
         selectView(androidDriver, MyNewsPageObject.myTopics)
-        assertDisplayingElements(androidDriver,
-                MyTopicsPageObject.walesTopic,
+        assertDisplayingElements(MyTopicsPageObject.walesTopic,
                 MyTopicsPageObject.worldTopic
         )
         navigateBack(androidDriver)
-    }
-
-    /**
-     * Checks for Added topics displayed under My News page
-     */
-    @Test(priority = 9, description = "Test to check whether added topics displayed under MyNews page")
-    @Story("MyNews")
-    @Severity(SeverityLevel.CRITICAL)
-    fun smokeTestCheckAddedTopicsUnderMyNews() {
-        startTest("MyNews", "Checking added topics in My News", "Smoke")
-
-        try {
-            assertDisplayingElements(androidDriver,
-                    MyTopicsPageObject.walesTopic,
-                    MyTopicsPageObject.worldTopic
-            )
-        } catch (e: StaleElementReferenceException) {
-            // todo find a way to stop StaleElementReferenceException
-        }
-    }
-
-    /**
-     * removing one of the topics(England) from MyNews-Added Topics
-     */
-    @Test(priority = 10, description = "Test To remove topics which are displayed under MyNews")
-    @Throws(Exception::class)
-    fun smokeTestMyNewsRemoveTopics() {
-        startTest("Removing Added Topics", "Test to check Topics on MyNews page", "MyNews")
-        selectView(androidDriver, myNews)
-        selectView(androidDriver, MyNewsPageObject.editMyNews)
-
-        assertDisplayingElements(androidDriver,
-                MyTopicsPageObject.walesTopic,
-                MyTopicsPageObject.worldTopic
-        )
-
-        selectView(androidDriver, MyNewsPageObject.removeTopics)
-        selectView(androidDriver, BasePageObject.backButton)
-    }
-
-    /**
-     * Checks the Articles from Topics page, Checks for More button and checks for Less button displayed
-     */
-    @Test(priority = 11, description = "Test to check the Articles displayed under topics of MyNews page")
-    fun smokeTestCheckArticlesOfTopics() {
-        startTest("MyNews", "Checking the Articles displayed under topics of MyNews Page", "Smoke")
-
-        val contentImages = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_image"))
-        val contentCardTitle = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_title"))
-        val contentCardUpdated = androidDriver.findElements(By.id("bbc.mobile.news.uk.internal:id/content_card_last_updated"))
-
-        val total = contentImages.size
-        System.out.println("The number of cards is: $total")
-
-        for (i in contentImages.indices) {
-            assertDisplayingElements(androidDriver,
-                    contentCardTitle[i],
-                    contentCardUpdated[i]
-            )
-        }
-
-        selectView(androidDriver, showMore)
-
-        scrollToElement(androidDriver, showLess)
-        System.out.println("\"Show less\" text= " + showLess.text)
-
-        selectView(androidDriver, showLess)
-        assertDisplayingElements(androidDriver, showMore)
-        System.out.println("\"Show more\" text= " + showMore.text)
     }
 
     /**
@@ -278,84 +172,12 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         startTest("Menu", "Checking the Menu Items", "Smoke")
         selectView(androidDriver, menuButton)
 
-        assertDisplayingElements(androidDriver,
-                BasePageObject.appInfo,
+        assertDisplayingElements(BasePageObject.appInfo,
                 BasePageObject.otherBbcApps,
                 BasePageObject.internalSettings,
                 BasePageObject.settings
         )
 
-        navigateBack(androidDriver)
-    }
-
-    /**
-     * check the live video on video page - Flaky!
-     */
-    @Test(priority = 13, description = "Test to check the Video page and selecting the live video for playback and asserting the playback controls")
-    @Story("VideoPage")
-    @Ignore
-    fun smokeTestVideoPage() {
-        startTest("VideoPage", "Checking the Video", "Smoke")
-
-        selectView(androidDriver, video)
-        assertTrue(video.isSelected)
-
-        selectView(androidDriver, bbcNewsChannel)
-        assertDisplayingElements(androidDriver, liveMediaItemCaption)
-
-        if (shareStory.isDisplayed) verticalSwipe(androidDriver, "Up")
-
-        selectView(androidDriver, smpPlaceholderPlayButton)
-    }
-
-    /**
-     * check the live video seeking - VERY FLAKY!
-     */
-    @Ignore
-    @Test(priority = 14, description = "Test to check whether you can scrub the Live Video and Live Text shouldn't be displayed")
-    @Story("VideoPage")
-    @Severity(SeverityLevel.CRITICAL)
-    fun smokeTestCheckLiveVideoSeeking() {
-        startTest("VideopageSeeking", "Test to whether you can scrub the Live Video ", "Smoke")
-
-        selectView(androidDriver, transportControls)
-        selectView(androidDriver, transportControls)
-
-        assertDisplayingElements(androidDriver,
-                smpLiveIcon,
-                smpVolumeButton,
-                smpSeekBar
-        )
-
-        selectView(androidDriver, bbcNewsChannel)
-        waitForScreenToLoad(androidDriver, smpSeekBar, 3)
-
-        videoPlaybackSeeking(androidDriver, smpSeekBar, 0.30)
-
-        assertDisplayingElements(androidDriver, accessibilityPause)
-        selectView(androidDriver, smpPlayPauseButton)
-        assertDisplayingElements(androidDriver, accessibilityPlay)
-
-        navigateBack(androidDriver)
-    }
-
-    /**
-     * check to search for a topic
-     */
-    @Test(priority = 15, description = "Test to check for search results")
-    fun smokeTestSearchStories() {
-        startTest("Search", "Checking for Search Topics", "Smoke")
-        assertOnHomePage()
-
-        selectView(androidDriver, topStories)
-        selectView(androidDriver, search)
-        enterText(searchField, BasePageObject.searchText)
-        waitFor(2)
-        assertEquals(BasePageObject.searchText, BasePageObject.searchKeyword.text, "Text Matched")
-        selectView(androidDriver, BasePageObject.searchKeyword)
-        val title = getText(headlineTitle)
-        assertEquals(BasePageObject.searchText, title)
-        selectView(androidDriver, BasePageObject.backButton)
         navigateBack(androidDriver)
     }
 
@@ -366,8 +188,6 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 16, description = "takes the screenshot of the Top Stories, My News, Popular, Video, and Menu pages")
     @Throws(IOException::class)
     fun smokeTestTakeScreenshotAfter() {
-        assertOnHomePage()
-
         selectView(androidDriver, topStories)
         screenshot(androidDriver, "After", "topStories")
 

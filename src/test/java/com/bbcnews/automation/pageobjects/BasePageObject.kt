@@ -88,6 +88,9 @@ object BasePageObject {
     @AndroidFindBy(accessibility = "Share story")
     lateinit var shareStory: MobileElement
 
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/copyright_item_title")
+    lateinit var copyrightFooter: MobileElement
+
     @AndroidFindAll(
             AndroidBy(id = "bbc.mobile.news.uk.internal:id/action_search"),
             AndroidBy(id = "bbc.mobile.news.uk:id/action_search"),

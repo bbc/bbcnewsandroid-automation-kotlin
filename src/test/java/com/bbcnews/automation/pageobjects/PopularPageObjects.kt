@@ -19,7 +19,7 @@ object PopularPageObjects {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Read']")
     lateinit var mostRead: MobileElement
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Watched' and @index='0']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Most Watched']")
     lateinit var popularMostWatched: MobileElement
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@resource-id,'bbc.mobile.news.uk.internal:id/content_card_ordered_badge') and @text='1']")
