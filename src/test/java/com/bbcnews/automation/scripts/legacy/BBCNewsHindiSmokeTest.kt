@@ -1,4 +1,4 @@
-package com.bbcnews.automation.scripts
+package com.bbcnews.automation.scripts.legacy
 
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.elementDisplayed
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
@@ -54,6 +54,7 @@ import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedArticles
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.relatedTopics
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.seekBar
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.volumeButton
+import com.bbcnews.automation.scripts.BbcTestCase
 import com.bbcnews.automation.testutils.TestSetup
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import io.qameta.allure.Severity

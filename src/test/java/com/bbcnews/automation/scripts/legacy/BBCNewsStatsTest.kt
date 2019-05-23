@@ -1,4 +1,4 @@
-package com.bbcnews.automation.scripts
+package com.bbcnews.automation.scripts.legacy
 
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
@@ -8,6 +8,7 @@ import com.bbcnews.automation.pageobjects.BasePageObject.searchButton
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.video
 import com.bbcnews.automation.pageobjects.StatsTestData
+import com.bbcnews.automation.scripts.BbcTestCase
 import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.testutils.TestSetup
 import com.bbcnews.automation.testutils.TestSetup.androidDriver

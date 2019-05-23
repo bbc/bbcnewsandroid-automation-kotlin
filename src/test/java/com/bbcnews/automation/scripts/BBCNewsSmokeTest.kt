@@ -47,6 +47,29 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         setUp()
     }
 
+
+    @Test(priority = 2, description = "User journey including adding items to my news")
+    @Story("Journey_1")
+    @Severity(SeverityLevel.CRITICAL)
+    fun journey_UserAddingItemsToMyNews() {
+        startTest("Journey: MyNews", "Browsing user", "Smoke")
+
+
+//     Tap on an index header (e.g. London)
+//     Tap (+) to add to MyNews
+//     Tap pencil (now appeared) to edit MyNews
+//     Swipe to Add Topics
+//     Scroll and add 4 topics
+//     Add a topic from Search
+//     Swipe back to MyTopics and assert they've been added
+//     Press back twice to go back to Top Stories
+//     Swipe or tap to MyNews
+//     Swipe carousel
+//     Tap a topic
+//     Swipe through the indexes
+    }
+
+
 //    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
 //    @Throws(IOException::class)
 //    fun smokeTestTakeScreenshotsOfPages() {
@@ -85,7 +108,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
     fun smokeTestAllowLocation() {
-        startTest("MyNews", "Checking the MyNews", "Smoke")
+        startTest("MyNews", "Checking MyNews", "Smoke")
         selectView(androidDriver, myNews)
         selectView(androidDriver, myNewsStartButton)
         selectView(androidDriver, MyNewsPageObject.allowLocation)
