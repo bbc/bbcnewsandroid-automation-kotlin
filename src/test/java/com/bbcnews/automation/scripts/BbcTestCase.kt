@@ -6,7 +6,7 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.dismissDialogs
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.emptyFolders
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.getTestResult
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.publishReport
-import com.bbcnews.automation.commonfunctions.FilePaths.screenshotPath
+import com.bbcnews.automation.testdata.FilePaths.screenshotPath
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
 import com.bbcnews.automation.testutils.TestSetup.deviceId
 import com.bbcnews.automation.testutils.TestSetup.deviceName

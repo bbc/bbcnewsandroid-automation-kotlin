@@ -1,6 +1,6 @@
 package com.bbcnews.automation.testutils
 
-import com.bbcnews.automation.commonfunctions.FilePaths
+import com.bbcnews.automation.testdata.FilePaths
 import com.bbcnews.automation.pageobjects.*
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver

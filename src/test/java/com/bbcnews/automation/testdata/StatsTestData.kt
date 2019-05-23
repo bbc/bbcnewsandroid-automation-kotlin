@@ -1,4 +1,4 @@
-package com.bbcnews.automation.pageobjects
+package com.bbcnews.automation.testdata
 
 import java.io.BufferedReader
 import java.io.FileNotFoundException

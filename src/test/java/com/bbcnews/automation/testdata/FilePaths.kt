@@ -1,4 +1,4 @@
-package com.bbcnews.automation.commonfunctions
+package com.bbcnews.automation.testdata
 
 object FilePaths {
 

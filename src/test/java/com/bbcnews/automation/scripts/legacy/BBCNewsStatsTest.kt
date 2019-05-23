@@ -7,7 +7,7 @@ import com.bbcnews.automation.pageobjects.BasePageObject.popular
 import com.bbcnews.automation.pageobjects.BasePageObject.searchButton
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.video
-import com.bbcnews.automation.pageobjects.StatsTestData
+import com.bbcnews.automation.testdata.StatsTestData
 import com.bbcnews.automation.scripts.BbcTestCase
 import com.bbcnews.automation.testutils.CharlesProxy
 import com.bbcnews.automation.testutils.TestSetup

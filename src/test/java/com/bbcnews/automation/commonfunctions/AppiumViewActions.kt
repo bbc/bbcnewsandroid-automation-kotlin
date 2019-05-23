@@ -8,7 +8,7 @@ import com.aventstack.extentreports.markuputils.MarkupHelper
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter
 import com.aventstack.extentreports.reporter.configuration.ChartLocation
 import com.aventstack.extentreports.reporter.configuration.Theme
-import com.bbcnews.automation.commonfunctions.FilePaths.resultsFilePath
+import com.bbcnews.automation.testdata.FilePaths.resultsFilePath
 import com.bbcnews.automation.pageobjects.BasePageObject
 import com.bbcnews.automation.testutils.TestSetup.deviceId
 import com.bbcnews.automation.testutils.TestSetup.deviceName
