@@ -18,7 +18,7 @@ object TestSetup {
     var capabilities = DesiredCapabilities()
     val deviceId: String = System.getProperty("DeviceID")
     val deviceName: String = System.getProperty("DeviceName")
-    val deviceOsName = System.getProperty("DeviceOS")
+    val deviceOsName: String = System.getProperty("DeviceOS")
     private val appPath: String = System.getProperty("AppPath")
     private val appiumPort: String = System.getProperty("AppiumPort")
     private val appiumUrl: String = "http://127.0.0.1:$appiumPort/wd/hub"
@@ -44,9 +44,9 @@ object TestSetup {
             "Test details: \n" +
                     "Device ID: $deviceId \n" +
                     "Device name: $deviceName \n" +
-                    "Device OS Version: $deviceOsName \n" +
+                    "Device OS version: $deviceOsName \n" +
                     "Appium port: $appiumPort \n" +
-                    "Appium Server Address: - $appiumUrl \n" +
+                    "Appium server address: - $appiumUrl \n" +
                     "Application path: $appPath \n" +
                     "Screenshot folder path: $screenshotPath"
     )
@@ -73,7 +73,8 @@ object TestSetup {
                 PopularPageObjects,
                 MyTopicsPageObject,
                 BBCNewsHindiPageObject,
-                CommonPageObjects
+                CommonPageObjects,
+                IndexPageObjects
         )
 
         for (pageObject in pageObjects)

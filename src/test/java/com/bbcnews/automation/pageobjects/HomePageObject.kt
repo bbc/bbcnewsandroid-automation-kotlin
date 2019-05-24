@@ -58,4 +58,11 @@ object HomePageObject {
     )
     lateinit var newsStreamProgress: MobileElement
 
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/content_card_link"),
+            AndroidBy(className = "android.widget.TextView"),
+            AndroidBy(xpath = "//android.widget.TextView[2]")
+    )
+    lateinit var firstContentCardLink: MobileElement
+
 }
