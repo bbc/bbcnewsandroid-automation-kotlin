@@ -12,7 +12,11 @@ object MyNewsPageObject {
             AndroidBy(id = "bbc.mobile.news.uk:id/title"))
     lateinit var myNewsTitle: MobileElement
 
-    @AndroidFindBy(accessibility = "OK, let's get started Button:")
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/button"),
+            AndroidBy(className = "android.widget.TextView"),
+            AndroidBy(xpath = "//android.widget.TextView[@text='OK, let's get started']")
+    )
     lateinit var myNewsStartButton: MobileElement
 
     @AndroidFindAll(

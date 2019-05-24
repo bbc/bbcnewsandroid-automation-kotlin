@@ -14,9 +14,9 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.textPresent
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitFor
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.waitForScreenToLoad
+import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeUp
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
-import com.bbcnews.automation.commonfunctions.ScreenActions.generalScrollUp
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BasePageObject.appInfo
 import com.bbcnews.automation.pageobjects.BasePageObject.article
@@ -168,7 +168,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         selectView(androidDriver, educationTopics)
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
-            generalScrollUp(androidDriver)
+            generalSwipeUp(androidDriver)
         }
         elementDisplayed(androidDriver, familyEducationTopic1)
         System.out.println("Topics is :-" + familyEducationTopic1.text)
@@ -186,7 +186,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         selectView(androidDriver, technologyTopic)
         if (!isElementPresent(androidDriver, By.id("bbc.mobile.news.uk.internal:id/menu_follow"))) {
             System.out.println("Scrolling up")
-            generalScrollUp(androidDriver)
+            generalSwipeUp(androidDriver)
         }
         System.out.println("The Topic is " + technologyTopic.text)
         elementDisplayed(androidDriver, technologyTopic)
@@ -606,7 +606,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
             isElementPresent(androidDriver, By.id(mostReadPopularLinks[i]))
         }
         if (shareStory.isDisplayed) {
-            generalScrollUp(androidDriver)
+            generalSwipeUp(androidDriver)
         }
         selectView(androidDriver, navigateBack)
     }
@@ -702,7 +702,7 @@ class BBCNewsRegressionTest : BbcTestCase("Regression") {
         System.out.println("The Element selected is  :- " + mostWatchedArticleVideo.text)
         mostWatchedArticleVideo.click()
         if (mostPopular.isDisplayed) {
-            generalScrollUp(androidDriver)
+            generalSwipeUp(androidDriver)
         }
         for (i in 0 until videoWallElements.size) {
             isElementPresent(androidDriver, By.id(videoWallElements[i]))

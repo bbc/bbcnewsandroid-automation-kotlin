@@ -5,7 +5,7 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
 import com.bbcnews.automation.commonfunctions.ScreenActions.pressBack
 import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
-import com.bbcnews.automation.commonfunctions.ScreenActions.generalScrollUp
+import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeUp
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.article
 import com.bbcnews.automation.pageobjects.BBCNewsHindiPageObject.bbcHindiEntertainment
@@ -87,7 +87,7 @@ class BBCNewsHindiSmokeTest : BbcTestCase("Regression") {
         selectView(androidDriver, article)
         if (frontPage.isDisplayed) {
             System.out.println("Scrolling up")
-            generalScrollUp(androidDriver)
+            generalSwipeUp(androidDriver)
         }
 
         assertDisplayingElements(imageItemBadge,

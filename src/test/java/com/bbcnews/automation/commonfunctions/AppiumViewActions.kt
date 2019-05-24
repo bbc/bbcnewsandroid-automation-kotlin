@@ -8,8 +8,8 @@ import com.aventstack.extentreports.markuputils.MarkupHelper
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter
 import com.aventstack.extentreports.reporter.configuration.ChartLocation
 import com.aventstack.extentreports.reporter.configuration.Theme
-import com.bbcnews.automation.testdata.FilePaths.resultsFilePath
 import com.bbcnews.automation.pageobjects.BasePageObject
+import com.bbcnews.automation.testdata.FilePaths.resultsFilePath
 import com.bbcnews.automation.testutils.TestSetup.deviceId
 import com.bbcnews.automation.testutils.TestSetup.deviceName
 import com.bbcnews.automation.testutils.TestSetup.deviceOsName
@@ -90,7 +90,6 @@ object AppiumViewActions {
      * @param, androidDriver, only works with Android
      */
     fun navigateBack(androidDriver: AndroidDriver<MobileElement>) {
-        //androidDriver.pressKeyCode(AndroidKeyCode.BACK);
         androidDriver.pressKey(KeyEvent(AndroidKey.BACK))
     }
 
@@ -189,8 +188,8 @@ object AppiumViewActions {
     fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
-        val highPoint = (height * 0.75).toInt()
-        val lowPoint = (height * 0.35).toInt()
+        val highPoint = (height * 0.45).toInt() // 0 = top of screen
+        val lowPoint = (height * 0.65).toInt() // 1 = bottom of screen
 
         // Remember swiping is the opposite direction to scrolling, so you swipe down to scroll up
         when (swipingDirection) {
@@ -204,10 +203,41 @@ object AppiumViewActions {
         val width = screenSize.getWidth()
         val middleOfScreen = width / 2
 
+        swipeFromTo(driver = driver,
+                fromXPosition = middleOfScreen, fromYPosition = fromYPosition,
+                toXPosition = middleOfScreen, toYPosition = toYPosition
+        )
+    }
+
+    fun horizontalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
+        val dimension = driver.manage().window().size
+        val width = dimension.getWidth()
+        val left = (width * 0.75).toInt() // 1 = left side
+        val right = (width * 0.25).toInt() // 0 = right side
+
+        // Remember swiping is the opposite direction to scrolling, so you swipe down to scroll up
+        when (swipingDirection) {
+            "Left" -> swipeHorizontallyFromTo(driver, right, left)
+            "Right" -> swipeHorizontallyFromTo(driver, left, right)
+        }
+    }
+
+    private fun swipeHorizontallyFromTo(driver: AppiumDriver<MobileElement>, fromXPosition: Int, toXPosition: Int) {
+        val screenSize = driver.manage().window().size
+        val height = screenSize.getHeight()
+        val yAxis = (height * 0.20).toInt()
+
+        swipeFromTo(driver = driver,
+                fromXPosition = fromXPosition, fromYPosition = yAxis,
+                toXPosition = toXPosition, toYPosition = yAxis
+        )
+    }
+
+    private fun swipeFromTo(driver: AppiumDriver<MobileElement>, fromXPosition: Int, fromYPosition: Int, toXPosition: Int, toYPosition: Int) {
         PlatformTouchAction(driver)
-                .press(point(middleOfScreen, fromYPosition))
+                .press(point(fromXPosition, fromYPosition))
                 .waitAction(waitOptions(ofMillis(100)))
-                .moveTo(point(middleOfScreen, toYPosition))
+                .moveTo(point(toXPosition, toYPosition))
                 .release()
                 .perform()
     }
@@ -343,7 +373,6 @@ object AppiumViewActions {
      */
     fun scrollToEndOfStories(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement?,
                              elements: Array<String>, element2: MobileElement?) {
-        // val flag = false
         for (i in 0..20) {
             try {
                 waitForScreenToLoad(appiumDriver, element, 5)
@@ -359,33 +388,9 @@ object AppiumViewActions {
                 //element?.click();
                 break
             } catch (e: Exception) {
-                horizontalSwipe(appiumDriver)
+                horizontalSwipe(appiumDriver, "Left")
             }
         }
-    }
-
-    /**
-     * Function to seek horizontal on the app.
-     * Yaxis remains horizontal
-     * StartXaxis and endXaxis are the two main parameters to swipe vertically
-     * @param, driverType
-     */
-    private fun horizontalSwipe(driver: AppiumDriver<MobileElement>) {
-        val dimension = driver.manage().window().size
-        val height = dimension.getHeight()
-        val width = dimension.getWidth()
-        val startXAxis = (width * 0.90).toInt()
-        val yAxis = (height * 0.20).toInt()
-        val endXAxis = (width * 0.10).toInt()
-
-//         val action = TouchAction(driver)
-//         action.press(PointOption.point(startXAxis, YAxis))
-//                 .waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-//                 .moveTo(PointOption.point(endXAxis, YAxis)).release().perform()
-
-        PlatformTouchAction(driver).press(point(startXAxis, yAxis))
-                .waitAction(waitOptions(ofMillis(1000)))
-                .moveTo(point(endXAxis, yAxis)).release().perform()
     }
 
     fun isElementSelected(element: MobileElement?): Boolean {

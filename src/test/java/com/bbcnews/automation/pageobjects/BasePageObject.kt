@@ -55,7 +55,11 @@ object BasePageObject {
             "bbc.mobile.news.uk:id/headline_link"
     )
 
-    @AndroidFindBy(accessibility = "Navigate up")
+    @AndroidFindAll(
+            AndroidBy(className = "android.widget.ImageButton"),
+            AndroidBy(accessibility = "Navigate up"),
+            AndroidBy(xpath = "//android.widget.ImageButton[@index='0']")
+    )
     lateinit var navigateBack: MobileElement
 
     @AndroidFindBy(id = "android:id/button1")

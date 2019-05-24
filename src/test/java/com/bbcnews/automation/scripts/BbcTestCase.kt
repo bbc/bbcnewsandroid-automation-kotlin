@@ -28,7 +28,6 @@ abstract class BbcTestCase(private val description: String) {
     private val afterScreenshots = "./Screenshots/After"
     private val bbcNewsApp = "bbc.mobile.news.uk.internal"
 
-
     fun setUp() {
         printDeviceDetailsFromCommandPrompt()
         emptyFolders(screenshotPath)
@@ -45,7 +44,6 @@ abstract class BbcTestCase(private val description: String) {
         rotateToPortrait(androidDriver)
         dismissDialogs(androidDriver, 3)
     }
-
 
     @AfterMethod
     fun getResult(result: ITestResult) {

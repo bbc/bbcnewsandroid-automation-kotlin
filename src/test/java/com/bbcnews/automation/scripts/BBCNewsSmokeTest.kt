@@ -6,8 +6,12 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.screenshot
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.textPresent
+import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeDown
+import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeLeft
+import com.bbcnews.automation.commonfunctions.ScreenActions.goBackToHomeScreen
 import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
+import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertIndexTitleMatches
 import com.bbcnews.automation.pageobjects.BasePageObject
 import com.bbcnews.automation.pageobjects.BasePageObject.contentInfo
 import com.bbcnews.automation.pageobjects.BasePageObject.itemTitle
@@ -17,15 +21,13 @@ import com.bbcnews.automation.pageobjects.BasePageObject.popular
 import com.bbcnews.automation.pageobjects.BasePageObject.search
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
 import com.bbcnews.automation.pageobjects.BasePageObject.video
+import com.bbcnews.automation.pageobjects.HomePageObject.firstContentCardLink
+import com.bbcnews.automation.pageobjects.IndexPageObjects.followTopicButton
+import com.bbcnews.automation.pageobjects.IndexPageObjects.topicFollowedPencilButton
 import com.bbcnews.automation.pageobjects.MyNewsPageObject
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.addNewsButton
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.addTopics
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.localNewsDisplayed
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsStartButton
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsSummary
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsSummaryText
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitle
-import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsTitleText
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject
 import com.bbcnews.automation.pageobjects.PopularPageObjects.mostRead
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
@@ -45,8 +47,8 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @BeforeTest
     fun beforeEachTest() {
         setUp()
+        goBackToHomeScreen()
     }
-
 
     @Test(priority = 2, description = "User journey including adding items to my news")
     @Story("Journey_1")
@@ -54,12 +56,26 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun journey_UserAddingItemsToMyNews() {
         startTest("Journey: MyNews", "Browsing user", "Smoke")
 
-
 //     Tap on an index header (e.g. London)
+        val topic = firstContentCardLink.text
+        selectView(androidDriver, firstContentCardLink)
+        assertIndexTitleMatches(topic)
+
 //     Tap (+) to add to MyNews
+        selectView(androidDriver, followTopicButton)
 //     Tap pencil (now appeared) to edit MyNews
+        selectView(androidDriver, topicFollowedPencilButton)
+
 //     Swipe to Add Topics
-//     Scroll and add 4 topics
+        generalSwipeLeft(androidDriver)
+        assertTrue(addTopics.isSelected)
+
+//     Scroll down
+        generalSwipeDown(androidDriver)
+
+        goBackToHomeScreen() // temp to stop other tests from failing
+
+//     Add four topics
 //     Add a topic from Search
 //     Swipe back to MyTopics and assert they've been added
 //     Press back twice to go back to Top Stories
@@ -70,21 +86,22 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     }
 
 
-//    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
-//    @Throws(IOException::class)
-//    fun smokeTestTakeScreenshotsOfPages() {
-//        selectView(androidDriver, topStories)
-//        screenshot(androidDriver, "Before", "topStories")
-//        selectView(androidDriver, myNews)
-//        screenshot(androidDriver, "Before", "myNews")
-//        selectView(androidDriver, popular)
-//        screenshot(androidDriver, "Before", "popular")
-//        selectView(androidDriver, video)
-//        screenshot(androidDriver, "Before", "video")
-//        selectView(androidDriver, menuButton)
-//        screenshot(androidDriver, "Before", "menu")
-//        navigateBack(androidDriver)
-//    }
+    @Ignore
+    @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
+    @Throws(IOException::class)
+    fun smokeTestTakeScreenshotsOfPages() {
+        selectView(androidDriver, topStories)
+        screenshot(androidDriver, "Before", "topStories")
+        selectView(androidDriver, myNews)
+        screenshot(androidDriver, "Before", "myNews")
+        selectView(androidDriver, popular)
+        screenshot(androidDriver, "Before", "popular")
+        selectView(androidDriver, video)
+        screenshot(androidDriver, "Before", "video")
+        selectView(androidDriver, menuButton)
+        screenshot(androidDriver, "Before", "menu")
+        goBackToHomeScreen() // temp to stop other tests from failing
+    }
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
     @Story("Home")
@@ -102,8 +119,11 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
                 menuButton,
                 search
         )
+
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
+    @Ignore
     @Test(priority = 3, description = "Test to check the MyNews page")
     @Story("MyNews")
     @Severity(SeverityLevel.CRITICAL)
@@ -113,7 +133,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(androidDriver, myNewsStartButton)
         selectView(androidDriver, MyNewsPageObject.allowLocation)
         selectView(androidDriver, MyNewsPageObject.allowLocationPermission)
-        navigateBack(androidDriver)
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
     @Test(priority = 4, description = "Test to check the popular page")
@@ -125,24 +145,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         assertTrue(popular.isSelected)
         assertDisplayingElements(mostRead)
         assertEquals("Most Read", mostRead.text, "Text Matched")
-    }
-
-    @Test(priority = 6, description = "Test to check the MyNews page")
-    @Story("MyNews")
-    @Severity(SeverityLevel.CRITICAL)
-    fun smokeTestMyNewsPage() {
-        startTest("MyNews", "Checking the MyNews", "Smoke")
-        selectView(androidDriver, myNews)
-
-        assertTrue(myNews.isSelected)
-
-        assertDisplayingElements(myNewsSummary,
-                myNewsTitle,
-                addNewsButton
-        )
-
-        assertEquals(myNewsTitleText, myNewsTitle.text, "Text matched")
-        assertEquals(myNewsSummaryText, myNewsSummary.text, "Text matched")
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
     /**
@@ -166,15 +169,15 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
         scrollDownToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
         selectView(androidDriver, MyTopicsPageObject.addWorldTopicButton)
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
     /**
      * Checked the selected topics are getting displayed under Added Topics
      * Todo This test won't pass if the topics don't get added!!!
      */
-    @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
     @Ignore // This test won't pass if the topics don't get added!!!
-    @Story("MyTopics")
+    @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
     fun smokeTestCheckAddedTopicsUnderMyTopics() {
         startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
         selectView(androidDriver, MyNewsPageObject.myTopics)
@@ -182,6 +185,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
                 MyTopicsPageObject.worldTopic
         )
         navigateBack(androidDriver)
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
     /**
@@ -201,7 +205,8 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
                 BasePageObject.settings
         )
 
-        navigateBack(androidDriver)
+        generalSwipeLeft(androidDriver)
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
     /**
@@ -226,7 +231,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(androidDriver, menuButton)
         screenshot(androidDriver, "After", "menu")
 
-        navigateBack(androidDriver)
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
     /**
@@ -238,6 +243,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun smokeTestCompareImages() {
         startTest("CompareImages", "Compares the HomePage", "Smoke")
         compareTwoImages()
+        goBackToHomeScreen() // temp to stop other tests from failing
     }
 
 }
