@@ -7,6 +7,44 @@ import io.appium.java_client.pagefactory.AndroidFindBy
 
 object MyNewsPageObject {
 
+
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/topics_recycler_view"),
+            AndroidBy(xpath = "//android.support.v7.widget.RecyclerView[[@index='1']")
+    )
+    lateinit var topicsCarousel: MobileElement
+
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/text"),
+            AndroidBy(xpath = "//android.widget.TextView[@text='To reorder topics, hold down and move.']")
+    )
+    lateinit var toReorderTopicsPrompt: MobileElement
+
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/text"),
+            AndroidBy(xpath = "//android.widget.TextView[@text='Business']")
+    )
+    lateinit var businessTopic: MobileElement
+
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/text"),
+            AndroidBy(xpath = "//android.widget.TextView[@text='Technology']")
+    )
+    lateinit var technologyTopic: MobileElement
+
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/text"),
+            AndroidBy(xpath = "//android.widget.TextView[@text='Entertainment']")
+    )
+    lateinit var entertainmentTopic: MobileElement
+
+    @AndroidFindAll(
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/text"),
+            AndroidBy(xpath = "//android.widget.TextView[@text='Education']")
+    )
+    lateinit var educationTopic: MobileElement
+
+
     @AndroidFindAll(
             AndroidBy(id = "bbc.mobile.news.uk.internal:id/title"),
             AndroidBy(id = "bbc.mobile.news.uk:id/title"))

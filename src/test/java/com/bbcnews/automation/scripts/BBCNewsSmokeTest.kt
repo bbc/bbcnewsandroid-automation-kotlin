@@ -5,8 +5,8 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.navigateBack
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.screenshot
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.selectView
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.startTest
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.swipeElement
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.textPresent
-import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeDown
 import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeLeft
 import com.bbcnews.automation.commonfunctions.ScreenActions.goBackToHomeScreen
 import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
@@ -28,9 +28,11 @@ import com.bbcnews.automation.pageobjects.MyNewsPageObject
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.addTopics
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.localNewsDisplayed
 import com.bbcnews.automation.pageobjects.MyNewsPageObject.myNewsStartButton
+import com.bbcnews.automation.pageobjects.MyNewsPageObject.myTopics
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject
 import com.bbcnews.automation.pageobjects.PopularPageObjects.mostRead
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
+import io.appium.java_client.MobileElement
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
@@ -70,19 +72,52 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         generalSwipeLeft(androidDriver)
         assertTrue(addTopics.isSelected)
 
-//     Scroll down
-        generalSwipeDown(androidDriver)
+//     Scroll down and add four topics
+        scrollToAndAddTopics(
+                MyNewsPageObject.businessTopic,
+                MyNewsPageObject.technologyTopic,
+                MyNewsPageObject.entertainmentTopic,
+                MyNewsPageObject.educationTopic
+        )
+
+//     Add a topic from Search
+//        selectView(androidDriver, searchForTopics)
+//        enterSearchText(addTopicsSearchField, "UK Royal Family")
+
+//     Swipe back to MyTopics and assert they've been added
+        selectView(androidDriver, myTopics)
+
+        assertDisplayingElements(
+                MyNewsPageObject.toReorderTopicsPrompt,
+                MyNewsPageObject.businessTopic,
+                MyNewsPageObject.technologyTopic,
+                MyNewsPageObject.entertainmentTopic,
+                MyNewsPageObject.educationTopic
+        )
+
+//     Press back twice to go back to Top Stories
+        goBackToHomeScreen()
+
+//     Swipe or tap to MyNews
+        selectView(androidDriver, myNews)
+
+//     Swipe carousel
+        swipeElement(androidDriver, MyNewsPageObject.topicsCarousel, "Left")
+
+//     Tap a topic
+
+//     Swipe through the indexes
+
 
         goBackToHomeScreen() // temp to stop other tests from failing
 
-//     Add four topics
-//     Add a topic from Search
-//     Swipe back to MyTopics and assert they've been added
-//     Press back twice to go back to Top Stories
-//     Swipe or tap to MyNews
-//     Swipe carousel
-//     Tap a topic
-//     Swipe through the indexes
+    }
+
+    private fun scrollToAndAddTopics(vararg topics: MobileElement) {
+        for (topic in topics) {
+            scrollDownToElement(androidDriver, topic)
+            topic.click()
+        }
     }
 
 

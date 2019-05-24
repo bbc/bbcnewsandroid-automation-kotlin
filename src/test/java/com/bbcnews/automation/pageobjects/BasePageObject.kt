@@ -86,7 +86,10 @@ object BasePageObject {
     @AndroidFindBy(accessibility = "Search")
     lateinit var searchButton: MobileElement
 
-    @AndroidFindBy(accessibility = "Search for topics")
+    @AndroidFindAll(
+            AndroidBy(accessibility = "Search for topics"),
+            AndroidBy(id = "bbc.mobile.news.uk.internal:id/search_t")
+    )
     lateinit var searchForTopics: MobileElement
 
     @AndroidFindBy(accessibility = "Share story")
@@ -101,6 +104,9 @@ object BasePageObject {
             AndroidBy(accessibility = "Search")
     )
     lateinit var search: MobileElement
+
+    @AndroidFindBy(id = "bbc.mobile.news.uk.internal:id/search_src_text")
+    lateinit var addTopicsSearchField: MobileElement
 
     var topicsPageElements = arrayOf(
             "bbc.mobile.news.uk.internal:id/item_image",

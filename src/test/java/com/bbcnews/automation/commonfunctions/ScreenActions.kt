@@ -1,9 +1,8 @@
 package com.bbcnews.automation.commonfunctions
 
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.horizontalSwipe
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.generalSwipe
 import com.bbcnews.automation.commonfunctions.AppiumViewActions.navigateBack
-import com.bbcnews.automation.commonfunctions.AppiumViewActions.verticalSwipe
-import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
+import com.bbcnews.automation.commonfunctions.AppiumViewActions.smallSwipeUp
 import com.bbcnews.automation.pageobjects.BasePageObject.copyrightFooter
 import com.bbcnews.automation.pageobjects.BasePageObject.navigateBack
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
@@ -18,20 +17,21 @@ object ScreenActions {
 
     fun pressBack() = navigateBack(androidDriver)
 
-    @Throws(java.lang.Exception::class)
     fun scrollDownToElement(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
         for (i in 0..10) {
-            try {
-                assertDisplayingElements(element)
-            } catch (e: NoSuchElementException) {
-                if (!copyrightFooter.isDisplayed) {
-                    generalSwipeUp(appiumDriver)
-                } else {
-                    println("Could not find element in scrollview. \n Element searched: $element \n")
-                    throw e
-                }
-            }
+            val elementIsDisplayed: Boolean = element.isDisplayed
+
+            if (!elementIsDisplayed) scrollDownIfNotShowingFooter(appiumDriver, element)
+            else break
+
         }
+    }
+
+    private fun scrollDownIfNotShowingFooter(appiumDriver: AppiumDriver<MobileElement>, element: MobileElement) {
+        val footerIsDisplayed = copyrightFooter.isDisplayed
+
+        if (!footerIsDisplayed) smallSwipeUp(appiumDriver)
+        else println("Could not find element in scrollview. \n Element searched: $element \n")
     }
 
     fun goBackToHomeScreen() {
@@ -43,9 +43,9 @@ object ScreenActions {
         }
     }
 
-    fun generalSwipeUp(appiumDriver: AppiumDriver<MobileElement>) = verticalSwipe(appiumDriver, "Up")
-    fun generalSwipeDown(appiumDriver: AppiumDriver<MobileElement>) = verticalSwipe(appiumDriver, "Down")
-    fun generalSwipeLeft(appiumDriver: AppiumDriver<MobileElement>) = horizontalSwipe(appiumDriver, "Left")
-    fun generalSwipeRight(appiumDriver: AppiumDriver<MobileElement>) = horizontalSwipe(appiumDriver, "Right")
+    fun generalSwipeUp(appiumDriver: AppiumDriver<MobileElement>) = generalSwipe(appiumDriver, "Up")
+    fun generalSwipeDown(appiumDriver: AppiumDriver<MobileElement>) = generalSwipe(appiumDriver, "Down")
+    fun generalSwipeLeft(appiumDriver: AppiumDriver<MobileElement>) = generalSwipe(appiumDriver, "Left")
+    fun generalSwipeRight(appiumDriver: AppiumDriver<MobileElement>) = generalSwipe(appiumDriver, "Right")
 
 }

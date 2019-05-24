@@ -185,16 +185,52 @@ object AppiumViewActions {
         return path
     }
 
-    fun verticalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
+    fun smallSwipeUp(driver: AppiumDriver<MobileElement>) {
         val dimension = driver.manage().window().size
         val height = dimension.getHeight()
+        val highPoint = (height * 0.50).toInt() // 0 = top of screen
+        val lowPoint = (height * 0.60).toInt() // 1 = bottom of screen
+
+        swipeVerticallyFromTo(driver, lowPoint, highPoint)
+    }
+
+    fun generalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
+        val dimension = driver.manage().window().size
+        val width = dimension.getWidth()
+        val height = dimension.getHeight()
+
+        val left = (width * 0.75).toInt() // 1 = left side
+        val right = (width * 0.25).toInt() // 0 = right side
         val highPoint = (height * 0.45).toInt() // 0 = top of screen
         val lowPoint = (height * 0.65).toInt() // 1 = bottom of screen
 
-        // Remember swiping is the opposite direction to scrolling, so you swipe down to scroll up
+        // Remember swiping is the opposite direction to scrolling, so you generalSwipe down to scroll up
         when (swipingDirection) {
+            "Left" -> swipeHorizontallyFromTo(driver, right, left)
+            "Right" -> swipeHorizontallyFromTo(driver, left, right)
             "Down" -> swipeVerticallyFromTo(driver, highPoint, lowPoint)
             "Up" -> swipeVerticallyFromTo(driver, lowPoint, highPoint)
+        }
+    }
+
+    fun swipeElement(driver: AppiumDriver<MobileElement>, element: MobileElement, swipingDirection: String) {
+        val elementXPoint = element.center.getX()
+        val elementYPoint = element.center.getY()
+
+        val dimension = driver.manage().window().size
+        val width = dimension.getWidth()
+        val height = dimension.getHeight()
+        val xLeft = (width * 0.75).toInt() // 1 = left side
+        val xRight = (width * 0.25).toInt() // 0 = right side
+        val yHigh = (height * 0.45).toInt() // 0 = top of screen
+        val yLow = (height * 0.65).toInt() // 1 = bottom of screen
+
+        when(swipingDirection) {
+            "Left" -> swipeFromTo(driver, xRight, elementYPoint, xLeft, elementYPoint)
+            "Right" -> swipeFromTo(driver, xLeft, elementYPoint, xRight, elementYPoint)
+
+            "Down" -> swipeFromTo(driver, yHigh, elementXPoint, yLow, elementXPoint)
+            "Up" -> swipeFromTo(driver, yLow, elementXPoint, yHigh, elementXPoint)
         }
     }
 
@@ -207,19 +243,6 @@ object AppiumViewActions {
                 fromXPosition = middleOfScreen, fromYPosition = fromYPosition,
                 toXPosition = middleOfScreen, toYPosition = toYPosition
         )
-    }
-
-    fun horizontalSwipe(driver: AppiumDriver<MobileElement>, swipingDirection: String) {
-        val dimension = driver.manage().window().size
-        val width = dimension.getWidth()
-        val left = (width * 0.75).toInt() // 1 = left side
-        val right = (width * 0.25).toInt() // 0 = right side
-
-        // Remember swiping is the opposite direction to scrolling, so you swipe down to scroll up
-        when (swipingDirection) {
-            "Left" -> swipeHorizontallyFromTo(driver, right, left)
-            "Right" -> swipeHorizontallyFromTo(driver, left, right)
-        }
     }
 
     private fun swipeHorizontallyFromTo(driver: AppiumDriver<MobileElement>, fromXPosition: Int, toXPosition: Int) {
@@ -388,7 +411,7 @@ object AppiumViewActions {
                 //element?.click();
                 break
             } catch (e: Exception) {
-                horizontalSwipe(appiumDriver, "Left")
+                this.generalSwipe(appiumDriver, "Left")
             }
         }
     }
