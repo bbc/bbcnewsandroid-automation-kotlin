@@ -10,6 +10,7 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.textPresent
 import com.bbcnews.automation.commonfunctions.ScreenActions.generalSwipeLeft
 import com.bbcnews.automation.commonfunctions.ScreenActions.goBackToHomeScreen
 import com.bbcnews.automation.commonfunctions.ScreenActions.scrollDownToElement
+import com.bbcnews.automation.commonfunctions.ScreenActions.scrollToAndAddTopics
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertDisplayingElements
 import com.bbcnews.automation.commonfunctions.ScreenAssertions.assertIndexTitleMatches
 import com.bbcnews.automation.pageobjects.BasePageObject
@@ -32,7 +33,6 @@ import com.bbcnews.automation.pageobjects.MyNewsPageObject.myTopics
 import com.bbcnews.automation.pageobjects.MyTopicsPageObject
 import com.bbcnews.automation.pageobjects.PopularPageObjects.mostRead
 import com.bbcnews.automation.testutils.TestSetup.androidDriver
-import io.appium.java_client.MobileElement
 import io.qameta.allure.Severity
 import io.qameta.allure.SeverityLevel
 import io.qameta.allure.Story
@@ -58,7 +58,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun journey_UserAddingItemsToMyNews() {
         startTest("Journey: MyNews", "Browsing user", "Smoke")
 
-//     Tap on an index header (e.g. London)
+//     Tap on an index topic (e.g. London) and assert the next page has that header
         val topic = firstContentCardLink.text
         selectView(androidDriver, firstContentCardLink)
         assertIndexTitleMatches(topic)
@@ -105,21 +105,18 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         swipeElement(androidDriver, MyNewsPageObject.topicsCarousel, "Left")
 
 //     Tap a topic
+        val nextTopic = firstContentCardLink.text
+        selectView(androidDriver, firstContentCardLink)
+        assertIndexTitleMatches(nextTopic)
 
 //     Swipe through the indexes
+        generalSwipeLeft(androidDriver)
+        generalSwipeLeft(androidDriver)
+        generalSwipeLeft(androidDriver)
 
-
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
 
     }
-
-    private fun scrollToAndAddTopics(vararg topics: MobileElement) {
-        for (topic in topics) {
-            scrollDownToElement(androidDriver, topic)
-            topic.click()
-        }
-    }
-
 
     @Ignore
     @Test(priority = 2, description = "takes the screenshot of the topStories, myNews, popular,video and menu page")
@@ -135,7 +132,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         screenshot(androidDriver, "Before", "video")
         selectView(androidDriver, menuButton)
         screenshot(androidDriver, "Before", "menu")
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     @Test(priority = 2, description = "Check the links on the Home page after app launched")
@@ -155,7 +152,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
                 search
         )
 
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     @Ignore
@@ -168,7 +165,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(androidDriver, myNewsStartButton)
         selectView(androidDriver, MyNewsPageObject.allowLocation)
         selectView(androidDriver, MyNewsPageObject.allowLocationPermission)
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     @Test(priority = 4, description = "Test to check the popular page")
@@ -180,7 +177,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         assertTrue(popular.isSelected)
         assertDisplayingElements(mostRead)
         assertEquals("Most Read", mostRead.text, "Text Matched")
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     /**
@@ -204,7 +201,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
 
         scrollDownToElement(androidDriver, MyTopicsPageObject.addWorldTopicButton)
         selectView(androidDriver, MyTopicsPageObject.addWorldTopicButton)
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     /**
@@ -215,12 +212,12 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     @Test(priority = 8, description = "Test to check whether selected topics displayed under MyTopics page")
     fun smokeTestCheckAddedTopicsUnderMyTopics() {
         startTest("MyTopics", "Checking Added topics in MyTopics", "Smoke")
-        selectView(androidDriver, MyNewsPageObject.myTopics)
+        selectView(androidDriver, myTopics)
         assertDisplayingElements(MyTopicsPageObject.walesTopic,
                 MyTopicsPageObject.worldTopic
         )
         navigateBack(androidDriver)
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     /**
@@ -241,7 +238,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         )
 
         generalSwipeLeft(androidDriver)
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     /**
@@ -266,7 +263,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
         selectView(androidDriver, menuButton)
         screenshot(androidDriver, "After", "menu")
 
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
     /**
@@ -278,7 +275,7 @@ class BBCNewsSmokeTest : BbcTestCase("SmokeTest") {
     fun smokeTestCompareImages() {
         startTest("CompareImages", "Compares the HomePage", "Smoke")
         compareTwoImages()
-        goBackToHomeScreen() // temp to stop other tests from failing
+        goBackToHomeScreen() // temporary to stop other tests from failing
     }
 
 }

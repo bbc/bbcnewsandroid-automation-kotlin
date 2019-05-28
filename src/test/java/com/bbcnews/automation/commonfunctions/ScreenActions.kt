@@ -6,6 +6,7 @@ import com.bbcnews.automation.commonfunctions.AppiumViewActions.smallSwipeUp
 import com.bbcnews.automation.pageobjects.BasePageObject.copyrightFooter
 import com.bbcnews.automation.pageobjects.BasePageObject.navigateBack
 import com.bbcnews.automation.pageobjects.BasePageObject.topStories
+import com.bbcnews.automation.testutils.TestSetup
 import io.appium.java_client.AppiumDriver
 import io.appium.java_client.MobileElement
 import io.appium.java_client.android.AndroidDriver
@@ -48,4 +49,11 @@ object ScreenActions {
     fun generalSwipeLeft(appiumDriver: AppiumDriver<MobileElement>) = generalSwipe(appiumDriver, "Left")
     fun generalSwipeRight(appiumDriver: AppiumDriver<MobileElement>) = generalSwipe(appiumDriver, "Right")
 
+
+    fun scrollToAndAddTopics(vararg topics: MobileElement) {
+        for (topic in topics) {
+            scrollDownToElement(TestSetup.androidDriver, topic)
+            topic.click()
+        }
+    }
 }
